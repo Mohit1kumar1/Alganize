@@ -1,0 +1,17 @@
+Pathway	GeneID	Symbol	Description	Salt_vs_Control_log2FC	Salt_vs_Control_padj
+Proline	Cz01g00140.t1	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	-4.4712309369045	NA
+Proline	Cz02g00060.t1	P5CR	Pyrroline-5-carboxylate reductase	0.937682640762768	NA
+Beta_Carotene	Cz02g00290.t1	PDS	Phytoene desaturase	-1.17568445807544	NA
+Proline	Cz03g00100.t1	ProDH1	Proline dehydrogenase 1	-0.777363439292759	NA
+EPA	Cz03g00250.t1	FAD6	Omega-6 fatty acid desaturase (chloroplast)	-1.12225329029352	NA
+Beta_Carotene	Cz04g00120.t1	CRTISO	Carotene isomerase	-0.969444311235956	NA
+Glycine_Betaine	Cz05g00120.t1	BADH1	Betaine aldehyde dehydrogenase 1	2.25628104799325	NA
+IAA	Cz06g00150.t1	YUC1	Flavin monooxygenase YUCCA1 (IAA biosynthesis)	-2.78765849337987	NA
+Proline	Cz06g00270.t1	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	0.688792375374462	NA
+Beta_Carotene	Cz07g00150.t1	LCYb	Lycopene beta-cyclase	0.806907173827788	NA
+Gibberellin_GA3	Cz08g00160.t1	KO	Kaurene oxidase / CYP701A	0.640518086729185	NA
+Lutein	Cz08g00220.t1	LCYe	Lycopene epsilon-cyclase	-0.28750396292571	NA
+DHA	Cz08g00310.t1	ELOVL	Very long chain fatty acid elongase	-0.245121338459689	NA
+ABA	Cz09g00150.t1	NCED2	9-cis-epoxycarotenoid dioxygenase 2 (ABA biosyn.)	-0.324501233614601	NA
+Glycine_Betaine	Cz09g00180.t1	CHDH	Choline dehydrogenase	0.400610712988435	NA
+Lutein	Cz09g00300.t1	CYP97C	Cytochrome P450 97C, epsilon-ring hydroxylase	-0.221828856865862	NA

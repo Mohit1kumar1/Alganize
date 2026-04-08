@@ -1,0 +1,14 @@
+{
+  "datasets": ["GSE289042", "GSE162916", "GSE125419", "GSE92514"],
+  "species_map": {
+    "Arabidopsis thaliana": ["GSE289042"],
+    "Chlorella": ["GSE162916"],
+    "Chromochloris zofingiensis": ["GSE125419", "GSE92514"]
+  },
+  "induction_map": {
+    "Drought stress (osmotic)": ["GSE289042"],
+    "Salt + Drought (PEG) stress": ["GSE162916"],
+    "Salt stress": ["GSE125419"],
+    "High light stress": ["GSE92514"]
+  }
+}

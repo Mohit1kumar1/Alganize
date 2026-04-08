@@ -1,0 +1,29 @@
+{
+  "dataset_id": "GSE92514",
+  "species": "Chromochloris zofingiensis",
+  "species_details": "Green microalga grown diurnally (16h light/8h dark) under 100 µmol photons m−2 s−1, shifted to 400 µmol photons m−2 s−1 high light",
+  "geo_link": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE92514",
+  "technique": "RNA-seq · Illumina HiSeq 2500 · paired-end · Cuffdiff-based differential expression",
+  "induction_type": "High light stress",
+  "induction_details": "Shift from medium light (100 µmol photons m−2 s−1) to high light (400 µmol photons m−2 s−1); time-course sampling from 0.5 h to 12 h with quadruplicate replicates",
+  "pathways": [
+    "Proline",
+    "Glycine_Betaine",
+    "Beta_Carotene",
+    "Lutein",
+    "Astaxanthin",
+    "Zeaxanthin",
+    "Alpha_Tocopherol",
+    "ABA",
+    "IAA",
+    "EPA",
+    "DHA",
+    "Gibberellin_GA3"
+  ],
+  "contrasts": {
+    "High Light vs Medium Light": "HL_vs_ML"
+  },
+  "contrast_descriptions": {
+    "HL_vs_ML": "log2(High Light / Medium Light) across matched time points"
+  }
+}

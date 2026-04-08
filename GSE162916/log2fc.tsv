@@ -1,0 +1,110 @@
+Pathway	GeneID	Symbol	Description	Salt_vs_Control_log2FC	Salt_vs_Control_padj	PEG_vs_Control_log2FC	PEG_vs_Control_padj
+Fatty Acids	Cluster-12638.2	Cluster-12638.2	omega-6 fatty acid desaturase endoplasmic reticulum isozyme 2b [Musa AB Group]	20.8190946199007	NA	18.206580386056	NA
+Fatty Acids	Cluster-12638.3	Cluster-12638.3	"fatty acid desaturase, delta-12 [Chlamydomonas reinhardtii]>gi|158279015|gb|EDP04777.1| fatty acid desaturase, delta-12 [Chlamydomonas reinhardtii]>gi|195546504|gb|ACF98526.1| microsomal delta-12 fatty acid desaturase [Chlamydomonas reinhardtii]"	19.4323726615248	NA	17.8268773957841	NA
+Proline	Cluster-5656.0	Cluster-5656.0	1-pyrroline-5-carboxylate dehydrogenase [Galdieria sulphuraria]>gi|452821718|gb|EME28745.1| 1-pyrroline-5-carboxylate dehydrogenase [Galdieria sulphuraria]	19.3538037232818	NA	0	NA
+Proline	Cluster-5318.0	Cluster-5318.0	1-pyrroline-5-carboxylate dehydrogenase [Galdieria sulphuraria]>gi|452821718|gb|EME28745.1| 1-pyrroline-5-carboxylate dehydrogenase [Galdieria sulphuraria]	18.9812021248626	NA	17.4576453959419	NA
+Carotenoids	Cluster-31803.8150	Cluster-31803.8150	phytoene desaturase [Auxenochlorella protothecoides]	18.9459267191203	NA	16.779578299778	NA
+Glycine betaine	Cluster-31803.25230	Cluster-31803.25230	"Betaine aldehyde dehydrogenase 1, chloroplastic [Auxenochlorella protothecoides]>gi|675352760|gb|KFM25200.1| Betaine aldehyde dehydrogenase 1, chloroplastic [Auxenochlorella protothecoides]"	18.9315714547114	NA	17.81128060818	NA
+Carotenoids	Cluster-31803.84603	Cluster-31803.84603	zeta-carotene desaturase [Auxenochlorella protothecoides]>gi|313870542|gb|ADR82202.1| zeta-carotene desaturase [Auxenochlorella protothecoides]	18.9024251679372	NA	19.4775389147227	NA
+Proline	Cluster-5318.1	Cluster-5318.1	1-pyrroline-5-carboxylate dehydrogenase [Cyanidioschyzon merolae strain 10D]>gi|449016293|dbj|BAM79695.1| 1-pyrroline-5-carboxylate dehydrogenase [Cyanidioschyzon merolae strain 10D]	18.5261209405782	NA	14.0951497389683	NA
+Fatty Acids	Cluster-31803.108021	Cluster-31803.108021	fatty acyl delta4 desaturase [Chlamydomonas reinhardtii]	17.9315743400928	NA	19.0821308453477	NA
+Carotenoids	Cluster-31803.18550	Cluster-31803.18550	phytoene desaturase [Auxenochlorella protothecoides]>gi|313870538|gb|ADR82200.1| phytoene desaturase [Auxenochlorella protothecoides]	17.1206125178544	NA	20.6141427655469	NA
+Fatty Acids	Cluster-15582.0	Cluster-15582.0	fatty acid delta-6-desaturase [Lobosphaera incisa]	17.0950776065348	NA	19.6096422778045	NA
+Fatty Acids	Cluster-21739.0	Cluster-21739.0	delta-6 elongase [Pyramimonas cordata]	16.8423135094305	NA	14.8727229693038	NA
+Glycine betaine	Cluster-20785.0	Cluster-20785.0	"PREDICTED: choline monooxygenase, chloroplastic-like [Erythranthe guttatus]>gi|604298109|gb|EYU18197.1| hypothetical protein MIMGU_mgv1a006513mg [Erythranthe guttata]"	16.5356550791767	NA	0	NA
+Fatty Acids	Cluster-31432.1	Cluster-31432.1	delta6 fatty acid desaturase putative [Albugo laibachii Nc14]	16.3321239860145	NA	0	NA
+Glycine betaine	Cluster-31803.50620	Cluster-31803.50620	"Betaine aldehyde dehydrogenase 1, chloroplastic [Auxenochlorella protothecoides]>gi|675352760|gb|KFM25200.1| Betaine aldehyde dehydrogenase 1, chloroplastic [Auxenochlorella protothecoides]"	16.3321239860145	NA	0	NA
+Fatty Acids	Cluster-20645.0	Cluster-20645.0	stearoyl-CoA desaturase (delta-9 desaturase) [Galdieria sulphuraria]>gi|452820173|gb|EME27219.1| stearoyl-CoA desaturase (delta-9 desaturase) [Galdieria sulphuraria]	15.8112994257368	NA	17.0950776065348	NA
+Fatty Acids	Cluster-31803.111626	Cluster-31803.111626	long chain acyl-coa elongase [Phaeodactylum tricornutum CCAP 1055/1]>gi|217409815|gb|EEC49746.1| long chain acyl-coa elongase [Phaeodactylum tricornutum CCAP 1055/1]	15.7471702287672	NA	14.7471964588708	NA
+Fatty Acids	Cluster-31803.115282	Cluster-31803.115282	polyunsaturated fatty acid delta-5-desaturase [Marchantia polymorpha]	15.680057281972	NA	17.3751837072162	NA
+Fatty Acids	Cluster-31803.115281	Cluster-31803.115281	polyunsaturated fatty acid delta-5-desaturase [Marchantia polymorpha]	15.3752091661661	NA	16.7471571135366	NA
+Fatty Acids	Cluster-33711.0	Cluster-33711.0	stearoyl-CoA desaturase (delta-9 desaturase) [Galdieria sulphuraria]>gi|452825181|gb|EME32179.1| stearoyl-CoA desaturase (delta-9 desaturase) [Galdieria sulphuraria]	3.74140024669482	NA	4.20938513185073	NA
+Fatty Acids	Cluster-31803.107133	Cluster-31803.107133	chloroplast delta-6 fatty acid desaturase [Chlamydomonas sp. ICE-L]	3.71046915596627	NA	3.65948529932445	NA
+Proline	Cluster-31803.112791	Cluster-31803.112791	"osmotic stress-responsive proline dehydrogenase, putative [Galdieria sulphuraria]>gi|452824039|gb|EME31045.1| osmotic stress-responsive proline dehydrogenase, putative [Galdieria sulphuraria]"	3.04435185938433	NA	2.43736610137009	NA
+Proline	Cluster-31803.9168	Cluster-31803.9168	pyrroline-5-carboxylate reductase [Monoraphidium neglectum]	2.80022196644778	NA	1.74934232840678	NA
+Fatty Acids	Cluster-31803.35753	Cluster-31803.35753	omega-3 fatty acid desaturase [Chlorella vulgaris]	2.55253570401544	NA	2.66042634820971	NA
+Carotenoids	Cluster-31803.14683	Cluster-31803.14683	phytoene desaturase [Auxenochlorella protothecoides]	2.23131567264174	NA	2.58495204646229	NA
+Gibberellin/GA3	Cluster-27215.0	Cluster-27215.0	PREDICTED: gibberellin 3-beta-dioxygenase 4 [Amborella trichopoda]>gi|548832240|gb|ERM95036.1| hypothetical protein AMTR_s00009p00242710 [Amborella trichopoda]	1.87443414423277	NA	1.58493044154378	NA
+Carotenoids	Cluster-31803.80885	Cluster-31803.80885	phytoene synthase [Auxenochlorella protothecoides]>gi|314991140|gb|ADT65126.1| phytoene synthase [Auxenochlorella protothecoides]	1.61874989197082	NA	2.08544938800589	NA
+Carotenoids	Cluster-31803.105551	Cluster-31803.105551	zeta-carotene desaturase [Auxenochlorella protothecoides]>gi|313870542|gb|ADR82202.1| zeta-carotene desaturase [Auxenochlorella protothecoides]	1.54933395796055	NA	2.71925762357572	NA
+Fatty Acids	Cluster-31803.96909	Cluster-31803.96909	omega-3 fatty acid desaturase [Chlorella vulgaris]	1.47965198280211	NA	1.21257073335476	NA
+Fatty Acids	Cluster-31803.72189	Cluster-31803.72189	plastid delta12 fatty acid desaturase [Chlorella vulgaris]	1.47951795089826	NA	1.56569321643907	NA
+Glycine betaine	Cluster-31803.59265	Cluster-31803.59265	"Betaine aldehyde dehydrogenase 1, chloroplastic [Auxenochlorella protothecoides]>gi|675352760|gb|KFM25200.1| Betaine aldehyde dehydrogenase 1, chloroplastic [Auxenochlorella protothecoides]"	1.39873422706083	NA	1.03259796752581	NA
+Fatty Acids	Cluster-31803.66774	Cluster-31803.66774	plastid delta12 fatty acid desaturase [Chlorella vulgaris]	1.28395667319505	NA	0.973218303041653	NA
+Fatty Acids	Cluster-31803.36159	Cluster-31803.36159	omega-3 fatty acid desaturase [Chlorella vulgaris]	1.20148846778019	NA	0.60148168489531	NA
+Fatty Acids	Cluster-31803.86963	Cluster-31803.86963	"stearoyl-CoA desaturase Delta-9 fatty acid desaturase, partial [Chondrus crispus]>gi|507115875|emb|CDF39296.1| stearoyl-CoA desaturase Delta-9 fatty acid desaturase, partial [Chondrus crispus]"	1.17631633800236	NA	-0.152001811060287	NA
+Carotenoids	Cluster-31803.62178	Cluster-31803.62178	phytoene synthase [Auxenochlorella protothecoides]>gi|314991140|gb|ADT65126.1| phytoene synthase [Auxenochlorella protothecoides]	1.02287624485993	NA	1.50137360991025	NA
+Fatty Acids	Cluster-19771.0	Cluster-19771.0	fatty acid elongase [Chondrus crispus]>gi|507111208|emb|CDF34939.1| fatty acid elongase [Chondrus crispus]	0.951081113300076	NA	2.03560936560864	NA
+Carotenoids	Cluster-31803.92542	Cluster-31803.92542	phytoene desaturase [Auxenochlorella protothecoides]	0.868189136737641	NA	0.418801745646422	NA
+Fatty Acids	Cluster-31803.115193	Cluster-31803.115193	stearoyl-CoA desaturase (delta-9 desaturase) [Galdieria sulphuraria]>gi|452820173|gb|EME27219.1| stearoyl-CoA desaturase (delta-9 desaturase) [Galdieria sulphuraria]	0.867161903314895	NA	-0.999994656714718	NA
+Carotenoids	Cluster-31803.80887	Cluster-31803.80887	phytoene synthase [Auxenochlorella protothecoides]>gi|314991140|gb|ADT65126.1| phytoene synthase [Auxenochlorella protothecoides]	0.782688123188791	NA	0.691856706783938	NA
+Fatty Acids	Cluster-19680.0	Cluster-19680.0	stearoyl-CoA desaturase (delta-9 desaturase) [Galdieria sulphuraria]>gi|452825181|gb|EME32179.1| stearoyl-CoA desaturase (delta-9 desaturase) [Galdieria sulphuraria]	0.731980866923802	NA	1.16068101609123	NA
+Carotenoids	Cluster-31803.47964	Cluster-31803.47964	zeta-carotene desaturase [Auxenochlorella protothecoides]>gi|313870542|gb|ADR82202.1| zeta-carotene desaturase [Auxenochlorella protothecoides]	0.70940684254707	NA	1.38299886334707	NA
+Fatty Acids	Cluster-31803.107331	Cluster-31803.107331	fatty acid elongase [Chondrus crispus]>gi|507111208|emb|CDF34939.1| fatty acid elongase [Chondrus crispus]	0.597063914630557	NA	1.13418478030836	NA
+Fatty Acids	Cluster-31803.36158	Cluster-31803.36158	omega-3 fatty acid desaturase [Chlorella vulgaris]	0.580239622101768	NA	-1.15672376466533	NA
+Fatty Acids	Cluster-31803.90123	Cluster-31803.90123	PREDICTED: sphingolipid delta(4)-desaturase DES1-like [Cicer arietinum]	0.568141766094496	NA	-0.362666856302281	NA
+Fatty Acids	Cluster-22711.0	Cluster-22711.0	delta 6 desaturase [Lobosphaera incisa]	0.523558297073703	NA	-1.33701663747868	NA
+Fatty Acids	Cluster-31803.8773	Cluster-31803.8773	acyl-CoA dependent delta5-desaturase [Coccomyxa subellipsoidea C-169]>gi|384252924|gb|EIE26399.1| acyl-CoA dependent delta5-desaturase [Coccomyxa subellipsoidea C-169]	0.492596541610531	NA	1.77830163554856	NA
+Fatty Acids	Cluster-31803.37249	Cluster-31803.37249	delta-12 fatty acid desaturase [Chlorella vulgaris]	0.479217202671449	NA	0.806049515246307	NA
+Fatty Acids	Cluster-31803.33102	Cluster-31803.33102	delta-12 fatty acid desaturase [Chlorella vulgaris]	0.444900104505696	NA	0.929320927828529	NA
+Fatty Acids	Cluster-25966.0	Cluster-25966.0	fatty acid elongase [Chondrus crispus]>gi|507111208|emb|CDF34939.1| fatty acid elongase [Chondrus crispus]	0.41990128517926	NA	-0.624486640829709	NA
+Proline	Cluster-31803.95867	Cluster-31803.95867	1-pyrroline-5-carboxylate dehydrogenase [Galdieria sulphuraria]>gi|452821718|gb|EME28745.1| 1-pyrroline-5-carboxylate dehydrogenase [Galdieria sulphuraria]	0.419158906912757	NA	-0.145526599271179	NA
+Proline	Cluster-33836.0	Cluster-33836.0	PREDICTED: pyrroline-5-carboxylate reductase-like [Elaeis guineensis]	0.402757978230343	NA	-0.439697810931088	NA
+Fatty Acids	Cluster-31803.66773	Cluster-31803.66773	plastid delta12 fatty acid desaturase [Chlorella vulgaris]	0.387907266905983	NA	0.433810919110593	NA
+Fatty Acids	Cluster-31803.625	Cluster-31803.625	sterol 14 desaturase [Coccomyxa subellipsoidea C-169]>gi|384248057|gb|EIE21542.1| sterol 14 desaturase [Coccomyxa subellipsoidea C-169]	0.345291461260817	NA	1.64973075017674	NA
+Auxin/IAA	Cluster-16053.0	Cluster-16053.0	PREDICTED: probable indole-3-pyruvate monooxygenase YUCCA10 isoform X1 [Cucumis sativus]>gi|700189598|gb|KGN44831.1| hypothetical protein Csa_7G390100 [Cucumis sativus]	0.222391364422037	NA	-1.28539158370408	NA
+Fatty Acids	Cluster-31803.108311	Cluster-31803.108311	Fatty acid elongase [Ectocarpus siliculosus]	0.197664179253794	NA	0.436331997696118	NA
+Fatty Acids	Cluster-31432.0	Cluster-31432.0	delta6 fatty acid desaturase putative [Albugo laibachii Nc14]	0.189602286587749	NA	-0.562843321228586	NA
+Fatty Acids	Cluster-31803.115283	Cluster-31803.115283	polyunsaturated fatty acid delta-5-desaturase [Marchantia polymorpha]	0.171886385496652	NA	0.623694481841655	NA
+Glycine betaine	Cluster-33712.1	Cluster-33712.1	"betaine aldehyde dehydrogenase, chloroplastic [Beta vulgaris subsp. vulgaris]>gi|17936|emb|CAA41376.1| betaine aldehyd dehydrogenase [Beta vulgaris subsp. vulgaris]"	0.0862996168896543	NA	0.141091950981914	NA
+Proline	Cluster-31803.78932	Cluster-31803.78932	1-pyrroline-5-carboxylate dehydrogenase [Cyanidioschyzon merolae strain 10D]>gi|449016293|dbj|BAM79695.1| 1-pyrroline-5-carboxylate dehydrogenase [Cyanidioschyzon merolae strain 10D]	0.0384739425959522	NA	1.26627550901464	NA
+Fatty Acids	Cluster-2234.1	Cluster-2234.1	polyunsaturated fatty acid delta-5-desaturase [Marchantia polymorpha]	0	NA	19.8913402080259	NA
+Carotenoids	Cluster-31803.21401	Cluster-31803.21401	zeta-carotene desaturase [Auxenochlorella protothecoides]>gi|313870542|gb|ADR82202.1| zeta-carotene desaturase [Auxenochlorella protothecoides]	0	NA	18.1825349922443	NA
+Fatty Acids	Cluster-2234.0	Cluster-2234.0	delta-5 fatty acid desaturase [Pythium irregulare]	0	NA	17.7795718878428	NA
+Fatty Acids	Cluster-2307.0	Cluster-2307.0	fatty acid elongase [Chondrus crispus]>gi|507111208|emb|CDF34939.1| fatty acid elongase [Chondrus crispus]	0	NA	18.3751794640143	NA
+Fatty Acids	Cluster-1749.0	Cluster-1749.0	stearoyl-CoA desaturase (delta-9 desaturase) [Galdieria sulphuraria]>gi|452825181|gb|EME32179.1| stearoyl-CoA desaturase (delta-9 desaturase) [Galdieria sulphuraria]	0	NA	18.3751794640143	NA
+Fatty Acids	Cluster-12638.1	Cluster-12638.1	"PREDICTED: omega-6 fatty acid desaturase, endoplasmic reticulum isozyme 2 [Amborella trichopoda]>gi|548853599|gb|ERN11582.1| hypothetical protein AMTR_s00022p00172860 [Amborella trichopoda]"	0	NA	0	NA
+Fatty Acids	Cluster-3831.0	Cluster-3831.0	delta-4 fatty acid desaturase [Euglena gracilis]	0	NA	18.2535012808283	NA
+Fatty Acids	Cluster-31803.96908	Cluster-31803.96908	omega-3 fatty acid desaturase [Chlorella vulgaris]	0	NA	21.1976060631926	NA
+Fatty Acids	Cluster-8768.0	Cluster-8768.0	Stearoyl-CoA 9-desaturase [Paulinella chromatophora]>gi|171191850|gb|ACB42812.1| Stearoyl-CoA 9-desaturase [Paulinella chromatophora]	0	NA	18.2989441084388	NA
+Fatty Acids	Cluster-234.0	Cluster-234.0	fatty acid elongase [Labyrinthula sp. ND50]	0	NA	17.6452714216872	NA
+Fatty Acids	Cluster-1533.0	Cluster-1533.0	delta-4 fatty acid desaturase [Euglena gracilis]	0	NA	18.2535012808283	NA
+Fatty Acids	Cluster-2640.3	Cluster-2640.3	stearoyl-CoA desaturase (delta-9 desaturase) [Galdieria sulphuraria]>gi|452825181|gb|EME32179.1| stearoyl-CoA desaturase (delta-9 desaturase) [Galdieria sulphuraria]	0	NA	19.8229893116358	NA
+Fatty Acids	Cluster-19771.2	Cluster-19771.2	fatty acid elongase [Chondrus crispus]>gi|507111208|emb|CDF34939.1| fatty acid elongase [Chondrus crispus]	0	NA	0	NA
+Fatty Acids	Cluster-363.0	Cluster-363.0	stearoyl-CoA desaturase (delta-9 desaturase) [Galdieria sulphuraria]>gi|452825181|gb|EME32179.1| stearoyl-CoA desaturase (delta-9 desaturase) [Galdieria sulphuraria]	0	NA	17.7139838444454	NA
+Proline	Cluster-4645.0	Cluster-4645.0	1-pyrroline-5-carboxylate dehydrogenase [Galdieria sulphuraria]>gi|452821718|gb|EME28745.1| 1-pyrroline-5-carboxylate dehydrogenase [Galdieria sulphuraria]	0	NA	18.4475877518328	NA
+Fatty Acids	Cluster-31803.110714	Cluster-31803.110714	"fatty acid desaturase [Chlamydomonas reinhardtii]>gi|158284105|gb|EDP09855.1| fatty acid desaturase, partial [Chlamydomonas reinhardtii]"	0	NA	18.4873886500813	NA
+Fatty Acids	Cluster-1469.0	Cluster-1469.0	predicted protein [Phaeodactylum tricornutum CCAP 1055/1]>gi|217405301|gb|EEC45244.1| predicted protein [Phaeodactylum tricornutum CCAP 1055/1]>gi|402171515|gb|AFQ33496.1| palmitoyl-CoA delta 9-desaturase [Phaeodactylum tricornutum]	0	NA	17.4775448435861	NA
+Fatty Acids	Cluster-3653.0	Cluster-3653.0	delta 4-desaturase [Thraustochytrium aureum]	0	NA	19.6757313875145	NA
+Fatty Acids	Cluster-4803.0	Cluster-4803.0	fatty acid elongase [Chondrus crispus]>gi|507111208|emb|CDF34939.1| fatty acid elongase [Chondrus crispus]	0	NA	19.4526213169485	NA
+Proline	Cluster-5535.0	Cluster-5535.0	1-pyrroline-5-carboxylate dehydrogenase [Galdieria sulphuraria]>gi|452821718|gb|EME28745.1| 1-pyrroline-5-carboxylate dehydrogenase [Galdieria sulphuraria]	0	NA	0	NA
+Carotenoids	Cluster-31803.37067	Cluster-31803.37067	phytoene synthase [Auxenochlorella protothecoides]>gi|314991140|gb|ADT65126.1| phytoene synthase [Auxenochlorella protothecoides]	0	NA	0	NA
+Fatty Acids	Cluster-1162.0	Cluster-1162.0	delta-4 fatty acid desaturase [Euglena gracilis]	0	NA	16.9315801108383	NA
+Fatty Acids	Cluster-4031.0	Cluster-4031.0	long chain fatty acid elongase [Galdieria sulphuraria]>gi|452824291|gb|EME31295.1| long chain fatty acid elongase [Galdieria sulphuraria]	0	NA	19.6452661435507	NA
+Fatty Acids	Cluster-495.0	Cluster-495.0	delta-4 fatty acid desaturase [Euglena gracilis]	0	NA	16.1457132737817	NA
+Glycine betaine	Cluster-31803.38053	Cluster-31803.38053	"Betaine aldehyde dehydrogenase 1, chloroplastic [Auxenochlorella protothecoides]>gi|675352760|gb|KFM25200.1| Betaine aldehyde dehydrogenase 1, chloroplastic [Auxenochlorella protothecoides]"	0	NA	0	NA
+Fatty Acids	Cluster-2640.0	Cluster-2640.0	stearoyl-CoA desaturase (delta-9 desaturase) [Galdieria sulphuraria]>gi|452825181|gb|EME32179.1| stearoyl-CoA desaturase (delta-9 desaturase) [Galdieria sulphuraria]	0	NA	17.4971735435089	NA
+Fatty Acids	Cluster-792.0	Cluster-792.0	polyunsaturated fatty acid delta-5-desaturase [Marchantia polymorpha]	0	NA	0	NA
+Fatty Acids	Cluster-12638.0	Cluster-12638.0	delta-12 desaturase [Spinacia oleracea]	0	NA	0	NA
+Fatty Acids	Cluster-4032.0	Cluster-4032.0	delta-5 fatty acid desaturase [Pythium irregulare]	0	NA	17.609647687894	NA
+Fatty Acids	Cluster-1904.0	Cluster-1904.0	polyunsaturated fatty acid desaturase [Chondrus crispus]>gi|507109819|emb|CDF33627.1| polyunsaturated fatty acid desaturase [Chondrus crispus]	0	NA	19.1456958620801	NA
+Proline	Cluster-31803.114070	Cluster-31803.114070	1-pyrroline-5-carboxylate dehydrogenase [Cyanidioschyzon merolae strain 10D]>gi|449016293|dbj|BAM79695.1| 1-pyrroline-5-carboxylate dehydrogenase [Cyanidioschyzon merolae strain 10D]	0	NA	18.5545026674993	NA
+Fatty Acids	Cluster-25684.0	Cluster-25684.0	delta-6 elongase [Pyramimonas cordata]	-0.00794873559752769	NA	0.3687215912605	NA
+Proline	Cluster-24531.0	Cluster-24531.0	PREDICTED: delta-1-pyrroline-5-carboxylate synthase [Beta vulgaris subsp. vulgaris]	-0.0234588202395725	NA	0.689656342476555	NA
+Fatty Acids	Cluster-15582.1	Cluster-15582.1	delta 6 desaturase [Lobosphaera incisa]	-0.0296599386749789	NA	-0.251338752944454	NA
+Fatty Acids	Cluster-31803.8196	Cluster-31803.8196	omega-3 fatty acid desaturase [Chlamydomonas reinhardtii]	-0.065754312264312	NA	1.73410394195472	NA
+Fatty Acids	Cluster-31803.35526	Cluster-31803.35526	plastid delta12 fatty acid desaturase [Chlorella vulgaris]	-0.0856288766053557	NA	0.143595165539958	NA
+Fatty Acids	Cluster-29488.0	Cluster-29488.0	sterol desaturase [Guillardia theta CCMP2712]>gi|428184290|gb|EKX53146.1| sterol desaturase [Guillardia theta CCMP2712]	-0.169922997722855	NA	-0.125529424833068	NA
+Fatty Acids	Cluster-31803.108022	Cluster-31803.108022	fatty acyl delta4 desaturase [Chlamydomonas reinhardtii]	-0.170985983246815	NA	1.49147477819373	NA
+Carotenoids	Cluster-31803.58002	Cluster-31803.58002	"PREDICTED: zeta-carotene desaturase, chloroplastic/chromoplastic [Amborella trichopoda]>gi|548863017|gb|ERN20372.1| hypothetical protein AMTR_s00068p00029180 [Amborella trichopoda]"	-0.20626821592325	NA	-0.530250668787372	NA
+Proline	Cluster-31803.14364	Cluster-31803.14364	"PREDICTED: proline dehydrogenase 2, mitochondrial-like [Nelumbo nucifera]"	-0.30202704425672	NA	1.74176208566775	NA
+Fatty Acids	Cluster-19771.1	Cluster-19771.1	fatty acid elongase [Chondrus crispus]>gi|507111208|emb|CDF34939.1| fatty acid elongase [Chondrus crispus]	-0.354282172801578	NA	-1.25375014848177	NA
+Fatty Acids	Cluster-21234.0	Cluster-21234.0	fatty acid elongase [Chondrus crispus]>gi|507111208|emb|CDF34939.1| fatty acid elongase [Chondrus crispus]	-0.439639100061325	NA	-0.546281551327295	NA
+Carotenoids	Cluster-31803.42118	Cluster-31803.42118	zeta-carotene desaturase [Auxenochlorella protothecoides]>gi|313870542|gb|ADR82202.1| zeta-carotene desaturase [Auxenochlorella protothecoides]	-0.549029561607064	NA	0.573083617135326	NA
+Proline	Cluster-23725.0	Cluster-23725.0	"PREDICTED: proline dehydrogenase 2, mitochondrial-like [Nicotiana tomentosiformis]"	-0.710490832595846	NA	-0.615334018130562	NA
+Glycine betaine	Cluster-27025.0	Cluster-27025.0	"PREDICTED: choline monooxygenase, chloroplastic-like [Erythranthe guttatus]>gi|604298109|gb|EYU18197.1| hypothetical protein MIMGU_mgv1a006513mg [Erythranthe guttata]"	-0.724891179080483	NA	0.047696663179474	NA
+Fatty Acids	Cluster-31803.83020	Cluster-31803.83020	omega-3 fatty acid desaturase [Chlorella vulgaris]	-0.840869836905716	NA	-0.01855581306158	NA
+Fatty Acids	Cluster-28523.0	Cluster-28523.0	delta-4 fatty acid desaturase [Thraustochytrium sp. ATCC21685]	-2.51704201348405	NA	-2.33063130125124	NA
+Fatty Acids	Cluster-31803.106992	Cluster-31803.106992	Stearoyl-CoA 9-desaturase [Paulinella chromatophora]>gi|171191850|gb|ACB42812.1| Stearoyl-CoA 9-desaturase [Paulinella chromatophora]	-3.24479659752759	NA	-0.341870863725344	NA
+Gibberellin/GA3	Cluster-14518.0	Cluster-14518.0	PREDICTED: gibberellin 3-beta-dioxygenase 4 [Amborella trichopoda]>gi|548832240|gb|ERM95036.1| hypothetical protein AMTR_s00009p00242710 [Amborella trichopoda]	-15.7471702287672	NA	-15.7471702287672	NA
+Glycine betaine	Cluster-25089.0	Cluster-25089.0	"PREDICTED: choline monooxygenase, chloroplastic-like isoform X2 [Beta vulgaris subsp. vulgaris]"	-16.6096549013151	NA	-1.51454638043857	NA

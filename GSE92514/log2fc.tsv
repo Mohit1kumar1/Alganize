@@ -1,0 +1,853 @@
+Pathway	GeneID	Symbol	Description	HL_vs_ML_log2FC	HL_vs_ML_padj
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	0.293948	0.557445
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	-0.0998637	0.607848
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.141299	0.328626
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	0.261905	0.441136
+EPA	Cz03g00250	FAD6	Omega-6 fatty acid desaturase (chloroplast)	-0.552383	0.107585
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	0.125642	0.392374
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	0.0104395	0.965027
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.234865	0.492515
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	0.426863	0.00840466
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.22639	0.106325
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	-0.152389	0.318042
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.170806	0.229051
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	0.23767	0.281041
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	-0.208395	0.354399
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	-0.500984	0.000736335
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	-0.162932	0.685643
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	-0.356115	0.536465
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	-0.208241	0.257429
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.172199	0.220592
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	0.317238	0.336202
+EPA	Cz03g00250	FAD6	Omega-6 fatty acid desaturase (chloroplast)	-0.29256	0.395207
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	0.033361	0.832699
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.067441	0.728581
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	0.236931	0.457114
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	0.536937	0.000736335
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.246873	0.0735641
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	-0.10102	0.52171
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.204648	0.145902
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	0.294669	0.171652
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	0.178675	0.403038
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	-0.364991	0.0101155
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	-0.0853253	0.838739
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	-0.650063	0.201174
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	-0.108377	0.587869
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.0309003	0.84713
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	0.0553328	0.875353
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-0.0922809	0.535578
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.0778805	0.681214
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	0.471795	0.135392
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	0.110074	0.538454
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.0204826	0.902022
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	0.0513689	0.762397
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.0338417	0.840664
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	0.0569991	0.811663
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	0.38707	0.0594369
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.135994	0.411134
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	0.0776064	0.853653
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	0.472628	0.306855
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	-0.143847	0.444278
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.241209	0.0734765
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	0.323008	0.327041
+EPA	Cz03g00250	FAD6	Omega-6 fatty acid desaturase (chloroplast)	-2.02728	0.00138519
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-0.470586	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.682842	0.000202999
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	0.240986	0.44617
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	0.348016	0.0302744
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.218224	0.120708
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	-0.293929	0.0428143
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.583648	0.000202999
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	0.953391	0.000202999
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	0.00336854	0.987547
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	-0.2148	0.143344
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	-0.243813	0.529693
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	0.178679	0.705806
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	-0.0439829	0.835872
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.0999101	0.508207
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	0.0611023	0.866293
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-0.596228	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.693281	0.000202999
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	0.475851	0.128955
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	-0.078847	0.669787
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	-0.00816651	0.962421
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	-0.14154	0.369724
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.412842	0.000903033
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	0.715721	0.000202999
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	0.211764	0.332752
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.286185	0.056466
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	-0.0808816	0.849458
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	0.828743	0.0964
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.0643945	0.758092
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.0690099	0.665014
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	0.00576956	0.980503
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-0.503947	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.615401	0.000565493
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	0.00405557	0.981593
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	-0.188921	0.261523
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	-0.0286491	0.864462
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	-0.192909	0.206309
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.379	0.00586871
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	0.658722	0.000388788
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	-0.175306	0.407314
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.150191	0.342767
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	-0.158488	0.695426
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	1.53835	0.00106626
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.497716	0.0021481
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.070144	0.647609
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	0.512895	0.0892109
+EPA	Cz03g00250	FAD6	Omega-6 fatty acid desaturase (chloroplast)	-2.20528	0.00122728
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-1.32541	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.604235	0.000565493
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	0.175348	0.60001
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	-0.0608011	0.764993
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.625339	0.000202999
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	-0.408784	0.00358404
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.854256	0.000202999
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	1.20949	0.000202999
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	0.425717	0.0242928
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.0316298	0.85638
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	-0.733287	0.0641731
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	1.2444	0.00138519
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.59758	0.000202999
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	0.0711549	0.645494
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	0.25099	0.408904
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-1.45105	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.614674	0.000202999
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	0.410212	0.198713
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	-0.487664	0.0021481
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.398949	0.00184767
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	-0.256396	0.0860846
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.68345	0.000202999
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	0.971817	0.000202999
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	0.634112	0.000736335
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.532614	0.000202999
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	-0.570355	0.161219
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	1.89446	0.000388788
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.705958	0.000202999
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	0.102055	0.492856
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	0.195657	0.526898
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-1.35877	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.536794	0.000903033
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.0615829	0.857208
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	-0.597738	0.000202999
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.378466	0.00287867
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	-0.307765	0.0334879
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.649609	0.000202999
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	0.914818	0.000202999
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	0.247042	0.198024
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.396621	0.0048127
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	-0.647961	0.105927
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	1.06572	0.00344485
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.641563	0.000202999
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	0.171065	0.220394
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	0.189888	0.549253
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-0.854823	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	0.078607	0.71658
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.0656385	0.845114
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	-0.408817	0.0137648
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.407116	0.00287867
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	-0.114856	0.492856
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.270609	0.0657632
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	0.256096	0.135321
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	0.422348	0.0239751
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.24643	0.0841728
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	-0.489473	0.238822
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	1.49399	0.0015413
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.366631	0.0209953
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.435179	0.000736335
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	0.0614528	0.873221
+EPA	Cz03g00250	FAD6	Omega-6 fatty acid desaturase (chloroplast)	0.272024	0.388131
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-1.53955	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.772524	0.000202999
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	0.000718708	0.980664
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	-0.104057	0.599262
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.929125	0.000202999
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	0.119554	0.436547
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-1.11028	0.000202999
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	1.32018	0.000202999
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	0.342026	0.0809757
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	-0.0219557	0.901135
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	-0.424516	0.257997
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	1.20004	0.00184767
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.466495	0.00427207
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.29388	0.0281356
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	-0.200453	0.549379
+EPA	Cz03g00250	FAD6	Omega-6 fatty acid desaturase (chloroplast)	0.824408	0.0146835
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-1.66519	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.782964	0.000202999
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	0.235583	0.491342
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	-0.53092	0.000388788
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.702735	0.000202999
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	0.271943	0.0547379
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.939476	0.000202999
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	1.08251	0.000202999
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	0.550421	0.00440823
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.479029	0.000903033
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	-0.261585	0.526404
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	1.8501	0.000388788
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.574872	0.000388788
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.26298	0.0550127
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	-0.255785	0.43302
+EPA	Cz03g00250	FAD6	Omega-6 fatty acid desaturase (chloroplast)	0.564584	0.072444
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-1.57291	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.705083	0.000202999
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.236212	0.457114
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	-0.640994	0.000202999
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.682253	0.000202999
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	0.220574	0.131606
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.905634	0.000202999
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	1.02551	0.000202999
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	0.163351	0.42419
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.343035	0.016155
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	-0.339191	0.38683
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	1.02136	0.00494634
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.510477	0.0015413
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.19397	0.163359
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	-0.261555	0.427668
+EPA	Cz03g00250	FAD6	Omega-6 fatty acid desaturase (chloroplast)	2.29931	0.000202999
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-1.06897	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.0896826	0.682502
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.240267	0.449129
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	-0.452073	0.00612871
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.710902	0.000202999
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	0.413482	0.00287867
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.526634	0.000202999
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	0.366786	0.026588
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	0.338658	0.0774063
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.192844	0.191938
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	-0.180703	0.669787
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	-0.0443605	0.905529
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	-0.131086	0.449559
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.365035	0.00638645
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	-0.451443	0.135392
+EPA	Cz03g00250	FAD6	Omega-6 fatty acid desaturase (chloroplast)	2.4773	0.000388788
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-0.214142	0.150652
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.16829	0.399404
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.174629	0.596552
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	-0.0432563	0.839041
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.303786	0.0207823
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	0.528338	0.000388788
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.256025	0.0928057
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	0.11069	0.54835
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	-0.0836906	0.697418
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	-0.0535855	0.748621
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	0.30877	0.489162
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	-1.62782	0.0409973
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.20869	0.230543
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.320526	0.0133037
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	0.28449	0.389775
+EPA	Cz03g00250	FAD6	Omega-6 fatty acid desaturase (chloroplast)	-0.142741	0.692571
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	0.212835	0.118694
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.0652636	0.739974
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.193498	0.581781
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	1.54953	0.000202999
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.441869	0.000736335
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	0.112931	0.463704
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.239481	0.0833346
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	0.354692	0.0899482
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	-1.12335	0.000202999
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.574054	0.000202999
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	0.137599	0.718311
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	-1.92177	0.0215329
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.308554	0.0671588
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.179227	0.205927
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	0.0225847	0.946077
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	0.0871933	0.563355
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.0757031	0.690218
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	0.0413666	0.922652
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	1.12267	0.000202999
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.215479	0.115223
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	0.26532	0.0615943
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.0686753	0.66011
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	0.117022	0.6006
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	-0.914952	0.000388788
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	1.07504	0.000202999
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	0.300531	0.409838
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	-1.27171	0.0960697
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.416932	0.0124881
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.148327	0.307563
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	-0.032748	0.929137
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	0.179474	0.195168
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	0.00217744	0.990665
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.430429	0.172431
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	1.01259	0.000202999
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.194997	0.159134
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	0.213951	0.142742
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.0348336	0.834041
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	0.0600227	0.798188
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	-1.30202	0.000202999
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.939045	0.000202999
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	0.222924	0.543813
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	-2.10045	0.0167113
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.352537	0.0366349
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.0793167	0.604427
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	-0.0385176	0.911087
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	0.683421	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	0.617578	0.000202999
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.434484	0.165658
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	1.20151	0.000202999
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.223646	0.103874
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	0.406859	0.00344485
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	0.344166	0.0117859
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	-0.598699	0.00106626
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	-1.12672	0.000202999
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.788854	0.000202999
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	0.381412	0.285741
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	-3.16617	0.00229643
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	-0.289026	0.0758745
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.250382	0.0624019
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	-0.228405	0.459358
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	1.53824	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	0.538971	0.00138519
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.368846	0.252292
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	1.61033	0.000202999
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	-0.18347	0.188332
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	0.521715	0.000565493
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	0.614775	0.000202999
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	-0.854795	0.000202999
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	-1.54906	0.000202999
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.542424	0.000202999
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	0.870886	0.0243952
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	-3.12181	0.00229643
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	-0.15794	0.366368
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	0.114653	0.448831
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	0.223037	0.500974
+EPA	Cz03g00250	FAD6	Omega-6 fatty acid desaturase (chloroplast)	-0.414766	0.182934
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	1.75239	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	0.707261	0.000202999
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.194217	0.58596
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	1.65359	0.000202999
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	-0.487256	0.000202999
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	-0.00662292	0.97063
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	0.8708	0.000202999
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	-0.965485	0.000202999
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	-1.46537	0.000202999
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.59601	0.000202999
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	0.562115	0.118233
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	-0.904307	0.136734
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.0416778	0.840541
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.107407	0.468803
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	-0.217703	0.565284
+EPA	Cz03g00250	FAD6	Omega-6 fatty acid desaturase (chloroplast)	-0.918263	0.0167113
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-0.369445	0.00560656
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.0255107	0.90321
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.718291	0.0422396
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	1.63212	0.000202999
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.366574	0.00612871
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	0.0528069	0.748956
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.209418	0.137179
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	0.27164	0.21179
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	0.152586	0.478273
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.216714	0.131233
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	-0.400837	0.29514
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	-1.19826	0.0497736
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.141542	0.453683
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	0.0338918	0.835276
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	-0.479608	0.145465
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-0.495087	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.0359503	0.858696
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.483427	0.197332
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	1.20526	0.000202999
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.140184	0.333739
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	0.205196	0.16206
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.0386117	0.816443
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	0.0339698	0.89185
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	0.360981	0.0757065
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.717698	0.000202999
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	-0.237906	0.570094
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	-0.548192	0.395264
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.249919	0.164569
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	0.0647921	0.683959
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	-0.534941	0.102352
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-0.402806	0.00199895
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	0.0419303	0.83584
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.955222	0.00560656
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	1.09518	0.000202999
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.119701	0.417084
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	0.153827	0.312218
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.00477007	0.978126
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	-0.0230293	0.922788
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	-0.0260886	0.913886
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.581705	0.000202999
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	-0.315512	0.424508
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	-1.37693	0.0271073
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.185524	0.309125
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	0.133802	0.35028
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	-0.540711	0.0979407
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	0.101141	0.496917
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	0.657331	0.000202999
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.959277	0.00534408
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	1.2841	0.000202999
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.14835	0.300828
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	0.346735	0.0145696
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	0.37423	0.00625733
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	-0.681751	0.000202999
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	0.149218	0.491641
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.431514	0.00229643
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	-0.157024	0.713773
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	-2.44266	0.000202999
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	-0.456039	0.00344485
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.0372631	0.820122
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	-0.730598	0.0200211
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	0.955964	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	0.578724	0.000565493
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.893639	0.00999532
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	1.69292	0.000202999
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	-0.258765	0.0540089
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	0.461591	0.00106626
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	0.644839	0.000202999
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	-0.937847	0.000202999
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	-0.273131	0.150356
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.185084	0.206309
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	0.332449	0.454927
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	-2.3983	0.000202999
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	-0.324953	0.0483777
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	0.327772	0.01202
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	-0.279156	0.436233
+EPA	Cz03g00250	FAD6	Omega-6 fatty acid desaturase (chloroplast)	-1.19029	0.00273469
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	1.17011	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	0.747014	0.000202999
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.71901	0.0419531
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	1.73618	0.000202999
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	-0.562551	0.000202999
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	-0.0667468	0.684092
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	0.900864	0.000202999
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	-1.04854	0.000202999
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	-0.18944	0.346823
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.23867	0.0961513
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	0.0236788	0.975021
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	0.723518	0.374069
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	-0.167012	0.349836
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	0.213119	0.121878
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	-0.502193	0.1235
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-0.58228	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	0.0397528	0.842836
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.524793	0.152777
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	0.0825902	0.609637
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	-0.0752954	0.624107
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	-0.0601239	0.716704
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	0.0300635	0.861187
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	-0.083052	0.724095
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	1.27593	0.000202999
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	-0.35734	0.00753253
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	-0.538437	0.136806
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	0.429929	0.369724
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.0896958	0.644034
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.188034	0.178889
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	0.373257	0.241911
+EPA	Cz03g00250	FAD6	Omega-6 fatty acid desaturase (chloroplast)	-1.1146	0.00740619
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-0.664497	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.549702	0.00106626
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.180572	0.610247
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	0.517845	0.000736335
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.278871	0.0409973
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	-0.350797	0.0155912
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.674914	0.000202999
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	1.13395	0.000202999
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	-0.0686812	0.775442
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.0108544	0.952073
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	-0.237603	0.540037
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	0.135981	0.785355
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.18956	0.292785
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.0467356	0.770158
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	0.111352	0.742397
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-0.790139	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.560142	0.000565493
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	0.0542925	0.893929
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	0.0909821	0.614676
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.0524812	0.740015
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	-0.198408	0.188469
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.504108	0.000202999
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	0.896276	0.000202999
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	0.139714	0.546387
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.511839	0.000565493
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	-0.0746715	0.863867
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	0.786044	0.118846
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.297937	0.0869057
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.0158353	0.927497
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	0.0560193	0.871049
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-0.697858	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.482261	0.00399968
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.417503	0.188332
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	-0.0190917	0.92575
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.0319986	0.844576
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	-0.249777	0.0928057
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.470266	0.000903033
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	0.839277	0.000202999
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	-0.247356	0.226558
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.375845	0.00664499
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	-0.152278	0.702567
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	-0.0426987	0.922447
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.233542	0.184131
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	0.0531746	0.736889
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	0.0502497	0.885322
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-0.193911	0.160867
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	0.13314	0.510542
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.421558	0.18021
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	0.169829	0.311565
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.0606477	0.702442
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	-0.0568685	0.743585
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.0912663	0.570566
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	0.180555	0.316329
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	-0.0720498	0.763395
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.225654	0.119548
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	0.00621009	0.975893
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	-1.10842	0.00413608
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	-0.408021	0.010235
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.11789	0.423164
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	-0.139638	0.66377
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	0.660912	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	0.0545326	0.802171
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.35592	0.271129
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	0.578646	0.000202999
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	-0.346468	0.00828083
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	0.0579873	0.744862
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	0.179342	0.233492
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	-0.0755412	0.698329
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	-0.494398	0.00702733
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	-0.0207754	0.90596
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	0.495683	0.230008
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	-1.06406	0.00521247
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	-0.276935	0.0952574
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	0.247145	0.0716755
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	0.311805	0.324704
+EPA	Cz03g00250	FAD6	Omega-6 fatty acid desaturase (chloroplast)	-1.38662	0.00122728
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	0.875054	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	0.222822	0.250044
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.181291	0.61211
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	0.621902	0.000202999
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	-0.650254	0.000202999
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	-0.470351	0.000903033
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	0.435368	0.00184767
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	-0.186231	0.282431
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	-0.410707	0.0304762
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.0328101	0.851361
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	0.186913	0.653001
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	2.05775	0.016488
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	-0.118995	0.516903
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	0.132491	0.364357
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	0.0887673	0.795005
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-0.877332	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.484439	0.00413608
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	0.0129258	0.978541
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	-1.03168	0.000202999
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	-0.162998	0.249482
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	-0.463728	0.00106626
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.435433	0.000903033
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	0.779254	0.000202999
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	1.05467	0.000202999
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	-0.563199	0.000202999
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	-0.375202	0.29751
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	1.33424	0.0288507
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.048018	0.812208
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.0806274	0.600222
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	0.59096	0.0651462
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-0.295052	0.0246085
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.524192	0.0016951
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	0.537719	0.142816
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	-1.11428	0.000202999
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	-0.0877025	0.563442
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	-0.403604	0.00440823
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.465496	0.000565493
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	0.862306	0.000202999
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	-0.221267	0.287628
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	-0.20586	0.152777
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	0.163234	0.699921
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	1.39997	0.00287867
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.520664	0.000565493
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.0693223	0.655287
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	0.237687	0.496573
+EPA	Cz03g00250	FAD6	Omega-6 fatty acid desaturase (chloroplast)	-0.710231	0.0415731
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-1.60931	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.660082	0.000202999
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-1.07614	0.00765737
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	-0.0649546	0.751088
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.545654	0.000202999
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	-0.704937	0.000202999
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.755674	0.000202999
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	1.43847	0.000202999
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	0.448434	0.0189323
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.259368	0.0636441
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	-0.250214	0.519433
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	1.10602	0.00386222
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.620527	0.000202999
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	0.0719766	0.644919
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	-0.0242184	0.944146
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-1.73495	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.670521	0.000202999
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.841275	0.0339856
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	-0.491817	0.00244384
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.319264	0.0144549
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	-0.552548	0.000202999
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.584868	0.000202999
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	1.2008	0.000202999
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	0.656829	0.000565493
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.760352	0.000202999
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	-0.0872821	0.838926
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	1.75609	0.00106626
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.728905	0.000202999
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	0.102877	0.491793
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	-0.0795512	0.820425
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-1.64267	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.592641	0.000388788
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-1.31307	0.00106626
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	-0.601891	0.000202999
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.298781	0.025758
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	-0.603917	0.000202999
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.551027	0.000202999
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	1.1438	0.000202999
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	0.269759	0.158841
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.624358	0.000202999
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	-0.164888	0.684563
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	0.927343	0.00926368
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.66451	0.000202999
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	0.171887	0.218731
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	-0.0853207	0.808669
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-1.13872	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	0.0227601	0.923065
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-1.31713	0.00106626
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	-0.41297	0.01202
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.327431	0.0135344
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	-0.411008	0.00547471
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.172027	0.251587
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	0.485082	0.00229643
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	0.445065	0.0186036
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.474167	0.000388788
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	-0.00640043	0.975354
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	-0.138379	0.68596
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.0229472	0.907329
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	0.000821678	0.996585
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	-0.275209	0.37718
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-0.283901	0.0537404
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.0558469	0.803
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-1.25149	0.0021481
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	-0.00415348	0.990771
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	-0.079685	0.606134
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	-0.296152	0.056644
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	0.0985821	0.537263
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	0.228986	0.164365
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	0.0227169	0.920563
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.227738	0.109234
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	0.483073	0.247955
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	-0.0940189	0.790544
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.154033	0.366368
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	0.365857	0.00507971
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	0.176234	0.613316
+EPA	Cz03g00250	FAD6	Omega-6 fatty acid desaturase (chloroplast)	-0.982255	0.0048127
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-0.0697595	0.682657
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	0.112443	0.598317
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-1.07686	0.00765737
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	0.0391028	0.855836
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	-0.383471	0.00273469
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	-0.82449	0.000202999
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	0.354607	0.0163763
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	0.118296	0.496524
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	0.106407	0.603842
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.281323	0.0397394
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	0.174302	0.678689
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	3.02779	0.00302142
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.311973	0.0486578
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	0.251203	0.061413
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	-0.0468031	0.899353
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-1.82215	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.594818	0.000388788
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.882642	0.0256539
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	-1.61448	0.000202999
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.103785	0.489518
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	-0.817868	0.000202999
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.516193	0.000202999
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	1.08378	0.000202999
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	1.57178	0.000202999
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	-0.314686	0.0160419
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	-0.387813	0.283761
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	2.30428	0.00122728
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.478986	0.0015413
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	0.0380848	0.814839
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	0.45539	0.178755
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-1.23987	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.634571	0.000202999
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.357849	0.414801
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	-1.69707	0.000202999
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.17908	0.201577
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	-0.757744	0.000202999
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.546256	0.000202999
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	1.16683	0.000202999
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	0.295848	0.115067
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.0426535	0.794739
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	0.150624	0.730219
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	0.970041	0.0117859
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.430968	0.00507971
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	0.118712	0.421455
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	-0.13557	0.690756
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-0.944814	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.110379	0.597244
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.895568	0.0239751
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	-0.582799	0.000388788
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.266783	0.0491221
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	-0.35414	0.0200211
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.0807603	0.625108
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	0.304527	0.059254
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	0.517115	0.00507971
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.248513	0.0726172
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	-0.0126105	0.975382
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	1.09482	0.0130694
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.428073	0.00765737
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.337695	0.00901978
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	-0.0139173	0.978778
+EPA	Cz03g00250	FAD6	Omega-6 fatty acid desaturase (chloroplast)	1.63507	0.000202999
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-1.37941	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.933213	0.000202999
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.404477	0.241268
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	-0.108772	0.574972
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.646511	0.000202999
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	-0.0795295	0.619074
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.781718	0.000202999
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	1.3067	0.000202999
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	-0.031287	0.899018
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.059422	0.720012
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	-0.183059	0.642384
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	0.800868	0.0354659
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.527936	0.00106626
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.196397	0.154616
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	-0.275823	0.406296
+EPA	Cz03g00250	FAD6	Omega-6 fatty acid desaturase (chloroplast)	2.18745	0.000202999
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-1.50505	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.943653	0.000202999
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.169612	0.665658
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	-0.535635	0.00106626
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.420121	0.00106626
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	0.0728593	0.656845
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.610912	0.000202999
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	1.06903	0.000202999
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	0.177108	0.43027
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.560406	0.000202999
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	-0.0201277	0.976832
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	1.45093	0.00507971
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.636314	0.000202999
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.165496	0.24745
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	-0.331155	0.309728
+EPA	Cz03g00250	FAD6	Omega-6 fatty acid desaturase (chloroplast)	1.92763	0.000202999
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-1.41277	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.865772	0.000202999
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.641407	0.0499575
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	-0.645709	0.000202999
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.399639	0.00138519
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	0.0214904	0.905557
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.57707	0.000202999
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	1.01203	0.000202999
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	-0.209962	0.313437
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.424413	0.00258918
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	-0.0977342	0.814384
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	0.622189	0.0950919
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.571919	0.000736335
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.0964864	0.519639
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	-0.336925	0.303302
+EPA	Cz03g00250	FAD6	Omega-6 fatty acid desaturase (chloroplast)	3.66235	0.000202999
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-0.908824	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.250372	0.210441
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.645463	0.0481893
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	-0.456788	0.0048127
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.428288	0.0016951
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	0.214399	0.150506
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.19807	0.182378
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	0.353304	0.035168
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	-0.0346555	0.890793
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.274222	0.0516301
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	0.0607539	0.887001
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	-0.443533	0.158206
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	-0.0696438	0.708338
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.267551	0.0484702
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	-0.526813	0.0819937
+EPA	Cz03g00250	FAD6	Omega-6 fatty acid desaturase (chloroplast)	3.84035	0.000202999
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-0.0540003	0.756789
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.328979	0.0857449
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.579824	0.0796131
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	-0.0479713	0.816443
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.0211722	0.896192
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	0.329255	0.025758
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	0.0725385	0.661484
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	0.0972083	0.601563
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	-0.457004	0.0145696
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.0277923	0.874605
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	0.550227	0.175848
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	-0.399173	0.209115
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.0614418	0.749705
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	0.0974838	0.522771
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	-0.0753701	0.842091
+EPA	Cz03g00250	FAD6	Omega-6 fatty acid desaturase (chloroplast)	1.36304	0.000202999
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	0.160141	0.300519
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.160689	0.448876
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.405195	0.239272
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	-0.004715	0.981079
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	-0.282614	0.0325923
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	-0.199083	0.172571
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	0.328564	0.0274172
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	-0.0134814	0.950312
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	-0.373313	0.049029
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.0813777	0.613034
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	0.241457	0.54708
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	2.72264	0.00440823
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.219382	0.186362
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.0171697	0.920245
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	-0.298407	0.361128
+EPA	Cz03g00250	FAD6	Omega-6 fatty acid desaturase (chloroplast)	1.77781	0.000202999
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-1.59224	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.86795	0.000202999
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.210979	0.580713
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	-1.6583	0.000202999
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.204642	0.13703
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	-0.19246	0.188608
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.542236	0.000202999
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	0.952004	0.000202999
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	1.09206	0.000202999
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	-0.514632	0.000202999
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	-0.320658	0.376176
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	1.99912	0.00399968
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.386395	0.0151354
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.230288	0.0917402
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	0.203786	0.584472
+EPA	Cz03g00250	FAD6	Omega-6 fatty acid desaturase (chloroplast)	2.55333	0.000202999
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-1.00996	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.907703	0.000202999
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	0.313815	0.440936
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	-1.74089	0.000202999
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.279938	0.0373174
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	-0.132336	0.386716
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.5723	0.000202999
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	1.03506	0.000202999
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	-0.183873	0.384001
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	-0.157292	0.28836
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	0.217778	0.593423
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	0.664887	0.0834163
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	0.338377	0.0370245
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.149661	0.299729
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	-0.387175	0.214958
+EPA	Cz03g00250	FAD6	Omega-6 fatty acid desaturase (chloroplast)	2.74966	0.000202999
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	-0.714913	0.000202999
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.383511	0.0455672
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	-0.223905	0.553667
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	-0.626617	0.000202999
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.36764	0.0048127
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	0.271268	0.0680384
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.106804	0.514566
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	0.172749	0.321474
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	0.0373942	0.880932
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	0.0485676	0.767837
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	0.0545438	0.900245
+Proline	Cz01g00140	P5CS1	Delta1-pyrroline-5-carboxylate synthetase 1	-0.305154	0.353855
+Proline	Cz02g00060	P5CR	Pyrroline-5-carboxylate reductase	-0.092591	0.602482
+Beta_Carotene	Cz02g00290	PDS	Phytoene desaturase	-0.268373	0.0466005
+Proline	Cz03g00100	ProDH1	Proline dehydrogenase 1	-0.251604	0.455404
+EPA	Cz03g00250	FAD6	Omega-6 fatty acid desaturase (chloroplast)	2.3453	0.000202999
+Beta_Carotene	Cz04g00120	CRTISO	Carotene isomerase	0.229901	0.126444
+Glycine_Betaine	Cz05g00120	BADH1	Betaine aldehyde dehydrogenase 1	-0.273132	0.17264
+IAA	Cz06g00150	YUC1	Flavin monooxygenase YUCCA1 (auxin biosynthesis)	0.671663	0.0995422
+Proline	Cz06g00270	P5CS2	Delta1-pyrroline-5-carboxylate synthetase 2	-0.0438178	0.83595
+Beta_Carotene	Cz07g00150	LCYb	Lycopene beta-cyclase	0.100857	0.499413
+Gibberellin_GA3	Cz08g00160	KO	Kaurene oxidase / CYP701A	0.625407	0.000202999
+Lutein	Cz08g00220	LCYe	Lycopene epsilon-cyclase	-0.0260436	0.885576
+DHA	Cz08g00310	ELOVL	Very long chain fatty acid elongase	-0.131777	0.454876
+ABA	Cz09g00150	NCED2	9-cis-epoxycarotenoid dioxygenase 2	-0.479721	0.00938543
+Glycine_Betaine	Cz09g00180	CHDH	Choline dehydrogenase	-0.199946	0.156541
+Lutein	Cz09g00300	CYP97C	Cytochrome P450 97C epsilon-ring hydroxylase	0.0671543	0.879168

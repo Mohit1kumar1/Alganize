@@ -1,0 +1,22 @@
+{
+  "dataset_id":   "GSE289042",
+  "species":      "Arabidopsis thaliana",
+  "species_details": "Two genotypes: Col-0 wild-type and camta1 mutant (Ca²⁺/ion-signalling mutant)",
+  "geo_link":     "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE289042",
+  "technique":    "Bulk RNA-seq · Illumina NovaSeq X · Stranded library preparation",
+  "induction_type": "Drought stress (osmotic)",
+  "induction_details": "Moderate osmotic stress — 50% vs 100% water content plates",
+  "pathways": ["Proline", "Glycine Betaine", "Beta-Carotene", "Lutein",
+               "Astaxanthin", "Zeaxanthin", "EPA-like", "DHA-like",
+               "Auxin/IAA", "ABA", "Alpha-Tocopherol", "Gibberellin GA3"],
+  "contrasts": {
+    "Stress vs Well-Watered":   "Stress_vs_WW",
+    "Recovery vs Stress":       "Recovery_vs_Stress",
+    "WW-15min vs Well-Watered": "WW15m_vs_WW"
+  },
+  "contrast_descriptions": {
+    "Stress_vs_WW":         "log2(Moderate stress / Well-watered)",
+    "Recovery_vs_Stress":   "log2(Recovery 15min / Moderate stress)",
+    "WW15m_vs_WW":          "log2(Well-watered 15min / Well-watered)"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "dataset_id": "GSE125419",
+  "species": "Chromochloris zofingiensis",
+  "species_details": "Oleaginous green microalga cultivated in Kuhl medium, exponential phase cells re-inoculated at 0.5 g/L",
+  "geo_link": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE125419",
+  "technique": "RNA-seq · BGISEQ-500 · paired-end · reference-based transcriptome profiling",
+  "induction_type": "Salt stress",
+  "induction_details": "200 mM NaCl treatment; samples collected at 0 h vs 6 h with three biological replicates",
+  "pathways": [
+    "Proline",
+    "Glycine_Betaine",
+    "Beta_Carotene",
+    "Lutein",
+    "Astaxanthin",
+    "Zeaxanthin",
+    "Alpha_Tocopherol",
+    "ABA",
+    "IAA",
+    "EPA",
+    "DHA",
+    "Gibberellin_GA3"
+  ],
+  "contrasts": {
+    "Salt vs Control": "Salt_vs_Control"
+  },
+  "contrast_descriptions": {
+    "Salt_vs_Control": "log2(6h NaCl-treated / 0h control)"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "dataset_id":   "GSE162916",
+  "species":      "Chlorella",
+  "species_details": "Desert-isolated microalga, cultivated in Bold basal medium at 23°C",
+  "geo_link":     "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE162916",
+  "technique":    "RNA-seq · Illumina NovaSeq 6000 · 150-bp PE · de novo assembly (Trinity)",
+  "induction_type": "Salt + Drought (PEG) stress",
+  "induction_details": "NaCl (0.1–0.8M) and PEG-6000 (0.05–0.1 g/mL), day 18 vs control",
+  "pathways": ["Proline", "Glycine Betaine", "Fatty Acids",
+               "Carotenoids", "Alpha-Tocopherol", "ABA", "Auxin/IAA"],
+  "contrasts": {
+    "Salt vs Control": "Salt_vs_Control",
+    "PEG vs Control":  "PEG_vs_Control"
+  },
+  "contrast_descriptions": {
+    "Salt_vs_Control": "log2(NaCl-treated / Control day 18)",
+    "PEG_vs_Control":  "log2(PEG-treated / Control day 18)"
+  }
+}
