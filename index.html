@@ -212,24 +212,18 @@ main{flex:1;overflow-y:auto;padding:22px 24px;display:flex;flex-direction:column
 
 <!-- ABOUT PAGE -->
 <div id="page-about" style="display:none;">
-  <h2 style="color:var(--accent2);margin-bottom:12px;font-size:20px;">About Alganize</h2>
-  <p style="color:var(--text2);line-height:1.8;margin-bottom:14px;">Alganize is a gene expression explorer for algal metabolite pathway genes. It visualises log2 fold-change data across stress conditions for pathways including carotenogenesis, fatty acid biosynthesis, and osmoprotectant metabolism.</p>
+  <h2 style="color:var(--accent2);margin-bottom:12px;font-size:20px;">About Metabolite gene explorer </h2>
+  <p style="color:var(--text2);line-height:1.8;margin-bottom:14px;">(Work in progress)</p>
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin-top:16px;">
-    <div style="font-size:12px;font-weight:600;color:var(--accent2);margin-bottom:8px;">File structure</div>
+    <div style="font-size:12px;font-weight:600;color:var(--accent2);margin-bottom:8px;">Gene‑expression patterns</div>
     <pre style="color:var(--text2);font-size:12px;line-height:1.9;font-family:monospace;">
-/registry.json          ← datasets, species_map, induction_map
-/GSE125419/meta.json    ← species, contrasts, pathways, geo_link …
-/GSE125419/log2fc.tsv   ← Pathway, GeneID, Symbol, Description, {key}_log2FC, {key}_padj
-/GSE92514/meta.json
-/GSE92514/log2fc.tsv</pre>
+This browser app focuses on differential gene expression in microalgae and plant‑related metabolite pathways, such as carotenogenesis, fatty acid biosynthesis, and osmolyte production, across stress conditions (e.g., salt or high‑light treatment). For each comparison (contrast), the displayed log₂ fold‑change values show how strongly individual genes are up‑ or down‑regulated relative to control, highlighting pathways that are transcriptionally co‑activated or re‑pressed under a given stimulus </pre>
   </div>
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin-top:12px;">
-    <div style="font-size:12px;font-weight:600;color:var(--accent2);margin-bottom:8px;">registry.json shape</div>
+    <div style="font-size:12px;font-weight:600;color:var(--accent2);margin-bottom:8px;">For Collabration/ Suggestion</div>
     <pre style="color:var(--text2);font-size:12px;line-height:1.9;font-family:monospace;">
 {
-  "datasets": ["GSE125419", "GSE92514"],
-  "species_map":   { "Chromochloris zofingiensis": ["GSE125419","GSE92514"] },
-  "induction_map": { "Salt stress": ["GSE125419"], "High light": ["GSE92514"] }
+  https://github.com/Mohit1kumar1/Alganize
 }</pre>
   </div>
 </div>
