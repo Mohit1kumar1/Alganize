@@ -4,286 +4,339 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Alganize — Algal Gene Expression Explorer</title>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
-
 <style>
-
-/* ================= THEME ================= */
 :root {
-  --bg:#0e1a0e; 
-  --bg2:#f7faf7; 
-  --surface:#ffffff; 
-  --surface2:#f1f6f1;
-
-  --border:rgba(34,139,34,0.12); 
-  --border2:rgba(34,139,34,0.25);
-
-  --text:#1f2a1f; 
-  --text2:#4f6b4f; 
-  --text3:#7a8f7a;
-
-  --accent:#2e7d32;
-  --accent2:#66bb6a;
-
-  --up:#2e7d32; 
-  --down:#c62828;
-
-  --font:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  /* NEW THEME: MOSTLY WHITE & CLEAN GREEN */
+  --bg: #ffffff; 
+  --bg-alt: #fcfdfc;
+  --surface: #ffffff;
+  --surface2: #f1f5f1;
+  --border: #e2e8e2;
+  --border2: #ccd6cc;
+  --text: #1a1c1a; 
+  --text2: #4a4d4a; 
+  --text3: #8a918a;
+  --accent: #2d5a27;      /* Dark Green */
+  --accent2: #a2d5ab;     /* Light Green */
+  --up: #28a745; 
+  --down: #dc3545;
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 *{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:14px;line-height:1.6;min-height:100vh;}
 
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:var(--font);
-  font-size:14px;
-  line-height:1.6;
-  min-height:100vh;
-}
+/* NAV - UPDATED WITH NEW LOGO SPECS */
+nav{background:var(--bg);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:80px;position:sticky;top:0;z-index:100;}
+.nav-logo{display:flex;align-items:center;cursor:pointer;}
+.nav-logo img{height: 48px; width: auto; display: block;} /* 24px * 2 = 48px */
 
-/* ================= NAV ================= */
-nav{
-  background:#ffffff;
-  border-bottom:1px solid var(--border);
-  padding:0 24px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  height:52px;
-  position:sticky;
-  top:0;
-  z-index:100;
-  box-shadow:0 2px 6px rgba(0,0,0,0.04);
-}
+.nav-links{display:flex;gap:8px;}
+.nav-link{padding:8px 16px;border-radius:6px;color:var(--text2);font-size:14px;font-weight: 500;cursor:pointer;border:none;background:none;transition:all .15s;}
+.nav-link:hover{background:var(--surface2);color:var(--accent);}
+.nav-link.active{background:var(--accent);color:#ffffff;}
 
-.nav-logo{
-  display:flex;
-  align-items:center;
-}
+/* LAYOUT */
+.app{display:flex;height:calc(100vh - 80px);}
 
-.logo-img{
-  height:48px;
-}
+/* SIDEBAR */
+aside{width:260px;min-width:260px;background:var(--bg-alt);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow-y:auto;padding:16px;gap:12px;}
+.filter-block{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px;box-shadow: 0 1px 3px rgba(0,0,0,0.02);}
+.filter-label{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+.step-badge{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:var(--accent);color:#fff;font-size:10px;font-weight:800;}
 
-.nav-links{display:flex;gap:4px;}
+select{width:100%;background:var(--bg);border:1px solid var(--border2);border-radius:6px;padding:8px;color:var(--text);font-size:13px;outline:none;cursor:pointer; appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 8px center; background-size: 14px;}
+select:focus{border-color:var(--accent);}
 
-.nav-link{
-  padding:5px 12px;
-  border-radius:6px;
-  color:var(--text2);
-  font-size:13px;
-  cursor:pointer;
-  border:none;
-  background:none;
-  transition:.15s;
-}
+.pathway-list{display:flex;flex-direction:column;gap:3px;}
+.pathway-btn{width:100%;text-align:left;padding:8px 10px;border-radius:6px;border:none;background:none;color:var(--text2);font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:background .12s;}
+.pathway-btn:hover{background:var(--surface2);}
+.pathway-btn.active{background:var(--accent2);color:var(--accent);font-weight:600;}
+.pathway-count{background:var(--bg);color:var(--text3);font-size:10px;padding:2px 8px;border-radius:12px;border:1px solid var(--border);}
 
-.nav-link:hover{
-  background:#eef6ee;
-}
+/* MAIN CONTENT */
+main{flex:1;overflow-y:auto;padding:24px;display:flex;flex-direction:column;gap:20px;background:var(--bg);}
+.dataset-header{background:var(--surface);border:1px solid var(--border);border-left:5px solid var(--accent);border-radius:12px;padding:20px;display:flex;justify-content:space-between;align-items:center;}
+.dataset-header h1{font-size:20px;font-weight:700;color:var(--accent);}
+.meta-tag{font-size:11px;padding:4px 10px;border-radius:20px;background:var(--surface2);color:var(--accent);font-weight:600;margin-top:8px;display:inline-block;}
 
-.nav-link.active{
-  background:#e4f3e4;
-  color:var(--accent);
-}
+/* STATS */
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;}
+.stat-label{font-size:10px;color:var(--text3);text-transform:uppercase;font-weight:700;letter-spacing:0.5px;}
+.stat-value{font-size:24px;font-weight:700;color:var(--text);margin:4px 0;}
 
-/* ================= LAYOUT ================= */
-.app{display:flex;height:calc(100vh - 52px);}
+/* PANELS & TABLES */
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;}
+.gene-table{width:100%;border-collapse:collapse;}
+.gene-table th{text-align:left;padding:12px;border-bottom:2px solid var(--border);color:var(--accent);font-size:11px;text-transform:uppercase;}
+.gene-table td{padding:12px;border-bottom:1px solid var(--border);color:var(--text2);}
+.gene-table tr:hover td{background:var(--bg-alt);}
 
-/* ================= SIDEBAR ================= */
-aside{
-  width:256px;
-  background:#fafdfa;
-  border-right:1px solid var(--border);
-  display:flex;
-  flex-direction:column;
-  overflow-y:auto;
-  padding:14px 12px;
-  gap:8px;
-}
+.search-input{width:100%;padding:10px 16px;border:1px solid var(--border2);border-radius:8px;margin-bottom:15px;outline:none;}
+.search-input:focus{border-color:var(--accent);}
 
-.filter-block{
-  background:#ffffff;
-  border:1px solid var(--border);
-  border-radius:8px;
-  padding:10px 12px;
-}
+/* ABOUT PAGE */
+#page-about{padding:40px;max-width:800px;margin: 0 auto;}
+.about-section{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px;}
 
-.filter-label{
-  font-size:10px;
-  font-weight:700;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  color:var(--text3);
-  margin-bottom:7px;
-  display:flex;
-  align-items:center;
-  gap:6px;
-}
-
-.step-badge{
-  width:16px;height:16px;
-  border-radius:50%;
-  background:var(--accent);
-  color:#fff;
-  font-size:9px;
-  display:flex;align-items:center;justify-content:center;
-}
-
-select{
-  width:100%;
-  background:#fff;
-  border:1px solid var(--border2);
-  border-radius:6px;
-  padding:6px 10px;
-  color:var(--text);
-  font-size:12px;
-}
-
-.sidebar-divider{
-  border:none;
-  border-top:1px solid var(--border);
-}
-
-.pathway-btn{
-  width:100%;
-  text-align:left;
-  padding:6px 10px;
-  border-radius:6px;
-  border:none;
-  background:none;
-  color:var(--text2);
-  font-size:12px;
-  cursor:pointer;
-}
-
-.pathway-btn:hover{background:#f1f6f1;}
-.pathway-btn.active{
-  background:#e4f3e4;
-  color:var(--accent);
-}
-
-/* ================= MAIN ================= */
-main{
-  flex:1;
-  overflow-y:auto;
-  padding:22px;
-  display:flex;
-  flex-direction:column;
-  gap:18px;
-}
-
-/* ================= CARDS ================= */
-.panel,
-.stat-card,
-.dataset-header{
-  background:#ffffff;
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:16px;
-}
-
-.stat-row{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
-}
-
-/* ================= TABLE ================= */
-.gene-table{
-  width:100%;
-  border-collapse:collapse;
-}
-
-.gene-table td,
-.gene-table th{
-  padding:7px 10px;
-  border-bottom:1px solid var(--border);
-}
-
-.gene-table tr:hover td{
-  background:#f3f8f3;
-}
-
-/* ================= ABOUT ================= */
-#page-about{
-  padding:40px;
-  max-width:720px;
-  margin:0 auto;
-}
-
+@media(max-width:900px){ .app{flex-direction:column;} aside{width:100%;height:auto;border-right:none;border-bottom:1px solid var(--border);} }
 </style>
 </head>
-
 <body>
 
-<!-- ================= NAV ================= -->
 <nav>
-  <div class="nav-logo">
-    <img src="images/alganize-logo-black.svg" alt="Alganize" class="logo-img"/>
+  <div class="nav-logo" onclick="showPage('explorer')">
+    <img src="images/alganize-logo-black.svg" alt="Alganize" />
   </div>
-
   <div class="nav-links">
-    <button class="nav-link active" onclick="showPage('explorer')">Explorer</button>
-    <button class="nav-link" onclick="showPage('about')">About</button>
+    <button class="nav-link active" id="btn-nav-explorer" onclick="showPage('explorer')">Explorer</button>
+    <button class="nav-link" id="btn-nav-about" onclick="showPage('about')">About</button>
   </div>
 </nav>
 
-<!-- ================= EXPLORER ================= -->
 <div class="app" id="page-explorer">
-
   <aside>
     <div class="filter-block">
       <div class="filter-label"><span class="step-badge">1</span>Species</div>
-      <select id="sel-species"></select>
+      <select id="sel-species" onchange="onSpeciesChange()"></select>
     </div>
 
     <div class="filter-block">
       <div class="filter-label"><span class="step-badge">2</span>Induction</div>
-      <select id="sel-induction"></select>
+      <select id="sel-induction" onchange="onInductionChange()"></select>
     </div>
 
     <div class="filter-block">
       <div class="filter-label"><span class="step-badge">3</span>Dataset</div>
-      <select id="sel-dataset"></select>
+      <select id="sel-dataset" onchange="onDatasetChange()"></select>
     </div>
 
     <div class="filter-block">
       <div class="filter-label"><span class="step-badge">4</span>Contrast</div>
-      <select id="sel-contrast"></select>
+      <select id="sel-contrast" onchange="onContrastChange()"></select>
+    </div>
+
+    <div class="filter-block" style="flex:1;">
+      <div class="filter-label"><span class="step-badge">5</span>Pathway</div>
+      <div class="pathway-list" id="pathway-list"></div>
     </div>
   </aside>
 
-  <main>
-    <div class="panel">Your dashboard content remains unchanged</div>
+  <main id="main-content">
+    <div id="main-loading" style="text-align:center; padding:50px; color:var(--text3);">Loading data...</div>
+    <div id="main-body" style="display:none; flex-direction:column; gap:20px;"></div>
   </main>
 </div>
 
-<!-- ================= ABOUT ================= -->
 <div id="page-about" style="display:none;">
-  <h2 style="color:var(--accent);margin-bottom:12px;">About</h2>
-  <p style="color:var(--text2);">(Work in progress)</p>
+  <div class="about-section">
+    <h2 style="color:var(--accent); margin-bottom:12px;">About Metabolite Gene Explorer</h2>
+    <p style="color:var(--text2); margin-bottom:16px;">(Work in progress)</p>
+    <p style="font-size:14px; color:var(--text2); line-height:1.8;">
+      This browser app focuses on differential gene expression in microalgae and plant‑related
+      metabolite pathways, such as carotenogenesis, fatty acid biosynthesis, and osmolyte 
+      production, across stress conditions.
+    </p>
+  </div>
+  <div class="about-section">
+    <h3 style="color:var(--accent); margin-bottom:12px; font-size:14px;">Collaboration & Suggestions</h3>
+    <a href="https://github.com/Mohit1kumar1/Alganize" target="_blank" style="color:var(--accent); text-decoration:none; font-family:monospace;">https://github.com/Mohit1kumar1/Alganize</a>
+  </div>
 </div>
 
 <script>
+// --- STATE MANAGEMENT ---
+const S = {
+  registry: null,
+  allMeta: {},
+  allData: {},
+  species: null,
+  induction: null,
+  dataset: null,
+  contrast: null,
+  pathway: 'All',
+  search: '',
+  activeTab: 'bar',
+  charts: {}
+};
 
-/* ================= PAGE SWITCH ================= */
-function showPage(page){
-  document.getElementById('page-explorer').style.display = page==='explorer'?'flex':'none';
-  document.getElementById('page-about').style.display = page==='about'?'block':'none';
-
-  document.querySelectorAll('.nav-link').forEach((b,i)=>{
-    b.classList.toggle('active',
-      (i===0 && page==='explorer') ||
-      (i===1 && page==='about')
-    );
-  });
+// --- INITIALIZATION ---
+async function init() {
+  try {
+    const res = await fetch('registry.json');
+    S.registry = await res.json();
+    populateSpecies();
+    await onSpeciesChange();
+  } catch(e) {
+    console.error("Initialization failed", e);
+    document.getElementById('main-loading').innerText = "Error loading registry.json";
+  }
 }
 
-</script>
+function showPage(pageId) {
+  const explorer = document.getElementById('page-explorer');
+  const about = document.getElementById('page-about');
+  const btnExp = document.getElementById('btn-nav-explorer');
+  const btnAbt = document.getElementById('btn-nav-about');
 
+  if (pageId === 'explorer') {
+    explorer.style.display = 'flex';
+    about.style.display = 'none';
+    btnExp.classList.add('active');
+    btnAbt.classList.remove('active');
+  } else {
+    explorer.style.display = 'none';
+    about.style.display = 'block';
+    btnExp.classList.remove('active');
+    btnAbt.classList.add('active');
+  }
+}
+
+// --- CASCADING FILTERS ---
+function populateSpecies() {
+  const el = document.getElementById('sel-species');
+  const species = Object.keys(S.registry.species_map || {});
+  el.innerHTML = species.map(s => `<option value="${s}">${s}</option>`).join('');
+  S.species = species[0];
+}
+
+async function onSpeciesChange() {
+  S.species = document.getElementById('sel-species').value;
+  const spDs = S.registry.species_map[S.species] || [];
+  const indMap = S.registry.induction_map || {};
+  const validInd = Object.keys(indMap).filter(k => (indMap[k] || []).some(d => spDs.includes(d)));
+  
+  const el = document.getElementById('sel-induction');
+  el.innerHTML = validInd.map(i => `<option value="${i}">${i}</option>`).join('');
+  await onInductionChange();
+}
+
+async function onInductionChange() {
+  S.induction = document.getElementById('sel-induction').value;
+  const spDs = S.registry.species_map[S.species] || [];
+  const indDs = S.registry.induction_map[S.induction] || [];
+  const ds = spDs.filter(d => indDs.includes(d));
+  
+  const el = document.getElementById('sel-dataset');
+  el.innerHTML = ds.map(d => `<option value="${d}">${d}</option>`).join('');
+  await onDatasetChange();
+}
+
+async function onDatasetChange() {
+  S.dataset = document.getElementById('sel-dataset').value;
+  if (!S.dataset) return;
+  
+  document.getElementById('main-loading').style.display = 'block';
+  document.getElementById('main-body').style.display = 'none';
+
+  await ensureDatasetLoaded(S.dataset);
+  
+  populateContrast();
+  onContrastChange();
+}
+
+async function ensureDatasetLoaded(id) {
+  if (S.allMeta[id] && S.allData[id]) return;
+  const [meta, tsv] = await Promise.all([
+    fetch(`${id}/meta.json`).then(r => r.json()),
+    fetch(`${id}/log2fc.tsv`).then(r => r.text())
+  ]);
+  S.allMeta[id] = meta;
+  S.allData[id] = Papa.parse(tsv.trim(), { header:true, dynamicTyping:true }).data;
+}
+
+function populateContrast() {
+  const meta = S.allMeta[S.dataset];
+  const el = document.getElementById('sel-contrast');
+  el.innerHTML = Object.entries(meta.contrasts || {})
+    .map(([label, key]) => `<option value="${key}">${label}</option>`).join('');
+  S.contrast = el.value;
+}
+
+function onContrastChange() {
+  S.contrast = document.getElementById('sel-contrast').value;
+  S.pathway = 'All';
+  renderPathwayList();
+  renderMain();
+}
+
+function renderPathwayList() {
+  const data = S.allData[S.dataset] || [];
+  const pathways = ['All', ...new Set(data.map(r => r.Pathway).filter(Boolean))];
+  const el = document.getElementById('pathway-list');
+  el.innerHTML = pathways.map(pw => `
+    <button class="pathway-btn ${S.pathway === pw ? 'active' : ''}" onclick="setPathway('${pw}')">
+      ${pw} <span class="pathway-count">${pw==='All' ? data.length : data.filter(r=>r.Pathway===pw).length}</span>
+    </button>
+  `).join('');
+}
+
+function setPathway(pw) {
+  S.pathway = pw;
+  renderPathwayList();
+  renderMain();
+}
+
+function renderMain() {
+  const meta = S.allMeta[S.dataset];
+  const body = document.getElementById('main-body');
+  document.getElementById('main-loading').style.display = 'none';
+  body.style.display = 'flex';
+  
+  const lc = S.contrast + '_log2FC';
+  let data = S.allData[S.dataset].filter(r => S.pathway === 'All' || r.Pathway === S.pathway);
+  
+  const up = data.filter(r => r[lc] > 0).length;
+  const down = data.filter(r => r[lc] < 0).length;
+
+  body.innerHTML = `
+    <div class="dataset-header">
+      <div>
+        <h1>${meta.species}</h1>
+        <p style="color:var(--text2);">${meta.induction_details || ''}</p>
+        <span class="meta-tag">${meta.technique}</span>
+      </div>
+      <a href="${meta.geo_link}" target="_blank" style="color:var(--accent); font-weight:600; text-decoration:none;">GEO ↗</a>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-card"><div class="stat-label">Genes</div><div class="stat-value">${data.length}</div></div>
+      <div class="stat-card"><div class="stat-label">Up</div><div class="stat-value" style="color:var(--up)">${up}</div></div>
+      <div class="stat-card"><div class="stat-label">Down</div><div class="stat-value" style="color:var(--down)">${down}</div></div>
+      <div class="stat-card"><div class="stat-label">Dataset</div><div class="stat-value" style="font-size:14px; margin-top:12px;">${S.dataset}</div></div>
+    </div>
+
+    <div class="panel">
+      <input class="search-input" placeholder="Search gene symbol..." oninput="updateSearch(this.value)">
+      <div style="overflow-x:auto;">
+        <table class="gene-table">
+          <thead>
+            <tr><th>Symbol</th><th>Pathway</th><th>log2FC</th></tr>
+          </thead>
+          <tbody>
+            ${data.slice(0, 50).map(r => `
+              <tr>
+                <td style="font-weight:600;">${r.Symbol || r.GeneID}</td>
+                <td style="font-size:11px;">${r.Pathway}</td>
+                <td style="color:${r[lc] > 0 ? 'var(--up)' : 'var(--down)'}; font-weight:700;">${r[lc]?.toFixed(2)}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+}
+
+function updateSearch(val) {
+  S.search = val.toLowerCase();
+  // Filter logic for table would go here
+}
+
+init();
+</script>
 </body>
 </html>
