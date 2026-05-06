@@ -968,6 +968,18 @@ function filteredData() {
 // ─────────────────────────────────────────────────────────────
 // MAIN RENDER
 // ─────────────────────────────────────────────────────────────
+function showLoading() {
+  document.getElementById('main-loading').style.display = 'flex';
+  document.getElementById('main-body').style.display = 'none';
+}
+
+function showErr(msg) {
+  document.getElementById('main-loading').style.display = 'none';
+  const body = document.getElementById('main-body');
+  body.style.cssText = 'display:flex;flex-direction:column;gap:18px;';
+  body.innerHTML = `<div class="empty" style="color:#c0392b;">${msg}</div>`;
+}
+
 function renderMain() {
   const meta = S.allMeta[S.dataset];
   const body = document.getElementById('main-body');
@@ -1046,6 +1058,15 @@ function renderMain() {
   renderChartArea(data, lc, pc);
   renderTable(data, lc, pc);
 }
+
+function setContrast(key) {
+  S.contrast = key;
+  document.getElementById('sel-contrast').value = key;
+  renderMain();
+}
+
+function doSearch(val) { S.search = val; renderMain(); }
+function setSort(col) { S.sortCol = col; renderMain(); }
 
 // ─────────────────────────────────────────────────────────────
 // CHART DISPATCHER
@@ -1159,6 +1180,16 @@ function renderVolcano(area, lc, pc) {
   const ctx = document.getElementById('volcanoChart');
   if (!ctx) return;
   if (S.charts.scatter) S.charts.scatter.destroy();
+
+  const makeDs = (pts, label, z) => ({
+    label,
+    data: pts.map(p=>({x:p.x, y:p.y, label:p.label})),
+    backgroundColor: pts.map(p=>p.col),
+    pointRadius: pts.map(p=>p.pw?6:3),
+    pointHoverRadius: 6,
+    order: z
+  });
+
   S.charts.scatter = new Chart(ctx, {
     type: 'scatter',
     data: { datasets: [
