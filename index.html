@@ -3,185 +3,690 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Alganize — Algal Gene Expression Explorer</title>
+<title>Alganize — Gene Expression Explorer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 <style>
 :root {
-  --bg:#ffffff; --bg2:#142014; --surface:#1f2f1f; --surface2:#253525;
-  --border:rgba(99,153,34,0.18); --border2:rgba(99,153,34,0.32);
-  --text:#e8f0d8; --text2:#a8c070; --text3:#6a8840;
-  --accent:#639922; --accent2:#97C459; --up:#5DCAA5; --down:#E24B4A;
-  --font:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  --bg:           #0a0f0a;
+  --bg-elev:      #0f1610;
+  --surface:      #141d14;
+  --surface-hi:   #1b271a;
+  --border:       rgba(151,196,89,0.10);
+  --border-md:    rgba(151,196,89,0.18);
+  --border-st:    rgba(151,196,89,0.32);
+  --text:         #e8efd9;
+  --text-mu:      #9bb37e;
+  --text-dim:     #6a7d54;
+  --accent:       #639922;
+  --accent-hi:    #77b327;
+  --accent-lt:    #97c459;
+  --up:           #5dcaa5;
+  --down:         #e24b4a;
+  --warn:         #d4a93a;
+
+  --radius:       6px;
+  --radius-sm:    4px;
+  --radius-pill:  999px;
+
+  --font:         'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  --topbar-h:     56px;
+  --sidebar-w:    248px;
 }
-*{box-sizing:border-box;margin:0;padding:0;}
-body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:14px;line-height:1.6;min-height:100vh;}
 
-/* NAV */
-nav{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:100;}
-.nav-logo{display:flex;align-items:center;gap:10px;}
-.nav-logo-icon{width:28px;height:28px;background:var(--accent);border-radius:6px;display:flex;align-items:center;justify-content:center;}
-.nav-logo-icon svg{width:16px;height:16px;fill:#fff;}
-.nav-title{font-size:16px;font-weight:600;color:var(--text);}
-.nav-title span{color:var(--accent2);}
-.nav-links{display:flex;gap:4px;}
-.nav-link{padding:5px 12px;border-radius:6px;color:var(--text2);font-size:13px;cursor:pointer;border:none;background:none;transition:background .15s;}
-.nav-link:hover{background:var(--surface);color:var(--text);}
-.nav-link.active{background:var(--surface2);color:var(--accent2);}
-
-/* LAYOUT */
-.app{display:flex;height:calc(100vh - 52px);}
-
-/* SIDEBAR */
-aside{width:256px;min-width:256px;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow-y:auto;padding:14px 12px;gap:8px;}
-.filter-block{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 12px;}
-.filter-label{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:7px;display:flex;align-items:center;gap:6px;}
-.step-badge{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:var(--accent);color:#fff;font-size:9px;font-weight:800;flex-shrink:0;}
-select{width:100%;background:var(--bg2);border:1px solid var(--border2);border-radius:6px;padding:6px 10px;color:var(--text);font-size:12px;outline:none;cursor:pointer;appearance:none;-webkit-appearance:none;}
-select:focus{border-color:var(--accent);}
-.sidebar-divider{border:none;border-top:1px solid var(--border);margin:2px 0;}
-.filter-label-sm{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);margin-bottom:6px;}
-.pathway-list{display:flex;flex-direction:column;gap:2px;}
-.pathway-btn{width:100%;text-align:left;padding:6px 10px;border-radius:6px;border:none;background:none;color:var(--text2);font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:background .12s;}
-.pathway-btn:hover{background:var(--surface2);color:var(--text);}
-.pathway-btn.active{background:var(--surface2);color:var(--accent2);font-weight:500;}
-.pathway-count{background:var(--bg2);color:var(--text3);font-size:10px;padding:1px 6px;border-radius:10px;}
-.pathway-btn.active .pathway-count{background:rgba(99,153,34,0.2);color:var(--accent2);}
-.option-row{display:flex;align-items:center;gap:8px;padding:4px 0;}
-.option-row input[type=checkbox]{accent-color:var(--accent);width:13px;height:13px;cursor:pointer;}
-.option-row label{font-size:12px;color:var(--text2);cursor:pointer;}
-
-/* MAIN */
-main{flex:1;overflow-y:auto;padding:22px 24px;display:flex;flex-direction:column;gap:18px;}
-.loading{display:flex;align-items:center;justify-content:center;height:120px;color:var(--text3);font-size:13px;gap:8px;}
-.spinner{width:16px;height:16px;border:2px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;}
-@keyframes spin{to{transform:rotate(360deg)}}
-
-/* DATASET HEADER */
-.dataset-header{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:10px;padding:14px 18px;display:flex;align-items:flex-start;justify-content:space-between;gap:20px;}
-.dataset-header h1{font-size:16px;font-weight:600;color:var(--text);}
-.dataset-header p{font-size:12px;color:var(--text2);margin-top:3px;line-height:1.5;}
-.meta-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;}
-.meta-tag{font-size:11px;padding:2px 9px;border-radius:20px;border:1px solid var(--border2);color:var(--text2);background:var(--surface2);}
-.meta-tag.green{border-color:rgba(99,153,34,.4);color:var(--accent2);background:rgba(99,153,34,.08);}
-.geo-link{font-size:12px;color:var(--accent2);text-decoration:none;white-space:nowrap;padding:5px 11px;border:1px solid var(--border2);border-radius:6px;transition:background .12s;flex-shrink:0;}
-.geo-link:hover{background:rgba(99,153,34,.1);}
-
-/* STAT CARDS */
-.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
-.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;}
-.stat-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;}
-.stat-value{font-size:21px;font-weight:600;color:var(--text);margin-top:3px;}
-.stat-sub{font-size:11px;color:var(--text3);margin-top:1px;}
-.stat-up{color:var(--up);} .stat-down{color:var(--down);}
-
-/* CONTRAST TABS */
-.contrast-tabs{display:flex;gap:6px;flex-wrap:wrap;}
-.contrast-tab{padding:5px 13px;border-radius:6px;border:1px solid var(--border2);background:none;color:var(--text3);font-size:12px;cursor:pointer;transition:all .12s;}
-.contrast-tab.active{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:500;}
-
-/* CHART TABS */
-.chart-tab-row{display:flex;gap:5px;margin-bottom:12px;flex-wrap:wrap;}
-.chart-tab{padding:5px 14px;border-radius:20px;font-size:12px;font-weight:500;border:1px solid var(--border2);color:var(--text3);background:none;cursor:pointer;transition:all .15s;}
-.chart-tab:hover{border-color:var(--accent2);color:var(--text2);}
-.chart-tab.active{background:var(--accent);border-color:var(--accent);color:#fff;}
-
-/* PANELS */
-.panel{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 18px;}
-.panel-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
-.panel-title{font-size:13px;font-weight:600;color:var(--text);}
-.panel-subtitle{font-size:11px;color:var(--text3);margin-top:2px;}
-.toggle-group{display:flex;gap:4px;}
-.toggle-btn{padding:3px 9px;border-radius:5px;border:1px solid var(--border2);background:none;color:var(--text3);font-size:11px;cursor:pointer;transition:all .12s;}
-.toggle-btn.active{background:var(--accent);border-color:var(--accent);color:#fff;}
-.legend-row{display:flex;gap:14px;margin-bottom:8px;flex-wrap:wrap;}
-.legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text3);}
-.legend-swatch{width:10px;height:10px;border-radius:2px;}
-
-/* HEATMAP */
-.heatmap-table{border-collapse:collapse;width:100%;font-size:11px;}
-.heatmap-table th{color:var(--text3);font-weight:500;padding:3px 6px;text-align:center;font-size:10px;white-space:nowrap;}
-.heatmap-table th.gene-col{text-align:left;min-width:90px;}
-.heatmap-table td{padding:2px 6px;text-align:center;}
-.heatmap-table td.gene-name{text-align:left;color:var(--text2);font-weight:500;white-space:nowrap;}
-.hm-cell{display:block;width:100%;height:24px;line-height:24px;border-radius:4px;font-size:10px;font-weight:500;}
-
-/* GENE TABLE */
-.gene-table-wrap{overflow-x:auto;}
-.gene-table{width:100%;border-collapse:collapse;font-size:12px;}
-.gene-table th{text-align:left;padding:7px 10px;border-bottom:1px solid var(--border);color:var(--text3);font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:.4px;white-space:nowrap;cursor:pointer;user-select:none;}
-.gene-table th:hover{color:var(--text2);}
-.gene-table td{padding:7px 10px;border-bottom:1px solid rgba(99,153,34,.06);color:var(--text2);vertical-align:middle;}
-.gene-table tr:hover td{background:rgba(99,153,34,.04);}
-.gene-table tr:last-child td{border-bottom:none;}
-.pathway-pill{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:500;background:rgba(99,153,34,.12);color:var(--accent2);border:1px solid rgba(99,153,34,.25);}
-.fc-bar-wrap{display:flex;align-items:center;gap:6px;}
-.fc-num{font-size:12px;font-weight:500;min-width:48px;text-align:right;}
-.fc-bar-bg{flex:1;height:5px;background:var(--surface2);border-radius:3px;overflow:hidden;min-width:50px;}
-.fc-bar-fill{height:100%;border-radius:3px;}
-.sig-dot{display:inline-block;width:7px;height:7px;border-radius:50%;}
-.search-row{display:flex;gap:10px;align-items:center;margin-bottom:12px;}
-.search-input{background:var(--bg2);border:1px solid var(--border2);border-radius:6px;padding:6px 12px;color:var(--text);font-size:13px;flex:1;outline:none;}
-.search-input:focus{border-color:var(--accent);}
-.search-input::placeholder{color:var(--text3);}
-.sort-select-sm{background:var(--bg2);border:1px solid var(--border2);border-radius:6px;padding:6px 10px;color:var(--text2);font-size:12px;outline:none;cursor:pointer;width:auto;}
-.empty{text-align:center;padding:32px;color:var(--text3);font-size:13px;}
-
-/* ABOUT PAGE */
-#page-about{padding:40px;max-width:720px;margin:0 auto;}
-
-@media(max-width:900px){
-  .stat-row{grid-template-columns:repeat(2,1fr);}
-  aside{width:200px;min-width:200px;}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 13px;
+  line-height: 1.55;
+  font-feature-settings: 'cv11', 'ss01';
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
-@media(max-width:640px){aside{display:none;}main{padding:14px;}}
+button, input, select { font-family: inherit; }
+a { color: inherit; text-decoration: none; }
+::selection { background: rgba(99,153,34,0.35); color: #fff; }
+
+/* ─── TOPBAR ─────────────────────────────────────────────── */
+.topbar {
+  height: var(--topbar-h);
+  background: var(--bg-elev);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 36px;
+  padding: 0 6px;
+  border-radius: var(--radius-sm);
+  transition: background .15s;
+}
+.brand:hover { background: var(--surface); }
+.brand img {
+  height: 24px;
+  width: auto;
+  display: block;
+  filter: brightness(0) invert(1) brightness(0.95);
+}
+.primary-nav {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+.nav-tab {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  padding: 7px 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: color .12s, background .12s;
+  white-space: nowrap;
+}
+.nav-tab:hover { color: var(--text-mu); background: var(--surface); }
+.nav-tab.active { color: var(--accent-lt); background: var(--surface-hi); }
+
+/* ─── LAYOUT ─────────────────────────────────────────────── */
+.explorer {
+  display: flex;
+  height: calc(100vh - var(--topbar-h));
+}
+.explorer[hidden] { display: none; }
+
+/* ─── SIDEBAR ────────────────────────────────────────────── */
+aside {
+  width: var(--sidebar-w);
+  min-width: var(--sidebar-w);
+  background: var(--bg-elev);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 14px 12px;
+  gap: 10px;
+}
+.filter-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 11px 12px;
+}
+.filter-block.grow { flex: 1; min-height: 200px; display: flex; flex-direction: column; }
+.filter-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.step-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+select {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border-md);
+  border-radius: var(--radius-sm);
+  padding: 7px 10px;
+  color: var(--text);
+  font-size: 12px;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--text-dim) 50%),
+                    linear-gradient(135deg, var(--text-dim) 50%, transparent 50%);
+  background-position: calc(100% - 14px) center, calc(100% - 9px) center;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 24px;
+  transition: border-color .12s;
+}
+select:focus, select:hover { border-color: var(--accent); }
+
+.pathway-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-top: 2px;
+  overflow-y: auto;
+  flex: 1;
+}
+.pathway-btn {
+  width: 100%;
+  text-align: left;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: none;
+  color: var(--text-mu);
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  transition: background .1s, color .1s;
+}
+.pathway-btn:hover { background: var(--surface-hi); color: var(--text); }
+.pathway-btn.active { background: var(--surface-hi); color: var(--accent-lt); font-weight: 500; }
+.pathway-count {
+  background: var(--bg);
+  color: var(--text-dim);
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+  padding: 1px 7px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+}
+.pathway-btn.active .pathway-count {
+  background: rgba(99,153,34,0.15);
+  color: var(--accent-lt);
+  border-color: rgba(99,153,34,0.3);
+}
+
+.option-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+}
+.option-row input[type=checkbox] {
+  accent-color: var(--accent);
+  width: 13px;
+  height: 13px;
+  cursor: pointer;
+}
+.option-row label { font-size: 12px; color: var(--text-mu); cursor: pointer; }
+
+/* ─── MAIN ───────────────────────────────────────────────── */
+main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 22px 26px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 160px;
+  color: var(--text-dim);
+  font-size: 13px;
+  gap: 10px;
+}
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--border-md);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.empty-state {
+  margin: 60px auto;
+  max-width: 480px;
+  text-align: center;
+  padding: 48px 32px;
+  border: 1px dashed var(--border-st);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.empty-state h2 {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+.empty-state p { font-size: 13px; color: var(--text-mu); }
+
+/* ─── DATASET HEADER ─────────────────────────────────────── */
+.dataset-header {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+.dataset-header h1 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+.dataset-header p {
+  font-size: 12px;
+  color: var(--text-mu);
+  margin-top: 4px;
+  line-height: 1.55;
+}
+.meta-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 9px;
+}
+.meta-tag {
+  font-size: 10.5px;
+  font-weight: 500;
+  padding: 2px 9px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-md);
+  color: var(--text-mu);
+  background: var(--surface-hi);
+  letter-spacing: 0.01em;
+}
+.meta-tag.green {
+  border-color: rgba(99,153,34,0.4);
+  color: var(--accent-lt);
+  background: rgba(99,153,34,0.08);
+}
+.meta-tag.mono { font-family: var(--font-mono); font-size: 10px; }
+.geo-link {
+  font-size: 12px;
+  color: var(--accent-lt);
+  white-space: nowrap;
+  padding: 6px 12px;
+  border: 1px solid var(--border-md);
+  border-radius: var(--radius-sm);
+  transition: background .12s, border-color .12s;
+  flex-shrink: 0;
+  font-weight: 500;
+}
+.geo-link:hover {
+  background: rgba(99,153,34,0.1);
+  border-color: rgba(99,153,34,0.45);
+}
+
+/* ─── STAT CARDS ─────────────────────────────────────────── */
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+}
+.stat-label {
+  font-size: 10px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+.stat-value {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text);
+  margin-top: 4px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+.stat-sub { font-size: 11px; color: var(--text-dim); margin-top: 1px; }
+.stat-up { color: var(--up); }
+.stat-down { color: var(--down); }
+
+/* ─── CONTRAST TABS ──────────────────────────────────────── */
+.contrast-tabs {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.contrast-tab {
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-md);
+  background: none;
+  color: var(--text-dim);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .12s;
+}
+.contrast-tab:hover { color: var(--text-mu); border-color: var(--border-st); }
+.contrast-tab.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* ─── PANELS / CHART TABS ────────────────────────────────── */
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+}
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.panel-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.005em;
+}
+.chart-tab-row {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+}
+.chart-tab {
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid transparent;
+  color: var(--text-dim);
+  background: none;
+  cursor: pointer;
+  transition: all .12s;
+}
+.chart-tab:hover { color: var(--text-mu); background: var(--surface-hi); }
+.chart-tab.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.toggle-group { display: flex; gap: 4px; }
+.toggle-btn {
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-md);
+  background: none;
+  color: var(--text-dim);
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .12s;
+}
+.toggle-btn:hover { color: var(--text-mu); }
+.toggle-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.legend-row { display: flex; gap: 14px; flex-wrap: wrap; }
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text-dim);
+}
+.legend-swatch { width: 10px; height: 10px; border-radius: 2px; }
+
+/* ─── HEATMAP ────────────────────────────────────────────── */
+.heatmap-table { border-collapse: collapse; width: 100%; font-size: 11px; }
+.heatmap-table th {
+  color: var(--text-dim);
+  font-weight: 600;
+  padding: 4px 6px;
+  text-align: center;
+  font-size: 10px;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+.heatmap-table th.gene-col { text-align: left; min-width: 100px; }
+.heatmap-table td { padding: 2px 6px; text-align: center; }
+.heatmap-table td.gene-name {
+  text-align: left;
+  color: var(--text-mu);
+  font-weight: 500;
+  white-space: nowrap;
+}
+.hm-cell {
+  display: block;
+  width: 100%;
+  height: 24px;
+  line-height: 24px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── GENE TABLE ─────────────────────────────────────────── */
+.gene-table-wrap { overflow-x: auto; }
+.gene-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.gene-table th {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-dim);
+  font-weight: 600;
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  user-select: none;
+}
+.gene-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(99,153,34,0.04);
+  color: var(--text-mu);
+  vertical-align: middle;
+}
+.gene-table tr:hover td { background: rgba(99,153,34,0.04); }
+.gene-table tr:last-child td { border-bottom: none; }
+.pathway-pill {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: var(--radius-pill);
+  font-size: 10px;
+  font-weight: 500;
+  background: rgba(99,153,34,0.1);
+  color: var(--accent-lt);
+  border: 1px solid rgba(99,153,34,0.22);
+}
+.fc-bar-wrap { display: flex; align-items: center; gap: 8px; }
+.fc-num {
+  font-size: 12px;
+  font-weight: 500;
+  min-width: 50px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-family: var(--font-mono);
+}
+.fc-bar-bg {
+  flex: 1;
+  height: 4px;
+  background: var(--surface-hi);
+  border-radius: 2px;
+  overflow: hidden;
+  min-width: 50px;
+}
+.fc-bar-fill { height: 100%; border-radius: 2px; }
+.sig-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; }
+.search-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.search-input {
+  background: var(--bg);
+  border: 1px solid var(--border-md);
+  border-radius: var(--radius-sm);
+  padding: 7px 12px;
+  color: var(--text);
+  font-size: 13px;
+  flex: 1;
+  outline: none;
+  transition: border-color .12s;
+}
+.search-input:focus { border-color: var(--accent); }
+.search-input::placeholder { color: var(--text-dim); }
+.sort-select-sm {
+  background: var(--bg);
+  border: 1px solid var(--border-md);
+  border-radius: var(--radius-sm);
+  padding: 7px 24px 7px 10px;
+  color: var(--text-mu);
+  font-size: 12px;
+  outline: none;
+  cursor: pointer;
+  width: auto;
+  min-width: 150px;
+}
+.empty {
+  text-align: center;
+  padding: 32px;
+  color: var(--text-dim);
+  font-size: 13px;
+}
+
+/* ─── ABOUT ──────────────────────────────────────────────── */
+.about-page {
+  padding: 48px 24px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.about-page[hidden] { display: none; }
+.about-page h2 {
+  color: var(--accent-lt);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin-bottom: 6px;
+}
+.about-page .lead {
+  color: var(--text-mu);
+  font-size: 13px;
+  margin-bottom: 24px;
+}
+.about-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+  margin-bottom: 12px;
+}
+.about-card h3 {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-lt);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.about-card p {
+  color: var(--text-mu);
+  font-size: 13px;
+  line-height: 1.7;
+}
+.about-card a {
+  color: var(--accent-lt);
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+}
+.about-card a:hover { text-decoration: underline; }
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .stat-row { grid-template-columns: repeat(2, 1fr); }
+  aside { width: 220px; min-width: 220px; }
+  .nav-tab { padding: 7px 10px; font-size: 12px; }
+}
+@media (max-width: 720px) {
+  aside { display: none; }
+  main { padding: 16px; }
+  .topbar { padding: 0 12px; }
+  .primary-nav { overflow-x: auto; }
+}
 </style>
 </head>
 <body>
 
-<div class="nav-logo">
-  <img src="images/alganize-logo-black.svg" alt="Alganize" style="height:24px"/>
-</div>
-  
-<!-- EXPLORER PAGE -->
-<div class="app" id="page-explorer">
+<!-- ─── TOP NAV ─────────────────────────────────────────── -->
+<header class="topbar">
+  <a class="brand" href="https://www.alganize.de/" target="_blank" rel="noopener" aria-label="Alganize home">
+    <img src="images/alganize-logo-black.svg" alt="Alganize"/>
+  </a>
+  <nav class="primary-nav" id="primary-nav">
+    <button class="nav-tab active" data-page="microalgae">Microalgae Explorer</button>
+    <button class="nav-tab" data-page="plant">Plant Explorer</button>
+    <button class="nav-tab" data-page="soil">Soil Microbiome Explorer</button>
+    <button class="nav-tab" data-page="correlation">Co-relation Explorer</button>
+    <button class="nav-tab" data-page="about">About</button>
+  </nav>
+</header>
+
+<!-- ─── EXPLORER PAGE ────────────────────────────────────── -->
+<div class="explorer" id="page-explorer">
 
   <aside>
-    <!-- Step 1: Species -->
     <div class="filter-block">
-      <div class="filter-label"><span class="step-badge">1</span>Species</div>
-      <select id="sel-species" onchange="onSpeciesChange()"></select>
-    </div>
-
-    <!-- Step 2: Induction -->
-    <div class="filter-block">
-      <div class="filter-label"><span class="step-badge">2</span>Induction</div>
+      <div class="filter-label"><span class="step-badge">1</span>Induction</div>
       <select id="sel-induction" onchange="onInductionChange()"></select>
     </div>
 
-    <!-- Step 3: Dataset -->
     <div class="filter-block">
-      <div class="filter-label"><span class="step-badge">3</span>Dataset</div>
+      <div class="filter-label"><span class="step-badge">2</span>Dataset</div>
       <select id="sel-dataset" onchange="onDatasetChange()"></select>
     </div>
 
-    <!-- Step 4: Contrast -->
     <div class="filter-block">
-      <div class="filter-label"><span class="step-badge">4</span>Contrast</div>
+      <div class="filter-label"><span class="step-badge">3</span>Contrast</div>
       <select id="sel-contrast" onchange="onContrastChange()"></select>
     </div>
 
-    <hr class="sidebar-divider"/>
-
-    <!-- Step 5: Pathway -->
-    <div class="filter-block" style="flex:1;">
-      <div class="filter-label"><span class="step-badge">5</span>Pathway</div>
+    <div class="filter-block grow">
+      <div class="filter-label"><span class="step-badge">4</span>Pathway</div>
       <div class="pathway-list" id="pathway-list"></div>
     </div>
 
-    <hr class="sidebar-divider"/>
-
-    <!-- Options -->
     <div class="filter-block">
       <div class="filter-label">Options</div>
       <div class="option-row">
@@ -197,172 +702,229 @@ main{flex:1;overflow-y:auto;padding:22px 24px;display:flex;flex-direction:column
 
   <main id="main-content">
     <div class="loading" id="main-loading"><div class="spinner"></div>Loading…</div>
-    <div id="main-body" style="display:none;flex-direction:column;gap:18px;"></div>
+    <div id="main-body" hidden style="flex-direction:column;gap:18px;"></div>
   </main>
 </div>
 
-<!-- ABOUT PAGE -->
-<div id="page-about" style="display:none;">
-  <h2 style="color:var(--accent2);margin-bottom:12px;font-size:20px;">About Metabolite gene explorer </h2>
-  <p style="color:var(--text2);line-height:1.8;margin-bottom:14px;">(Work in progress)</p>
-  <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin-top:16px;">
-    <div style="font-size:12px;font-weight:600;color:var(--accent2);margin-bottom:8px;">Gene‑expression patterns</div>
-    <pre style="color:var(--text2);font-size:12px;line-height:1.9;font-family:monospace;">
-This browser app focuses on differential gene expression in microalgae and plant‑related
-metabolite pathways, such as carotenogenesis, fatty acid biosynthesis, and osmolyte 
-production, across stress conditions (e.g., salt or high‑light treatment). For each 
-comparison (contrast), the displayed log₂ fold‑change values show how strongly individual 
-genes are up‑ or down‑regulated relative to control, highlighting pathways that are 
-transcriptionally co‑activated or re‑pressed under a given stimulus </pre>
-  </div>
-  <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin-top:12px;">
-    <div style="font-size:12px;font-weight:600;color:var(--accent2);margin-bottom:8px;">For Collabration/ Suggestion</div>
-    <pre style="color:var(--text2);font-size:12px;line-height:1.9;font-family:monospace;">
+<!-- ─── ABOUT PAGE ───────────────────────────────────────── -->
+<section class="about-page" id="page-about" hidden>
+  <h2>About Alganize</h2>
+  <p class="lead">A browser-based explorer for differential gene expression across microalgae, plants, and soil microbiome stress-response studies. (Work in progress.)</p>
 
-  https://github.com/Mohit1kumar1/Alganize
-</pre>
+  <div class="about-card">
+    <h3>Gene-expression patterns</h3>
+    <p>This app focuses on differential gene expression in microalgae and plant-related metabolite pathways — such as carotenogenesis, fatty acid biosynthesis, and osmolyte production — across stress conditions like salt or high-light treatment. For each comparison (contrast), the displayed log₂ fold-change values show how strongly individual genes are up- or down-regulated relative to control, highlighting pathways that are transcriptionally co-activated or repressed under a given stimulus.</p>
   </div>
-</div>
+
+  <div class="about-card">
+    <h3>Collaboration / Suggestions</h3>
+    <p><a href="https://github.com/Mohit1kumar1/Alganize" target="_blank" rel="noopener">github.com/Mohit1kumar1/Alganize</a></p>
+  </div>
+</section>
 
 <script>
 // ─────────────────────────────────────────────────────────────
-// STATE — mirrors Shiny reactive values
+// PAGES — each explorer page has its own data folder
 // ─────────────────────────────────────────────────────────────
-const S = {
-  registry:      null,   // full registry.json
-  allMeta:       {},     // { datasetId: meta }
-  allData:       {},     // { datasetId: parsed TSV rows }
-  species:       null,
-  induction:     null,
-  dataset:       null,
-  contrast:      null,   // contrast KEY  e.g. "Salt_vs_Control"
-  pathway:       'All',
-  search:        '',
-  sortCol:       'log2FC',
-  activeTab:     'bar',
-  barMode:       'top10',
-  charts:        {}
+const PAGES = {
+  microalgae:  { dir: 'Data_algae',        title: 'Microalgae Explorer' },
+  plant:       { dir: 'data_plant',        title: 'Plant Explorer' },
+  soil:        { dir: 'data_soil',         title: 'Soil Microbiome Explorer' },
+  correlation: { dir: 'data_correlation',  title: 'Co-relation Explorer' },
 };
 
 // ─────────────────────────────────────────────────────────────
-// BOOT
+// STATE
 // ─────────────────────────────────────────────────────────────
-async function init() {
+const S = {
+  page:       null,
+  dataDir:    null,
+  registry:   null,
+  allMeta:    {},
+  allData:    {},
+  induction:  null,
+  dataset:    null,
+  contrast:   null,
+  pathway:    'All',
+  search:     '',
+  sortCol:    'log2FC',
+  activeTab:  'bar',
+  barMode:    'top10',
+  charts:     {},
+};
+
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => (
+  {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]
+));
+
+// ─────────────────────────────────────────────────────────────
+// PAGE NAVIGATION
+// ─────────────────────────────────────────────────────────────
+function bindNav() {
+  document.querySelectorAll('.nav-tab').forEach(btn => {
+    btn.addEventListener('click', () => showPage(btn.dataset.page));
+  });
+}
+
+async function showPage(page) {
+  document.querySelectorAll('.nav-tab').forEach(b =>
+    b.classList.toggle('active', b.dataset.page === page));
+
+  if (page === 'about') {
+    document.getElementById('page-explorer').hidden = true;
+    document.getElementById('page-about').hidden = false;
+    return;
+  }
+
+  document.getElementById('page-about').hidden = true;
+  document.getElementById('page-explorer').hidden = false;
+
+  if (S.page === page) return;
+
+  S.page = page;
+  S.dataDir = PAGES[page].dir;
+  S.registry = null;
+  S.allMeta = {};
+  S.allData = {};
+  S.induction = null;
+  S.dataset = null;
+  S.contrast = null;
+  S.pathway = 'All';
+  S.search = '';
+  destroyCharts();
+
+  showLoading();
+  document.getElementById('main-body').innerHTML = '';
+  ['sel-induction','sel-dataset','sel-contrast'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = '';
+  });
+  document.getElementById('pathway-list').innerHTML = '';
+
   try {
-    S.registry = await fetch('registry.json').then(r => r.json());
-    populateSpecies();
-    await onSpeciesChange(true);
-  } catch(e) {
-    showErr('Could not load registry.json — ' + e.message);
+    const r = await fetch(`${S.dataDir}/registry.json`);
+    if (!r.ok) throw new Error('registry.json not found');
+    S.registry = await r.json();
+    populateInduction();
+    await onInductionChange();
+  } catch (e) {
+    showComingSoon(PAGES[page].title);
   }
 }
 
-// ─────────────────────────────────────────────────────────────
-// CASCADING DROPDOWNS  (mirrors Shiny reactive chain)
-// ─────────────────────────────────────────────────────────────
-function populateSpecies() {
-  const el = document.getElementById('sel-species');
-  const species = Object.keys(S.registry.species_map || {});
-  el.innerHTML = species.map(s => `<option value="${s}">${s}</option>`).join('');
-  S.species = species[0] || null;
+function showComingSoon(title) {
+  document.getElementById('main-loading').style.display = 'none';
+  const body = document.getElementById('main-body');
+  body.hidden = false;
+  body.style.cssText = 'display:flex;flex-direction:column;gap:18px;';
+  body.innerHTML = `
+    <div class="empty-state">
+      <h2>${esc(title)}</h2>
+      <p>Data for this section is coming soon. Check back later.</p>
+    </div>`;
 }
 
-async function onSpeciesChange(boot) {
-  S.species = document.getElementById('sel-species').value;
-  S.pathway = 'All';
-  // Induction choices = those whose datasets intersect species datasets
-  const spDs = (S.registry.species_map[S.species] || []);
+// ─────────────────────────────────────────────────────────────
+// CASCADING DROPDOWNS (no Species — it's per-page now)
+// ─────────────────────────────────────────────────────────────
+function populateInduction() {
   const indMap = S.registry.induction_map || {};
-  const validInd = Object.keys(indMap).filter(k =>
-    (indMap[k] || []).some(d => spDs.includes(d))
+  const sm = S.registry.species_map || {};
+  const allDs = new Set(Object.values(sm).flat());
+  const inductions = Object.keys(indMap).filter(k =>
+    (indMap[k] || []).some(d => allDs.size === 0 || allDs.has(d))
   );
   const el = document.getElementById('sel-induction');
-  el.innerHTML = validInd.map(i => `<option value="${i}">${i}</option>`).join('');
-  S.induction = validInd[0] || null;
-  await onInductionChange(boot);
+  el.innerHTML = inductions.map(i =>
+    `<option value="${esc(i)}">${esc(i)}</option>`).join('');
+  S.induction = inductions[0] || null;
 }
 
-async function onInductionChange(boot) {
+async function onInductionChange() {
   S.induction = document.getElementById('sel-induction').value;
   S.pathway = 'All';
-  const spDs  = S.registry.species_map[S.species]   || [];
-  const indDs = S.registry.induction_map[S.induction] || [];
-  const ds    = spDs.filter(d => indDs.includes(d));
-  const el    = document.getElementById('sel-dataset');
-  el.innerHTML = ds.map(d => `<option value="${d}">${d}</option>`).join('');
+  const sm = S.registry.species_map || {};
+  const allDs = new Set(Object.values(sm).flat());
+  const indDs = (S.registry.induction_map || {})[S.induction] || [];
+  const ds = allDs.size ? indDs.filter(d => allDs.has(d)) : indDs;
+  const el = document.getElementById('sel-dataset');
+  el.innerHTML = ds.map(d => `<option value="${esc(d)}">${esc(d)}</option>`).join('');
   S.dataset = ds[0] || null;
-  await onDatasetChange(boot);
+  await onDatasetChange();
 }
 
-async function onDatasetChange(boot) {
+async function onDatasetChange() {
   S.dataset = document.getElementById('sel-dataset').value;
   S.pathway = 'All';
-  if (!S.dataset) return;
+  if (!S.dataset) { showComingSoon(PAGES[S.page].title); return; }
   showLoading();
-  await ensureDatasetLoaded(S.dataset);
-  populateContrast();
-  onContrastChange();
+  try {
+    await ensureDatasetLoaded(S.dataset);
+    populateContrast();
+    onContrastChange();
+  } catch (e) {
+    showErr(e.message);
+  }
 }
 
 function populateContrast() {
   const meta = S.allMeta[S.dataset];
   if (!meta) return;
   const contrasts = meta.contrasts || {};
-  // contrasts = { "Label": "key", … }
   const el = document.getElementById('sel-contrast');
   el.innerHTML = Object.entries(contrasts)
-    .map(([label, key]) => `<option value="${key}">${label}</option>`)
+    .map(([label, key]) => `<option value="${esc(key)}">${esc(label)}</option>`)
     .join('');
-  // Set to first key
   S.contrast = Object.values(contrasts)[0] || null;
 }
 
 function onContrastChange() {
   S.contrast = document.getElementById('sel-contrast').value;
-  S.pathway  = 'All';
+  S.pathway = 'All';
   const meta = S.allMeta[S.dataset];
   if (meta) renderPathwayList(meta);
   renderMain();
 }
 
 // ─────────────────────────────────────────────────────────────
-// DATASET LOADER  (cache so we don't re-fetch)
+// DATASET LOADER
 // ─────────────────────────────────────────────────────────────
 async function ensureDatasetLoaded(id) {
   if (S.allMeta[id] && S.allData[id]) return;
-  try {
-    const [meta, tsvText] = await Promise.all([
-      fetch(`${id}/meta.json`).then(r => { if(!r.ok) throw new Error(`meta.json not found for ${id}`); return r.json(); }),
-      fetch(`${id}/log2fc.tsv`).then(r => { if(!r.ok) throw new Error(`log2fc.tsv not found for ${id}`); return r.text(); })
-    ]);
-    S.allMeta[id] = meta;
-    const parsed  = Papa.parse(tsvText.trim(), { header:true, dynamicTyping:true, skipEmptyLines:true });
-    S.allData[id] = parsed.data;
-  } catch(e) {
-    showErr(`Error loading ${id}: ${e.message}`);
-    throw e;
-  }
+  const [meta, tsvText] = await Promise.all([
+    fetch(`${S.dataDir}/${id}/meta.json`).then(r => {
+      if (!r.ok) throw new Error(`meta.json not found for ${id}`);
+      return r.json();
+    }),
+    fetch(`${S.dataDir}/${id}/log2fc.tsv`).then(r => {
+      if (!r.ok) throw new Error(`log2fc.tsv not found for ${id}`);
+      return r.text();
+    })
+  ]);
+  S.allMeta[id] = meta;
+  const parsed = Papa.parse(tsvText.trim(), { header:true, dynamicTyping:true, skipEmptyLines:true });
+  S.allData[id] = parsed.data;
 }
 
 // ─────────────────────────────────────────────────────────────
 // PATHWAY LIST
 // ─────────────────────────────────────────────────────────────
 function renderPathwayList(meta) {
-  const data     = S.allData[S.dataset] || [];
+  const data = S.allData[S.dataset] || [];
   const pathways = ['All', ...(meta.pathways || [...new Set(data.map(r=>r.Pathway).filter(Boolean))])];
-  const counts   = {};
+  const counts = {};
   data.forEach(r => { counts[r.Pathway] = (counts[r.Pathway]||0)+1; });
   document.getElementById('pathway-list').innerHTML = pathways.map(pw => {
-    const cnt = pw==='All' ? data.length : (counts[pw]||0);
-    return `<button class="pathway-btn ${S.pathway===pw?'active':''}" onclick="setPathway('${pw}',this)">
-      <span>${pw}</span><span class="pathway-count">${cnt}</span>
+    const cnt = pw === 'All' ? data.length : (counts[pw] || 0);
+    return `<button class="pathway-btn ${S.pathway===pw?'active':''}" onclick="setPathway('${esc(pw)}',this)">
+      <span>${esc(pw)}</span><span class="pathway-count">${cnt}</span>
     </button>`;
   }).join('');
 }
 
 function setPathway(pw, btn) {
   S.pathway = pw;
-  document.querySelectorAll('.pathway-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.pathway-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   renderMain();
 }
@@ -370,23 +932,23 @@ function setPathway(pw, btn) {
 // ─────────────────────────────────────────────────────────────
 // DATA HELPERS
 // ─────────────────────────────────────────────────────────────
-function lcCol()   { return S.contrast ? S.contrast+'_log2FC' : null; }
-function padjCol() { return S.contrast ? S.contrast+'_padj'   : null; }
+function lcCol()   { return S.contrast ? S.contrast + '_log2FC' : null; }
+function padjCol() { return S.contrast ? S.contrast + '_padj'   : null; }
 
 function getContrastLabel() {
   const meta = S.allMeta[S.dataset];
   if (!meta) return S.contrast || '';
-  const entry = Object.entries(meta.contrasts||{}).find(([,v])=>v===S.contrast);
-  return entry ? entry[0] : (S.contrast||'');
+  const entry = Object.entries(meta.contrasts || {}).find(([,v]) => v === S.contrast);
+  return entry ? entry[0] : (S.contrast || '');
 }
 
-function showNS() { return document.getElementById('opt-ns')?.checked !== false; }
-function heatmapAll() { return document.getElementById('opt-heatmap-all')?.checked; }
+function showNS()      { return document.getElementById('opt-ns')?.checked !== false; }
+function heatmapAll()  { return document.getElementById('opt-heatmap-all')?.checked; }
 
 function filteredData() {
-  const all  = S.allData[S.dataset] || [];
-  const lc   = lcCol();
-  let d = S.pathway==='All' ? all : all.filter(r=>r.Pathway===S.pathway);
+  const all = S.allData[S.dataset] || [];
+  const lc = lcCol();
+  let d = S.pathway === 'All' ? all : all.filter(r => r.Pathway === S.pathway);
   if (!showNS() && lc) d = d.filter(r => {
     const p = r[padjCol()];
     return p != null && isFinite(p) && p < 0.05;
@@ -411,67 +973,61 @@ function renderMain() {
   const body = document.getElementById('main-body');
   if (!meta || !S.contrast) { showLoading(); return; }
   document.getElementById('main-loading').style.display = 'none';
+  body.hidden = false;
   body.style.cssText = 'display:flex;flex-direction:column;gap:18px;';
   body.innerHTML = '';
 
-  const data  = filteredData();
-  const lc    = lcCol();
-  const pc    = padjCol();
-  const label = getContrastLabel();
-  const vals  = data.map(r=>r[lc]).filter(v=>v!=null&&isFinite(v));
-  const up    = vals.filter(v=>v>0).length;
-  const dn    = vals.filter(v=>v<0).length;
+  const data = filteredData();
+  const lc = lcCol();
+  const pc = padjCol();
+  const vals = data.map(r => r[lc]).filter(v => v != null && isFinite(v));
+  const up = vals.filter(v => v > 0).length;
+  const dn = vals.filter(v => v < 0).length;
   const maxFC = vals.length ? Math.max(...vals.map(Math.abs)).toFixed(2) : '—';
-  const allContrasts = Object.entries(meta.contrasts||{}).map(([l,k])=>({label:l,key:k}));
+  const allContrasts = Object.entries(meta.contrasts || {}).map(([l,k]) => ({label:l, key:k}));
 
-  // ── Dataset header ──
   body.innerHTML += `
   <div class="dataset-header">
     <div>
-      <h1>${meta.species||S.dataset}</h1>
-      <p>${meta.induction_details||''}</p>
+      <h1>${esc(meta.species || S.dataset)}</h1>
+      <p>${esc(meta.induction_details || '')}</p>
       <div class="meta-tags">
-        <span class="meta-tag green">${meta.induction_type||''}</span>
-        <span class="meta-tag">${meta.technique||''}</span>
-        <span class="meta-tag">${S.dataset}</span>
+        ${meta.induction_type ? `<span class="meta-tag green">${esc(meta.induction_type)}</span>` : ''}
+        ${meta.technique ? `<span class="meta-tag">${esc(meta.technique)}</span>` : ''}
+        <span class="meta-tag mono">${esc(S.dataset)}</span>
       </div>
     </div>
-    <a class="geo-link" href="${meta.geo_link||'#'}" target="_blank">View on GEO ↗</a>
+    ${meta.geo_link ? `<a class="geo-link" href="${esc(meta.geo_link)}" target="_blank" rel="noopener">View on GEO ↗</a>` : ''}
   </div>`;
 
-  // ── Stat cards ──
   body.innerHTML += `
   <div class="stat-row">
-    <div class="stat-card"><div class="stat-label">Genes shown</div><div class="stat-value">${data.length}</div><div class="stat-sub">${S.pathway==='All'?'all pathways':S.pathway}</div></div>
+    <div class="stat-card"><div class="stat-label">Genes shown</div><div class="stat-value">${data.length}</div><div class="stat-sub">${S.pathway==='All'?'all pathways':esc(S.pathway)}</div></div>
     <div class="stat-card"><div class="stat-label">Upregulated</div><div class="stat-value stat-up">${up}</div><div class="stat-sub">log2FC &gt; 0</div></div>
     <div class="stat-card"><div class="stat-label">Downregulated</div><div class="stat-value stat-down">${dn}</div><div class="stat-sub">log2FC &lt; 0</div></div>
     <div class="stat-card"><div class="stat-label">Max |log2FC|</div><div class="stat-value">${maxFC}</div><div class="stat-sub">strongest change</div></div>
   </div>`;
 
-  // ── Contrast tabs (if >1) ──
   if (allContrasts.length > 1) {
-    body.innerHTML += `<div class="contrast-tabs">${allContrasts.map(c=>`
-      <button class="contrast-tab ${S.contrast===c.key?'active':''}" onclick="setContrast('${c.key}')">${c.label}</button>`).join('')}</div>`;
+    body.innerHTML += `<div class="contrast-tabs">${allContrasts.map(c => `
+      <button class="contrast-tab ${S.contrast===c.key?'active':''}" onclick="setContrast('${esc(c.key)}')">${esc(c.label)}</button>`).join('')}</div>`;
   }
 
-  // ── Chart tabs ──
   body.innerHTML += `
   <div class="panel">
     <div class="chart-tab-row">
-      <button class="chart-tab ${S.activeTab==='bar'?'active':''}"      onclick="setTab('bar',this)">Bar chart</button>
-      <button class="chart-tab ${S.activeTab==='lollipop'?'active':''}" onclick="setTab('lollipop',this)">Lollipop</button>
-      <button class="chart-tab ${S.activeTab==='volcano'?'active':''}"  onclick="setTab('volcano',this)">Volcano</button>
-      <button class="chart-tab ${S.activeTab==='heatmap'?'active':''}"  onclick="setTab('heatmap',this)">Heatmap</button>
+      <button class="chart-tab ${S.activeTab==='bar'?'active':''}"     onclick="setTab('bar',this)">Bar chart</button>
+      <button class="chart-tab ${S.activeTab==='volcano'?'active':''}" onclick="setTab('volcano',this)">Volcano</button>
+      <button class="chart-tab ${S.activeTab==='heatmap'?'active':''}" onclick="setTab('heatmap',this)">Heatmap</button>
     </div>
     <div id="chart-area"></div>
   </div>`;
 
-  // ── Gene table ──
   body.innerHTML += `
   <div class="panel">
     <div class="panel-header"><div class="panel-title">Gene-level results</div></div>
     <div class="search-row">
-      <input class="search-input" id="gene-search" placeholder="Search gene, symbol, description…" value="${S.search}" oninput="doSearch(this.value)"/>
+      <input class="search-input" id="gene-search" placeholder="Search gene, symbol, description…" value="${esc(S.search)}" oninput="doSearch(this.value)"/>
       <select class="sort-select-sm" onchange="setSort(this.value)">
         <option value="log2FC" ${S.sortCol==='log2FC'?'selected':''}>Sort: |log2FC|</option>
         <option value="padj"   ${S.sortCol==='padj'  ?'selected':''}>Sort: p-adj</option>
@@ -498,22 +1054,22 @@ function renderChartArea(data, lc, pc) {
   destroyCharts();
   const area = document.getElementById('chart-area');
   if (!area) return;
-  if (S.activeTab === 'bar')      renderBar(area, data, lc);
-  else if (S.activeTab==='lollipop') renderLollipop(area, data, lc, pc);
-  else if (S.activeTab==='volcano')  renderVolcano(area, lc, pc);
-  else if (S.activeTab==='heatmap')  renderHeatmap(area, lc);
+  if (S.activeTab === 'bar')          renderBar(area, data, lc);
+  else if (S.activeTab === 'volcano') renderVolcano(area, lc, pc);
+  else if (S.activeTab === 'heatmap') renderHeatmap(area, lc);
 }
 
 function setTab(tab, btn) {
   S.activeTab = tab;
-  document.querySelectorAll('.chart-tab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.chart-tab').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  const data = filteredData();
-  renderChartArea(data, lcCol(), padjCol());
+  renderChartArea(filteredData(), lcCol(), padjCol());
 }
 
 function destroyCharts() {
-  ['bar','scatter'].forEach(k => { if(S.charts[k]){ S.charts[k].destroy(); delete S.charts[k]; } });
+  Object.keys(S.charts).forEach(k => {
+    if (S.charts[k]) { S.charts[k].destroy(); delete S.charts[k]; }
+  });
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -521,8 +1077,8 @@ function destroyCharts() {
 // ─────────────────────────────────────────────────────────────
 function renderBar(area, data, lc) {
   area.innerHTML = `
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
-      <div class="legend-row" style="margin:0">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+      <div class="legend-row">
         <div class="legend-item"><span class="legend-swatch" style="background:#5DCAA5"></span>Up</div>
         <div class="legend-item"><span class="legend-swatch" style="background:#E24B4A"></span>Down</div>
       </div>
@@ -532,33 +1088,33 @@ function renderBar(area, data, lc) {
       </div>
     </div>
     <div style="position:relative;" id="bar-wrap">
-      <canvas id="barChart" role="img" aria-label="Horizontal bar chart of log2 fold change per gene">log2FC per gene</canvas>
+      <canvas id="barChart" role="img" aria-label="Horizontal bar chart of log2 fold change per gene"></canvas>
     </div>`;
   drawBar(data, lc);
 }
 
 function drawBar(data, lc) {
-  let d = [...data].filter(r=>r[lc]!=null&&isFinite(r[lc]));
-  d.sort((a,b)=>Math.abs(b[lc])-Math.abs(a[lc]));
-  if (S.barMode==='top10') d = d.slice(0,10);
-  const labels = d.map(r=>r.Symbol||r.GeneID||'');
-  const vals   = d.map(r=>parseFloat(r[lc].toFixed(3)));
-  const colors = vals.map(v=>v>=0?'#5DCAA5':'#E24B4A');
-  const h      = Math.max(260, d.length*38+60);
-  const wrap   = document.getElementById('bar-wrap');
-  if (wrap) wrap.style.height = h+'px';
+  let d = [...data].filter(r => r[lc] != null && isFinite(r[lc]));
+  d.sort((a,b) => Math.abs(b[lc]) - Math.abs(a[lc]));
+  if (S.barMode === 'top10') d = d.slice(0, 10);
+  const labels = d.map(r => r.Symbol || r.GeneID || '');
+  const vals   = d.map(r => parseFloat(r[lc].toFixed(3)));
+  const colors = vals.map(v => v >= 0 ? '#5DCAA5' : '#E24B4A');
+  const h = Math.max(260, d.length * 38 + 60);
+  const wrap = document.getElementById('bar-wrap');
+  if (wrap) wrap.style.height = h + 'px';
   const ctx = document.getElementById('barChart');
   if (!ctx) return;
   if (S.charts.bar) S.charts.bar.destroy();
   S.charts.bar = new Chart(ctx, {
-    type:'bar',
-    data:{ labels, datasets:[{ data:vals, backgroundColor:colors, borderRadius:4, borderSkipped:false }] },
-    options:{
-      indexAxis:'y', responsive:true, maintainAspectRatio:false,
-      plugins:{ legend:{display:false}, tooltip:{callbacks:{label:c=>' log2FC: '+c.raw.toFixed(3)}} },
-      scales:{
-        x:{ grid:{color:'rgba(99,153,34,0.1)'}, ticks:{color:'#6a8840',font:{size:11}}, border:{color:'rgba(99,153,34,0.2)'} },
-        y:{ grid:{display:false}, ticks:{color:'#a8c070',font:{size:11}}, border:{display:false} }
+    type: 'bar',
+    data: { labels, datasets: [{ data: vals, backgroundColor: colors, borderRadius: 3, borderSkipped: false }] },
+    options: {
+      indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: { legend: {display: false}, tooltip: { callbacks: { label: c => ' log2FC: ' + c.raw.toFixed(3) } } },
+      scales: {
+        x: { grid: {color:'rgba(99,153,34,0.08)'}, ticks: {color:'#6a7d54',font:{size:11}}, border: {color:'rgba(99,153,34,0.2)'} },
+        y: { grid: {display: false}, ticks: {color:'#9bb37e',font:{size:11}}, border: {display: false} }
       }
     }
   });
@@ -566,151 +1122,117 @@ function drawBar(data, lc) {
 
 function setBarMode(mode) {
   S.barMode = mode;
-  document.getElementById('btn-top10')?.classList.toggle('active', mode==='top10');
-  document.getElementById('btn-all')?.classList.toggle('active',   mode==='all');
+  document.getElementById('btn-top10')?.classList.toggle('active', mode === 'top10');
+  document.getElementById('btn-all')?.classList.toggle('active',   mode === 'all');
   drawBar(filteredData(), lcCol());
 }
 
 // ─────────────────────────────────────────────────────────────
-// CHART 2 — Lollipop (dot/segment via scatter)
-// ─────────────────────────────────────────────────────────────
-function renderLollipop(area, data, lc, pc) {
-  let d = [...data].filter(r=>r[lc]!=null&&isFinite(r[lc]));
-  d.sort((a,b)=>a[lc]-b[lc]);
-  const labels = d.map(r=>r.Symbol||r.GeneID||'');
-  const h = Math.max(280, d.length*34+60);
-  area.innerHTML = `<div style="position:relative;height:${h}px;"><canvas id="lolliChart" role="img" aria-label="Lollipop chart of log2FC">Lollipop log2FC</canvas></div>`;
-  const ctx = document.getElementById('lolliChart');
-  if (!ctx) return;
-  // Draw as horizontal bar with thin bars + point overlay trick via two datasets
-  const vals   = d.map(r=>parseFloat(r[lc].toFixed(3)));
-  const colors = d.map(r => {
-    const sig = r[pc]!=null && isFinite(r[pc]) && r[pc]<0.05;
-    if (!sig) return 'rgba(99,153,34,0.3)';
-    return r[lc]>=0 ? '#5DCAA5' : '#E24B4A';
-  });
-  if (S.charts.bar) S.charts.bar.destroy();
-  S.charts.bar = new Chart(ctx, {
-    type:'bar',
-    data:{ labels, datasets:[{ data:vals, backgroundColor:colors, borderRadius:20, barThickness:4, borderSkipped:false }] },
-    options:{
-      indexAxis:'y', responsive:true, maintainAspectRatio:false,
-      plugins:{
-        legend:{display:false},
-        tooltip:{callbacks:{label:c=>{
-          const row = d[c.dataIndex];
-          const pv = row[pc];
-          return [' log2FC: '+c.raw.toFixed(3), pv!=null&&isFinite(pv)?' padj: '+pv.toExponential(2):''];
-        }}}
-      },
-      scales:{
-        x:{grid:{color:'rgba(99,153,34,0.1)'},ticks:{color:'#6a8840',font:{size:11}},border:{color:'rgba(99,153,34,0.2)'}},
-        y:{grid:{display:false},ticks:{color:'#a8c070',font:{size:11}},border:{display:false}}
-      }
-    }
-  });
-}
-
-// ─────────────────────────────────────────────────────────────
-// CHART 3 — Volcano (all genes in dataset, pathway highlighted)
+// CHART 2 — Volcano
 // ─────────────────────────────────────────────────────────────
 function renderVolcano(area, lc, pc) {
   const all = S.allData[S.dataset] || [];
-  const rows = all.filter(r=>r[lc]!=null&&isFinite(r[lc])&&r[pc]!=null&&isFinite(r[pc])&&r[pc]>0);
-  if (!rows.length) { area.innerHTML='<div class="empty">No valid values (need real padj values)</div>'; return; }
+  const rows = all.filter(r =>
+    r[lc] != null && isFinite(r[lc]) &&
+    r[pc] != null && isFinite(r[pc]) && r[pc] > 0
+  );
+  if (!rows.length) {
+    area.innerHTML = '<div class="empty">No valid values (need real padj values)</div>';
+    return;
+  }
 
-  const pwSet   = new Set((S.pathway==='All' ? [] : all.filter(r=>r.Pathway===S.pathway).map(r=>r.GeneID)));
-  const isInPw  = r => S.pathway!=='All' && pwSet.has(r.GeneID);
+  const pwSet = new Set(S.pathway === 'All' ? [] : all.filter(r => r.Pathway === S.pathway).map(r => r.GeneID));
+  const isInPw = r => S.pathway !== 'All' && pwSet.has(r.GeneID);
 
   const bg = [], fg = [];
   rows.forEach(r => {
-    const x   = r[lc];
-    const y   = -Math.log10(Math.max(r[pc],1e-300));
-    const sig = r[pc]<0.05 && Math.abs(x)>1;
-    const col = !sig ? 'rgba(106,136,64,0.25)' : x>=0 ? '#5DCAA5' : '#E24B4A';
-    const pt  = { x, y, label: r.Symbol||r.GeneID, col };
-    if (isInPw(r)) fg.push({...pt, col: sig?(x>=0?'#5DCAA5':'#E24B4A'):'rgba(168,192,112,0.6)', pw:true });
+    const x = r[lc];
+    const y = -Math.log10(Math.max(r[pc], 1e-300));
+    const sig = r[pc] < 0.05 && Math.abs(x) > 1;
+    const col = !sig ? 'rgba(106,125,84,0.25)' : x >= 0 ? '#5DCAA5' : '#E24B4A';
+    const pt = { x, y, label: r.Symbol || r.GeneID, col };
+    if (isInPw(r)) fg.push({...pt, col: sig ? (x >= 0 ? '#5DCAA5' : '#E24B4A') : 'rgba(168,192,112,0.6)', pw: true });
     else           bg.push(pt);
   });
 
-  area.innerHTML = `<div style="position:relative;height:420px;"><canvas id="volcanoChart" role="img" aria-label="Volcano plot of all genes">Volcano plot</canvas></div>`;
+  area.innerHTML = `<div style="position:relative;height:440px;"><canvas id="volcanoChart" role="img" aria-label="Volcano plot of all genes"></canvas></div>`;
   const ctx = document.getElementById('volcanoChart');
   if (!ctx) return;
-
   if (S.charts.scatter) S.charts.scatter.destroy();
   S.charts.scatter = new Chart(ctx, {
-    type:'scatter',
-    data:{ datasets:[
-      { label:'Background', data:bg.map(p=>({x:p.x,y:p.y})),
-        backgroundColor:bg.map(p=>p.col), pointRadius:2.5, pointHoverRadius:4 },
-      { label:S.pathway==='All'?'All genes':'Pathway genes',
-        data:fg.map(p=>({x:p.x,y:p.y})),
-        backgroundColor:fg.map(p=>p.col),
-        pointRadius:fg.map(p=>p.pw?5.5:3), pointStyle:fg.map(p=>p.pw?'rectRot':'circle'),
-        pointHoverRadius:7 }
+    type: 'scatter',
+    data: { datasets: [
+      { label: 'Background', data: bg.map(p => ({x:p.x,y:p.y})),
+        backgroundColor: bg.map(p => p.col), pointRadius: 2.5, pointHoverRadius: 4 },
+      { label: S.pathway === 'All' ? 'All genes' : 'Pathway genes',
+        data: fg.map(p => ({x:p.x,y:p.y})),
+        backgroundColor: fg.map(p => p.col),
+        pointRadius: fg.map(p => p.pw ? 5.5 : 3),
+        pointStyle: fg.map(p => p.pw ? 'rectRot' : 'circle'),
+        pointHoverRadius: 7 }
     ]},
-    options:{
-      responsive:true, maintainAspectRatio:false,
-      plugins:{
-        legend:{display:false},
-        tooltip:{callbacks:{
-          label: ctx => {
-            const all2 = ctx.datasetIndex===0 ? bg : fg;
-            const pt   = all2[ctx.dataIndex];
-            return pt ? [pt.label, ' log2FC: '+pt.x.toFixed(3), ' -log10(padj): '+pt.y.toFixed(2)] : '';
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              const arr = ctx.datasetIndex === 0 ? bg : fg;
+              const pt = arr[ctx.dataIndex];
+              return pt ? [pt.label, ' log2FC: ' + pt.x.toFixed(3), ' -log10(padj): ' + pt.y.toFixed(2)] : '';
+            }
           }
-        }},
-        annotation: {}
+        }
       },
-      scales:{
-        x:{title:{display:true,text:'log2 Fold Change',color:'#6a8840',font:{size:11}},
-           grid:{color:'rgba(99,153,34,0.1)'},ticks:{color:'#6a8840',font:{size:11}}},
-        y:{title:{display:true,text:'-log10(padj)',color:'#6a8840',font:{size:11}},
-           grid:{color:'rgba(99,153,34,0.1)'},ticks:{color:'#6a8840',font:{size:11}}}
+      scales: {
+        x: { title: {display:true, text:'log2 Fold Change', color:'#6a7d54', font:{size:11}},
+             grid: {color:'rgba(99,153,34,0.08)'}, ticks: {color:'#6a7d54',font:{size:11}} },
+        y: { title: {display:true, text:'-log10(padj)', color:'#6a7d54', font:{size:11}},
+             grid: {color:'rgba(99,153,34,0.08)'}, ticks: {color:'#6a7d54',font:{size:11}} }
       }
     }
   });
 }
 
 // ─────────────────────────────────────────────────────────────
-// CHART 4 — Heatmap (HTML table, mirrors pheatmap)
+// CHART 3 — Heatmap
 // ─────────────────────────────────────────────────────────────
 function heatColor(v, absMax) {
-  if (v==null||!isFinite(v)) return {bg:'rgba(99,153,34,0.06)',text:'#6a8840'};
-  const n = Math.max(-1,Math.min(1, v/Math.max(absMax,0.001)));
-  if (n>=0) return {bg:`rgba(29,158,117,${0.12+n*0.75})`, text:n>0.5?'#E1F5EE':'#5DCAA5'};
-  return  {bg:`rgba(226,75,74,${0.12+(-n)*0.75})`,         text:-n>0.5?'#FAECE7':'#E24B4A'};
+  if (v == null || !isFinite(v)) return { bg: 'rgba(99,153,34,0.05)', text: '#6a7d54' };
+  const n = Math.max(-1, Math.min(1, v / Math.max(absMax, 0.001)));
+  if (n >= 0) return { bg: `rgba(29,158,117,${0.12 + n * 0.75})`, text: n > 0.5 ? '#E1F5EE' : '#5DCAA5' };
+  return { bg: `rgba(226,75,74,${0.12 + (-n) * 0.75})`, text: -n > 0.5 ? '#FAECE7' : '#E24B4A' };
 }
 
 function renderHeatmap(area, lc) {
-  const src  = heatmapAll() ? (S.allData[S.dataset]||[]) : filteredData();
+  const src  = heatmapAll() ? (S.allData[S.dataset] || []) : filteredData();
   const meta = S.allMeta[S.dataset];
-  // Get all contrast lc columns
-  const allCtKeys  = Object.values(meta.contrasts||{});
-  const allLcCols  = allCtKeys.map(k=>k+'_log2FC').filter(c=> src.length && c in src[0]);
-  const allLabels  = allCtKeys.map(k => {
-    const e = Object.entries(meta.contrasts||{}).find(([,v])=>v===k);
+  const allCtKeys = Object.values(meta.contrasts || {});
+  const allLcCols = allCtKeys.map(k => k + '_log2FC').filter(c => src.length && c in src[0]);
+  const allLabels = allCtKeys.map(k => {
+    const e = Object.entries(meta.contrasts || {}).find(([,v]) => v === k);
     return e ? e[0] : k;
-  }).filter((_,i)=> allCtKeys[i]+'_log2FC' in (src[0]||{}));
+  }).filter((_, i) => allCtKeys[i] + '_log2FC' in (src[0] || {}));
 
-  const pathways = [...new Set(src.map(r=>r.Pathway).filter(Boolean))];
-  const allVals  = src.flatMap(r=>allLcCols.map(c=>r[c])).filter(v=>v!=null&&isFinite(v));
-  const absMax   = allVals.length ? Math.max(...allVals.map(Math.abs)) : 1;
+  const pathways = [...new Set(src.map(r => r.Pathway).filter(Boolean))];
+  const allVals = src.flatMap(r => allLcCols.map(c => r[c])).filter(v => v != null && isFinite(v));
+  const absMax = allVals.length ? Math.max(...allVals.map(Math.abs)) : 1;
 
   let html = `<div style="overflow-x:auto;"><table class="heatmap-table"><thead><tr>
     <th class="gene-col">Pathway / Gene</th>
-    ${allLabels.map(l=>`<th>${l}</th>`).join('')}
+    ${allLabels.map(l => `<th>${esc(l)}</th>`).join('')}
   </tr></thead><tbody>`;
 
   pathways.forEach(pw => {
-    const genes = src.filter(r=>r.Pathway===pw);
-    html += `<tr><td colspan="${allLcCols.length+1}" style="padding:6px 6px 2px;color:var(--accent2);font-size:11px;font-weight:600;">${pw}</td></tr>`;
+    const genes = src.filter(r => r.Pathway === pw);
+    html += `<tr><td colspan="${allLcCols.length + 1}" style="padding:8px 6px 3px;color:var(--accent-lt);font-size:11px;font-weight:600;letter-spacing:0.02em;">${esc(pw)}</td></tr>`;
     genes.forEach(g => {
-      html += `<tr><td class="gene-name" title="${g.Description||''}">${g.Symbol||g.GeneID}</td>`;
+      html += `<tr><td class="gene-name" title="${esc(g.Description || '')}">${esc(g.Symbol || g.GeneID)}</td>`;
       allLcCols.forEach(c => {
         const v = g[c];
-        const {bg,text} = heatColor(v, absMax);
-        const disp = (v!=null&&isFinite(v)) ? v.toFixed(2) : 'NA';
+        const { bg, text } = heatColor(v, absMax);
+        const disp = (v != null && isFinite(v)) ? v.toFixed(2) : 'NA';
         html += `<td><span class="hm-cell" style="background:${bg};color:${text};">${disp}</span></td>`;
       });
       html += `</tr>`;
@@ -718,17 +1240,17 @@ function renderHeatmap(area, lc) {
   });
   html += '</tbody></table></div>';
 
-  // Colour scale legend
   const steps = 7;
-  const legend = Array.from({length:steps},(_,i)=>{
-    const v = absMax * (2*i/(steps-1) - 1);
-    const {bg} = heatColor(v,absMax);
+  const legend = Array.from({length: steps}, (_, i) => {
+    const v = absMax * (2 * i / (steps - 1) - 1);
+    const { bg } = heatColor(v, absMax);
     return `<span style="display:inline-block;width:28px;height:12px;background:${bg};border-radius:2px;"></span>`;
   }).join('');
+
   area.innerHTML = `
-    <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px;font-size:11px;color:var(--text3);">
+    <div style="display:flex;align-items:center;gap:6px;margin-bottom:12px;font-size:11px;color:var(--text-dim);font-variant-numeric:tabular-nums;">
       <span>-${absMax.toFixed(1)}</span>${legend}<span>+${absMax.toFixed(1)}</span>
-      <span style="margin-left:10px;">log2FC</span>
+      <span style="margin-left:10px;letter-spacing:0.04em;text-transform:uppercase;font-size:10px;">log2FC</span>
     </div>
     ${html}`;
 }
@@ -739,27 +1261,30 @@ function renderHeatmap(area, lc) {
 function renderTable(data, lc, pc) {
   const tbody = document.getElementById('gene-tbody');
   if (!tbody) return;
-  if (!data.length) { tbody.innerHTML='<tr><td colspan="6" class="empty">No genes match current filters</td></tr>'; return; }
-  const vals   = data.map(r=>r[lc]).filter(v=>v!=null&&isFinite(v));
+  if (!data.length) {
+    tbody.innerHTML = '<tr><td colspan="6" class="empty">No genes match current filters</td></tr>';
+    return;
+  }
+  const vals = data.map(r => r[lc]).filter(v => v != null && isFinite(v));
   const absMax = vals.length ? Math.max(...vals.map(Math.abs)) : 1;
   tbody.innerHTML = data.map(r => {
-    const fc   = r[lc];
-    const pv   = r[pc];
-    const fcN  = (fc!=null&&isFinite(fc)) ? fc.toFixed(3) : 'NA';
-    const fcP  = (fc!=null&&isFinite(fc)) ? Math.min(100,Math.abs(fc)/absMax*100) : 0;
-    const fcC  = (fc!=null&&fc>=0) ? '#5DCAA5' : '#E24B4A';
-    const pvD  = (pv!=null&&isFinite(pv)) ? pv.toExponential(2) : 'NA';
-    const sig  = pv!=null&&isFinite(pv)&&pv<0.05;
+    const fc = r[lc];
+    const pv = r[pc];
+    const fcN = (fc != null && isFinite(fc)) ? fc.toFixed(3) : 'NA';
+    const fcP = (fc != null && isFinite(fc)) ? Math.min(100, Math.abs(fc) / absMax * 100) : 0;
+    const fcC = (fc != null && fc >= 0) ? '#5DCAA5' : '#E24B4A';
+    const pvD = (pv != null && isFinite(pv)) ? pv.toExponential(2) : 'NA';
+    const sig = pv != null && isFinite(pv) && pv < 0.05;
     return `<tr>
-      <td><span class="pathway-pill">${r.Pathway||''}</span></td>
-      <td style="color:var(--accent2);font-weight:500;">${r.Symbol||'—'}</td>
-      <td style="color:var(--text3);font-size:11px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${r.Description||''}">${r.Description||'—'}</td>
-      <td style="color:var(--text3);font-size:11px;font-family:monospace;">${r.GeneID||''}</td>
+      <td><span class="pathway-pill">${esc(r.Pathway || '')}</span></td>
+      <td style="color:var(--accent-lt);font-weight:500;">${esc(r.Symbol || '—')}</td>
+      <td style="color:var(--text-dim);font-size:11px;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${esc(r.Description || '')}">${esc(r.Description || '—')}</td>
+      <td style="color:var(--text-dim);font-size:11px;font-family:var(--font-mono);">${esc(r.GeneID || '')}</td>
       <td><div class="fc-bar-wrap">
         <span class="fc-num" style="color:${fcC}">${fcN}</span>
         <div class="fc-bar-bg"><div class="fc-bar-fill" style="width:${fcP.toFixed(1)}%;background:${fcC};"></div></div>
       </div></td>
-      <td><span class="sig-dot" style="background:${sig?'#5DCAA5':'var(--surface2)'};border:1px solid ${sig?'#5DCAA5':'var(--border2)'};margin-right:5px;"></span>${pvD}</td>
+      <td><span class="sig-dot" style="background:${sig?'#5DCAA5':'var(--surface-hi)'};border:1px solid ${sig?'#5DCAA5':'var(--border-md)'};margin-right:6px;"></span><span style="font-family:var(--font-mono);font-size:11px;">${pvD}</span></td>
     </tr>`;
   }).join('');
 }
@@ -776,26 +1301,23 @@ function doSearch(q) {
   S.search = q;
   const data = filteredData();
   renderTable(data, lcCol(), padjCol());
-  if (S.activeTab==='bar')      drawBar(data, lcCol());
-  else if (S.activeTab==='lollipop') renderLollipop(document.getElementById('chart-area'), data, lcCol(), padjCol());
-  else if (S.activeTab==='heatmap')  renderHeatmap(document.getElementById('chart-area'), lcCol());
+  if (S.activeTab === 'bar')          drawBar(data, lcCol());
+  else if (S.activeTab === 'heatmap') renderHeatmap(document.getElementById('chart-area'), lcCol());
 }
 function setSort(col) { S.sortCol = col; renderMain(); }
-function showPage(page) {
-  document.getElementById('page-explorer').style.display = page==='explorer'?'flex':'none';
-  document.getElementById('page-about').style.display    = page==='about'   ?'block':'none';
-  document.querySelectorAll('.nav-link').forEach((b,i)=>
-    b.classList.toggle('active',(i===0&&page==='explorer')||(i===1&&page==='about')));
-}
 function showLoading() {
   document.getElementById('main-loading').style.display = 'flex';
-  document.getElementById('main-body').style.display    = 'none';
+  document.getElementById('main-body').hidden = true;
 }
 function showErr(msg) {
-  document.getElementById('main-loading').innerHTML = `<span style="color:var(--down)">${msg}</span>`;
+  document.getElementById('main-loading').innerHTML = `<span style="color:var(--down)">${esc(msg)}</span>`;
 }
 
-init();
+// ─────────────────────────────────────────────────────────────
+// BOOT
+// ─────────────────────────────────────────────────────────────
+bindNav();
+showPage('microalgae');
 </script>
 </body>
 </html>
