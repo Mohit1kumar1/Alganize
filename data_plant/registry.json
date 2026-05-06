@@ -1,0 +1,9 @@
+{
+  "datasets": ["GSE289042"],
+  "species_map": {
+    "Arabidopsis thaliana": ["GSE289042"]
+  },
+  "induction_map": {
+    "Drought stress (osmotic)": ["GSE289042"]
+  }
+}

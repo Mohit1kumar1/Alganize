@@ -1,0 +1,12 @@
+{
+  "datasets": ["GSE162916", "GSE125419", "GSE92514"],
+  "species_map": {
+    "Chlorella": ["GSE162916"],
+    "Chromochloris zofingiensis": ["GSE125419", "GSE92514"]
+  },
+  "induction_map": {
+    "Salt + Drought (PEG) stress": ["GSE162916"],
+    "Salt stress": ["GSE125419"],
+    "High light stress": ["GSE92514"]
+  }
+}
