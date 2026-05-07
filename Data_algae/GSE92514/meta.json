@@ -92,9 +92,15 @@
     "Threonine"
 ],
   "contrasts": {
-    "High Light vs Medium Light": "HL_vs_ML"
+    "HL 0.5h vs ML 0.5h": "HL_vs_ML_0.5h",
+    "HL 1h vs ML 1h":     "HL_vs_ML_1h",
+    "HL 3h vs ML 3h":     "HL_vs_ML_3h",
+    "HL 6h vs ML 6h":     "HL_vs_ML_6h"
   },
   "contrast_descriptions": {
-    "HL_vs_ML": "log2(High Light / Medium Light) across matched time points"
+    "HL_vs_ML_0.5h": "log2(HL 0.5h / ML 0.5h) — early high-light response",
+    "HL_vs_ML_1h":   "log2(HL 1h / ML 1h) — 1-hour high-light response",
+    "HL_vs_ML_3h":   "log2(HL 3h / ML 3h) — 3-hour high-light response",
+    "HL_vs_ML_6h":   "log2(HL 6h / ML 6h) — 6-hour high-light response"
   }
 }
