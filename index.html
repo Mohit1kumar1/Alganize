@@ -308,6 +308,90 @@ main { flex: 1; overflow-y: auto; padding: 36px 44px 56px; display: flex; flex-d
   .study-grid { grid-template-columns: 1fr; }
 }
 
+/* ─── CENTRAL DOGMA EXPLORER ─────────────────────────────── */
+.dogma-page { height: calc(100vh - var(--topbar-h)); overflow-y: auto; padding: 36px 44px 64px; background: var(--bg); }
+.dogma-page[hidden] { display: none; }
+
+/* Flow row */
+.dogma-flow { display: flex; align-items: center; gap: 0; margin-bottom: 28px; background: var(--surface); border-radius: var(--radius); padding: 22px 16px; box-shadow: var(--sh-sm); overflow-x: auto; }
+.dogma-mol-card { display: flex; flex-direction: column; align-items: center; gap: 7px; flex: 1; min-width: 90px; padding: 0 8px; }
+.dogma-step-label { font-size: 13px; font-weight: 700; color: var(--text); letter-spacing: -0.01em; }
+.dogma-step-sub { font-size: 10px; color: var(--text-dim); text-align: center; letter-spacing: 0.02em; }
+.dogma-arrow-wrap { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 0 8px; flex-shrink: 0; }
+.dogma-arrow-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--text-dim); white-space: nowrap; }
+.dogma-arrow-icon { color: var(--accent-line); font-size: 22px; line-height: 1; margin-top: -2px; }
+
+/* DNA helix */
+.dna-stage { perspective: 280px; height: 90px; width: 72px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.dna-helix { transform-style: preserve-3d; animation: dna-spin 5s linear infinite; position: relative; width: 52px; height: 90px; }
+@keyframes dna-spin { to { transform: rotateY(360deg); } }
+.dna-bp { position: absolute; left: 50%; width: 46px; margin-left: -23px; height: 5px; display: flex; align-items: center; transform: translateY(calc(var(--i) * 8px)) rotateY(calc(var(--i) * 30deg)); }
+.dna-bp-a { width: 47%; height: 100%; border-radius: 2px; background: #639922; }
+.dna-bp-b { width: 47%; height: 100%; border-radius: 2px; background: #5ba3c9; margin-left: auto; }
+
+/* mRNA */
+.rna-stage { height: 90px; width: 90px; display: flex; align-items: center; justify-content: center; }
+.rna-svg { overflow: visible; }
+.rna-strand { fill: none; stroke: #f97316; stroke-width: 2.5; stroke-linecap: round; }
+.rna-ribosome { fill: rgba(249,115,22,0.25); }
+.rna-ribosome-inner { fill: #f97316; }
+
+/* Protein placeholder in flow */
+.protein-pulse-wrap { width: 72px; height: 72px; border-radius: 50%; background: var(--accent-soft); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+.protein-pulse-inner { width: 36px; height: 36px; border-radius: 50%; background: var(--accent); opacity: 0.5; animation: ppulse 2s ease-in-out infinite; }
+@keyframes ppulse { 0%,100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.25); opacity: 0.85; } }
+.protein-active-label { font-size: 9.5px; color: var(--accent-hi); font-weight: 600; text-align: center; max-width: 80px; line-height: 1.3; }
+
+/* Metabolite 2D image */
+.metab-img-wrap { width: 72px; height: 72px; background: var(--bg); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.metab-img { width: 68px; height: 68px; object-fit: contain; }
+
+/* Stress tabs */
+.dogma-stress-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+.dogma-stress-tab { display: flex; align-items: center; gap: 7px; padding: 9px 16px; border-radius: var(--radius); border: none; background: var(--surface); color: var(--text-mu); font-size: 12.5px; font-weight: 500; cursor: pointer; box-shadow: var(--sh-xs); transition: all .15s; white-space: nowrap; }
+.dogma-stress-tab:hover { box-shadow: var(--sh-sm); color: var(--text); transform: translateY(-1px); }
+.dogma-stress-tab.active { background: var(--s-bg, var(--accent-soft)); color: var(--s-text, var(--accent-hi)); box-shadow: var(--sh-md); font-weight: 600; }
+.dogma-stress-icon { font-size: 15px; line-height: 1; }
+
+/* Detail grid */
+.dogma-detail { display: grid; grid-template-columns: 1.05fr 1fr; gap: 20px; align-items: start; }
+@media (max-width: 960px) { .dogma-detail { grid-template-columns: 1fr; } }
+
+/* 3D Viewer panel */
+.dogma-viewer-panel { background: var(--surface); border-radius: var(--radius); box-shadow: var(--sh-sm); overflow: hidden; }
+.dogma-viewer-header { padding: 16px 20px 12px; }
+.dogma-viewer-title { font-size: 13.5px; font-weight: 600; color: var(--text); letter-spacing: -0.01em; }
+.dogma-viewer-src { font-size: 10.5px; color: var(--text-dim); margin-top: 3px; font-family: var(--font-mono); }
+.dogma-3d-wrap { position: relative; height: 310px; background: #f7f9f3; border-top: 1px solid rgba(0,0,0,0.04); border-bottom: 1px solid rgba(0,0,0,0.04); }
+.dogma-3d-inner { width: 100%; height: 100%; }
+.dogma-3d-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(247,249,243,0.92); gap: 10px; font-size: 12.5px; color: var(--text-dim); flex-direction: column; text-align: center; padding: 20px; }
+.dogma-viewer-footer { display: flex; gap: 7px; padding: 11px 16px; background: var(--bg); }
+.dogma-vbtn { background: var(--surface); border: none; border-radius: var(--radius-sm); padding: 5px 13px; font-size: 11.5px; font-weight: 500; color: var(--text-mu); cursor: pointer; box-shadow: var(--sh-xs); transition: all .12s; }
+.dogma-vbtn:hover { color: var(--text); box-shadow: var(--sh-sm); }
+.dogma-vbtn.active { background: var(--accent-soft); color: var(--accent-hi); }
+
+/* Info panel */
+.dogma-info-panel { background: var(--surface); border-radius: var(--radius); padding: 22px 26px 28px; box-shadow: var(--sh-sm); }
+.dogma-info-stress-chip { display: inline-flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 13px; border-radius: var(--radius-pill); margin-bottom: 10px; }
+.dogma-info-desc { font-size: 12.5px; color: var(--text-mu); line-height: 1.75; margin-bottom: 0; }
+.dogma-info-section { font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-dim); margin: 18px 0 8px; }
+.dogma-gene-list { display: flex; flex-direction: column; gap: 4px; }
+.dogma-gene-row { display: flex; align-items: center; gap: 10px; padding: 6px 11px; background: var(--bg); border-radius: var(--radius-sm); }
+.dogma-gene-sym { font-family: var(--font-mono); font-size: 11.5px; font-weight: 600; color: var(--text); min-width: 52px; }
+.dogma-gene-name { font-size: 11px; color: var(--text-mu); flex: 1; }
+.dogma-gene-fc { font-size: 11px; font-weight: 600; font-family: var(--font-mono); padding: 1px 8px; border-radius: var(--radius-pill); background: rgba(46,163,120,0.1); color: var(--up); white-space: nowrap; }
+.dogma-pathway-box { font-size: 12px; color: var(--text-mu); line-height: 1.8; padding: 10px 14px; background: var(--bg); border-radius: var(--radius-sm); font-family: var(--font-mono); word-break: break-word; }
+.dogma-met-card { display: flex; gap: 13px; padding: 13px; background: var(--bg); border-radius: var(--radius-sm); align-items: flex-start; margin-top: 6px; }
+.dogma-met-img { width: 76px; height: 76px; object-fit: contain; border-radius: var(--radius-sm); background: var(--surface); flex-shrink: 0; box-shadow: var(--sh-xs); }
+.dogma-met-name { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+.dogma-met-desc { font-size: 11.5px; color: var(--text-mu); line-height: 1.65; }
+.dogma-info-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
+.dogma-act-btn { padding: 9px 16px; border-radius: var(--radius-sm); border: none; font-size: 12.5px; font-weight: 600; cursor: pointer; transition: all .12s; }
+.dogma-act-btn.primary { background: var(--accent); color: #fff; box-shadow: 0 2px 8px rgba(99,153,34,0.25); }
+.dogma-act-btn.primary:hover { background: var(--accent-hi); box-shadow: 0 4px 14px rgba(99,153,34,0.3); }
+.dogma-act-btn.ghost { background: var(--bg); color: var(--text-mu); box-shadow: var(--sh-xs); }
+.dogma-act-btn.ghost:hover { background: var(--surface-hi); color: var(--text); }
+
 /* ─── METABOLITE MAP ─────────────────────────────────────── */
 .metmap-page { height: calc(100vh - var(--topbar-h)); overflow-y: auto; overflow-x: hidden; padding: 40px 48px 64px; background: var(--bg); }
 .metmap-page[hidden] { display: none; }
@@ -380,10 +464,11 @@ main { flex: 1; overflow-y: auto; padding: 36px 44px 56px; display: flex; flex-d
     <button class="nav-tab" data-page="plant">Plant</button>
     <button class="nav-tab" data-page="soil">Soil</button>
     <button class="nav-tab" data-page="correlation">Correlation</button>
-    <button class="nav-tab" data-page="metmap">Metabolite Map</button>
     <div class="nav-sep"></div>
     <button class="nav-tab live" data-page="pubmed">Literature</button>
     <button class="nav-tab live" data-page="metabolomics">Metabolomics</button>
+    <button class="nav-tab" data-page="metmap">Metabolite Map</button>
+    <button class="nav-tab" data-page="dogma">Central Dogma</button>
     <button class="nav-tab" data-page="more">More Tools</button>
     <div class="nav-sep"></div>
     <button class="nav-tab" data-page="about">About</button>
@@ -549,6 +634,116 @@ main { flex: 1; overflow-y: auto; padding: 36px 44px 56px; display: flex; flex-d
   </div>
 </section>
 
+<!-- ─── CENTRAL DOGMA EXPLORER ──────────────────────────── -->
+<div class="dogma-page" id="page-dogma" hidden>
+  <div class="tool-header">
+    <div class="tool-header-row">
+      <h2>Central Dogma Explorer</h2>
+    </div>
+    <p>From gene activation to metabolite accumulation — explore how microalgae respond to 5 key stress conditions at the molecular level. 3D protein structures are loaded live from AlphaFold2 (EBI).</p>
+  </div>
+
+  <!-- Central Dogma animated flow -->
+  <div class="dogma-flow">
+    <div class="dogma-mol-card">
+      <div class="dna-stage">
+        <div class="dna-helix" id="dogma-dna-helix"></div>
+      </div>
+      <div class="dogma-step-label">DNA</div>
+      <div class="dogma-step-sub">Stress-responsive genes</div>
+    </div>
+    <div class="dogma-arrow-wrap">
+      <div class="dogma-arrow-label">Transcription</div>
+      <div class="dogma-arrow-icon">→</div>
+    </div>
+    <div class="dogma-mol-card">
+      <div class="rna-stage">
+        <svg class="rna-svg" viewBox="0 0 90 60" width="90" height="60">
+          <path class="rna-strand" d="M5,30 Q17,8 29,30 Q41,52 53,30 Q65,8 77,30 Q83,19 89,22"/>
+          <circle class="rna-ribosome" r="9">
+            <animateMotion dur="3.2s" repeatCount="indefinite"
+              path="M5,30 Q17,8 29,30 Q41,52 53,30 Q65,8 77,30 Q83,19 89,22"/>
+          </circle>
+          <circle class="rna-ribosome-inner" r="5">
+            <animateMotion dur="3.2s" repeatCount="indefinite"
+              path="M5,30 Q17,8 29,30 Q41,52 53,30 Q65,8 77,30 Q83,19 89,22"/>
+          </circle>
+          <circle class="rna-ribosome" r="9">
+            <animateMotion dur="3.2s" begin="-1.6s" repeatCount="indefinite"
+              path="M5,30 Q17,8 29,30 Q41,52 53,30 Q65,8 77,30 Q83,19 89,22"/>
+          </circle>
+        </svg>
+      </div>
+      <div class="dogma-step-label">mRNA</div>
+      <div class="dogma-step-sub">Transcript + ribosome</div>
+    </div>
+    <div class="dogma-arrow-wrap">
+      <div class="dogma-arrow-label">Translation</div>
+      <div class="dogma-arrow-icon">→</div>
+    </div>
+    <div class="dogma-mol-card">
+      <div class="protein-pulse-wrap">
+        <div class="protein-pulse-inner" id="dogma-flow-protein-pulse"></div>
+      </div>
+      <div class="dogma-step-label">Enzyme</div>
+      <div class="protein-active-label" id="dogma-flow-protein-name">Select a stress →</div>
+    </div>
+    <div class="dogma-arrow-wrap">
+      <div class="dogma-arrow-label">Catalysis</div>
+      <div class="dogma-arrow-icon">→</div>
+    </div>
+    <div class="dogma-mol-card">
+      <div class="metab-img-wrap" id="dogma-flow-metab-wrap">
+        <svg viewBox="0 0 72 72" width="68" height="68">
+          <circle cx="36" cy="36" r="22" fill="none" stroke="var(--accent-line)" stroke-width="2" stroke-dasharray="5 3"/>
+          <text x="36" y="40" text-anchor="middle" font-size="10" fill="var(--text-dim)" font-family="Inter,sans-serif">metabolite</text>
+        </svg>
+      </div>
+      <div class="dogma-step-label">Metabolite</div>
+      <div class="dogma-step-sub" id="dogma-flow-metab-name">Stress product</div>
+    </div>
+  </div>
+
+  <!-- Stress selector tabs -->
+  <div class="dogma-stress-tabs" id="dogma-stress-tabs"></div>
+
+  <!-- Detail section -->
+  <div class="dogma-detail">
+    <!-- 3D viewer -->
+    <div class="dogma-viewer-panel">
+      <div class="dogma-viewer-header">
+        <div class="dogma-viewer-title" id="dogma-viewer-title">Select a stress condition above</div>
+        <div class="dogma-viewer-src" id="dogma-viewer-src"></div>
+      </div>
+      <div class="dogma-3d-wrap">
+        <div class="dogma-3d-inner" id="dogma-3d-viewer"></div>
+        <div class="dogma-3d-overlay" id="dogma-3d-loading" style="display:none">
+          <div class="spinner"></div><span>Loading AlphaFold2 structure…</span>
+        </div>
+        <div class="dogma-3d-overlay" id="dogma-3d-error" style="display:none">
+          <span style="font-size:16px">⚠</span>
+          <span>Structure unavailable. <a id="dogma-af-link" href="https://alphafold.ebi.ac.uk" target="_blank" rel="noopener" style="color:var(--accent-hi)">Open AlphaFold ↗</a></span>
+        </div>
+        <div class="dogma-3d-overlay" id="dogma-3d-placeholder">
+          <span style="font-size:28px;opacity:0.25">⬡</span>
+          <span style="opacity:0.45">3D protein structure loads here</span>
+        </div>
+      </div>
+      <div class="dogma-viewer-footer">
+        <button class="dogma-vbtn active" id="dogma-btn-spin" onclick="dogmaToggleSpin()">⟳ Spin</button>
+        <button class="dogma-vbtn" onclick="dogmaResetView()">Reset</button>
+        <button class="dogma-vbtn" id="dogma-btn-surf" onclick="dogmaToggleSurface()">Surface</button>
+        <button class="dogma-vbtn" id="dogma-btn-stick" onclick="dogmaToggleStick()">Sticks</button>
+      </div>
+    </div>
+
+    <!-- Info panel -->
+    <div class="dogma-info-panel" id="dogma-info-panel">
+      <div style="color:var(--text-dim);font-size:13px;padding:40px 0;text-align:center;">Select a stress condition to explore the molecular pathway.</div>
+    </div>
+  </div>
+</div>
+
 <!-- ─── METABOLITE MAP ───────────────────────────────────── -->
 <div class="metmap-page" id="page-metmap" hidden>
   <div class="tool-header">
@@ -602,9 +797,9 @@ const EXPLORER_PAGES = {
   soil:        { dir: 'data_soil',         title: 'Soil Microbiome Explorer' },
   correlation: { dir: 'data_correlation',  title: 'Co-relation Explorer' },
 };
-const TOOL_PAGES = new Set(['pubmed','metabolomics','more','about','metmap']);
+const TOOL_PAGES = new Set(['pubmed','metabolomics','more','about','metmap','dogma']);
 
-const ALL_PAGE_IDS = ['page-explorer','page-pubmed','page-metabolomics','page-more','page-about','page-metmap'];
+const ALL_PAGE_IDS = ['page-explorer','page-pubmed','page-metabolomics','page-more','page-about','page-metmap','page-dogma'];
 
 // ─────────────────────────────────────────────────────────────
 // GENE EXPRESSION EXPLORER STATE
@@ -646,6 +841,7 @@ async function showPage(page) {
   if (page === 'pubmed')       { document.getElementById('page-pubmed').hidden = false; initPubMed(); return; }
   if (page === 'metabolomics') { document.getElementById('page-metabolomics').hidden = false; initMetabolomics(); return; }
   if (page === 'metmap')       { document.getElementById('page-metmap').hidden = false; initMetmap(); return; }
+  if (page === 'dogma')        { document.getElementById('page-dogma').hidden = false; initDogma(); return; }
 
   // ── Gene expression explorer ──
   document.getElementById('page-explorer').hidden = false;
@@ -1249,6 +1445,276 @@ function renderMetabolomics(studies) {
     </div>`).join('');
 
   document.getElementById('metabo-content').hidden = false;
+}
+
+// ─────────────────────────────────────────────────────────────
+// CENTRAL DOGMA EXPLORER
+// ─────────────────────────────────────────────────────────────
+const DOGMA_STRESSES = [
+  {
+    id: 'highlight', name: 'High Light', icon: '☀', bg: '#FFF0BC', text: '#6b4e00',
+    description: 'Excess photon flux overwhelms the photosynthetic apparatus, generating reactive oxygen species (ROS) that damage PSII and the LHC. Microalgae respond by inducing secondary carotenogenesis — accumulating astaxanthin and β-carotene in lipid droplets as photoprotective "sunscreens".',
+    genes: [
+      { sym:'PSY',  name:'Phytoene synthase',          fc:8.2 },
+      { sym:'PDS',  name:'Phytoene desaturase',         fc:5.1 },
+      { sym:'BKT1', name:'β-Ketolase',                  fc:12.4 },
+      { sym:'LCYB', name:'Lycopene β-cyclase',          fc:3.8 },
+    ],
+    protein: { name:'Phytoene Synthase (PSY)', fn:'First committed enzyme in carotenoid biosynthesis — condenses two GGPP molecules to form phytoene, the colourless carotenoid precursor to all downstream pigments including β-carotene and astaxanthin.', uniprot:'P37217', pdbId:'4OPO', src:'AlphaFold2 · At PSY (P37217)' },
+    pathway: 'MEP/DOXP → GGPP → Phytoene → Lycopene → β-Carotene → Zeaxanthin → Astaxanthin',
+    metabolite: { name:'Astaxanthin / β-Carotene', cid:5280895, desc:'The most potent natural antioxidant (singlet oxygen quenching ~500× stronger than Vit.E). Accumulates to 4–7% DW in Chromochloris zofingiensis under combined high-light and N-starvation, providing photoprotection and high commercial value.' }
+  },
+  {
+    id: 'salt', name: 'Salt Stress', icon: '≈', bg: '#CCDCE8', text: '#1e3a5f',
+    description: 'High NaCl causes ion toxicity (Na⁺/K⁺ imbalance), osmotic dehydration, and secondary oxidative stress. Microalgae rapidly synthesise compatible solutes (proline, betaine) to rebalance osmotic potential, and upregulate ion transporters and antioxidant enzymes.',
+    genes: [
+      { sym:'P5CS',  name:'Pyrroline-5-carboxylate synthetase', fc:6.3 },
+      { sym:'BADH',  name:'Betaine aldehyde dehydrogenase',      fc:4.2 },
+      { sym:'SOS1',  name:'Na⁺/H⁺ antiporter (SOS pathway)',    fc:3.1 },
+      { sym:'CAT',   name:'Catalase (ROS detox)',                fc:5.8 },
+    ],
+    protein: { name:'P5CS (Δ¹-Pyrroline-5-carboxylate Synthetase)', fn:'Bifunctional enzyme catalysing the first two steps of proline biosynthesis from glutamate (γ-glutamyl kinase + γ-glutamyl phosphate reductase activities). Rate-limiting enzyme for osmotic adjustment under salt/drought stress.', uniprot:'Q44445', pdbId:'2EKN', src:'AlphaFold2 · At P5CS1 (Q44445)' },
+    pathway: 'Glutamate → γ-Glutamyl-P → Glutamate-5-semialdehyde → Δ¹-Pyrroline-5-carboxylate → L-Proline',
+    metabolite: { name:'L-Proline', cid:145742, desc:'Primary compatible solute under salt and osmotic stress. Stabilises protein tertiary structure, scavenges hydroxyl radicals, and acts as an osmotic buffer. Intracellular proline can increase 10–100-fold within hours of salt exposure.' }
+  },
+  {
+    id: 'nitrogen', name: 'N-Starvation', icon: '↓N', bg: '#C8EECC', text: '#1b5e20',
+    description: 'Nitrogen deficiency triggers global metabolic reprogramming: chloroplast dismantling, protein catabolism, and carbon redirection from the Calvin cycle into neutral lipid (TAG) and starch biosynthesis. N-starvation is the primary industrial strategy for high-value lipid production in microalgae.',
+    genes: [
+      { sym:'DGAT1',  name:'Diacylglycerol acyltransferase 1',   fc:9.1 },
+      { sym:'DGAT2',  name:'Diacylglycerol acyltransferase 2',   fc:7.4 },
+      { sym:'ACCase', name:'Acetyl-CoA carboxylase',             fc:4.8 },
+      { sym:'LPAT',   name:'Lysophosphatidic acid acyltransferase', fc:3.5 },
+    ],
+    protein: { name:'DGAT1 (Diacylglycerol Acyltransferase 1)', fn:'Catalyses the final, committed step of TAG biosynthesis — acyl-CoA-dependent esterification of sn-1,2-diacylglycerol to form triacylglycerol. Membrane-associated enzyme embedded in the ER bilayer via multiple transmembrane helices.', uniprot:'O80937', pdbId:'6VYH', src:'AlphaFold2 · At DGAT1 (O80937)' },
+    pathway: 'Acetyl-CoA → Malonyl-ACP (ACCase) → Fatty acids (FAS) → Glycerol-3-P → PA → DAG → TAG (lipid droplets)',
+    metabolite: { name:'Triacylglycerol (TAG) / ω-3 Fatty Acids', cid:5282283, desc:'Neutral lipids stored in cytoplasmic lipid bodies. Under N-starvation, TAG content exceeds 50% DW in Chromochloris zofingiensis. Rich in EPA and DHA (ω-3 PUFA) with high biotechnological and nutraceutical value.' }
+  },
+  {
+    id: 'drought', name: 'Drought / Osmotic', icon: '◌', bg: '#FFE0D6', text: '#6b2211',
+    description: 'Water deficit or PEG-induced osmotic stress triggers ABA biosynthesis and stomatal signalling. Microalgae-derived ABA acts as a potent biostimulant when applied to crops — directly activating stomatal closure, drought-tolerance genes (DREB, LEA, RD29), and root architecture changes.',
+    genes: [
+      { sym:'NCED3',  name:'9-cis-Epoxycarotenoid dioxygenase', fc:7.6 },
+      { sym:'AAO3',   name:'Abscisic aldehyde oxidase',         fc:5.2 },
+      { sym:'DREB1',  name:'Dehydration-responsive element binding', fc:4.9 },
+      { sym:'LEA',    name:'Late embryogenesis abundant protein', fc:11.3 },
+    ],
+    protein: { name:'NCED3 (9-cis-Epoxycarotenoid Dioxygenase)', fn:'Rate-limiting enzyme in ABA biosynthesis — oxidative cleavage of 9-cis-violaxanthin or 9-cis-neoxanthin via a non-haem iron(II)/2-oxoglutarate-dependent dioxygenase mechanism to yield xanthoxin, the ABA precursor.', uniprot:'Q9LI99', pdbId:'3NPE', src:'AlphaFold2 · At NCED3 (Q9LI99)' },
+    pathway: '9-cis-Violaxanthin → Xanthoxin (NCED3) → Abscisic aldehyde (ABA2) → Abscisic Acid (ABA) (AAO3)',
+    metabolite: { name:'Abscisic Acid (ABA)', cid:5280896, desc:'The master drought/stress phytohormone. Microalgae-derived ABA functions as a biostimulant — activating stomatal closure via guard cell ABA receptors (PYR/PYL), inducing LEA/dehydrin expression, and enhancing root-to-shoot signalling under water deficit.' }
+  },
+  {
+    id: 'heat', name: 'Heat Stress', icon: '△T', bg: '#FFD4BC', text: '#7a3b1c',
+    description: 'Supraoptimal temperature causes protein unfolding, membrane phase transitions, and disruption of the photosynthetic electron transport chain. Heat shock proteins (HSPs) act as ATP-dependent molecular chaperones to refold misfolded proteins and prevent fatal aggregation.',
+    genes: [
+      { sym:'HSP70',  name:'Heat shock protein 70 (chaperone)',  fc:15.2 },
+      { sym:'HSP90',  name:'Heat shock protein 90',              fc:9.8 },
+      { sym:'sHSP',   name:'Small heat shock protein (IbpA)',    fc:22.1 },
+      { sym:'FAD',    name:'Fatty acid desaturase (membrane)',   fc:4.3 },
+    ],
+    protein: { name:'HSP70 (Heat Shock Protein 70)', fn:'ATP-dependent chaperone with two functional domains: an N-terminal ATPase domain and a C-terminal substrate-binding domain. Binds exposed hydrophobic segments of unfolded proteins, preventing aggregation, and uses ATP hydrolysis to drive iterative cycles of client binding and release.', uniprot:'P22953', pdbId:'2QXL', src:'AlphaFold2 · At HSP70-1 (P22953)' },
+    pathway: 'Heat stress → HSF1 activation → HSP70/90 expression → Chaperone binding → Protein refolding or UPS degradation',
+    metabolite: { name:'Trehalose / Unsaturated Membrane Lipids', cid:7427, desc:'Trehalose vitrifies the cytoplasm and stabilises protein-lipid interfaces at heat-stress temperatures. Concurrently, fatty acid desaturases (FADs) increase membrane PUFA content to maintain bilayer fluidity and prevent lipid phase separation above the optimal growth temperature.' }
+  }
+];
+
+let DG = { init: false, viewer: null, spinning: true, surface: false, sticks: false, currentStress: null, dmolReady: false };
+
+function loadScript(src) {
+  return new Promise((res, rej) => {
+    if (typeof $3Dmol !== 'undefined') { res(); return; }
+    const s = document.createElement('script'); s.src = src;
+    s.onload = res; s.onerror = rej;
+    document.head.appendChild(s);
+  });
+}
+
+async function initDogma() {
+  if (DG.init) return;
+  DG.init = true;
+  buildDNAHelix();
+  buildStressTabs();
+  try {
+    await loadScript('https://3dmol.csb.pitt.edu/build/3Dmol-min.js');
+    DG.dmolReady = true;
+  } catch(e) {
+    console.warn('3Dmol.js failed to load — 3D viewer unavailable');
+  }
+}
+
+function buildDNAHelix() {
+  const helix = document.getElementById('dogma-dna-helix');
+  if (!helix) return;
+  helix.innerHTML = Array.from({length:12}, (_,i) =>
+    `<div class="dna-bp" style="--i:${i}"><div class="dna-bp-a"></div><div class="dna-bp-b"></div></div>`
+  ).join('');
+}
+
+function buildStressTabs() {
+  const el = document.getElementById('dogma-stress-tabs');
+  if (!el) return;
+  el.innerHTML = DOGMA_STRESSES.map(s =>
+    `<button class="dogma-stress-tab" data-sid="${s.id}" style="--s-bg:${s.bg};--s-text:${s.text}" onclick="selectStress('${s.id}')">
+      <span class="dogma-stress-icon">${esc(s.icon)}</span>${esc(s.name)}
+    </button>`
+  ).join('');
+}
+
+async function selectStress(sid) {
+  const s = DOGMA_STRESSES.find(x => x.id === sid);
+  if (!s) return;
+  DG.currentStress = sid;
+
+  // Activate tab
+  document.querySelectorAll('.dogma-stress-tab').forEach(b => b.classList.toggle('active', b.dataset.sid === sid));
+
+  // Update flow row
+  document.getElementById('dogma-flow-protein-name').textContent = s.protein.name.split(' (')[0];
+  const mw = document.getElementById('dogma-flow-metab-wrap');
+  mw.innerHTML = `<img class="metab-img" src="https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/${s.metabolite.cid}/PNG?record_type=2d&image_size=150x150" alt="${esc(s.metabolite.name)}" onerror="this.style.display='none'"/>`;
+  document.getElementById('dogma-flow-metab-name').textContent = s.metabolite.name.split(' /')[0].split(' (')[0];
+
+  // Update viewer header
+  document.getElementById('dogma-viewer-title').textContent = s.protein.name;
+  document.getElementById('dogma-viewer-src').textContent = s.protein.src;
+  const afLink = document.getElementById('dogma-af-link');
+  if (afLink) afLink.href = `https://alphafold.ebi.ac.uk/entry/${s.protein.uniprot}`;
+
+  // Render info panel
+  document.getElementById('dogma-info-panel').innerHTML = `
+    <div class="dogma-info-stress-chip" style="background:${s.bg};color:${s.text}">
+      <span>${esc(s.icon)}</span>${esc(s.name)}
+    </div>
+    <p class="dogma-info-desc">${esc(s.description)}</p>
+    <div class="dogma-info-section">Upregulated Genes</div>
+    <div class="dogma-gene-list">
+      ${s.genes.map(g=>`<div class="dogma-gene-row">
+        <span class="dogma-gene-sym">${esc(g.sym)}</span>
+        <span class="dogma-gene-name">${esc(g.name)}</span>
+        <span class="dogma-gene-fc">↑ ${g.fc}×</span>
+      </div>`).join('')}
+    </div>
+    <div class="dogma-info-section">Key Enzyme</div>
+    <div style="font-size:12.5px;color:var(--text-mu);line-height:1.7;padding:9px 13px;background:var(--bg);border-radius:var(--radius-sm);">
+      <strong style="color:var(--text)">${esc(s.protein.name)}</strong><br>${esc(s.protein.fn)}
+    </div>
+    <div class="dogma-info-section">Biosynthetic Pathway</div>
+    <div class="dogma-pathway-box">${esc(s.pathway)}</div>
+    <div class="dogma-info-section">Key Metabolite</div>
+    <div class="dogma-met-card">
+      <img class="dogma-met-img" src="https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/${s.metabolite.cid}/PNG?record_type=2d&image_size=200x200" alt="${esc(s.metabolite.name)}" onerror="this.style.display='none'"/>
+      <div>
+        <div class="dogma-met-name">${esc(s.metabolite.name)}</div>
+        <div class="dogma-met-desc">${esc(s.metabolite.desc)}</div>
+      </div>
+    </div>
+    <div class="dogma-info-actions">
+      <button class="dogma-act-btn primary" onclick="dogmaSearchPubMed()">Search PubMed →</button>
+      <button class="dogma-act-btn ghost" onclick="showPage('metmap')">Metabolite Map →</button>
+      <a href="https://alphafold.ebi.ac.uk/entry/${esc(s.protein.uniprot)}" target="_blank" rel="noopener" class="dogma-act-btn ghost" style="text-decoration:none">AlphaFold ↗</a>
+    </div>`;
+
+  // Load 3D structure
+  await dogmaLoad3D(s);
+}
+
+async function dogmaLoad3D(s) {
+  if (!DG.dmolReady) {
+    try {
+      await loadScript('https://3dmol.csb.pitt.edu/build/3Dmol-min.js');
+      DG.dmolReady = true;
+    } catch(e) {
+      show3dError(); return;
+    }
+  }
+  document.getElementById('dogma-3d-placeholder').style.display = 'none';
+  document.getElementById('dogma-3d-error').style.display = 'none';
+  document.getElementById('dogma-3d-loading').style.display = 'flex';
+
+  const el = document.getElementById('dogma-3d-viewer');
+  if (!DG.viewer) {
+    DG.viewer = $3Dmol.createViewer(el, { backgroundColor: '#f7f9f3', id: 'dogma-mol-view' });
+  } else {
+    DG.viewer.clear();
+    if (DG.spinning) DG.viewer.spin(false);
+  }
+
+  let loaded = false;
+
+  // Try AlphaFold first
+  try {
+    const url = `https://alphafold.ebi.ac.uk/files/AF-${s.protein.uniprot}-F1-model_v4.pdb`;
+    const pdbText = await fetch(url).then(r => { if (!r.ok) throw new Error(); return r.text(); });
+    DG.viewer.addModel(pdbText, 'pdb');
+    loaded = true;
+  } catch(e) { /* try fallback */ }
+
+  // Fallback: RCSB PDB
+  if (!loaded && s.protein.pdbId) {
+    try {
+      await new Promise((res, rej) => {
+        $3Dmol.download(`pdb:${s.protein.pdbId}`, DG.viewer, {}, () => res());
+        setTimeout(() => rej(new Error('timeout')), 12000);
+      });
+      loaded = true;
+    } catch(e) { /* fail */ }
+  }
+
+  document.getElementById('dogma-3d-loading').style.display = 'none';
+  if (!loaded) { show3dError(); return; }
+
+  applyProteinStyle();
+  DG.viewer.zoomTo();
+  DG.viewer.render();
+  if (DG.spinning) DG.viewer.spin('y', 1);
+}
+
+function applyProteinStyle() {
+  if (!DG.viewer) return;
+  DG.viewer.setStyle({}, { cartoon: { color: 'spectrum' } });
+  if (DG.surface) {
+    DG.viewer.addSurface($3Dmol.SurfaceType.VDW, { opacity: 0.35, colorscheme: { gradient: 'rwb' } });
+  }
+  if (DG.sticks) {
+    DG.viewer.addStyle({hetflag: true}, { stick: { radius: 0.2, colorscheme: 'greenCarbon' } });
+  }
+  DG.viewer.render();
+}
+
+function show3dError() {
+  document.getElementById('dogma-3d-error').style.display = 'flex';
+}
+
+function dogmaToggleSpin() {
+  DG.spinning = !DG.spinning;
+  document.getElementById('dogma-btn-spin').classList.toggle('active', DG.spinning);
+  if (DG.viewer) DG.viewer.spin(DG.spinning ? 'y' : false, 1);
+}
+
+function dogmaToggleSurface() {
+  DG.surface = !DG.surface;
+  document.getElementById('dogma-btn-surf').classList.toggle('active', DG.surface);
+  if (DG.viewer) { DG.viewer.removeAllSurfaces(); applyProteinStyle(); }
+}
+
+function dogmaToggleStick() {
+  DG.sticks = !DG.sticks;
+  document.getElementById('dogma-btn-stick').classList.toggle('active', DG.sticks);
+  if (DG.viewer) applyProteinStyle();
+}
+
+function dogmaResetView() {
+  if (!DG.viewer) return;
+  DG.viewer.zoomTo(); DG.viewer.render();
+}
+
+function dogmaSearchPubMed() {
+  const s = DOGMA_STRESSES.find(x => x.id === DG.currentStress);
+  if (!s) return;
+  const q = `microalgae ${s.name.toLowerCase().replace(/[/()↓△]/g,' ')} stress ${s.metabolite.name.split('/')[0].trim()}`;
+  document.getElementById('pubmed-query').value = q.trim();
+  PM.loaded = false;
+  showPage('pubmed');
 }
 
 // ─────────────────────────────────────────────────────────────
