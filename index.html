@@ -307,6 +307,65 @@ main { flex: 1; overflow-y: auto; padding: 36px 44px 56px; display: flex; flex-d
   .panel, .dataset-header { padding: 18px 20px; }
   .study-grid { grid-template-columns: 1fr; }
 }
+
+/* ─── METABOLITE MAP ─────────────────────────────────────── */
+.metmap-page { height: calc(100vh - var(--topbar-h)); overflow-y: auto; overflow-x: hidden; padding: 40px 48px 64px; background: var(--bg); }
+.metmap-page[hidden] { display: none; }
+
+/* Tree layout */
+.metmap-tree-scroll { overflow-x: auto; width: 100%; padding-bottom: 8px; }
+.metmap-tree-outer { min-width: 820px; display: flex; flex-direction: column; align-items: center; margin-bottom: 28px; }
+.metmap-root-oval { background: var(--accent); color: #fff; padding: 9px 30px; border-radius: 999px; font-size: 14px; font-weight: 600; box-shadow: var(--sh-md); letter-spacing: -0.01em; }
+.metmap-trunk { width: 2px; height: 22px; background: var(--accent-line); flex-shrink: 0; }
+.metmap-branches-row { display: flex; width: 100%; position: relative; align-items: flex-start; }
+.metmap-branches-row::before { content: ''; position: absolute; top: 0; left: calc(100%/12); right: calc(100%/12); height: 2px; background: var(--accent-line); }
+.metmap-cat-col { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 0 5px; }
+.metmap-cat-col::before { content: ''; width: 2px; height: 20px; background: var(--accent-line); flex-shrink: 0; }
+.metmap-cat-box { width: 100%; background: var(--cat-bg, #f5f5f0); border-radius: var(--radius); padding: 13px 12px 11px; box-shadow: var(--sh-sm); cursor: pointer; transition: box-shadow .2s, transform .15s; }
+.metmap-cat-box:hover { box-shadow: var(--sh-md); transform: translateY(-2px); }
+.metmap-cat-box.active { box-shadow: var(--sh-lg); transform: translateY(-2px); outline: 2px solid var(--accent); }
+.metmap-cat-title { font-size: 11px; font-weight: 700; color: var(--cat-text, var(--text)); letter-spacing: 0.02em; margin-bottom: 9px; text-align: center; line-height: 1.3; }
+.metmap-chips { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; }
+.metmap-chip { font-size: 10.5px; padding: 3px 8px; border-radius: var(--radius-pill); background: rgba(255,255,255,0.72); color: var(--cat-text, var(--text-mu)); font-weight: 500; cursor: pointer; transition: background .12s, box-shadow .12s; box-shadow: var(--sh-xs); white-space: nowrap; }
+.metmap-chip:hover { background: #fff; box-shadow: var(--sh-sm); }
+.metmap-chip.active { background: var(--accent); color: #fff; box-shadow: 0 2px 8px rgba(99,153,34,0.3); }
+
+/* Functions strip */
+.metmap-functions-card { background: var(--surface); border-radius: var(--radius); padding: 26px 36px; box-shadow: var(--sh-sm); }
+.metmap-functions-title { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-hi); margin-bottom: 16px; }
+.metmap-functions-grid { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 7px 28px; padding: 0; }
+.metmap-functions-grid li { font-size: 12.5px; color: var(--text-mu); line-height: 1.55; padding-left: 16px; position: relative; }
+.metmap-functions-grid li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 11px; top: 2px; }
+
+/* Side panel */
+.metmap-panel { position: fixed; top: var(--topbar-h); right: -400px; width: 378px; height: calc(100vh - var(--topbar-h)); background: var(--surface); box-shadow: -6px 0 32px rgba(15,35,5,0.09); z-index: 50; overflow-y: auto; padding: 0; transition: right 0.25s cubic-bezier(0.4,0,0.2,1); }
+.metmap-panel.open { right: 0; }
+.metmap-panel-topbar { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px 0; margin-bottom: 20px; }
+.metmap-panel-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-dim); }
+.metmap-panel-close { background: none; border: none; font-size: 16px; color: var(--text-dim); cursor: pointer; padding: 4px 8px; border-radius: var(--radius-sm); transition: color .12s, background .12s; line-height: 1; }
+.metmap-panel-close:hover { color: var(--text); background: var(--bg); }
+.metmap-panel-body { padding: 0 24px 48px; }
+.metmap-panel-cat-label { display: inline-block; font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 12px; border-radius: var(--radius-pill); margin-bottom: 14px; }
+.metmap-panel-met-name { font-size: 20px; font-weight: 600; color: var(--text); letter-spacing: -0.015em; margin-bottom: 8px; line-height: 1.2; }
+.metmap-panel-aliases { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.metmap-panel-aliases span { font-size: 11px; background: var(--bg); color: var(--text-dim); padding: 2px 10px; border-radius: var(--radius-pill); font-family: var(--font-mono); }
+.metmap-panel-desc { font-size: 13px; color: var(--text-mu); line-height: 1.75; margin-bottom: 0; }
+.metmap-panel-section-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-dim); margin: 20px 0 10px; }
+.metmap-panel-fns { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 5px; }
+.metmap-panel-fns li { font-size: 12.5px; color: var(--text-mu); padding: 7px 12px; background: var(--bg); border-radius: var(--radius-sm); line-height: 1.5; }
+.metmap-panel-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.metmap-panel-chip { font-size: 12px; padding: 5px 13px; border-radius: var(--radius-pill); background: var(--bg); color: var(--text-mu); cursor: pointer; font-weight: 500; box-shadow: var(--sh-xs); transition: all .12s; }
+.metmap-panel-chip:hover { background: var(--accent-soft); color: var(--accent-hi); box-shadow: var(--sh-sm); }
+.metmap-db-links { display: flex; gap: 8px; flex-wrap: wrap; }
+.metmap-db-link { font-size: 12px; font-weight: 600; color: var(--accent-hi); background: var(--accent-soft); padding: 5px 14px; border-radius: var(--radius-pill); box-shadow: var(--sh-xs); transition: box-shadow .15s; }
+.metmap-db-link:hover { box-shadow: var(--sh-sm); }
+.metmap-panel-actions { display: flex; flex-direction: column; gap: 8px; margin-top: 22px; }
+.metmap-action-btn { width: 100%; padding: 11px 20px; border-radius: var(--radius-sm); border: none; font-size: 13px; font-weight: 600; cursor: pointer; transition: box-shadow .15s, background .12s; text-align: left; background: var(--accent); color: #fff; box-shadow: 0 2px 10px rgba(99,153,34,0.28); }
+.metmap-action-btn:hover { background: var(--accent-hi); box-shadow: 0 4px 16px rgba(99,153,34,0.35); }
+.metmap-action-btn.secondary { background: var(--bg); color: var(--text-mu); box-shadow: var(--sh-xs); }
+.metmap-action-btn.secondary:hover { background: var(--surface-hi); box-shadow: var(--sh-sm); color: var(--text); }
+.metmap-panel-breadcrumb { font-size: 12px; color: var(--accent-hi); cursor: pointer; margin-bottom: 12px; font-weight: 500; display: inline-block; }
+.metmap-panel-breadcrumb:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -321,6 +380,7 @@ main { flex: 1; overflow-y: auto; padding: 36px 44px 56px; display: flex; flex-d
     <button class="nav-tab" data-page="plant">Plant</button>
     <button class="nav-tab" data-page="soil">Soil</button>
     <button class="nav-tab" data-page="correlation">Correlation</button>
+    <button class="nav-tab" data-page="metmap">Metabolite Map</button>
     <div class="nav-sep"></div>
     <button class="nav-tab live" data-page="pubmed">Literature</button>
     <button class="nav-tab live" data-page="metabolomics">Metabolomics</button>
@@ -489,6 +549,49 @@ main { flex: 1; overflow-y: auto; padding: 36px 44px 56px; display: flex; flex-d
   </div>
 </section>
 
+<!-- ─── METABOLITE MAP ───────────────────────────────────── -->
+<div class="metmap-page" id="page-metmap" hidden>
+  <div class="tool-header">
+    <div class="tool-header-row">
+      <h2>Metabolite Map</h2>
+    </div>
+    <p>Interactive map of microalgae-derived metabolite classes and their biostimulatory roles. Click any category box or metabolite chip to explore descriptions, database links, and cross-search the Literature and Metabolomics tools.</p>
+  </div>
+
+  <div class="metmap-tree-scroll">
+    <div class="metmap-tree-outer">
+      <div class="metmap-root-oval">Microalgae</div>
+      <div class="metmap-trunk"></div>
+      <div class="metmap-branches-row" id="metmap-tree"></div>
+    </div>
+  </div>
+
+  <div class="metmap-functions-card">
+    <div class="metmap-functions-title">Major Biostimulatory Functions of Microalgae-Derived Metabolites &amp; Nutrients</div>
+    <ul class="metmap-functions-grid">
+      <li>Growth enhancement — root &amp; shoot elongation, tissue weight</li>
+      <li>Protection of photosystem II (PS II) and light harvesting complex (LHC)</li>
+      <li>Nutrient mobilization and enhancement of nutrient uptake in roots</li>
+      <li>Tolerance to abiotic stress: salinity, drought, temperature, high CO₂</li>
+      <li>Scavenging ROS and inhibiting lipid peroxidation under abiotic stress</li>
+      <li>Activation of enzymatic antioxidant defense systems [SOD, CAT, APX, GR, GPX]</li>
+      <li>Enhancement of plant secondary metabolites [phenolics &amp; flavonoids]</li>
+      <li>Ion homeostasis under salinity stress</li>
+      <li>Stomatal closure and aperture size control under drought stress</li>
+      <li><em>de novo</em> lipid biosynthesis and fatty acid conversion to alkanes for cuticular wax formation</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Metabolite Map side panel — fixed, outside page flow -->
+<div class="metmap-panel" id="metmap-panel">
+  <div class="metmap-panel-topbar">
+    <span class="metmap-panel-label">Details</span>
+    <button class="metmap-panel-close" onclick="closeMetmapPanel()">✕</button>
+  </div>
+  <div class="metmap-panel-body" id="metmap-panel-body"></div>
+</div>
+
 <script>
 // ─────────────────────────────────────────────────────────────
 // PAGES CONFIG
@@ -499,9 +602,9 @@ const EXPLORER_PAGES = {
   soil:        { dir: 'data_soil',         title: 'Soil Microbiome Explorer' },
   correlation: { dir: 'data_correlation',  title: 'Co-relation Explorer' },
 };
-const TOOL_PAGES = new Set(['pubmed','metabolomics','more','about']);
+const TOOL_PAGES = new Set(['pubmed','metabolomics','more','about','metmap']);
 
-const ALL_PAGE_IDS = ['page-explorer','page-pubmed','page-metabolomics','page-more','page-about'];
+const ALL_PAGE_IDS = ['page-explorer','page-pubmed','page-metabolomics','page-more','page-about','page-metmap'];
 
 // ─────────────────────────────────────────────────────────────
 // GENE EXPRESSION EXPLORER STATE
@@ -536,11 +639,13 @@ async function showPage(page) {
   document.querySelectorAll('.nav-tab').forEach(b =>
     b.classList.toggle('active', b.dataset.page === page));
   ALL_PAGE_IDS.forEach(id => { const el = document.getElementById(id); if (el) el.hidden = true; });
+  document.getElementById('metmap-panel')?.classList.remove('open');
 
   if (page === 'about')        { document.getElementById('page-about').hidden = false; return; }
   if (page === 'more')         { document.getElementById('page-more').hidden = false; return; }
   if (page === 'pubmed')       { document.getElementById('page-pubmed').hidden = false; initPubMed(); return; }
   if (page === 'metabolomics') { document.getElementById('page-metabolomics').hidden = false; initMetabolomics(); return; }
+  if (page === 'metmap')       { document.getElementById('page-metmap').hidden = false; initMetmap(); return; }
 
   // ── Gene expression explorer ──
   document.getElementById('page-explorer').hidden = false;
@@ -1144,6 +1249,173 @@ function renderMetabolomics(studies) {
     </div>`).join('');
 
   document.getElementById('metabo-content').hidden = false;
+}
+
+// ─────────────────────────────────────────────────────────────
+// METABOLITE MAP
+// ─────────────────────────────────────────────────────────────
+const METMAP_DATA = { categories: [
+  { id:'phytohormone', name:'Phytohormone', color:'#FFD4BC', textColor:'#7a3b1c',
+    description:'Plant growth hormones synthesised by microalgae that regulate root growth, shoot elongation, cell division, stress responses, and fruit development in target plants.',
+    functions:['Root and shoot elongation','Cell division and tissue expansion','Stress signal transduction','Stomatal regulation and aperture control','Fruit ripening and seed germination'],
+    metabolites:[
+      { name:'Auxin', aliases:['IAA','IBA','IAM'], description:'The primary plant growth hormone, promoting cell elongation, lateral root formation, and phototropism. IAA (indole-3-acetic acid) is the most abundant form secreted by microalgae.', pubchem:802, kegg:'C00153', query:'microalgae auxin IAA plant growth biostimulant' },
+      { name:'Cytokinin', aliases:['Trans-zeatin','Zeatin riboside','Isopentenyl adenine'], description:'Adenine-derived hormones that promote cell division, delay leaf senescence, and stimulate shoot organogenesis. Trans-zeatin is the most biologically active natural cytokinin.', pubchem:5735, kegg:'C00173', query:'microalgae cytokinin zeatin plant biostimulant' },
+      { name:'Abscisic Acid', aliases:['ABA'], description:'A terpenoid stress hormone that induces stomatal closure during drought, promotes seed dormancy, and mediates tolerance to multiple abiotic stresses including salinity and cold.', pubchem:5280896, kegg:'C06082', query:'microalgae abscisic acid ABA drought stress tolerance' },
+      { name:'Gibberellins', aliases:['GA3','GA7'], description:'Diterpenoid hormones that stimulate stem elongation, promote seed germination, and induce flowering. GA3 (gibberellic acid) is the most commercially important form produced by microalgae.', pubchem:107689, kegg:'C01699', query:'microalgae gibberellin GA3 plant growth elongation' },
+      { name:'Ethylene', aliases:['ACC'], description:'A gaseous hormone involved in fruit ripening, leaf abscission, and stress responses. Microalgae produce ACC (1-aminocyclopropane-1-carboxylic acid), the direct ethylene precursor.', pubchem:6325, kegg:'C01234', query:'microalgae ethylene ACC plant hormone stress' }
+    ]
+  },
+  { id:'signalling', name:'Signalling Molecule', color:'#CCDCE8', textColor:'#1e3a5f',
+    description:'Bioactive signal compounds from microalgae that prime plant immune and stress-response systems, enhance systemic acquired resistance, and act as compatible solute protectants.',
+    functions:['Systemic acquired resistance (SAR) induction','Osmotic stress protection via compatible solutes','ROS signalling cascade activation','Polyamine-mediated growth regulation','Defense gene transcriptional reprogramming'],
+    metabolites:[
+      { name:'Brassinosteroids', aliases:['Brassinolide','Castasterone'], description:'Steroidal plant hormones that regulate cell elongation, vascular differentiation, and stress tolerance via the BRI1 receptor-kinase signalling cascade.', pubchem:6436823, kegg:'C09734', query:'microalgae brassinosteroid brassinolide plant growth stress tolerance' },
+      { name:'Jasmonic Acid', aliases:['JA','Jasmonate'], description:'A lipid-derived signal molecule critical for defense against herbivores and pathogens, as well as abiotic stress responses including wound, UV, and drought signalling.', pubchem:5281944, kegg:'C08491', query:'microalgae jasmonic acid JA defense stress response' },
+      { name:'Salicylic Acid', aliases:['SA'], description:'A phenolic signal molecule central to systemic acquired resistance. It activates pathogenesis-related (PR) proteins and NPR1-mediated transcriptional reprogramming of defense genes.', pubchem:338, kegg:'C00805', query:'microalgae salicylic acid SA plant immunity SAR' },
+      { name:'Betaine & Proline', aliases:['betaine','proline','compatible solutes'], description:'Compatible solutes that accumulate under osmotic stress to stabilize proteins and membranes. Proline also acts as a ROS scavenger and nitrogen reservoir under drought stress.', pubchem:247, kegg:'C00148', query:'microalgae proline betaine osmolyte abiotic stress tolerance' },
+      { name:'Polyamines', aliases:['Putrescine','Spermine','Spermidine'], description:'Polycationic aliphatic amines that bind nucleic acids and membranes, regulating cell growth, stress tolerance, and ion channel activity under osmotic and heavy-metal stress.', pubchem:1045, kegg:'C00134', query:'microalgae polyamine putrescine spermine stress response' }
+    ]
+  },
+  { id:'antioxidants', name:'Antioxidants / Micronutrient', color:'#FFF0BC', textColor:'#6b4e00',
+    description:'Microalgae-derived antioxidant compounds and micronutrients that scavenge reactive oxygen species, protect photosystems from excess light, and support enzymatic defense in plants.',
+    functions:['ROS scavenging and oxidative stress protection','Photosystem II and LHC protection','Antioxidant enzyme co-factor supply','UV-B radiation screening','Essential micronutrient supplementation'],
+    metabolites:[
+      { name:'Carotenoids', aliases:['β-carotene','Lutein','Astaxanthin'], description:'Isoprenoid pigments with strong antioxidant activity. β-carotene quenches singlet oxygen and protects the photosystems from excess light damage. Lutein is a key structural xanthophyll in the light-harvesting complex.', pubchem:5280489, kegg:'C02094', query:'microalgae carotenoid beta-carotene lutein antioxidant biosynthesis' },
+      { name:'Vitamins', aliases:['Vit.C','B12','B3','B5'], description:'Essential water-soluble micronutrients. Vitamin C (ascorbate) is a major ROS scavenger; B12 (cobalamin), B3 (niacin), and B5 (pantothenate) serve as enzyme co-factors in plant metabolic pathways.', pubchem:54670067, kegg:'C00072', query:'microalgae vitamins cobalamin ascorbate B12 biosynthesis plant' },
+      { name:'Minerals', aliases:['Fe','Zn','Mn','Mg'], description:'Essential inorganic micronutrients including Fe (enzyme cofactor, chlorophyll precursor), Zn (zinc-finger transcription factors), Mn (SOD cofactor), and Mg (chlorophyll center) supporting plant metabolism.', pubchem:null, kegg:null, query:'microalgae minerals trace elements plant nutrition biostimulant' }
+    ]
+  },
+  { id:'polyphenols', name:'Polyphenols', color:'#C8EECC', textColor:'#1b5e20',
+    description:'Aromatic secondary metabolites with multiple hydroxyl groups, providing antioxidant protection, UV absorption, and signalling functions in both microalgae and the plants they treat.',
+    functions:['Non-enzymatic antioxidant defense','UV-B radiation screening and absorption','Heavy metal chelation','Anti-inflammatory signalling','Antimicrobial and antifungal activity'],
+    metabolites:[
+      { name:'Phenolic Acids', aliases:['Caffeic acid','Ferulic acid','p-Coumaric acid'], description:'Hydroxycinnamic and hydroxybenzoic acids that act as antioxidants, enzyme activators, and signalling molecules. They enhance plant secondary metabolite production under abiotic stress conditions.', pubchem:994, kegg:'C00180', query:'microalgae phenolic acid ferulic caffeic antioxidant secondary metabolite' },
+      { name:'Flavonoids', aliases:['Quercetin','Kaempferol'], description:'Polyphenolic C6–C3–C6 compounds that absorb UV light, scavenge ROS, and modulate auxin transport. Key roles in plant pigmentation, UV defense, and pathogen resistance.', pubchem:72281, kegg:'C01514', query:'microalgae flavonoid quercetin kaempferol antioxidant UV stress' }
+    ]
+  },
+  { id:'polysaccharide', name:'Polysaccharide', color:'#FFF9C4', textColor:'#6b5900',
+    description:'Complex carbohydrates secreted by microalgae that improve soil structure, trigger plant immune priming via DAMP signalling, and enhance nutrient and water uptake in the rhizosphere.',
+    functions:['Soil aggregate stabilization','Water retention in the rhizosphere','Plant innate immunity priming (DAMP)','Biofilm formation and maintenance','Beneficial microbial community support'],
+    metabolites:[
+      { name:'EPS', aliases:['Exopolysaccharides'], description:'Extracellular polysaccharides secreted by microalgae that form a hydrated protective matrix. In soil, EPS improve aggregate stability, water retention, and support beneficial rhizosphere microbiomes.', pubchem:null, kegg:null, query:'microalgae exopolysaccharide EPS soil biostimulant rhizosphere' },
+      { name:'β-glucan', aliases:['Beta-glucan','(1,3)-β-D-glucan'], description:'Linear glucose polymers linked by β-1,3 or β-1,3/1,6 bonds. In plants, β-glucans act as damage-associated molecular patterns (DAMPs) that prime innate immune defense responses.', pubchem:69581580, kegg:'C00965', query:'microalgae beta-glucan plant immunity DAMP priming defense' }
+    ]
+  },
+  { id:'macromolecule', name:'Other Macromolecule', color:'#FFE0D6', textColor:'#6b2211',
+    description:'High-molecular-weight biomolecules from microalgae biomass providing structural building blocks, photoprotective pigments, and bioactive compounds for plant nutrition and stress tolerance.',
+    functions:['Nitrogen supplementation via peptide hydrolysates','Membrane stabilization under thermal stress','Stress-response enzyme activation','Photoprotective and antioxidant pigmentation','Brassinosteroid pathway modulation'],
+    metabolites:[
+      { name:'Protein', aliases:['Peptides','Amino acids'], description:'Microalgae are 40–70% protein by dry weight. Hydrolysed peptide fractions stimulate plant growth, activate nitrogen metabolism enzymes, and enhance stress-response enzyme activities.', pubchem:null, kegg:null, query:'microalgae protein peptide hydrolysate plant biostimulant growth' },
+      { name:'Phycocyanin', aliases:['C-phycocyanin','Phycobiliprotein'], description:'A blue phycobiliprotein pigment from cyanobacteria and Rhodophyta with strong antioxidant and anti-inflammatory properties. Its chromophore (phycocyanobilin) efficiently absorbs red light.', pubchem:null, kegg:'C20298', query:'phycocyanin microalgae antioxidant anti-inflammatory biostimulant' },
+      { name:'Lipids', aliases:['Omega-3','EPA','DHA','PUFA'], description:'Microalgae are rich in EPA, DHA, and ARA — polyunsaturated fatty acids (PUFA) that enhance plant membrane fluidity under chilling stress and serve as precursors for jasmonate biosynthesis.', pubchem:null, kegg:null, query:'microalgae lipid fatty acid PUFA EPA DHA plant stress membrane' },
+      { name:'Terpenoids', aliases:['Isoprenoids','Terpenes','Sterols'], description:'A large class of isoprenoid compounds including carotenoids, sterols, and volatile terpenes that play roles in photosynthesis, membrane structure, and hormonal signalling in plants.', pubchem:null, kegg:null, query:'microalgae terpenoids isoprenoids terpene biosynthesis stress response' },
+      { name:'Phytosterols', aliases:['Ergosterol','Sitosterol','Stigmasterol'], description:'Plant-like sterols in microalgae membranes that stabilize lipid bilayers under thermal stress and can modulate brassinosteroid signalling pathways in treated plants.', pubchem:null, kegg:null, query:'microalgae phytosterol ergosterol sitosterol brassinosteroid membrane' }
+    ]
+  }
+]};
+
+let MM = { init:false, currentCat:null, currentMetIdx:-1 };
+
+function initMetmap() {
+  if (MM.init) return;
+  MM.init = true;
+  renderMetmapTree();
+  document.getElementById('metmap-tree').addEventListener('click', e => {
+    const chip = e.target.closest('.metmap-chip');
+    if (chip) { e.stopPropagation(); metmapSelectMet(chip.dataset.cat, +chip.dataset.idx); return; }
+    const box = e.target.closest('.metmap-cat-box');
+    if (box) metmapSelectCat(box.dataset.cat);
+  });
+  document.getElementById('metmap-panel-body').addEventListener('click', e => {
+    const chip = e.target.closest('.metmap-panel-chip');
+    if (chip) { metmapSelectMet(chip.dataset.cat, +chip.dataset.idx); return; }
+    const bc = e.target.closest('.metmap-panel-breadcrumb');
+    if (bc) metmapSelectCat(bc.dataset.cat);
+  });
+}
+
+function renderMetmapTree() {
+  document.getElementById('metmap-tree').innerHTML = METMAP_DATA.categories.map(cat => `
+    <div class="metmap-cat-col" id="metmap-cat-${cat.id}">
+      <div class="metmap-cat-box" data-cat="${cat.id}" style="--cat-bg:${cat.color};--cat-text:${cat.textColor}">
+        <div class="metmap-cat-title">${esc(cat.name)}</div>
+        <div class="metmap-chips">
+          ${cat.metabolites.map((m,i) => `<span class="metmap-chip" data-cat="${cat.id}" data-idx="${i}">${esc(m.name)}</span>`).join('')}
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function metmapSelectCat(catId) {
+  MM.currentCat = catId; MM.currentMetIdx = -1;
+  const cat = METMAP_DATA.categories.find(c => c.id === catId);
+  if (!cat) return;
+  document.querySelectorAll('.metmap-cat-box').forEach(b => b.classList.toggle('active', b.dataset.cat === catId));
+  document.querySelectorAll('.metmap-chip').forEach(c => c.classList.remove('active'));
+  document.getElementById('metmap-panel-body').innerHTML = `
+    <div class="metmap-panel-cat-label" style="background:${cat.color};color:${cat.textColor}">${esc(cat.name)}</div>
+    <p class="metmap-panel-desc">${esc(cat.description)}</p>
+    <div class="metmap-panel-section-title">Key Biostimulatory Functions</div>
+    <ul class="metmap-panel-fns">${cat.functions.map(f=>`<li>${esc(f)}</li>`).join('')}</ul>
+    <div class="metmap-panel-section-title">Metabolites in this class</div>
+    <div class="metmap-panel-chips">${cat.metabolites.map((m,i)=>`<span class="metmap-panel-chip" data-cat="${catId}" data-idx="${i}">${esc(m.name)}</span>`).join('')}</div>
+    <div class="metmap-panel-actions">
+      <button class="metmap-action-btn" onclick="metmapDoSearchPubMed()">Search PubMed →</button>
+    </div>`;
+  document.getElementById('metmap-panel').classList.add('open');
+}
+
+function metmapSelectMet(catId, metIdx) {
+  MM.currentCat = catId; MM.currentMetIdx = metIdx;
+  const cat = METMAP_DATA.categories.find(c => c.id === catId);
+  const met = cat?.metabolites[metIdx];
+  if (!met) return;
+  document.querySelectorAll('.metmap-cat-box').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.metmap-chip').forEach(c =>
+    c.classList.toggle('active', c.dataset.cat === catId && +c.dataset.idx === metIdx));
+  const pcLink = met.pubchem
+    ? `<a href="https://pubchem.ncbi.nlm.nih.gov/compound/${met.pubchem}" target="_blank" rel="noopener" class="metmap-db-link">PubChem ↗</a>` : '';
+  const kgLink = met.kegg
+    ? `<a href="https://www.genome.jp/entry/${met.kegg}" target="_blank" rel="noopener" class="metmap-db-link">KEGG ↗</a>` : '';
+  document.getElementById('metmap-panel-body').innerHTML = `
+    <div class="metmap-panel-breadcrumb" data-cat="${catId}">← ${esc(cat.name)}</div>
+    <div class="metmap-panel-met-name">${esc(met.name)}</div>
+    ${met.aliases.length ? `<div class="metmap-panel-aliases">${met.aliases.map(a=>`<span>${esc(a)}</span>`).join('')}</div>` : ''}
+    <p class="metmap-panel-desc">${esc(met.description)}</p>
+    ${(pcLink||kgLink)?`<div class="metmap-panel-section-title">External Databases</div><div class="metmap-db-links">${pcLink}${kgLink}</div>`:''}
+    <div class="metmap-panel-actions">
+      <button class="metmap-action-btn" onclick="metmapDoSearchPubMed()">Search PubMed →</button>
+      <button class="metmap-action-btn secondary" onclick="metmapDoSearchMetabolomics()">Find in Metabolomics DB →</button>
+    </div>`;
+  document.getElementById('metmap-panel').classList.add('open');
+}
+
+function closeMetmapPanel() {
+  document.getElementById('metmap-panel').classList.remove('open');
+  document.querySelectorAll('.metmap-cat-box').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.metmap-chip').forEach(c => c.classList.remove('active'));
+  MM.currentCat = null; MM.currentMetIdx = -1;
+}
+
+function metmapDoSearchPubMed() {
+  const cat = METMAP_DATA.categories.find(c => c.id === MM.currentCat);
+  if (!cat) return;
+  const query = MM.currentMetIdx >= 0
+    ? cat.metabolites[MM.currentMetIdx].query
+    : `microalgae ${cat.name.toLowerCase().replace(/\s*\/\s*/g,' ')} biostimulant plant`;
+  document.getElementById('pubmed-query').value = query;
+  PM.loaded = false;
+  showPage('pubmed');
+}
+
+function metmapDoSearchMetabolomics() {
+  if (MM.currentMetIdx < 0) return;
+  const cat = METMAP_DATA.categories.find(c => c.id === MM.currentCat);
+  const term = cat?.metabolites[MM.currentMetIdx]?.name || '';
+  document.getElementById('metabo-query').value = term;
+  showPage('metabolomics');
+  if (MB.loaded) filterMetabolomics(term);
 }
 
 // ─────────────────────────────────────────────────────────────
