@@ -11,58 +11,44 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 <style>
 :root {
-  /* page bg is a hair off-white so pure-white cards read as floating */
-  --bg:           #f0f2ec;
-  --surface:      #ffffff;
-  --surface-hi:   #f5f8ee;
+  --bg:          #f0f2ec;
+  --surface:     #ffffff;
+  --surface-hi:  #f5f8ee;
 
-  /* accent */
-  --accent:       #639922;
-  --accent-hi:    #4f7e1a;
-  --accent-soft:  #eef5e0;
-  --accent-line:  #c9dba1;
+  --accent:      #639922;
+  --accent-hi:   #4f7e1a;
+  --accent-soft: #eef5e0;
+  --accent-line: #c9dba1;
 
-  /* text */
-  --text:         #18210f;
-  --text-mu:      #556242;
-  --text-dim:     #8a9577;
+  --text:        #18210f;
+  --text-mu:     #556242;
+  --text-dim:    #8a9577;
 
-  /* semantic */
-  --up:           #2ea378;
-  --down:         #d63d3c;
+  --up:          #2ea378;
+  --down:        #d63d3c;
 
-  /* shadow system — depth without borders */
-  --sh-xs:  0 1px 2px rgba(15,35,5,0.05);
-  --sh-sm:  0 2px 6px rgba(15,35,5,0.07), 0 1px 2px rgba(15,35,5,0.04);
-  --sh-md:  0 4px 14px rgba(15,35,5,0.08), 0 1px 3px rgba(15,35,5,0.05);
-  --sh-lg:  0 8px 28px rgba(15,35,5,0.09), 0 2px 6px rgba(15,35,5,0.05);
+  --sh-xs:      0 1px 2px rgba(15,35,5,0.05);
+  --sh-sm:      0 2px 6px rgba(15,35,5,0.07), 0 1px 2px rgba(15,35,5,0.04);
+  --sh-md:      0 4px 14px rgba(15,35,5,0.08), 0 1px 3px rgba(15,35,5,0.05);
+  --sh-lg:      0 8px 28px rgba(15,35,5,0.09), 0 2px 6px rgba(15,35,5,0.05);
   --sh-sidebar: 4px 0 20px rgba(15,35,5,0.07);
   --sh-topbar:  0 2px 12px rgba(15,35,5,0.06);
   --sh-inset:   inset 0 1px 3px rgba(15,35,5,0.06);
 
-  --radius:       12px;
-  --radius-sm:    7px;
-  --radius-pill:  999px;
+  --radius:      12px;
+  --radius-sm:   7px;
+  --radius-pill: 999px;
 
-  --font:         'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --font:        'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:   'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 
-  --topbar-h:     68px;
-  --sidebar-w:    272px;
+  --topbar-h:    68px;
+  --sidebar-w:   272px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { height: 100%; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--font);
-  font-size: 13px;
-  line-height: 1.55;
-  font-feature-settings: 'cv11', 'ss01';
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
+body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 13px; line-height: 1.55; font-feature-settings: 'cv11','ss01'; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 button, input, select { font-family: inherit; }
 a { color: inherit; text-decoration: none; }
 ::selection { background: rgba(99,153,34,0.22); color: var(--text); }
@@ -75,618 +61,251 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 36px;
+  padding: 0 28px;
   position: sticky;
   top: 0;
   z-index: 100;
 }
-.brand {
-  display: flex;
-  align-items: center;
-  height: 44px;
-  padding: 0 10px;
-  border-radius: var(--radius-sm);
-  transition: background .15s;
-}
+.brand { display: flex; align-items: center; height: 44px; padding: 0 8px; border-radius: var(--radius-sm); transition: background .15s; }
 .brand:hover { background: var(--surface-hi); }
-.brand img {
-  height: 40px;
-  width: auto;
-  display: block;
-}
-.primary-nav {
-  display: flex;
-  gap: 4px;
-  align-items: center;
-}
+.brand img { height: 40px; width: auto; display: block; }
+.primary-nav { display: flex; align-items: center; gap: 2px; }
+.nav-sep { width: 1px; height: 20px; background: rgba(0,0,0,0.1); margin: 0 8px; flex-shrink: 0; }
 .nav-tab {
-  background: none;
-  border: none;
-  color: var(--text-mu);
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: -0.005em;
-  padding: 8px 18px;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: color .12s, background .12s;
-  white-space: nowrap;
+  background: none; border: none; color: var(--text-dim); font-size: 13px; font-weight: 500;
+  letter-spacing: -0.005em; padding: 7px 13px; border-radius: var(--radius-sm); cursor: pointer;
+  transition: color .12s, background .12s; white-space: nowrap;
 }
 .nav-tab:hover { color: var(--text); background: var(--surface-hi); }
 .nav-tab.active { color: var(--accent-hi); background: var(--accent-soft); font-weight: 600; }
+.nav-tab.live::after {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--up);
+  margin-left: 6px;
+  vertical-align: middle;
+  box-shadow: 0 0 0 2px rgba(46,163,120,0.3);
+}
 
 /* ─── LAYOUT ─────────────────────────────────────────────── */
-.explorer {
-  display: flex;
-  height: calc(100vh - var(--topbar-h));
-}
+.explorer { display: flex; height: calc(100vh - var(--topbar-h)); }
 .explorer[hidden] { display: none; }
 
 /* ─── SIDEBAR ────────────────────────────────────────────── */
 aside {
-  width: var(--sidebar-w);
-  min-width: var(--sidebar-w);
-  background: var(--surface);
-  box-shadow: var(--sh-sidebar);
-  position: relative;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  padding: 28px 20px 32px;
-  gap: 22px;
+  width: var(--sidebar-w); min-width: var(--sidebar-w);
+  background: var(--surface); box-shadow: var(--sh-sidebar);
+  position: relative; z-index: 10;
+  display: flex; flex-direction: column; overflow-y: auto;
+  padding: 28px 20px 32px; gap: 22px;
 }
 .filter-block { padding: 0; }
 .filter-block.grow { flex: 1; min-height: 200px; display: flex; flex-direction: column; }
-
-.filter-label {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.step-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 18px;
-  height: 18px;
-  border-radius: 5px;
-  background: var(--accent);
-  color: #fff;
-  font-size: 10px;
-  font-weight: 700;
-  flex-shrink: 0;
-  letter-spacing: 0;
-}
+.filter-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.step-badge { display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 5px; background: var(--accent); color: #fff; font-size: 10px; font-weight: 700; flex-shrink: 0; }
 select {
-  width: 100%;
-  background: var(--surface);
-  border: none;
-  border-radius: var(--radius-sm);
-  padding: 10px 32px 10px 13px;
-  color: var(--text);
-  font-size: 13px;
-  outline: none;
-  cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none;
-  background-image: linear-gradient(45deg, transparent 50%, var(--text-dim) 50%),
-                    linear-gradient(135deg, var(--text-dim) 50%, transparent 50%);
+  width: 100%; background: var(--surface); border: none; border-radius: var(--radius-sm);
+  padding: 10px 32px 10px 13px; color: var(--text); font-size: 13px; outline: none; cursor: pointer;
+  appearance: none; -webkit-appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--text-dim) 50%), linear-gradient(135deg, var(--text-dim) 50%, transparent 50%);
   background-position: calc(100% - 14px) center, calc(100% - 9px) center;
-  background-size: 5px 5px, 5px 5px;
-  background-repeat: no-repeat;
-  box-shadow: var(--sh-sm);
-  transition: box-shadow .15s;
+  background-size: 5px 5px, 5px 5px; background-repeat: no-repeat;
+  box-shadow: var(--sh-sm); transition: box-shadow .15s;
 }
 select:hover { box-shadow: var(--sh-md); }
 select:focus { box-shadow: var(--sh-md), 0 0 0 3px rgba(99,153,34,0.13); }
-
 .sidebar-divider { border: none; height: 0; margin: 2px 0; }
-
-.pathway-list {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  margin-top: 2px;
-  overflow-y: auto;
-  flex: 1;
-}
-.pathway-btn {
-  width: 100%;
-  text-align: left;
-  padding: 8px 11px;
-  border-radius: var(--radius-sm);
-  border: none;
-  background: none;
-  color: var(--text-mu);
-  font-size: 12.5px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  transition: background .1s, color .1s, box-shadow .1s;
-}
+.pathway-list { display: flex; flex-direction: column; gap: 2px; margin-top: 2px; overflow-y: auto; flex: 1; }
+.pathway-btn { width: 100%; text-align: left; padding: 8px 11px; border-radius: var(--radius-sm); border: none; background: none; color: var(--text-mu); font-size: 12.5px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 8px; transition: background .1s, color .1s; }
 .pathway-btn:hover { background: var(--surface-hi); color: var(--text); }
-.pathway-btn.active {
-  background: var(--accent-soft);
-  color: var(--accent-hi);
-  font-weight: 600;
-  box-shadow: var(--sh-xs);
-}
-.pathway-count {
-  background: rgba(0,0,0,0.05);
-  color: var(--text-dim);
-  font-size: 10.5px;
-  font-variant-numeric: tabular-nums;
-  padding: 1px 8px;
-  border-radius: var(--radius-pill);
-}
-.pathway-btn.active .pathway-count {
-  background: rgba(99,153,34,0.18);
-  color: var(--accent-hi);
-}
-
-.option-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 5px 0;
-}
-.option-row input[type=checkbox] {
-  accent-color: var(--accent);
-  width: 14px;
-  height: 14px;
-  cursor: pointer;
-}
+.pathway-btn.active { background: var(--accent-soft); color: var(--accent-hi); font-weight: 600; box-shadow: var(--sh-xs); }
+.pathway-count { background: rgba(0,0,0,0.05); color: var(--text-dim); font-size: 10.5px; font-variant-numeric: tabular-nums; padding: 1px 8px; border-radius: var(--radius-pill); }
+.pathway-btn.active .pathway-count { background: rgba(99,153,34,0.18); color: var(--accent-hi); }
+.option-row { display: flex; align-items: center; gap: 10px; padding: 5px 0; }
+.option-row input[type=checkbox] { accent-color: var(--accent); width: 14px; height: 14px; cursor: pointer; }
 .option-row label { font-size: 12.5px; color: var(--text-mu); cursor: pointer; }
 
-/* ─── MAIN ───────────────────────────────────────────────── */
-main {
-  flex: 1;
-  overflow-y: auto;
-  padding: 36px 44px 56px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  background: var(--bg);
-}
-.loading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 200px;
-  color: var(--text-dim);
-  font-size: 13px;
-  gap: 10px;
-}
-.spinner {
-  width: 15px;
-  height: 15px;
-  border: 2px solid rgba(99,153,34,0.2);
-  border-top-color: var(--accent);
-  border-radius: 50%;
-  animation: spin .7s linear infinite;
-}
+/* ─── MAIN (explorer) ────────────────────────────────────── */
+main { flex: 1; overflow-y: auto; padding: 36px 44px 56px; display: flex; flex-direction: column; gap: 24px; background: var(--bg); }
+.loading { display: flex; align-items: center; justify-content: center; height: 200px; color: var(--text-dim); font-size: 13px; gap: 10px; }
+.spinner { width: 15px; height: 15px; border: 2px solid rgba(99,153,34,0.2); border-top-color: var(--accent); border-radius: 50%; animation: spin .7s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
-
-.empty-state {
-  margin: 80px auto;
-  max-width: 520px;
-  text-align: center;
-  padding: 64px 48px;
-  border-radius: var(--radius);
-  background: var(--surface);
-  box-shadow: var(--sh-md);
-}
-.empty-state h2 {
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 10px;
-  letter-spacing: -0.015em;
-}
+.empty-state { margin: 80px auto; max-width: 520px; text-align: center; padding: 64px 48px; border-radius: var(--radius); background: var(--surface); box-shadow: var(--sh-md); }
+.empty-state h2 { font-size: 20px; font-weight: 600; color: var(--text); margin-bottom: 10px; letter-spacing: -0.015em; }
 .empty-state p { font-size: 13.5px; color: var(--text-mu); }
 
 /* ─── DATASET HEADER ─────────────────────────────────────── */
-.dataset-header {
-  background: var(--surface);
-  border-radius: var(--radius);
-  padding: 26px 32px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 24px;
-  box-shadow: var(--sh-md);
-  border-left: 4px solid var(--accent);
-}
-.dataset-header h1 {
-  font-size: 19px;
-  font-weight: 600;
-  color: var(--text);
-  letter-spacing: -0.015em;
-}
-.dataset-header p {
-  font-size: 13px;
-  color: var(--text-mu);
-  margin-top: 6px;
-  line-height: 1.65;
-  max-width: 680px;
-}
-.meta-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 16px;
-}
-.meta-tag {
-  font-size: 11px;
-  font-weight: 500;
-  padding: 3px 11px;
-  border-radius: var(--radius-pill);
-  color: var(--text-mu);
-  background: var(--bg);
-  box-shadow: var(--sh-xs);
-  letter-spacing: 0.01em;
-}
-.meta-tag.green {
-  color: var(--accent-hi);
-  background: var(--accent-soft);
-}
+.dataset-header { background: var(--surface); border-radius: var(--radius); padding: 26px 32px; display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; box-shadow: var(--sh-md); border-left: 4px solid var(--accent); }
+.dataset-header h1 { font-size: 19px; font-weight: 600; color: var(--text); letter-spacing: -0.015em; }
+.dataset-header p { font-size: 13px; color: var(--text-mu); margin-top: 6px; line-height: 1.65; max-width: 680px; }
+.meta-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+.meta-tag { font-size: 11px; font-weight: 500; padding: 3px 11px; border-radius: var(--radius-pill); color: var(--text-mu); background: var(--bg); box-shadow: var(--sh-xs); }
+.meta-tag.green { color: var(--accent-hi); background: var(--accent-soft); }
 .meta-tag.mono { font-family: var(--font-mono); font-size: 10.5px; }
-.geo-link {
-  font-size: 12.5px;
-  color: var(--accent-hi);
-  white-space: nowrap;
-  padding: 9px 16px;
-  border-radius: var(--radius-sm);
-  box-shadow: var(--sh-sm);
-  transition: box-shadow .15s, background .12s;
-  flex-shrink: 0;
-  font-weight: 500;
-  background: var(--surface);
-}
-.geo-link:hover {
-  background: var(--accent-soft);
-  box-shadow: var(--sh-md);
-}
+.geo-link { font-size: 12.5px; color: var(--accent-hi); white-space: nowrap; padding: 9px 16px; border-radius: var(--radius-sm); box-shadow: var(--sh-sm); transition: box-shadow .15s, background .12s; flex-shrink: 0; font-weight: 500; background: var(--surface); }
+.geo-link:hover { background: var(--accent-soft); box-shadow: var(--sh-md); }
 
 /* ─── STAT CARDS ─────────────────────────────────────────── */
-.stat-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-}
-.stat-card {
-  background: var(--surface);
-  border-radius: var(--radius);
-  padding: 22px 26px;
-  box-shadow: var(--sh-sm);
-  transition: box-shadow .2s;
-}
+.stat-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+.stat-card { background: var(--surface); border-radius: var(--radius); padding: 22px 26px; box-shadow: var(--sh-sm); transition: box-shadow .2s; }
 .stat-card:hover { box-shadow: var(--sh-md); }
-.stat-label {
-  font-size: 10.5px;
-  color: var(--text-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 600;
-}
-.stat-value {
-  font-size: 28px;
-  font-weight: 600;
-  color: var(--text);
-  margin-top: 8px;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-}
+.stat-label { font-size: 10.5px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+.stat-value { font-size: 28px; font-weight: 600; color: var(--text); margin-top: 8px; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; line-height: 1.1; }
 .stat-sub { font-size: 11.5px; color: var(--text-dim); margin-top: 5px; }
-.stat-up { color: var(--up); }
-.stat-down { color: var(--down); }
+.stat-up { color: var(--up); } .stat-down { color: var(--down); }
 
 /* ─── CONTRAST TABS ──────────────────────────────────────── */
-.contrast-tabs {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-.contrast-tab {
-  padding: 8px 18px;
-  border-radius: var(--radius-sm);
-  border: none;
-  background: var(--surface);
-  color: var(--text-mu);
-  font-size: 12.5px;
-  font-weight: 500;
-  cursor: pointer;
-  box-shadow: var(--sh-xs);
-  transition: box-shadow .15s, color .12s, background .12s;
-}
+.contrast-tabs { display: flex; gap: 10px; flex-wrap: wrap; }
+.contrast-tab { padding: 8px 18px; border-radius: var(--radius-sm); border: none; background: var(--surface); color: var(--text-mu); font-size: 12.5px; font-weight: 500; cursor: pointer; box-shadow: var(--sh-xs); transition: box-shadow .15s, color .12s, background .12s; }
 .contrast-tab:hover { color: var(--text); box-shadow: var(--sh-sm); background: var(--surface-hi); }
-.contrast-tab.active {
-  background: var(--accent);
-  color: #fff;
-  box-shadow: 0 3px 10px rgba(99,153,34,0.35);
-}
+.contrast-tab.active { background: var(--accent); color: #fff; box-shadow: 0 3px 10px rgba(99,153,34,0.35); }
 
 /* ─── PANELS / CHART TABS ────────────────────────────────── */
-.panel {
-  background: var(--surface);
-  border-radius: var(--radius);
-  padding: 28px 32px;
-  box-shadow: var(--sh-sm);
-}
-.panel-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 18px;
-}
-.panel-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text);
-  letter-spacing: -0.01em;
-}
-.chart-tab-row {
-  display: flex;
-  gap: 6px;
-  margin-bottom: 24px;
-  flex-wrap: wrap;
-  padding-bottom: 18px;
-  /* subtle underline via box-shadow on container */
-  box-shadow: 0 1px 0 rgba(0,0,0,0.06);
-}
-.chart-tab {
-  padding: 8px 18px;
-  border-radius: var(--radius-sm);
-  font-size: 12.5px;
-  font-weight: 500;
-  border: none;
-  color: var(--text-mu);
-  background: none;
-  cursor: pointer;
-  transition: all .12s;
-}
+.panel { background: var(--surface); border-radius: var(--radius); padding: 28px 32px; box-shadow: var(--sh-sm); }
+.panel-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+.panel-title { font-size: 14px; font-weight: 600; color: var(--text); letter-spacing: -0.01em; }
+.chart-tab-row { display: flex; gap: 6px; margin-bottom: 24px; flex-wrap: wrap; padding-bottom: 18px; box-shadow: 0 1px 0 rgba(0,0,0,0.06); }
+.chart-tab { padding: 8px 18px; border-radius: var(--radius-sm); font-size: 12.5px; font-weight: 500; border: none; color: var(--text-mu); background: none; cursor: pointer; transition: all .12s; }
 .chart-tab:hover { color: var(--text); background: var(--surface-hi); box-shadow: var(--sh-xs); }
-.chart-tab.active {
-  background: var(--accent);
-  color: #fff;
-  box-shadow: 0 3px 10px rgba(99,153,34,0.30);
-}
+.chart-tab.active { background: var(--accent); color: #fff; box-shadow: 0 3px 10px rgba(99,153,34,0.30); }
 .toggle-group { display: flex; gap: 4px; }
-.toggle-btn {
-  padding: 6px 13px;
-  border-radius: var(--radius-sm);
-  border: none;
-  background: var(--bg);
-  color: var(--text-mu);
-  font-size: 11.5px;
-  font-weight: 500;
-  cursor: pointer;
-  box-shadow: var(--sh-xs);
-  transition: all .12s;
-}
+.toggle-btn { padding: 6px 13px; border-radius: var(--radius-sm); border: none; background: var(--bg); color: var(--text-mu); font-size: 11.5px; font-weight: 500; cursor: pointer; box-shadow: var(--sh-xs); transition: all .12s; }
 .toggle-btn:hover { color: var(--text); box-shadow: var(--sh-sm); }
-.toggle-btn.active {
-  background: var(--accent);
-  color: #fff;
-  box-shadow: 0 2px 8px rgba(99,153,34,0.30);
-}
+.toggle-btn.active { background: var(--accent); color: #fff; box-shadow: 0 2px 8px rgba(99,153,34,0.30); }
 .legend-row { display: flex; gap: 16px; flex-wrap: wrap; }
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11.5px;
-  color: var(--text-mu);
-}
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--text-mu); }
 .legend-swatch { width: 10px; height: 10px; border-radius: 2px; }
 
 /* ─── HEATMAP ────────────────────────────────────────────── */
 .heatmap-table { border-collapse: collapse; width: 100%; font-size: 11px; }
-.heatmap-table th {
-  color: var(--text-dim);
-  font-weight: 600;
-  padding: 8px 8px;
-  text-align: center;
-  font-size: 10.5px;
-  white-space: nowrap;
-  letter-spacing: 0.04em;
-}
+.heatmap-table th { color: var(--text-dim); font-weight: 600; padding: 8px; text-align: center; font-size: 10.5px; white-space: nowrap; letter-spacing: 0.04em; }
 .heatmap-table th.gene-col { text-align: left; min-width: 110px; }
 .heatmap-table td { padding: 3px 6px; text-align: center; }
-.heatmap-table td.gene-name {
-  text-align: left;
-  color: var(--text);
-  font-weight: 500;
-  white-space: nowrap;
-}
-.hm-cell {
-  display: block;
-  width: 100%;
-  height: 26px;
-  line-height: 26px;
-  border-radius: 5px;
-  font-size: 10.5px;
-  font-weight: 500;
-  font-variant-numeric: tabular-nums;
-}
+.heatmap-table td.gene-name { text-align: left; color: var(--text); font-weight: 500; white-space: nowrap; }
+.hm-cell { display: block; width: 100%; height: 26px; line-height: 26px; border-radius: 5px; font-size: 10.5px; font-weight: 500; font-variant-numeric: tabular-nums; }
 
 /* ─── GENE TABLE ─────────────────────────────────────────── */
 .gene-table-wrap { overflow-x: auto; }
 .gene-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-.gene-table th {
-  text-align: left;
-  padding: 12px 16px;
-  color: var(--text-dim);
-  font-weight: 600;
-  font-size: 10.5px;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  white-space: nowrap;
-  user-select: none;
-  background: var(--bg);
-  box-shadow: 0 1px 0 rgba(0,0,0,0.06);
-}
-.gene-table td {
-  padding: 11px 16px;
-  color: var(--text-mu);
-  vertical-align: middle;
-  box-shadow: 0 -1px 0 rgba(0,0,0,0.04);
-}
+.gene-table th { text-align: left; padding: 12px 16px; color: var(--text-dim); font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.07em; white-space: nowrap; user-select: none; background: var(--bg); box-shadow: 0 1px 0 rgba(0,0,0,0.06); }
+.gene-table td { padding: 11px 16px; color: var(--text-mu); vertical-align: middle; box-shadow: 0 -1px 0 rgba(0,0,0,0.04); }
 .gene-table tr:hover td { background: var(--surface-hi); }
 .gene-table tr:last-child td { box-shadow: none; }
-.pathway-pill {
-  display: inline-block;
-  padding: 3px 11px;
-  border-radius: var(--radius-pill);
-  font-size: 10.5px;
-  font-weight: 500;
-  background: var(--accent-soft);
-  color: var(--accent-hi);
-  box-shadow: var(--sh-xs);
-}
+.pathway-pill { display: inline-block; padding: 3px 11px; border-radius: var(--radius-pill); font-size: 10.5px; font-weight: 500; background: var(--accent-soft); color: var(--accent-hi); box-shadow: var(--sh-xs); }
 .fc-bar-wrap { display: flex; align-items: center; gap: 10px; }
-.fc-num {
-  font-size: 12.5px;
-  font-weight: 500;
-  min-width: 56px;
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-  font-family: var(--font-mono);
-}
-.fc-bar-bg {
-  flex: 1;
-  height: 5px;
-  background: rgba(0,0,0,0.07);
-  border-radius: 3px;
-  overflow: hidden;
-  min-width: 60px;
-  box-shadow: var(--sh-inset);
-}
+.fc-num { font-size: 12.5px; font-weight: 500; min-width: 56px; text-align: right; font-variant-numeric: tabular-nums; font-family: var(--font-mono); }
+.fc-bar-bg { flex: 1; height: 5px; background: rgba(0,0,0,0.07); border-radius: 3px; overflow: hidden; min-width: 60px; box-shadow: var(--sh-inset); }
 .fc-bar-fill { height: 100%; border-radius: 3px; }
 .sig-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; }
-.search-row {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  margin-bottom: 20px;
-}
-.search-input {
-  background: var(--surface);
-  border: none;
-  border-radius: var(--radius-sm);
-  padding: 10px 16px;
-  color: var(--text);
-  font-size: 13px;
-  flex: 1;
-  outline: none;
-  box-shadow: var(--sh-sm);
-  transition: box-shadow .15s;
-}
+.search-row { display: flex; gap: 12px; align-items: center; margin-bottom: 20px; }
+.search-input { background: var(--surface); border: none; border-radius: var(--radius-sm); padding: 10px 16px; color: var(--text); font-size: 13px; flex: 1; outline: none; box-shadow: var(--sh-sm); transition: box-shadow .15s; }
 .search-input:focus { box-shadow: var(--sh-md), 0 0 0 3px rgba(99,153,34,0.12); }
 .search-input::placeholder { color: var(--text-dim); }
-.sort-select-sm {
-  background: var(--surface);
-  border: none;
-  border-radius: var(--radius-sm);
-  padding: 10px 32px 10px 14px;
-  color: var(--text-mu);
-  font-size: 12.5px;
-  outline: none;
-  cursor: pointer;
-  width: auto;
-  min-width: 165px;
-  box-shadow: var(--sh-sm);
-  background-image: linear-gradient(45deg, transparent 50%, var(--text-dim) 50%),
-                    linear-gradient(135deg, var(--text-dim) 50%, transparent 50%);
-  background-position: calc(100% - 14px) center, calc(100% - 9px) center;
-  background-size: 5px 5px, 5px 5px;
-  background-repeat: no-repeat;
-  appearance: none;
-  -webkit-appearance: none;
-}
-.empty {
-  text-align: center;
-  padding: 56px;
-  color: var(--text-dim);
-  font-size: 13px;
-}
+.sort-select-sm { background: var(--surface); border: none; border-radius: var(--radius-sm); padding: 10px 32px 10px 14px; color: var(--text-mu); font-size: 12.5px; outline: none; cursor: pointer; width: auto; min-width: 165px; box-shadow: var(--sh-sm); background-image: linear-gradient(45deg,transparent 50%,var(--text-dim) 50%),linear-gradient(135deg,var(--text-dim) 50%,transparent 50%); background-position: calc(100% - 14px) center, calc(100% - 9px) center; background-size: 5px 5px,5px 5px; background-repeat: no-repeat; appearance: none; -webkit-appearance: none; }
+.empty { text-align: center; padding: 56px; color: var(--text-dim); font-size: 13px; }
+
+/* ─── TOOL PAGES (PubMed, Metabolomics, More) ────────────── */
+.tool-page { height: calc(100vh - var(--topbar-h)); overflow-y: auto; padding: 40px 48px 64px; background: var(--bg); }
+.tool-page[hidden] { display: none; }
+.tool-header { margin-bottom: 32px; max-width: 860px; }
+.tool-header-row { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+.tool-header h2 { font-size: 22px; font-weight: 600; color: var(--text); letter-spacing: -0.015em; }
+.live-badge { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; background: rgba(46,163,120,0.12); color: var(--up); padding: 3px 10px; border-radius: var(--radius-pill); }
+.tool-header p { font-size: 13.5px; color: var(--text-mu); line-height: 1.65; }
+
+.tool-search-row { display: flex; gap: 10px; align-items: center; max-width: 760px; margin-bottom: 14px; }
+.tool-search-input { flex: 1; background: var(--surface); border: none; border-radius: var(--radius-sm); padding: 11px 18px; color: var(--text); font-size: 13.5px; outline: none; box-shadow: var(--sh-sm); transition: box-shadow .15s; }
+.tool-search-input:focus { box-shadow: var(--sh-md), 0 0 0 3px rgba(99,153,34,0.12); }
+.tool-search-input::placeholder { color: var(--text-dim); }
+.tool-search-btn { background: var(--accent); color: #fff; border: none; border-radius: var(--radius-sm); padding: 11px 22px; font-size: 13px; font-weight: 600; cursor: pointer; box-shadow: 0 2px 8px rgba(99,153,34,0.30); transition: box-shadow .15s, background .12s; white-space: nowrap; }
+.tool-search-btn:hover { background: var(--accent-hi); box-shadow: 0 4px 14px rgba(99,153,34,0.35); }
+
+.quick-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+.quick-pill { background: var(--surface); border: none; color: var(--text-mu); font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: var(--radius-pill); cursor: pointer; box-shadow: var(--sh-xs); transition: all .12s; }
+.quick-pill:hover { box-shadow: var(--sh-sm); color: var(--text); }
+.quick-pill.active { background: var(--accent-soft); color: var(--accent-hi); box-shadow: var(--sh-xs); }
+
+.tool-stats-row { display: grid; grid-template-columns: repeat(3, auto); gap: 14px; margin-bottom: 28px; justify-content: start; }
+.tool-stat { background: var(--surface); border-radius: var(--radius-sm); padding: 14px 20px; box-shadow: var(--sh-xs); }
+.tool-stat-val { font-size: 22px; font-weight: 600; color: var(--text); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+.tool-stat-label { font-size: 10.5px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.07em; font-weight: 600; margin-top: 3px; }
+
+/* PubMed */
+.pub-chart-wrap { background: var(--surface); border-radius: var(--radius); padding: 24px 28px; box-shadow: var(--sh-sm); margin-bottom: 24px; }
+.pub-chart-title { font-size: 12px; font-weight: 600; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 16px; }
+.article-list { display: flex; flex-direction: column; gap: 14px; }
+.article-card { background: var(--surface); border-radius: var(--radius); padding: 22px 28px; box-shadow: var(--sh-sm); transition: box-shadow .2s; }
+.article-card:hover { box-shadow: var(--sh-md); }
+.article-title { font-size: 14px; font-weight: 600; color: var(--text); line-height: 1.45; letter-spacing: -0.005em; }
+.article-title a { color: inherit; }
+.article-title a:hover { color: var(--accent-hi); }
+.article-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+.article-meta-item { font-size: 11.5px; color: var(--text-dim); }
+.article-meta-item.journal { color: var(--text-mu); font-weight: 500; }
+.article-authors { font-size: 12px; color: var(--text-mu); margin-top: 6px; }
+.article-abstract { font-size: 12.5px; color: var(--text-mu); margin-top: 12px; line-height: 1.7; display: none; }
+.article-abstract.open { display: block; }
+.article-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; }
+.article-toggle { background: none; border: none; color: var(--accent-hi); font-size: 12px; font-weight: 500; cursor: pointer; padding: 0; }
+.article-toggle:hover { text-decoration: underline; }
+.article-doi { font-size: 11px; color: var(--text-dim); font-family: var(--font-mono); }
+.article-doi a { color: var(--accent-hi); }
+.article-doi a:hover { text-decoration: underline; }
+
+/* Metabolomics */
+.study-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 16px; }
+.study-card { background: var(--surface); border-radius: var(--radius); padding: 22px 26px; box-shadow: var(--sh-sm); transition: box-shadow .2s; display: flex; flex-direction: column; gap: 10px; }
+.study-card:hover { box-shadow: var(--sh-md); }
+.study-id { font-family: var(--font-mono); font-size: 11px; color: var(--accent-hi); font-weight: 500; }
+.study-title { font-size: 13.5px; font-weight: 600; color: var(--text); line-height: 1.4; letter-spacing: -0.005em; }
+.study-meta { font-size: 11.5px; color: var(--text-dim); }
+.study-desc { font-size: 12px; color: var(--text-mu); line-height: 1.65; display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.study-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 4px; }
+.study-link { font-size: 12px; color: var(--accent-hi); font-weight: 500; }
+.study-link:hover { text-decoration: underline; }
+.source-badge { font-size: 10px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; padding: 2px 9px; border-radius: var(--radius-pill); background: var(--bg); color: var(--text-dim); }
+
+/* More Tools coming-soon grid */
+.coming-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 860px; margin-top: 8px; }
+.coming-card { background: var(--surface); border-radius: var(--radius); padding: 28px 32px; box-shadow: var(--sh-sm); }
+.coming-card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 12px; }
+.coming-card h3 { font-size: 15px; font-weight: 600; color: var(--text); letter-spacing: -0.01em; }
+.coming-badge { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 10px; border-radius: var(--radius-pill); background: rgba(99,153,34,0.1); color: var(--accent-hi); white-space: nowrap; flex-shrink: 0; }
+.coming-card p { font-size: 13px; color: var(--text-mu); line-height: 1.7; }
+.coming-card .coming-note { font-size: 12px; color: var(--text-dim); margin-top: 14px; font-style: italic; }
 
 /* ─── ABOUT ──────────────────────────────────────────────── */
-.about-page {
-  padding: 72px 48px 88px;
-  max-width: 820px;
-  margin: 0 auto;
-}
+.about-page { padding: 72px 48px 88px; max-width: 820px; margin: 0 auto; }
 .about-page[hidden] { display: none; }
-.about-page h2 {
-  color: var(--text);
-  font-size: 28px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  margin-bottom: 10px;
-}
-.about-page .lead {
-  color: var(--text-mu);
-  font-size: 14.5px;
-  line-height: 1.7;
-  margin-bottom: 40px;
-  max-width: 680px;
-}
-.about-card {
-  background: var(--surface);
-  border-radius: var(--radius);
-  padding: 30px 36px;
-  margin-bottom: 20px;
-  box-shadow: var(--sh-sm);
-  transition: box-shadow .2s;
-}
+.about-page h2 { color: var(--text); font-size: 28px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 10px; }
+.about-page .lead { color: var(--text-mu); font-size: 14.5px; line-height: 1.7; margin-bottom: 40px; max-width: 680px; }
+.about-card { background: var(--surface); border-radius: var(--radius); padding: 30px 36px; margin-bottom: 20px; box-shadow: var(--sh-sm); transition: box-shadow .2s; }
 .about-card:hover { box-shadow: var(--sh-md); }
-.about-card h3 {
-  font-size: 11.5px;
-  font-weight: 700;
-  color: var(--accent-hi);
-  margin-bottom: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-.about-card p {
-  color: var(--text-mu);
-  font-size: 14px;
-  line-height: 1.8;
-}
-.about-card a {
-  color: var(--accent-hi);
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 500;
-}
+.about-card h3 { font-size: 11.5px; font-weight: 700; color: var(--accent-hi); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.08em; }
+.about-card p { color: var(--text-mu); font-size: 14px; line-height: 1.8; }
+.about-card a { color: var(--accent-hi); font-family: var(--font-mono); font-size: 13px; font-weight: 500; }
 .about-card a:hover { text-decoration: underline; }
 
 /* ─── RESPONSIVE ─────────────────────────────────────────── */
 @media (max-width: 1100px) {
-  .stat-row { grid-template-columns: repeat(2, 1fr); }
+  .stat-row { grid-template-columns: repeat(2,1fr); }
   aside { width: 240px; min-width: 240px; padding: 22px 16px 28px; }
   main { padding: 28px 28px 44px; }
-  .nav-tab { padding: 8px 13px; font-size: 12.5px; }
-  .topbar { padding: 0 22px; }
+  .tool-page { padding: 28px 28px 44px; }
+  .nav-tab { padding: 7px 10px; font-size: 12.5px; }
+  .topbar { padding: 0 18px; }
+  .coming-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 720px) {
   aside { display: none; }
-  main { padding: 20px; }
-  .topbar { padding: 0 16px; }
+  main, .tool-page { padding: 20px; }
+  .topbar { padding: 0 14px; }
   .primary-nav { overflow-x: auto; }
-  .panel { padding: 20px 22px; }
-  .dataset-header { padding: 20px 22px; }
+  .panel, .dataset-header { padding: 18px 20px; }
+  .study-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -698,47 +317,44 @@ main {
     <img src="images/alganize-logo-black.svg" alt="Alganize"/>
   </a>
   <nav class="primary-nav" id="primary-nav">
-    <button class="nav-tab active" data-page="microalgae">Microalgae Explorer</button>
-    <button class="nav-tab" data-page="plant">Plant Explorer</button>
-    <button class="nav-tab" data-page="soil">Soil Microbiome Explorer</button>
-    <button class="nav-tab" data-page="correlation">Co-relation Explorer</button>
+    <button class="nav-tab active" data-page="microalgae">Microalgae</button>
+    <button class="nav-tab" data-page="plant">Plant</button>
+    <button class="nav-tab" data-page="soil">Soil</button>
+    <button class="nav-tab" data-page="correlation">Correlation</button>
+    <div class="nav-sep"></div>
+    <button class="nav-tab live" data-page="pubmed">Literature</button>
+    <button class="nav-tab live" data-page="metabolomics">Metabolomics</button>
+    <button class="nav-tab" data-page="more">More Tools</button>
+    <div class="nav-sep"></div>
     <button class="nav-tab" data-page="about">About</button>
   </nav>
 </header>
 
-<!-- ─── EXPLORER PAGE ────────────────────────────────────── -->
+<!-- ─── GENE EXPRESSION EXPLORER ─────────────────────────── -->
 <div class="explorer" id="page-explorer">
-
   <aside>
     <div class="filter-block">
       <div class="filter-label"><span class="step-badge">1</span>Species</div>
       <select id="sel-species" onchange="onSpeciesChange()"></select>
     </div>
-
     <div class="filter-block">
       <div class="filter-label"><span class="step-badge">2</span>Induction</div>
       <select id="sel-induction" onchange="onInductionChange()"></select>
     </div>
-
     <div class="filter-block">
       <div class="filter-label"><span class="step-badge">3</span>Dataset</div>
       <select id="sel-dataset" onchange="onDatasetChange()"></select>
     </div>
-
     <div class="filter-block">
       <div class="filter-label"><span class="step-badge">4</span>Contrast</div>
       <select id="sel-contrast" onchange="onContrastChange()"></select>
     </div>
-
     <hr class="sidebar-divider"/>
-
     <div class="filter-block grow">
       <div class="filter-label"><span class="step-badge">5</span>Pathway</div>
       <div class="pathway-list" id="pathway-list"></div>
     </div>
-
     <hr class="sidebar-divider"/>
-
     <div class="filter-block">
       <div class="filter-label">Options</div>
       <div class="option-row">
@@ -751,23 +367,122 @@ main {
       </div>
     </div>
   </aside>
-
   <main id="main-content">
     <div class="loading" id="main-loading"><div class="spinner"></div>Loading…</div>
     <div id="main-body" hidden style="flex-direction:column;gap:24px;"></div>
   </main>
 </div>
 
-<!-- ─── ABOUT PAGE ───────────────────────────────────────── -->
+<!-- ─── PUBMED LITERATURE EXPLORER ───────────────────────── -->
+<div class="tool-page" id="page-pubmed" hidden>
+  <div class="tool-header">
+    <div class="tool-header-row">
+      <h2>Literature Explorer</h2>
+      <span class="live-badge">Live PubMed</span>
+    </div>
+    <p>Real-time search of NCBI PubMed — explore research publications on microalgae, metabolites, and stress responses.</p>
+  </div>
+
+  <div class="tool-search-row">
+    <input class="tool-search-input" id="pubmed-query" placeholder="Search PubMed…" value="microalgae metabolite stress"/>
+    <button class="tool-search-btn" onclick="fetchPubMed()">Search</button>
+  </div>
+  <div class="quick-pills" id="pubmed-pills">
+    <button class="quick-pill active" data-query="microalgae metabolite stress">All Topics</button>
+    <button class="quick-pill" data-query="microalgae carotenoid biosynthesis">Carotenoids</button>
+    <button class="quick-pill" data-query="microalgae fatty acid lipid">Fatty Acids</button>
+    <button class="quick-pill" data-query="microalgae salt stress transcriptome">Salt Stress</button>
+    <button class="quick-pill" data-query="microalgae high light stress">High Light</button>
+    <button class="quick-pill" data-query="Chlorella nitrogen starvation">Nitrogen Starvation</button>
+    <button class="quick-pill" data-query="Chromochloris zofingiensis">Chromochloris</button>
+  </div>
+
+  <div id="pubmed-loading" class="loading" style="display:none"><div class="spinner"></div>Searching PubMed…</div>
+  <div id="pubmed-content" hidden>
+    <div class="tool-stats-row" id="pubmed-stats"></div>
+    <div class="pub-chart-wrap">
+      <div class="pub-chart-title">Publications per Year</div>
+      <div style="position:relative;height:180px;"><canvas id="pubmed-chart"></canvas></div>
+    </div>
+    <div class="article-list" id="pubmed-results"></div>
+  </div>
+  <div id="pubmed-empty" hidden class="empty">No articles found for this query.</div>
+  <div id="pubmed-error" hidden class="empty" style="color:var(--down)"></div>
+</div>
+
+<!-- ─── METABOLOMICS EXPLORER ─────────────────────────────── -->
+<div class="tool-page" id="page-metabolomics" hidden>
+  <div class="tool-header">
+    <div class="tool-header-row">
+      <h2>Metabolomics Explorer</h2>
+      <span class="live-badge">Live Data</span>
+    </div>
+    <p>Browse public metabolomics studies from the Metabolomics Workbench — real algae metabolite datasets from research groups worldwide.</p>
+  </div>
+
+  <div class="tool-search-row">
+    <input class="tool-search-input" id="metabo-query" placeholder="Filter studies…" oninput="filterMetabolomics(this.value)"/>
+  </div>
+
+  <div id="metabo-loading" class="loading" style="display:none"><div class="spinner"></div>Fetching studies…</div>
+  <div id="metabo-content" hidden>
+    <div class="tool-stats-row" id="metabo-stats"></div>
+    <div class="study-grid" id="metabo-results"></div>
+  </div>
+  <div id="metabo-empty" hidden class="empty">No studies match your filter.</div>
+  <div id="metabo-error" hidden class="empty" style="color:var(--down)"></div>
+</div>
+
+<!-- ─── MORE TOOLS ────────────────────────────────────────── -->
+<div class="tool-page" id="page-more" hidden>
+  <div class="tool-header">
+    <h2>More Tools</h2>
+    <p>Planned browser tools that extend the gene expression and metabolomics data with additional layers of analysis.</p>
+  </div>
+  <div class="coming-grid">
+    <div class="coming-card">
+      <div class="coming-card-head">
+        <h3>Carotenoid &amp; Lipid Yield Browser</h3>
+        <span class="coming-badge">Coming Soon</span>
+      </div>
+      <p>Compare reported carotenoid and fatty acid production yields (mg/g DW) across algae strains, light intensities, nitrogen levels, and stress conditions — curated from published literature.</p>
+      <p class="coming-note">Data for this section is coming soon. Check back later.</p>
+    </div>
+    <div class="coming-card">
+      <div class="coming-card-head">
+        <h3>KEGG Pathway Enrichment Browser</h3>
+        <span class="coming-badge">Coming Soon</span>
+      </div>
+      <p>Identify which KEGG metabolic pathways are over-represented under each stress condition, using the gene sets in this database. Click a pathway to inspect its gene-level fold-changes.</p>
+      <p class="coming-note">Data for this section is coming soon. Check back later.</p>
+    </div>
+    <div class="coming-card">
+      <div class="coming-card-head">
+        <h3>Algae Genome Stats Browser</h3>
+        <span class="coming-badge">Coming Soon</span>
+      </div>
+      <p>A sortable comparison of genome size, GC content, gene count, chromosome number, and ploidy across microalgae species relevant to Alganize — sourced from NCBI and Phytozome.</p>
+      <p class="coming-note">Data for this section is coming soon. Check back later.</p>
+    </div>
+    <div class="coming-card">
+      <div class="coming-card-head">
+        <h3>Growth Condition Optimizer</h3>
+        <span class="coming-badge">Coming Soon</span>
+      </div>
+      <p>Adjust light intensity, nitrogen concentration, temperature, and CO₂ with sliders and see predicted carotenoid and biomass yields, interpolated from a curated literature dataset.</p>
+      <p class="coming-note">Data for this section is coming soon. Check back later.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ─── ABOUT ──────────────────────────────────────────────── -->
 <section class="about-page" id="page-about" hidden>
   <h2>About Alganize</h2>
   <p class="lead">A browser-based explorer for differential gene expression across microalgae, plants, and soil microbiome stress-response studies. (Work in progress.)</p>
-
   <div class="about-card">
     <h3>Gene-expression patterns</h3>
     <p>This app focuses on differential gene expression in microalgae and plant-related metabolite pathways — such as carotenogenesis, fatty acid biosynthesis, and osmolyte production — across stress conditions like salt or high-light treatment. For each comparison (contrast), the displayed log₂ fold-change values show how strongly individual genes are up- or down-regulated relative to control, highlighting pathways that are transcriptionally co-activated or repressed under a given stimulus.</p>
   </div>
-
   <div class="about-card">
     <h3>Collaboration / Suggestions</h3>
     <p><a href="https://github.com/Mohit1kumar1/Alganize" target="_blank" rel="noopener">github.com/Mohit1kumar1/Alganize</a></p>
@@ -776,82 +491,72 @@ main {
 
 <script>
 // ─────────────────────────────────────────────────────────────
-// PAGES — each explorer page has its own data folder
+// PAGES CONFIG
 // ─────────────────────────────────────────────────────────────
-const PAGES = {
+const EXPLORER_PAGES = {
   microalgae:  { dir: 'Data_algae',        title: 'Microalgae Explorer' },
   plant:       { dir: 'data_plant',        title: 'Plant Explorer' },
   soil:        { dir: 'data_soil',         title: 'Soil Microbiome Explorer' },
   correlation: { dir: 'data_correlation',  title: 'Co-relation Explorer' },
 };
+const TOOL_PAGES = new Set(['pubmed','metabolomics','more','about']);
+
+const ALL_PAGE_IDS = ['page-explorer','page-pubmed','page-metabolomics','page-more','page-about'];
 
 // ─────────────────────────────────────────────────────────────
-// STATE
+// GENE EXPRESSION EXPLORER STATE
 // ─────────────────────────────────────────────────────────────
 const S = {
-  page:       null,
-  dataDir:    null,
-  registry:   null,
-  allMeta:    {},
-  allData:    {},
-  species:    null,
-  induction:  null,
-  dataset:    null,
-  contrast:   null,
-  pathway:    'All',
-  search:     '',
-  sortCol:    'log2FC',
-  activeTab:  'bar',
-  barMode:    'top10',
-  charts:     {},
+  page: null, dataDir: null, registry: null,
+  allMeta: {}, allData: {},
+  species: null, induction: null, dataset: null, contrast: null,
+  pathway: 'All', search: '', sortCol: 'log2FC',
+  activeTab: 'bar', barMode: 'top10', charts: {},
 };
 
-const esc = s => String(s ?? '').replace(/[&<>"']/g, c => (
-  {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]
-));
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c =>
+  ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
 // ─────────────────────────────────────────────────────────────
-// PAGE NAVIGATION
+// NAVIGATION
 // ─────────────────────────────────────────────────────────────
 function bindNav() {
-  document.querySelectorAll('.nav-tab').forEach(btn => {
-    btn.addEventListener('click', () => showPage(btn.dataset.page));
-  });
+  document.querySelectorAll('.nav-tab').forEach(btn =>
+    btn.addEventListener('click', () => showPage(btn.dataset.page)));
+  document.querySelectorAll('.quick-pill').forEach(btn =>
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.quick-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('pubmed-query').value = btn.dataset.query;
+      fetchPubMed();
+    }));
 }
 
 async function showPage(page) {
   document.querySelectorAll('.nav-tab').forEach(b =>
     b.classList.toggle('active', b.dataset.page === page));
+  ALL_PAGE_IDS.forEach(id => { const el = document.getElementById(id); if (el) el.hidden = true; });
 
-  if (page === 'about') {
-    document.getElementById('page-explorer').hidden = true;
-    document.getElementById('page-about').hidden = false;
-    return;
-  }
+  if (page === 'about')        { document.getElementById('page-about').hidden = false; return; }
+  if (page === 'more')         { document.getElementById('page-more').hidden = false; return; }
+  if (page === 'pubmed')       { document.getElementById('page-pubmed').hidden = false; initPubMed(); return; }
+  if (page === 'metabolomics') { document.getElementById('page-metabolomics').hidden = false; initMetabolomics(); return; }
 
-  document.getElementById('page-about').hidden = true;
+  // ── Gene expression explorer ──
   document.getElementById('page-explorer').hidden = false;
-
   if (S.page === page) return;
 
   S.page = page;
-  S.dataDir = PAGES[page].dir;
-  S.registry = null;
-  S.allMeta = {};
-  S.allData = {};
-  S.species = null;
-  S.induction = null;
-  S.dataset = null;
-  S.contrast = null;
-  S.pathway = 'All';
-  S.search = '';
+  S.dataDir = EXPLORER_PAGES[page].dir;
+  S.registry = null; S.allMeta = {}; S.allData = {};
+  S.species = null; S.induction = null; S.dataset = null; S.contrast = null;
+  S.pathway = 'All'; S.search = '';
   destroyCharts();
 
   showLoading();
   document.getElementById('main-body').innerHTML = '';
   ['sel-species','sel-induction','sel-dataset','sel-contrast'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.innerHTML = '';
+    const el = document.getElementById(id); if (el) el.innerHTML = '';
   });
   document.getElementById('pathway-list').innerHTML = '';
 
@@ -862,31 +567,26 @@ async function showPage(page) {
     populateSpecies();
     await onSpeciesChange();
   } catch (e) {
-    showComingSoon(PAGES[page].title);
+    showComingSoon(EXPLORER_PAGES[page].title);
   }
 }
 
+// ─────────────────────────────────────────────────────────────
+// EXPLORER — CASCADING DROPDOWNS
+// ─────────────────────────────────────────────────────────────
 function showComingSoon(title) {
   document.getElementById('main-loading').style.display = 'none';
   const body = document.getElementById('main-body');
   body.hidden = false;
   body.style.cssText = 'display:flex;flex-direction:column;gap:24px;';
-  body.innerHTML = `
-    <div class="empty-state">
-      <h2>${esc(title)}</h2>
-      <p>Data for this section is coming soon. Check back later.</p>
-    </div>`;
+  body.innerHTML = `<div class="empty-state"><h2>${esc(title)}</h2><p>Data for this section is coming soon. Check back later.</p></div>`;
 }
 
-// ─────────────────────────────────────────────────────────────
-// CASCADING DROPDOWNS
-// ─────────────────────────────────────────────────────────────
 function populateSpecies() {
   const sm = S.registry.species_map || {};
-  const species = Object.keys(sm);
   const el = document.getElementById('sel-species');
-  el.innerHTML = species.map(s => `<option value="${esc(s)}">${esc(s)}</option>`).join('');
-  S.species = species[0] || null;
+  el.innerHTML = Object.keys(sm).map(s => `<option value="${esc(s)}">${esc(s)}</option>`).join('');
+  S.species = Object.keys(sm)[0] || null;
 }
 
 async function onSpeciesChange() {
@@ -894,9 +594,7 @@ async function onSpeciesChange() {
   S.pathway = 'All';
   const spDs = (S.registry.species_map || {})[S.species] || [];
   const indMap = S.registry.induction_map || {};
-  const validInd = Object.keys(indMap).filter(k =>
-    (indMap[k] || []).some(d => spDs.includes(d))
-  );
+  const validInd = Object.keys(indMap).filter(k => (indMap[k]||[]).some(d => spDs.includes(d)));
   const el = document.getElementById('sel-induction');
   el.innerHTML = validInd.map(i => `<option value="${esc(i)}">${esc(i)}</option>`).join('');
   S.induction = validInd[0] || null;
@@ -918,26 +616,18 @@ async function onInductionChange() {
 async function onDatasetChange() {
   S.dataset = document.getElementById('sel-dataset').value;
   S.pathway = 'All';
-  if (!S.dataset) { showComingSoon(PAGES[S.page].title); return; }
+  if (!S.dataset) { showComingSoon(EXPLORER_PAGES[S.page]?.title || ''); return; }
   showLoading();
-  try {
-    await ensureDatasetLoaded(S.dataset);
-    populateContrast();
-    onContrastChange();
-  } catch (e) {
-    showErr(e.message);
-  }
+  try { await ensureDatasetLoaded(S.dataset); populateContrast(); onContrastChange(); }
+  catch (e) { showErr(e.message); }
 }
 
 function populateContrast() {
-  const meta = S.allMeta[S.dataset];
-  if (!meta) return;
-  const contrasts = meta.contrasts || {};
+  const meta = S.allMeta[S.dataset]; if (!meta) return;
   const el = document.getElementById('sel-contrast');
-  el.innerHTML = Object.entries(contrasts)
-    .map(([label, key]) => `<option value="${esc(key)}">${esc(label)}</option>`)
-    .join('');
-  S.contrast = Object.values(contrasts)[0] || null;
+  el.innerHTML = Object.entries(meta.contrasts || {})
+    .map(([l,k]) => `<option value="${esc(k)}">${esc(l)}</option>`).join('');
+  S.contrast = Object.values(meta.contrasts || {})[0] || null;
 }
 
 function onContrastChange() {
@@ -948,39 +638,25 @@ function onContrastChange() {
   renderMain();
 }
 
-// ─────────────────────────────────────────────────────────────
-// DATASET LOADER
-// ─────────────────────────────────────────────────────────────
 async function ensureDatasetLoaded(id) {
   if (S.allMeta[id] && S.allData[id]) return;
   const [meta, tsvText] = await Promise.all([
-    fetch(`${S.dataDir}/${id}/meta.json`).then(r => {
-      if (!r.ok) throw new Error(`meta.json not found for ${id}`);
-      return r.json();
-    }),
-    fetch(`${S.dataDir}/${id}/log2fc.tsv`).then(r => {
-      if (!r.ok) throw new Error(`log2fc.tsv not found for ${id}`);
-      return r.text();
-    })
+    fetch(`${S.dataDir}/${id}/meta.json`).then(r => { if (!r.ok) throw new Error(`meta.json not found for ${id}`); return r.json(); }),
+    fetch(`${S.dataDir}/${id}/log2fc.tsv`).then(r => { if (!r.ok) throw new Error(`log2fc.tsv not found for ${id}`); return r.text(); })
   ]);
   S.allMeta[id] = meta;
-  const parsed = Papa.parse(tsvText.trim(), { header:true, dynamicTyping:true, skipEmptyLines:true });
-  S.allData[id] = parsed.data;
+  S.allData[id] = Papa.parse(tsvText.trim(), { header:true, dynamicTyping:true, skipEmptyLines:true }).data;
 }
 
-// ─────────────────────────────────────────────────────────────
-// PATHWAY LIST
-// ─────────────────────────────────────────────────────────────
 function renderPathwayList(meta) {
   const data = S.allData[S.dataset] || [];
   const pathways = ['All', ...(meta.pathways || [...new Set(data.map(r=>r.Pathway).filter(Boolean))])];
   const counts = {};
   data.forEach(r => { counts[r.Pathway] = (counts[r.Pathway]||0)+1; });
   document.getElementById('pathway-list').innerHTML = pathways.map(pw => {
-    const cnt = pw === 'All' ? data.length : (counts[pw] || 0);
+    const cnt = pw === 'All' ? data.length : (counts[pw]||0);
     return `<button class="pathway-btn ${S.pathway===pw?'active':''}" onclick="setPathway('${esc(pw)}',this)">
-      <span>${esc(pw)}</span><span class="pathway-count">${cnt}</span>
-    </button>`;
+      <span>${esc(pw)}</span><span class="pathway-count">${cnt}</span></button>`;
   }).join('');
 }
 
@@ -991,102 +667,65 @@ function setPathway(pw, btn) {
   renderMain();
 }
 
-// ─────────────────────────────────────────────────────────────
-// DATA HELPERS
-// ─────────────────────────────────────────────────────────────
-function lcCol()   { return S.contrast ? S.contrast + '_log2FC' : null; }
-function padjCol() { return S.contrast ? S.contrast + '_padj'   : null; }
-
-function getContrastLabel() {
-  const meta = S.allMeta[S.dataset];
-  if (!meta) return S.contrast || '';
-  const entry = Object.entries(meta.contrasts || {}).find(([,v]) => v === S.contrast);
-  return entry ? entry[0] : (S.contrast || '');
-}
-
-function showNS()      { return document.getElementById('opt-ns')?.checked !== false; }
-function heatmapAll()  { return document.getElementById('opt-heatmap-all')?.checked; }
+function lcCol()   { return S.contrast ? S.contrast+'_log2FC' : null; }
+function padjCol() { return S.contrast ? S.contrast+'_padj'   : null; }
+function showNS()     { return document.getElementById('opt-ns')?.checked !== false; }
+function heatmapAll() { return document.getElementById('opt-heatmap-all')?.checked; }
 
 function filteredData() {
-  const all = S.allData[S.dataset] || [];
-  const lc = lcCol();
+  const all = S.allData[S.dataset] || [], lc = lcCol();
   let d = S.pathway === 'All' ? all : all.filter(r => r.Pathway === S.pathway);
-  if (!showNS() && lc) d = d.filter(r => {
-    const p = r[padjCol()];
-    return p != null && isFinite(p) && p < 0.05;
-  });
+  if (!showNS() && lc) d = d.filter(r => { const p = r[padjCol()]; return p!=null&&isFinite(p)&&p<0.05; });
   if (S.search) {
     const q = S.search.toLowerCase();
-    d = d.filter(r =>
-      (r.Symbol||'').toLowerCase().includes(q) ||
-      (r.GeneID||'').toLowerCase().includes(q) ||
-      (r.Description||'').toLowerCase().includes(q)
-    );
+    d = d.filter(r => (r.Symbol||'').toLowerCase().includes(q)||(r.GeneID||'').toLowerCase().includes(q)||(r.Description||'').toLowerCase().includes(q));
   }
-  if (lc) d = [...d].sort((a,b) => (b[lc]||0) - (a[lc]||0));
+  if (lc) d = [...d].sort((a,b) => (b[lc]||0)-(a[lc]||0));
   return d;
 }
 
 // ─────────────────────────────────────────────────────────────
-// MAIN RENDER
+// EXPLORER — RENDER
 // ─────────────────────────────────────────────────────────────
 function renderMain() {
-  const meta = S.allMeta[S.dataset];
-  const body = document.getElementById('main-body');
+  const meta = S.allMeta[S.dataset], body = document.getElementById('main-body');
   if (!meta || !S.contrast) { showLoading(); return; }
   document.getElementById('main-loading').style.display = 'none';
-  body.hidden = false;
-  body.style.cssText = 'display:flex;flex-direction:column;gap:24px;';
-  body.innerHTML = '';
-
-  const data = filteredData();
-  const lc = lcCol();
-  const pc = padjCol();
-  const vals = data.map(r => r[lc]).filter(v => v != null && isFinite(v));
-  const up = vals.filter(v => v > 0).length;
-  const dn = vals.filter(v => v < 0).length;
+  body.hidden = false; body.style.cssText = 'display:flex;flex-direction:column;gap:24px;'; body.innerHTML = '';
+  const data = filteredData(), lc = lcCol(), pc = padjCol();
+  const vals = data.map(r=>r[lc]).filter(v=>v!=null&&isFinite(v));
+  const up = vals.filter(v=>v>0).length, dn = vals.filter(v=>v<0).length;
   const maxFC = vals.length ? Math.max(...vals.map(Math.abs)).toFixed(2) : '—';
-  const allContrasts = Object.entries(meta.contrasts || {}).map(([l,k]) => ({label:l, key:k}));
+  const allContrasts = Object.entries(meta.contrasts||{}).map(([l,k])=>({label:l,key:k}));
 
-  body.innerHTML += `
-  <div class="dataset-header">
-    <div>
-      <h1>${esc(meta.species || S.dataset)}</h1>
-      <p>${esc(meta.induction_details || '')}</p>
-      <div class="meta-tags">
-        ${meta.induction_type ? `<span class="meta-tag green">${esc(meta.induction_type)}</span>` : ''}
-        ${meta.technique ? `<span class="meta-tag">${esc(meta.technique)}</span>` : ''}
-        <span class="meta-tag mono">${esc(S.dataset)}</span>
-      </div>
-    </div>
-    ${meta.geo_link ? `<a class="geo-link" href="${esc(meta.geo_link)}" target="_blank" rel="noopener">View on GEO ↗</a>` : ''}
+  body.innerHTML += `<div class="dataset-header"><div>
+    <h1>${esc(meta.species||S.dataset)}</h1><p>${esc(meta.induction_details||'')}</p>
+    <div class="meta-tags">
+      ${meta.induction_type?`<span class="meta-tag green">${esc(meta.induction_type)}</span>`:''}
+      ${meta.technique?`<span class="meta-tag">${esc(meta.technique)}</span>`:''}
+      <span class="meta-tag mono">${esc(S.dataset)}</span>
+    </div></div>
+    ${meta.geo_link?`<a class="geo-link" href="${esc(meta.geo_link)}" target="_blank" rel="noopener">View on GEO ↗</a>`:''}
   </div>`;
 
-  body.innerHTML += `
-  <div class="stat-row">
+  body.innerHTML += `<div class="stat-row">
     <div class="stat-card"><div class="stat-label">Genes shown</div><div class="stat-value">${data.length}</div><div class="stat-sub">${S.pathway==='All'?'all pathways':esc(S.pathway)}</div></div>
     <div class="stat-card"><div class="stat-label">Upregulated</div><div class="stat-value stat-up">${up}</div><div class="stat-sub">log2FC &gt; 0</div></div>
     <div class="stat-card"><div class="stat-label">Downregulated</div><div class="stat-value stat-down">${dn}</div><div class="stat-sub">log2FC &lt; 0</div></div>
     <div class="stat-card"><div class="stat-label">Max |log2FC|</div><div class="stat-value">${maxFC}</div><div class="stat-sub">strongest change</div></div>
   </div>`;
 
-  if (allContrasts.length > 1) {
-    body.innerHTML += `<div class="contrast-tabs">${allContrasts.map(c => `
-      <button class="contrast-tab ${S.contrast===c.key?'active':''}" onclick="setContrast('${esc(c.key)}')">${esc(c.label)}</button>`).join('')}</div>`;
-  }
+  if (allContrasts.length > 1) body.innerHTML += `<div class="contrast-tabs">${allContrasts.map(c=>
+    `<button class="contrast-tab ${S.contrast===c.key?'active':''}" onclick="setContrast('${esc(c.key)}')">${esc(c.label)}</button>`).join('')}</div>`;
 
-  body.innerHTML += `
-  <div class="panel">
+  body.innerHTML += `<div class="panel">
     <div class="chart-tab-row">
       <button class="chart-tab ${S.activeTab==='bar'?'active':''}"     onclick="setTab('bar',this)">Bar chart</button>
       <button class="chart-tab ${S.activeTab==='volcano'?'active':''}" onclick="setTab('volcano',this)">Volcano</button>
       <button class="chart-tab ${S.activeTab==='heatmap'?'active':''}" onclick="setTab('heatmap',this)">Heatmap</button>
-    </div>
-    <div id="chart-area"></div>
-  </div>`;
+    </div><div id="chart-area"></div></div>`;
 
-  body.innerHTML += `
-  <div class="panel">
+  body.innerHTML += `<div class="panel">
     <div class="panel-header"><div class="panel-title">Gene-level results</div></div>
     <div class="search-row">
       <input class="search-input" id="gene-search" placeholder="Search gene, symbol, description…" value="${esc(S.search)}" oninput="doSearch(this.value)"/>
@@ -1097,283 +736,414 @@ function renderMain() {
       </select>
     </div>
     <div class="gene-table-wrap"><table class="gene-table">
-      <thead><tr>
-        <th>Pathway</th><th>Symbol</th><th>Description</th>
-        <th>GeneID</th><th>log2FC</th><th>p-adj</th>
-      </tr></thead>
+      <thead><tr><th>Pathway</th><th>Symbol</th><th>Description</th><th>GeneID</th><th>log2FC</th><th>p-adj</th></tr></thead>
       <tbody id="gene-tbody"></tbody>
-    </table></div>
-  </div>`;
+    </table></div></div>`;
 
   renderChartArea(data, lc, pc);
   renderTable(data, lc, pc);
 }
 
-// ─────────────────────────────────────────────────────────────
-// CHART DISPATCHER
-// ─────────────────────────────────────────────────────────────
 function renderChartArea(data, lc, pc) {
   destroyCharts();
-  const area = document.getElementById('chart-area');
-  if (!area) return;
-  if (S.activeTab === 'bar')          renderBar(area, data, lc);
-  else if (S.activeTab === 'volcano') renderVolcano(area, lc, pc);
-  else if (S.activeTab === 'heatmap') renderHeatmap(area, lc);
+  const area = document.getElementById('chart-area'); if (!area) return;
+  if (S.activeTab==='bar') renderBar(area,data,lc);
+  else if (S.activeTab==='volcano') renderVolcano(area,lc,pc);
+  else if (S.activeTab==='heatmap') renderHeatmap(area,lc);
 }
-
-function setTab(tab, btn) {
+function setTab(tab,btn) {
   S.activeTab = tab;
-  document.querySelectorAll('.chart-tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.chart-tab').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  renderChartArea(filteredData(), lcCol(), padjCol());
+  renderChartArea(filteredData(),lcCol(),padjCol());
 }
-
 function destroyCharts() {
-  Object.keys(S.charts).forEach(k => {
-    if (S.charts[k]) { S.charts[k].destroy(); delete S.charts[k]; }
-  });
+  Object.keys(S.charts).forEach(k=>{ if(S.charts[k]){S.charts[k].destroy();delete S.charts[k];} });
 }
 
-// ─────────────────────────────────────────────────────────────
-// CHART 1 — Bar
-// ─────────────────────────────────────────────────────────────
 function renderBar(area, data, lc) {
-  area.innerHTML = `
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
-      <div class="legend-row">
-        <div class="legend-item"><span class="legend-swatch" style="background:#2ea378"></span>Up</div>
-        <div class="legend-item"><span class="legend-swatch" style="background:#d63d3c"></span>Down</div>
-      </div>
-      <div class="toggle-group">
-        <button class="toggle-btn ${S.barMode==='top10'?'active':''}" id="btn-top10" onclick="setBarMode('top10')">Top 10</button>
-        <button class="toggle-btn ${S.barMode==='all'?'active':''}"   id="btn-all"   onclick="setBarMode('all')">All</button>
-      </div>
+  area.innerHTML = `<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+    <div class="legend-row">
+      <div class="legend-item"><span class="legend-swatch" style="background:#2ea378"></span>Up</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:#d63d3c"></span>Down</div>
     </div>
-    <div style="position:relative;" id="bar-wrap">
-      <canvas id="barChart" role="img" aria-label="Horizontal bar chart of log2 fold change per gene"></canvas>
-    </div>`;
+    <div class="toggle-group">
+      <button class="toggle-btn ${S.barMode==='top10'?'active':''}" id="btn-top10" onclick="setBarMode('top10')">Top 10</button>
+      <button class="toggle-btn ${S.barMode==='all'?'active':''}"   id="btn-all"   onclick="setBarMode('all')">All</button>
+    </div></div>
+    <div style="position:relative;" id="bar-wrap"><canvas id="barChart"></canvas></div>`;
   drawBar(data, lc);
 }
-
 function drawBar(data, lc) {
-  let d = [...data].filter(r => r[lc] != null && isFinite(r[lc]));
-  d.sort((a,b) => Math.abs(b[lc]) - Math.abs(a[lc]));
-  if (S.barMode === 'top10') d = d.slice(0, 10);
-  const labels = d.map(r => r.Symbol || r.GeneID || '');
-  const vals   = d.map(r => parseFloat(r[lc].toFixed(3)));
-  const colors = vals.map(v => v >= 0 ? '#2ea378' : '#d63d3c');
-  const h = Math.max(280, d.length * 40 + 60);
-  const wrap = document.getElementById('bar-wrap');
-  if (wrap) wrap.style.height = h + 'px';
-  const ctx = document.getElementById('barChart');
-  if (!ctx) return;
-  if (S.charts.bar) S.charts.bar.destroy();
+  let d = [...data].filter(r=>r[lc]!=null&&isFinite(r[lc]));
+  d.sort((a,b)=>Math.abs(b[lc])-Math.abs(a[lc]));
+  if (S.barMode==='top10') d = d.slice(0,10);
+  const labels=d.map(r=>r.Symbol||r.GeneID||''), vals=d.map(r=>parseFloat(r[lc].toFixed(3)));
+  const colors=vals.map(v=>v>=0?'#2ea378':'#d63d3c'), h=Math.max(280,d.length*40+60);
+  const wrap=document.getElementById('bar-wrap'); if(wrap) wrap.style.height=h+'px';
+  const ctx=document.getElementById('barChart'); if(!ctx) return;
+  if(S.charts.bar) S.charts.bar.destroy();
   S.charts.bar = new Chart(ctx, {
-    type: 'bar',
-    data: { labels, datasets: [{ data: vals, backgroundColor: colors, borderRadius: 3, borderSkipped: false }] },
-    options: {
-      indexAxis: 'y', responsive: true, maintainAspectRatio: false,
-      plugins: { legend: {display: false}, tooltip: { callbacks: { label: c => ' log2FC: ' + c.raw.toFixed(3) } } },
-      scales: {
-        x: { grid: {color:'#ebeee2'}, ticks: {color:'#8a957a',font:{size:11}}, border: {color:'#dde2cf'} },
-        y: { grid: {display: false}, ticks: {color:'#5a6845',font:{size:11}}, border: {display: false} }
-      }
-    }
+    type:'bar', data:{labels,datasets:[{data:vals,backgroundColor:colors,borderRadius:3,borderSkipped:false}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>' log2FC: '+c.raw.toFixed(3)}}},
+      scales:{x:{grid:{color:'#eaecea'},ticks:{color:'#8a9577',font:{size:11}},border:{color:'#dde2cf'}},
+              y:{grid:{display:false},ticks:{color:'#556242',font:{size:11}},border:{display:false}}}}
   });
 }
-
 function setBarMode(mode) {
   S.barMode = mode;
-  document.getElementById('btn-top10')?.classList.toggle('active', mode === 'top10');
-  document.getElementById('btn-all')?.classList.toggle('active',   mode === 'all');
-  drawBar(filteredData(), lcCol());
+  document.getElementById('btn-top10')?.classList.toggle('active',mode==='top10');
+  document.getElementById('btn-all')?.classList.toggle('active',mode==='all');
+  drawBar(filteredData(),lcCol());
 }
 
-// ─────────────────────────────────────────────────────────────
-// CHART 2 — Volcano
-// ─────────────────────────────────────────────────────────────
 function renderVolcano(area, lc, pc) {
-  const all = S.allData[S.dataset] || [];
-  const rows = all.filter(r =>
-    r[lc] != null && isFinite(r[lc]) &&
-    r[pc] != null && isFinite(r[pc]) && r[pc] > 0
-  );
-  if (!rows.length) {
-    area.innerHTML = '<div class="empty">No valid values (need real padj values)</div>';
-    return;
-  }
-
-  const pwSet = new Set(S.pathway === 'All' ? [] : all.filter(r => r.Pathway === S.pathway).map(r => r.GeneID));
-  const isInPw = r => S.pathway !== 'All' && pwSet.has(r.GeneID);
-
-  const bg = [], fg = [];
-  rows.forEach(r => {
-    const x = r[lc];
-    const y = -Math.log10(Math.max(r[pc], 1e-300));
-    const sig = r[pc] < 0.05 && Math.abs(x) > 1;
-    const col = !sig ? 'rgba(138,149,122,0.35)' : x >= 0 ? '#2ea378' : '#d63d3c';
-    const pt = { x, y, label: r.Symbol || r.GeneID, col };
-    if (isInPw(r)) fg.push({...pt, col: sig ? (x >= 0 ? '#2ea378' : '#d63d3c') : 'rgba(99,153,34,0.55)', pw: true });
-    else           bg.push(pt);
+  const all = S.allData[S.dataset]||[];
+  const rows = all.filter(r=>r[lc]!=null&&isFinite(r[lc])&&r[pc]!=null&&isFinite(r[pc])&&r[pc]>0);
+  if (!rows.length) { area.innerHTML='<div class="empty">No valid padj values</div>'; return; }
+  const pwSet = new Set(S.pathway==='All'?[]:all.filter(r=>r.Pathway===S.pathway).map(r=>r.GeneID));
+  const isInPw = r => S.pathway!=='All' && pwSet.has(r.GeneID);
+  const bg=[],fg=[];
+  rows.forEach(r=>{
+    const x=r[lc],y=-Math.log10(Math.max(r[pc],1e-300)),sig=r[pc]<0.05&&Math.abs(x)>1;
+    const col=!sig?'rgba(138,149,122,0.35)':x>=0?'#2ea378':'#d63d3c';
+    const pt={x,y,label:r.Symbol||r.GeneID,col};
+    if(isInPw(r)) fg.push({...pt,col:sig?(x>=0?'#2ea378':'#d63d3c'):'rgba(99,153,34,0.55)',pw:true});
+    else bg.push(pt);
   });
-
-  area.innerHTML = `<div style="position:relative;height:460px;"><canvas id="volcanoChart" role="img" aria-label="Volcano plot of all genes"></canvas></div>`;
-  const ctx = document.getElementById('volcanoChart');
-  if (!ctx) return;
-  if (S.charts.scatter) S.charts.scatter.destroy();
-
+  area.innerHTML=`<div style="position:relative;height:460px;"><canvas id="volcanoChart"></canvas></div>`;
+  const ctx=document.getElementById('volcanoChart'); if(!ctx) return;
+  if(S.charts.scatter) S.charts.scatter.destroy();
   S.charts.scatter = new Chart(ctx, {
-    type: 'scatter',
-    data: { datasets: [
-      { label: 'Background', data: bg.map(p => ({x:p.x,y:p.y})),
-        backgroundColor: bg.map(p => p.col), pointRadius: 2.5, pointHoverRadius: 4 },
-      { label: S.pathway === 'All' ? 'All genes' : 'Pathway genes',
-        data: fg.map(p => ({x:p.x,y:p.y})),
-        backgroundColor: fg.map(p => p.col),
-        pointRadius: fg.map(p => p.pw ? 5.5 : 3),
-        pointStyle: fg.map(p => p.pw ? 'rectRot' : 'circle'),
-        pointHoverRadius: 7 }
+    type:'scatter',
+    data:{datasets:[
+      {label:'Background',data:bg.map(p=>({x:p.x,y:p.y})),backgroundColor:bg.map(p=>p.col),pointRadius:2.5,pointHoverRadius:4},
+      {label:S.pathway==='All'?'All genes':'Pathway genes',data:fg.map(p=>({x:p.x,y:p.y})),
+       backgroundColor:fg.map(p=>p.col),pointRadius:fg.map(p=>p.pw?5.5:3),pointStyle:fg.map(p=>p.pw?'rectRot':'circle'),pointHoverRadius:7}
     ]},
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          callbacks: {
-            label: ctx => {
-              const arr = ctx.datasetIndex === 0 ? bg : fg;
-              const pt = arr[ctx.dataIndex];
-              return pt ? [pt.label, ' log2FC: ' + pt.x.toFixed(3), ' -log10(padj): ' + pt.y.toFixed(2)] : '';
-            }
-          }
-        }
-      },
-      scales: {
-        x: { title: {display:true, text:'log2 Fold Change', color:'#5a6845', font:{size:11}},
-             grid: {color:'#ebeee2'}, ticks: {color:'#8a957a',font:{size:11}} },
-        y: { title: {display:true, text:'-log10(padj)', color:'#5a6845', font:{size:11}},
-             grid: {color:'#ebeee2'}, ticks: {color:'#8a957a',font:{size:11}} }
-      }
-    }
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>{
+        const arr=ctx.datasetIndex===0?bg:fg,pt=arr[ctx.dataIndex];
+        return pt?[pt.label,' log2FC: '+pt.x.toFixed(3),' -log10(padj): '+pt.y.toFixed(2)]:'';
+      }}}},
+      scales:{x:{title:{display:true,text:'log2 Fold Change',color:'#556242',font:{size:11}},grid:{color:'#eaecea'},ticks:{color:'#8a9577',font:{size:11}}},
+              y:{title:{display:true,text:'-log10(padj)',color:'#556242',font:{size:11}},grid:{color:'#eaecea'},ticks:{color:'#8a9577',font:{size:11}}}}}
   });
 }
 
-// ─────────────────────────────────────────────────────────────
-// CHART 3 — Heatmap
-// ─────────────────────────────────────────────────────────────
-function heatColor(v, absMax) {
-  if (v == null || !isFinite(v)) return { bg: '#f4f7ec', text: '#8a957a' };
-  const n = Math.max(-1, Math.min(1, v / Math.max(absMax, 0.001)));
-  if (n >= 0) return { bg: `rgba(46,163,120,${0.10 + n * 0.70})`, text: n > 0.55 ? '#ffffff' : '#1f6b4f' };
-  return { bg: `rgba(214,61,60,${0.10 + (-n) * 0.70})`, text: -n > 0.55 ? '#ffffff' : '#992c2c' };
+function heatColor(v,absMax) {
+  if(v==null||!isFinite(v)) return {bg:'#f5f8ee',text:'#8a9577'};
+  const n=Math.max(-1,Math.min(1,v/Math.max(absMax,0.001)));
+  if(n>=0) return {bg:`rgba(46,163,120,${0.10+n*0.70})`,text:n>0.55?'#fff':'#1f6b4f'};
+  return {bg:`rgba(214,61,60,${0.10+(-n)*0.70})`,text:-n>0.55?'#fff':'#992c2c'};
 }
-
 function renderHeatmap(area, lc) {
-  const src  = heatmapAll() ? (S.allData[S.dataset] || []) : filteredData();
-  const meta = S.allMeta[S.dataset];
-  const allCtKeys = Object.values(meta.contrasts || {});
-  const allLcCols = allCtKeys.map(k => k + '_log2FC').filter(c => src.length && c in src[0]);
-  const allLabels = allCtKeys.map(k => {
-    const e = Object.entries(meta.contrasts || {}).find(([,v]) => v === k);
-    return e ? e[0] : k;
-  }).filter((_, i) => allCtKeys[i] + '_log2FC' in (src[0] || {}));
-
-  const pathways = [...new Set(src.map(r => r.Pathway).filter(Boolean))];
-  const allVals = src.flatMap(r => allLcCols.map(c => r[c])).filter(v => v != null && isFinite(v));
-  const absMax = allVals.length ? Math.max(...allVals.map(Math.abs)) : 1;
-
-  let html = `<div style="overflow-x:auto;"><table class="heatmap-table"><thead><tr>
-    <th class="gene-col">Pathway / Gene</th>
-    ${allLabels.map(l => `<th>${esc(l)}</th>`).join('')}
-  </tr></thead><tbody>`;
-
-  pathways.forEach(pw => {
-    const genes = src.filter(r => r.Pathway === pw);
-    html += `<tr><td colspan="${allLcCols.length + 1}" style="padding:12px 6px 4px;color:var(--accent-hi);font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;">${esc(pw)}</td></tr>`;
-    genes.forEach(g => {
-      html += `<tr><td class="gene-name" title="${esc(g.Description || '')}">${esc(g.Symbol || g.GeneID)}</td>`;
-      allLcCols.forEach(c => {
-        const v = g[c];
-        const { bg, text } = heatColor(v, absMax);
-        const disp = (v != null && isFinite(v)) ? v.toFixed(2) : 'NA';
-        html += `<td><span class="hm-cell" style="background:${bg};color:${text};">${disp}</span></td>`;
-      });
-      html += `</tr>`;
+  const src=heatmapAll()?(S.allData[S.dataset]||[]):filteredData(), meta=S.allMeta[S.dataset];
+  const allCtKeys=Object.values(meta.contrasts||{});
+  const allLcCols=allCtKeys.map(k=>k+'_log2FC').filter(c=>src.length&&c in src[0]);
+  const allLabels=allCtKeys.map(k=>{const e=Object.entries(meta.contrasts||{}).find(([,v])=>v===k);return e?e[0]:k;})
+    .filter((_,i)=>allCtKeys[i]+'_log2FC' in (src[0]||{}));
+  const pathways=[...new Set(src.map(r=>r.Pathway).filter(Boolean))];
+  const allVals=src.flatMap(r=>allLcCols.map(c=>r[c])).filter(v=>v!=null&&isFinite(v));
+  const absMax=allVals.length?Math.max(...allVals.map(Math.abs)):1;
+  let html=`<div style="overflow-x:auto;"><table class="heatmap-table"><thead><tr><th class="gene-col">Pathway / Gene</th>${allLabels.map(l=>`<th>${esc(l)}</th>`).join('')}</tr></thead><tbody>`;
+  pathways.forEach(pw=>{
+    const genes=src.filter(r=>r.Pathway===pw);
+    html+=`<tr><td colspan="${allLcCols.length+1}" style="padding:12px 6px 4px;color:var(--accent-hi);font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;">${esc(pw)}</td></tr>`;
+    genes.forEach(g=>{
+      html+=`<tr><td class="gene-name" title="${esc(g.Description||'')}">${esc(g.Symbol||g.GeneID)}</td>`;
+      allLcCols.forEach(c=>{const v=g[c];const{bg,text}=heatColor(v,absMax);html+=`<td><span class="hm-cell" style="background:${bg};color:${text};">${(v!=null&&isFinite(v))?v.toFixed(2):'NA'}</span></td>`;});
+      html+=`</tr>`;
     });
   });
-  html += '</tbody></table></div>';
-
-  const steps = 7;
-  const legend = Array.from({length: steps}, (_, i) => {
-    const v = absMax * (2 * i / (steps - 1) - 1);
-    const { bg } = heatColor(v, absMax);
-    return `<span style="display:inline-block;width:30px;height:14px;background:${bg};border-radius:2px;"></span>`;
-  }).join('');
-
-  area.innerHTML = `
-    <div style="display:flex;align-items:center;gap:6px;margin-bottom:16px;font-size:11px;color:var(--text-dim);font-variant-numeric:tabular-nums;">
-      <span>-${absMax.toFixed(1)}</span>${legend}<span>+${absMax.toFixed(1)}</span>
-      <span style="margin-left:12px;letter-spacing:0.06em;text-transform:uppercase;font-size:10px;font-weight:600;">log2FC</span>
-    </div>
-    ${html}`;
+  html+='</tbody></table></div>';
+  const steps=7;
+  const legend=Array.from({length:steps},(_,i)=>{const v=absMax*(2*i/(steps-1)-1);const{bg}=heatColor(v,absMax);return `<span style="display:inline-block;width:30px;height:14px;background:${bg};border-radius:2px;"></span>`;}).join('');
+  area.innerHTML=`<div style="display:flex;align-items:center;gap:6px;margin-bottom:16px;font-size:11px;color:var(--text-dim);font-variant-numeric:tabular-nums;"><span>-${absMax.toFixed(1)}</span>${legend}<span>+${absMax.toFixed(1)}</span><span style="margin-left:12px;letter-spacing:0.06em;text-transform:uppercase;font-size:10px;font-weight:600;">log2FC</span></div>${html}`;
 }
 
-// ─────────────────────────────────────────────────────────────
-// GENE TABLE
-// ─────────────────────────────────────────────────────────────
 function renderTable(data, lc, pc) {
-  const tbody = document.getElementById('gene-tbody');
-  if (!tbody) return;
-  if (!data.length) {
-    tbody.innerHTML = '<tr><td colspan="6" class="empty">No genes match current filters</td></tr>';
-    return;
-  }
-  const vals = data.map(r => r[lc]).filter(v => v != null && isFinite(v));
-  const absMax = vals.length ? Math.max(...vals.map(Math.abs)) : 1;
-  tbody.innerHTML = data.map(r => {
-    const fc = r[lc];
-    const pv = r[pc];
-    const fcN = (fc != null && isFinite(fc)) ? fc.toFixed(3) : 'NA';
-    const fcP = (fc != null && isFinite(fc)) ? Math.min(100, Math.abs(fc) / absMax * 100) : 0;
-    const fcC = (fc != null && fc >= 0) ? '#2ea378' : '#d63d3c';
-    const pvD = (pv != null && isFinite(pv)) ? pv.toExponential(2) : 'NA';
-    const sig = pv != null && isFinite(pv) && pv < 0.05;
+  const tbody=document.getElementById('gene-tbody'); if(!tbody) return;
+  if(!data.length){tbody.innerHTML='<tr><td colspan="6" class="empty">No genes match current filters</td></tr>';return;}
+  const vals=data.map(r=>r[lc]).filter(v=>v!=null&&isFinite(v));
+  const absMax=vals.length?Math.max(...vals.map(Math.abs)):1;
+  tbody.innerHTML=data.map(r=>{
+    const fc=r[lc],pv=r[pc],fcN=(fc!=null&&isFinite(fc))?fc.toFixed(3):'NA';
+    const fcP=(fc!=null&&isFinite(fc))?Math.min(100,Math.abs(fc)/absMax*100):0;
+    const fcC=(fc!=null&&fc>=0)?'#2ea378':'#d63d3c';
+    const pvD=(pv!=null&&isFinite(pv))?pv.toExponential(2):'NA',sig=pv!=null&&isFinite(pv)&&pv<0.05;
     return `<tr>
-      <td><span class="pathway-pill">${esc(r.Pathway || '')}</span></td>
-      <td style="color:var(--text);font-weight:500;">${esc(r.Symbol || '—')}</td>
-      <td style="color:var(--text-mu);font-size:12px;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${esc(r.Description || '')}">${esc(r.Description || '—')}</td>
-      <td style="color:var(--text-dim);font-size:11.5px;font-family:var(--font-mono);">${esc(r.GeneID || '')}</td>
-      <td><div class="fc-bar-wrap">
-        <span class="fc-num" style="color:${fcC}">${fcN}</span>
-        <div class="fc-bar-bg"><div class="fc-bar-fill" style="width:${fcP.toFixed(1)}%;background:${fcC};"></div></div>
-      </div></td>
-      <td><span class="sig-dot" style="background:${sig?'#2ea378':'#fff'};border:1px solid ${sig?'#2ea378':'var(--border-md)'};margin-right:8px;"></span><span style="font-family:var(--font-mono);font-size:11.5px;">${pvD}</span></td>
+      <td><span class="pathway-pill">${esc(r.Pathway||'')}</span></td>
+      <td style="color:var(--text);font-weight:500;">${esc(r.Symbol||'—')}</td>
+      <td style="color:var(--text-mu);font-size:12px;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${esc(r.Description||'')}">${esc(r.Description||'—')}</td>
+      <td style="color:var(--text-dim);font-size:11.5px;font-family:var(--font-mono);">${esc(r.GeneID||'')}</td>
+      <td><div class="fc-bar-wrap"><span class="fc-num" style="color:${fcC}">${fcN}</span><div class="fc-bar-bg"><div class="fc-bar-fill" style="width:${fcP.toFixed(1)}%;background:${fcC};"></div></div></div></td>
+      <td><span class="sig-dot" style="background:${sig?'#2ea378':'#fff'};border:1px solid ${sig?'#2ea378':'rgba(0,0,0,0.12)'};margin-right:8px;"></span><span style="font-family:var(--font-mono);font-size:11.5px;">${pvD}</span></td>
     </tr>`;
   }).join('');
 }
 
-// ─────────────────────────────────────────────────────────────
-// MISC HANDLERS
-// ─────────────────────────────────────────────────────────────
-function setContrast(key) {
-  S.contrast = key;
-  document.getElementById('sel-contrast').value = key;
-  renderMain();
-}
+function setContrast(key) { S.contrast=key; document.getElementById('sel-contrast').value=key; renderMain(); }
 function doSearch(q) {
-  S.search = q;
-  const data = filteredData();
-  renderTable(data, lcCol(), padjCol());
-  if (S.activeTab === 'bar')          drawBar(data, lcCol());
-  else if (S.activeTab === 'heatmap') renderHeatmap(document.getElementById('chart-area'), lcCol());
+  S.search=q; const data=filteredData();
+  renderTable(data,lcCol(),padjCol());
+  if(S.activeTab==='bar') drawBar(data,lcCol());
+  else if(S.activeTab==='heatmap') renderHeatmap(document.getElementById('chart-area'),lcCol());
 }
-function setSort(col) { S.sortCol = col; renderMain(); }
-function showLoading() {
-  document.getElementById('main-loading').style.display = 'flex';
-  document.getElementById('main-body').hidden = true;
+function setSort(col) { S.sortCol=col; renderMain(); }
+function showLoading() { document.getElementById('main-loading').style.display='flex'; document.getElementById('main-body').hidden=true; }
+function showErr(msg) { document.getElementById('main-loading').innerHTML=`<span style="color:var(--down)">${esc(msg)}</span>`; }
+
+// ─────────────────────────────────────────────────────────────
+// PUBMED LITERATURE EXPLORER
+// ─────────────────────────────────────────────────────────────
+const ENTREZ = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils';
+let PM = { loaded: false, chart: null };
+
+function initPubMed() {
+  if (PM.loaded) return;
+  fetchPubMed();
 }
-function showErr(msg) {
-  document.getElementById('main-loading').innerHTML = `<span style="color:var(--down)">${esc(msg)}</span>`;
+
+async function fetchPubMed() {
+  const query = document.getElementById('pubmed-query')?.value?.trim() || 'microalgae metabolite stress';
+
+  document.getElementById('pubmed-loading').style.display = 'flex';
+  document.getElementById('pubmed-content').hidden = true;
+  document.getElementById('pubmed-empty').hidden = true;
+  document.getElementById('pubmed-error').hidden = true;
+
+  try {
+    // Search — get IDs
+    const searchRes = await fetch(
+      `${ENTREZ}/esearch.fcgi?db=pubmed&term=${encodeURIComponent(query)}&retmode=json&retmax=80&sort=relevance`
+    );
+    if (!searchRes.ok) throw new Error('PubMed search failed (HTTP ' + searchRes.status + ')');
+    const searchData = await searchRes.json();
+    const ids = searchData.esearchresult.idlist;
+    const total = parseInt(searchData.esearchresult.count) || 0;
+
+    if (!ids.length) {
+      document.getElementById('pubmed-loading').style.display = 'none';
+      document.getElementById('pubmed-empty').hidden = false;
+      return;
+    }
+
+    // Summaries — get titles, authors, dates
+    const summaryRes = await fetch(
+      `${ENTREZ}/esummary.fcgi?db=pubmed&id=${ids.join(',')}&retmode=json`
+    );
+    if (!summaryRes.ok) throw new Error('PubMed summary fetch failed');
+    const summaryData = await summaryRes.json();
+    const articles = ids.map(id => summaryData.result[id]).filter(a => a && a.uid);
+
+    PM.loaded = true;
+    renderPubMed(articles, total, query);
+  } catch (e) {
+    document.getElementById('pubmed-loading').style.display = 'none';
+    const errEl = document.getElementById('pubmed-error');
+    errEl.hidden = false;
+    errEl.textContent = 'Could not reach PubMed: ' + e.message + '. Check your internet connection.';
+  }
+}
+
+function renderPubMed(articles, total, query) {
+  document.getElementById('pubmed-loading').style.display = 'none';
+
+  // Stats
+  const years = {};
+  articles.forEach(a => {
+    const y = (a.pubdate || '').substring(0, 4);
+    if (/^\d{4}$/.test(y)) years[y] = (years[y] || 0) + 1;
+  });
+  const journalSet = new Set(articles.map(a => a.source).filter(Boolean));
+  document.getElementById('pubmed-stats').innerHTML = `
+    <div class="tool-stat"><div class="tool-stat-val">${total.toLocaleString()}</div><div class="tool-stat-label">Total Results</div></div>
+    <div class="tool-stat"><div class="tool-stat-val">${articles.length}</div><div class="tool-stat-label">Showing</div></div>
+    <div class="tool-stat"><div class="tool-stat-val">${journalSet.size}</div><div class="tool-stat-label">Journals</div></div>`;
+
+  // Year histogram
+  const sortedYears = Object.keys(years).sort();
+  if (PM.chart) { PM.chart.destroy(); PM.chart = null; }
+  const ctx = document.getElementById('pubmed-chart');
+  if (ctx && sortedYears.length) {
+    PM.chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: sortedYears,
+        datasets: [{ data: sortedYears.map(y => years[y]), backgroundColor: '#639922', borderRadius: 4, borderSkipped: false }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => ' ' + c.raw + ' articles' } } },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: '#8a9577', font: { size: 11 } }, border: { display: false } },
+          y: { grid: { color: '#eaecea' }, ticks: { color: '#8a9577', font: { size: 11 }, precision: 0 }, border: { display: false } }
+        }
+      }
+    });
+  }
+
+  // Article cards
+  document.getElementById('pubmed-results').innerHTML = articles.map((a, idx) => {
+    const authors = (a.authors || []).slice(0, 3).map(x => x.name).join(', ') + (a.authors?.length > 3 ? ' et al.' : '');
+    const doi = a.elocationid?.replace('doi: ','').trim() || '';
+    const doiUrl = doi ? `https://doi.org/${doi}` : '';
+    const year = (a.pubdate || '').substring(0, 4);
+    return `<div class="article-card">
+      <div class="article-title"><a href="https://pubmed.ncbi.nlm.nih.gov/${a.uid}/" target="_blank" rel="noopener">${esc(a.title || 'Untitled')}</a></div>
+      <div class="article-authors">${esc(authors)}</div>
+      <div class="article-meta">
+        <span class="article-meta-item journal">${esc(a.fulljournalname || a.source || '')}</span>
+        ${year ? `<span class="article-meta-item">${year}</span>` : ''}
+        ${a.volume ? `<span class="article-meta-item">Vol. ${esc(a.volume)}${a.issue ? '(' + esc(a.issue) + ')' : ''}</span>` : ''}
+      </div>
+      <div class="article-footer">
+        <button class="article-toggle" onclick="toggleAbstract(${idx})">Show abstract</button>
+        ${doiUrl ? `<span class="article-doi">DOI: <a href="${esc(doiUrl)}" target="_blank" rel="noopener">${esc(doi)}</a></span>` : ''}
+      </div>
+      <div class="article-abstract" id="abs-${idx}">${esc(a.attributes?.join('. ') || 'Abstract not available in summary. Click the title to read on PubMed.')}</div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('pubmed-content').hidden = false;
+}
+
+function toggleAbstract(idx) {
+  const el = document.getElementById('abs-' + idx);
+  const btn = el?.previousElementSibling?.querySelector('.article-toggle');
+  if (!el) return;
+  el.classList.toggle('open');
+  if (btn) btn.textContent = el.classList.contains('open') ? 'Hide abstract' : 'Show abstract';
+}
+
+// ─────────────────────────────────────────────────────────────
+// METABOLOMICS EXPLORER (Metabolomics Workbench + MetaboLights)
+// ─────────────────────────────────────────────────────────────
+let MB = { loaded: false, studies: [], filtered: [] };
+
+function initMetabolomics() {
+  if (MB.loaded) return;
+  fetchMetabolomicsStudies();
+}
+
+async function fetchMetabolomicsStudies() {
+  document.getElementById('metabo-loading').style.display = 'flex';
+  document.getElementById('metabo-content').hidden = true;
+  document.getElementById('metabo-empty').hidden = true;
+  document.getElementById('metabo-error').hidden = true;
+
+  const studies = [];
+  const seen = new Set();
+
+  // Try Metabolomics Workbench (search algae + microalgae)
+  try {
+    const [r1, r2] = await Promise.all([
+      fetch('https://www.metabolomicsworkbench.org/rest/study/study_title/algae/summary').then(r => r.ok ? r.json() : {}),
+      fetch('https://www.metabolomicsworkbench.org/rest/study/study_title/microalgae/summary').then(r => r.ok ? r.json() : {})
+    ]);
+    [r1, r2].forEach(data => {
+      if (typeof data !== 'object') return;
+      Object.values(data).forEach(s => {
+        if (!s?.study_id || seen.has(s.study_id)) return;
+        seen.add(s.study_id);
+        studies.push({
+          id: s.study_id,
+          title: s.study_title || '',
+          summary: s.study_summary || '',
+          institute: s.institute || '',
+          date: s.submit_date || s.release_date || '',
+          source: 'Metabolomics Workbench',
+          url: `https://www.metabolomicsworkbench.org/data/DRCCStudySummary.php?Mode=SetupStudyAnalysis&StudyID=${encodeURIComponent(s.study_id)}`
+        });
+      });
+    });
+  } catch (e) { /* silent, try MetaboLights next */ }
+
+  // Also try MetaboLights (EBI) for algae studies
+  try {
+    const r = await fetch('https://www.ebi.ac.uk/metabolights/ws/search/studies/lite?query=algae&pageSize=50');
+    if (r.ok) {
+      const data = await r.json();
+      (data.content || []).forEach(s => {
+        const id = s.studyIdentifier;
+        if (!id || seen.has(id)) return;
+        seen.add(id);
+        studies.push({
+          id,
+          title: s.title || '',
+          summary: s.description || '',
+          institute: '',
+          date: s.publicReleaseDate || '',
+          organism: (s.organism || []).map(o => o.organism).filter(Boolean).join(', '),
+          source: 'MetaboLights',
+          url: `https://www.ebi.ac.uk/metabolights/${id}`
+        });
+      });
+    }
+  } catch (e) { /* silent */ }
+
+  document.getElementById('metabo-loading').style.display = 'none';
+
+  if (!studies.length) {
+    const errEl = document.getElementById('metabo-error');
+    errEl.hidden = false;
+    errEl.textContent = 'Could not fetch metabolomics studies. Check your internet connection, or visit metabolomicsworkbench.org directly.';
+    return;
+  }
+
+  MB.loaded = true;
+  MB.studies = studies;
+  MB.filtered = studies;
+  renderMetabolomics(studies);
+}
+
+function filterMetabolomics(q) {
+  if (!MB.loaded) return;
+  const ql = q.toLowerCase();
+  MB.filtered = ql ? MB.studies.filter(s =>
+    s.title.toLowerCase().includes(ql) ||
+    s.summary.toLowerCase().includes(ql) ||
+    (s.institute||'').toLowerCase().includes(ql) ||
+    (s.organism||'').toLowerCase().includes(ql)
+  ) : MB.studies;
+  renderMetabolomics(MB.filtered);
+}
+
+function renderMetabolomics(studies) {
+  const mwCount = studies.filter(s => s.source === 'Metabolomics Workbench').length;
+  const mlCount = studies.filter(s => s.source === 'MetaboLights').length;
+  document.getElementById('metabo-stats').innerHTML = `
+    <div class="tool-stat"><div class="tool-stat-val">${studies.length}</div><div class="tool-stat-label">Studies Found</div></div>
+    <div class="tool-stat"><div class="tool-stat-val">${mwCount}</div><div class="tool-stat-label">Workbench</div></div>
+    <div class="tool-stat"><div class="tool-stat-val">${mlCount}</div><div class="tool-stat-label">MetaboLights</div></div>`;
+
+  if (!studies.length) {
+    document.getElementById('metabo-content').hidden = false;
+    document.getElementById('metabo-results').innerHTML = '';
+    document.getElementById('metabo-empty').hidden = false;
+    return;
+  }
+  document.getElementById('metabo-empty').hidden = true;
+
+  document.getElementById('metabo-results').innerHTML = studies.map(s => `
+    <div class="study-card">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;">
+        <span class="study-id">${esc(s.id)}</span>
+        <span class="source-badge">${esc(s.source)}</span>
+      </div>
+      <div class="study-title">${esc(s.title || 'Untitled Study')}</div>
+      ${s.organism ? `<div class="study-meta">Organism: ${esc(s.organism)}</div>` : ''}
+      ${s.institute ? `<div class="study-meta">${esc(s.institute)}</div>` : ''}
+      ${s.date ? `<div class="study-meta">${esc(s.date.substring(0,10))}</div>` : ''}
+      <div class="study-desc">${esc(s.summary)}</div>
+      <div class="study-footer">
+        <a class="study-link" href="${esc(s.url)}" target="_blank" rel="noopener">View full study ↗</a>
+      </div>
+    </div>`).join('');
+
+  document.getElementById('metabo-content').hidden = false;
 }
 
 // ─────────────────────────────────────────────────────────────
