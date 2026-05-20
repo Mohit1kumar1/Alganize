@@ -346,6 +346,14 @@ main { flex: 1; overflow-y: auto; padding: 36px 44px 56px; display: flex; flex-d
 .metab-img-wrap { width: 72px; height: 72px; background: var(--bg); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; overflow: hidden; }
 .metab-img { width: 68px; height: 68px; object-fit: contain; }
 
+/* Realistic molecule images in flow */
+.mol-img-frame { position: relative; width: 96px; height: 96px; border-radius: var(--radius); overflow: hidden; background: #f0f4f8; box-shadow: var(--sh-md); flex-shrink: 0; display: flex; align-items: center; justify-content: center; cursor: default; transition: transform .2s, box-shadow .2s; }
+.mol-img-frame:hover { transform: scale(1.06); box-shadow: var(--sh-lg); }
+.mol-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mol-img-badge { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(10,20,5,0.58); color: rgba(255,255,255,0.9); font-size: 8.5px; font-weight: 600; letter-spacing: 0.06em; text-align: center; padding: 3px 4px; font-family: var(--font-mono); }
+.mol-img-fallback { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; width: 100%; height: 100%; }
+.dogma-section-header { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); margin: 28px 0 14px; padding-left: 2px; border-left: 3px solid var(--accent); padding-left: 10px; }
+
 /* Stress tabs */
 .dogma-stress-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
 .dogma-stress-tab { display: flex; align-items: center; gap: 7px; padding: 9px 16px; border-radius: var(--radius); border: none; background: var(--surface); color: var(--text-mu); font-size: 12.5px; font-weight: 500; cursor: pointer; box-shadow: var(--sh-xs); transition: all .15s; white-space: nowrap; }
@@ -465,10 +473,8 @@ main { flex: 1; overflow-y: auto; padding: 36px 44px 56px; display: flex; flex-d
     <button class="nav-tab" data-page="soil">Soil</button>
     <button class="nav-tab" data-page="correlation">Correlation</button>
     <div class="nav-sep"></div>
+    <button class="nav-tab" data-page="dogma">Molecular Explorer</button>
     <button class="nav-tab live" data-page="pubmed">Literature</button>
-    <button class="nav-tab live" data-page="metabolomics">Metabolomics</button>
-    <button class="nav-tab" data-page="metmap">Metabolite Map</button>
-    <button class="nav-tab" data-page="dogma">Central Dogma</button>
     <button class="nav-tab" data-page="more">More Tools</button>
     <div class="nav-sep"></div>
     <button class="nav-tab" data-page="about">About</button>
@@ -587,6 +593,14 @@ main { flex: 1; overflow-y: auto; padding: 36px 44px 56px; display: flex; flex-d
   <div class="coming-grid">
     <div class="coming-card">
       <div class="coming-card-head">
+        <h3>Metabolomics Explorer</h3>
+        <span class="coming-badge">Coming Soon</span>
+      </div>
+      <p>Browse public algae metabolomics studies from the Metabolomics Workbench and MetaboLights (EBI) — real metabolite datasets with organism, stress condition, and compound filters.</p>
+      <p class="coming-note">Data for this section is coming soon. Check back later.</p>
+    </div>
+    <div class="coming-card">
+      <div class="coming-card-head">
         <h3>Carotenoid &amp; Lipid Yield Browser</h3>
         <span class="coming-badge">Coming Soon</span>
       </div>
@@ -617,6 +631,14 @@ main { flex: 1; overflow-y: auto; padding: 36px 44px 56px; display: flex; flex-d
       <p>Adjust light intensity, nitrogen concentration, temperature, and CO₂ with sliders and see predicted carotenoid and biomass yields, interpolated from a curated literature dataset.</p>
       <p class="coming-note">Data for this section is coming soon. Check back later.</p>
     </div>
+    <div class="coming-card">
+      <div class="coming-card-head">
+        <h3>Co-Expression Network Viewer</h3>
+        <span class="coming-badge">Coming Soon</span>
+      </div>
+      <p>Visualise gene co-expression networks from stress transcriptomics data. Find hub genes, cluster co-regulated pathways, and explore gene-metabolite correlations interactively.</p>
+      <p class="coming-note">Data for this section is coming soon. Check back later.</p>
+    </div>
   </div>
 </div>
 
@@ -634,86 +656,97 @@ main { flex: 1; overflow-y: auto; padding: 36px 44px 56px; display: flex; flex-d
   </div>
 </section>
 
-<!-- ─── CENTRAL DOGMA EXPLORER ──────────────────────────── -->
+<!-- ─── MOLECULAR EXPLORER (merged Central Dogma + Metabolite Map) ── -->
 <div class="dogma-page" id="page-dogma" hidden>
-  <div class="tool-header">
+
+  <div class="tool-header" style="margin-bottom:20px">
     <div class="tool-header-row">
-      <h2>Central Dogma Explorer</h2>
+      <h2>Molecular Explorer</h2>
     </div>
-    <p>From gene activation to metabolite accumulation — explore how microalgae respond to 5 key stress conditions at the molecular level. 3D protein structures are loaded live from AlphaFold2 (EBI).</p>
+    <p>From genome to metabolite — explore how microalgae rewire their biochemistry under stress. Click a stress type to load real AlphaFold2 protein structures, gene expression data, biosynthetic pathways, and metabolite chemistry.</p>
   </div>
 
-  <!-- Central Dogma animated flow -->
+  <!-- ── SECTION 1: Central Dogma Flow ── -->
+  <div class="dogma-section-header">Central Dogma Flow</div>
   <div class="dogma-flow">
+    <!-- DNA -->
     <div class="dogma-mol-card">
-      <div class="dna-stage">
-        <div class="dna-helix" id="dogma-dna-helix"></div>
+      <div class="mol-img-frame" title="B-DNA crystal structure · PDB 1BNA">
+        <img src="https://cdn.rcsb.org/images/structures/bn/1bna/1bna_assembly-1.jpeg"
+             alt="DNA double helix (PDB 1BNA)" class="mol-img"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="mol-img-fallback" style="display:none">
+          <div class="dna-helix" id="dogma-dna-helix" style="transform-style:preserve-3d;animation:dna-spin 5s linear infinite;position:relative;width:52px;height:86px;"></div>
+        </div>
+        <div class="mol-img-badge">PDB 1BNA</div>
       </div>
       <div class="dogma-step-label">DNA</div>
-      <div class="dogma-step-sub">Stress-responsive genes</div>
+      <div class="dogma-step-sub">Stress-responsive gene loci</div>
     </div>
     <div class="dogma-arrow-wrap">
       <div class="dogma-arrow-label">Transcription</div>
       <div class="dogma-arrow-icon">→</div>
     </div>
+    <!-- mRNA -->
     <div class="dogma-mol-card">
-      <div class="rna-stage">
-        <svg class="rna-svg" viewBox="0 0 90 60" width="90" height="60">
-          <path class="rna-strand" d="M5,30 Q17,8 29,30 Q41,52 53,30 Q65,8 77,30 Q83,19 89,22"/>
-          <circle class="rna-ribosome" r="9">
-            <animateMotion dur="3.2s" repeatCount="indefinite"
-              path="M5,30 Q17,8 29,30 Q41,52 53,30 Q65,8 77,30 Q83,19 89,22"/>
-          </circle>
-          <circle class="rna-ribosome-inner" r="5">
-            <animateMotion dur="3.2s" repeatCount="indefinite"
-              path="M5,30 Q17,8 29,30 Q41,52 53,30 Q65,8 77,30 Q83,19 89,22"/>
-          </circle>
-          <circle class="rna-ribosome" r="9">
-            <animateMotion dur="3.2s" begin="-1.6s" repeatCount="indefinite"
-              path="M5,30 Q17,8 29,30 Q41,52 53,30 Q65,8 77,30 Q83,19 89,22"/>
-          </circle>
-        </svg>
+      <div class="mol-img-frame" title="Yeast phenylalanine tRNA · PDB 1EHZ">
+        <img src="https://cdn.rcsb.org/images/structures/eh/1ehz/1ehz_assembly-1.jpeg"
+             alt="tRNA structure (PDB 1EHZ)" class="mol-img"
+             onerror="this.style.display='none'"/>
+        <div class="mol-img-badge">PDB 1EHZ</div>
       </div>
-      <div class="dogma-step-label">mRNA</div>
-      <div class="dogma-step-sub">Transcript + ribosome</div>
+      <div class="dogma-step-label">mRNA / tRNA</div>
+      <div class="dogma-step-sub">Stress-induced transcripts</div>
     </div>
     <div class="dogma-arrow-wrap">
       <div class="dogma-arrow-label">Translation</div>
       <div class="dogma-arrow-icon">→</div>
     </div>
+    <!-- Enzyme (updates on stress selection) -->
     <div class="dogma-mol-card">
-      <div class="protein-pulse-wrap">
-        <div class="protein-pulse-inner" id="dogma-flow-protein-pulse"></div>
+      <div class="mol-img-frame" id="dogma-flow-enzyme-frame" title="Key stress enzyme — select a stress below">
+        <img id="dogma-flow-enzyme-img" src="" alt="Enzyme structure" class="mol-img"
+             style="display:none" onerror="this.style.display='none'"/>
+        <div class="mol-img-fallback" id="dogma-flow-enzyme-fallback"
+             style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;height:100%;">
+          <div class="protein-pulse-inner" style="width:32px;height:32px;border-radius:50%;background:var(--accent);opacity:0.4;animation:ppulse 2s ease-in-out infinite;"></div>
+          <span style="font-size:9px;color:var(--text-dim);">select stress</span>
+        </div>
+        <div class="mol-img-badge" id="dogma-flow-enzyme-badge" style="display:none"></div>
       </div>
       <div class="dogma-step-label">Enzyme</div>
-      <div class="protein-active-label" id="dogma-flow-protein-name">Select a stress →</div>
+      <div class="protein-active-label" id="dogma-flow-protein-name">Select a stress below</div>
     </div>
     <div class="dogma-arrow-wrap">
-      <div class="dogma-arrow-label">Catalysis</div>
+      <div class="dogma-arrow-label">Biosynthesis</div>
       <div class="dogma-arrow-icon">→</div>
     </div>
+    <!-- Metabolite -->
     <div class="dogma-mol-card">
-      <div class="metab-img-wrap" id="dogma-flow-metab-wrap">
-        <svg viewBox="0 0 72 72" width="68" height="68">
-          <circle cx="36" cy="36" r="22" fill="none" stroke="var(--accent-line)" stroke-width="2" stroke-dasharray="5 3"/>
-          <text x="36" y="40" text-anchor="middle" font-size="10" fill="var(--text-dim)" font-family="Inter,sans-serif">metabolite</text>
+      <div class="mol-img-frame" id="dogma-flow-metab-wrap" title="Key stress metabolite (PubChem 2D structure)">
+        <svg viewBox="0 0 90 90" width="90" height="90" id="dogma-metab-placeholder">
+          <circle cx="45" cy="45" r="28" fill="none" stroke="var(--accent-line)" stroke-width="1.5" stroke-dasharray="5 3"/>
+          <text x="45" y="49" text-anchor="middle" font-size="10" fill="var(--text-dim)" font-family="Inter,sans-serif">metabolite</text>
         </svg>
+        <img id="dogma-flow-metab-img" src="" alt="Metabolite structure" class="mol-img"
+             style="display:none" onerror="this.style.display='none'"/>
+        <div class="mol-img-badge" id="dogma-flow-metab-badge" style="display:none"></div>
       </div>
       <div class="dogma-step-label">Metabolite</div>
       <div class="dogma-step-sub" id="dogma-flow-metab-name">Stress product</div>
     </div>
   </div>
 
-  <!-- Stress selector tabs -->
+  <!-- ── SECTION 2: Stress Selector ── -->
+  <div class="dogma-section-header">Select Stress Condition</div>
   <div class="dogma-stress-tabs" id="dogma-stress-tabs"></div>
 
-  <!-- Detail section -->
+  <!-- ── SECTION 3: Molecular Detail ── -->
   <div class="dogma-detail">
-    <!-- 3D viewer -->
     <div class="dogma-viewer-panel">
       <div class="dogma-viewer-header">
-        <div class="dogma-viewer-title" id="dogma-viewer-title">Select a stress condition above</div>
-        <div class="dogma-viewer-src" id="dogma-viewer-src"></div>
+        <div class="dogma-viewer-title" id="dogma-viewer-title">AlphaFold2 Protein Structure</div>
+        <div class="dogma-viewer-src" id="dogma-viewer-src">Select a stress to load structure</div>
       </div>
       <div class="dogma-3d-wrap">
         <div class="dogma-3d-inner" id="dogma-3d-viewer"></div>
@@ -721,38 +754,33 @@ main { flex: 1; overflow-y: auto; padding: 36px 44px 56px; display: flex; flex-d
           <div class="spinner"></div><span>Loading AlphaFold2 structure…</span>
         </div>
         <div class="dogma-3d-overlay" id="dogma-3d-error" style="display:none">
-          <span style="font-size:16px">⚠</span>
-          <span>Structure unavailable. <a id="dogma-af-link" href="https://alphafold.ebi.ac.uk" target="_blank" rel="noopener" style="color:var(--accent-hi)">Open AlphaFold ↗</a></span>
+          <span style="font-size:20px;opacity:0.4">⚠</span>
+          <span>Structure unavailable offline.<br><a id="dogma-af-link" href="https://alphafold.ebi.ac.uk" target="_blank" rel="noopener" style="color:var(--accent-hi)">Open AlphaFold ↗</a></span>
         </div>
         <div class="dogma-3d-overlay" id="dogma-3d-placeholder">
-          <span style="font-size:28px;opacity:0.25">⬡</span>
-          <span style="opacity:0.45">3D protein structure loads here</span>
+          <span style="font-size:36px;opacity:0.18">⬡</span>
+          <span style="opacity:0.4;font-size:12px;">3D enzyme structure appears here</span>
         </div>
       </div>
       <div class="dogma-viewer-footer">
-        <button class="dogma-vbtn active" id="dogma-btn-spin" onclick="dogmaToggleSpin()">⟳ Spin</button>
-        <button class="dogma-vbtn" onclick="dogmaResetView()">Reset</button>
+        <button class="dogma-vbtn active" id="dogma-btn-spin" onclick="dogmaToggleSpin()">⟳ Auto-spin</button>
+        <button class="dogma-vbtn" onclick="dogmaResetView()">Reset view</button>
         <button class="dogma-vbtn" id="dogma-btn-surf" onclick="dogmaToggleSurface()">Surface</button>
         <button class="dogma-vbtn" id="dogma-btn-stick" onclick="dogmaToggleStick()">Sticks</button>
       </div>
     </div>
-
-    <!-- Info panel -->
     <div class="dogma-info-panel" id="dogma-info-panel">
-      <div style="color:var(--text-dim);font-size:13px;padding:40px 0;text-align:center;">Select a stress condition to explore the molecular pathway.</div>
+      <div style="color:var(--text-dim);font-size:13px;padding:48px 0;text-align:center;line-height:1.7">
+        Select a stress condition above to explore<br>the molecular pathway and protein structure.
+      </div>
     </div>
   </div>
-</div>
 
-<!-- ─── METABOLITE MAP ───────────────────────────────────── -->
-<div class="metmap-page" id="page-metmap" hidden>
-  <div class="tool-header">
-    <div class="tool-header-row">
-      <h2>Metabolite Map</h2>
-    </div>
-    <p>Interactive map of microalgae-derived metabolite classes and their biostimulatory roles. Click any category box or metabolite chip to explore descriptions, database links, and cross-search the Literature and Metabolomics tools.</p>
-  </div>
-
+  <!-- ── SECTION 4: Metabolite Classification Map ── -->
+  <div class="dogma-section-header" style="margin-top:40px">Microalgae Metabolite Map</div>
+  <p style="font-size:12.5px;color:var(--text-mu);margin-bottom:18px;line-height:1.7">
+    Click any category or metabolite chip to see descriptions, database links, and cross-search the Literature tab.
+  </p>
   <div class="metmap-tree-scroll">
     <div class="metmap-tree-outer">
       <div class="metmap-root-oval">Microalgae</div>
@@ -761,7 +789,8 @@ main { flex: 1; overflow-y: auto; padding: 36px 44px 56px; display: flex; flex-d
     </div>
   </div>
 
-  <div class="metmap-functions-card">
+  <!-- ── SECTION 5: Biostimulatory Functions ── -->
+  <div class="metmap-functions-card" style="margin-top:20px">
     <div class="metmap-functions-title">Major Biostimulatory Functions of Microalgae-Derived Metabolites &amp; Nutrients</div>
     <ul class="metmap-functions-grid">
       <li>Growth enhancement — root &amp; shoot elongation, tissue weight</li>
@@ -773,7 +802,7 @@ main { flex: 1; overflow-y: auto; padding: 36px 44px 56px; display: flex; flex-d
       <li>Enhancement of plant secondary metabolites [phenolics &amp; flavonoids]</li>
       <li>Ion homeostasis under salinity stress</li>
       <li>Stomatal closure and aperture size control under drought stress</li>
-      <li><em>de novo</em> lipid biosynthesis and fatty acid conversion to alkanes for cuticular wax formation</li>
+      <li><em>de novo</em> lipid biosynthesis and fatty acid conversion to alkanes for cuticular wax</li>
     </ul>
   </div>
 </div>
@@ -797,9 +826,9 @@ const EXPLORER_PAGES = {
   soil:        { dir: 'data_soil',         title: 'Soil Microbiome Explorer' },
   correlation: { dir: 'data_correlation',  title: 'Co-relation Explorer' },
 };
-const TOOL_PAGES = new Set(['pubmed','metabolomics','more','about','metmap','dogma']);
+const TOOL_PAGES = new Set(['pubmed','metabolomics','more','about','dogma']);
 
-const ALL_PAGE_IDS = ['page-explorer','page-pubmed','page-metabolomics','page-more','page-about','page-metmap','page-dogma'];
+const ALL_PAGE_IDS = ['page-explorer','page-pubmed','page-metabolomics','page-more','page-about','page-dogma'];
 
 // ─────────────────────────────────────────────────────────────
 // GENE EXPRESSION EXPLORER STATE
@@ -840,7 +869,7 @@ async function showPage(page) {
   if (page === 'more')         { document.getElementById('page-more').hidden = false; return; }
   if (page === 'pubmed')       { document.getElementById('page-pubmed').hidden = false; initPubMed(); return; }
   if (page === 'metabolomics') { document.getElementById('page-metabolomics').hidden = false; initMetabolomics(); return; }
-  if (page === 'metmap')       { document.getElementById('page-metmap').hidden = false; initMetmap(); return; }
+  if (page === 'metmap')       { showPage('dogma'); setTimeout(() => document.getElementById('metmap-tree')?.scrollIntoView({behavior:'smooth',block:'start'}), 200); return; }
   if (page === 'dogma')        { document.getElementById('page-dogma').hidden = false; initDogma(); return; }
 
   // ── Gene expression explorer ──
@@ -1452,7 +1481,7 @@ function renderMetabolomics(studies) {
 // ─────────────────────────────────────────────────────────────
 const DOGMA_STRESSES = [
   {
-    id: 'highlight', name: 'High Light', icon: '☀', bg: '#FFF0BC', text: '#6b4e00',
+    id: 'highlight', name: 'High Light', icon: '☀', bg: '#FFF0BC', text: '#6b4e00', group:'abiotic',
     description: 'Excess photon flux overwhelms the photosynthetic apparatus, generating reactive oxygen species (ROS) that damage PSII and the LHC. Microalgae respond by inducing secondary carotenogenesis — accumulating astaxanthin and β-carotene in lipid droplets as photoprotective "sunscreens".',
     genes: [
       { sym:'PSY',  name:'Phytoene synthase',          fc:8.2 },
@@ -1515,6 +1544,76 @@ const DOGMA_STRESSES = [
     protein: { name:'HSP70 (Heat Shock Protein 70)', fn:'ATP-dependent chaperone with two functional domains: an N-terminal ATPase domain and a C-terminal substrate-binding domain. Binds exposed hydrophobic segments of unfolded proteins, preventing aggregation, and uses ATP hydrolysis to drive iterative cycles of client binding and release.', uniprot:'P22953', pdbId:'2QXL', src:'AlphaFold2 · At HSP70-1 (P22953)' },
     pathway: 'Heat stress → HSF1 activation → HSP70/90 expression → Chaperone binding → Protein refolding or UPS degradation',
     metabolite: { name:'Trehalose / Unsaturated Membrane Lipids', cid:7427, desc:'Trehalose vitrifies the cytoplasm and stabilises protein-lipid interfaces at heat-stress temperatures. Concurrently, fatty acid desaturases (FADs) increase membrane PUFA content to maintain bilayer fluidity and prevent lipid phase separation above the optimal growth temperature.' }
+  },
+  {
+    id: 'cold', name: 'Cold / Chilling', icon: '❄', bg: '#DDEEFF', text: '#1a3a6b', group:'abiotic',
+    description: 'Sub-optimal temperatures cause membrane rigidification (reduced fluidity), inhibit enzyme kinetics, and impair photosynthetic electron transport. Microalgae respond by increasing polyunsaturated fatty acid (PUFA) content in membranes and inducing cold-responsive transcription factors (CBFs/DREBs).',
+    genes: [
+      { sym:'FAD7',  name:'ω-3 fatty acid desaturase 7',           fc:9.1 },
+      { sym:'FAD8',  name:'ω-3 fatty acid desaturase 8 (cold)',    fc:11.4 },
+      { sym:'CBF1',  name:'C-repeat binding factor 1 (DREB)',      fc:6.8 },
+      { sym:'COR15A',name:'Cold-regulated protein 15A',            fc:8.9 },
+      { sym:'KIN1',  name:'Cold-inducible kinase 1',               fc:5.2 },
+    ],
+    protein: { name:'FAD8 (ω-3 Fatty Acid Desaturase 8)', fn:'Chloroplast-localised membrane desaturase that introduces a double bond at the Δ15 (ω-3) position of linoleic acid (18:2) to produce α-linolenic acid (18:3). Cold-specific isoform; its expression is induced within hours of temperature downshift to restore membrane fluidity.', uniprot:'P46271', pdbId:'1AFR', src:'AlphaFold2 · At FAD8 (P46271)' },
+    pathway: 'Linoleic acid (18:2 Δ9,12) → α-Linolenic acid (18:3 Δ9,12,15) → Membrane phospholipid remodelling → PUFA enrichment',
+    metabolite: { name:'α-Linolenic Acid (ALA, ω-3)', cid:5280934, desc:'A C18 ω-3 polyunsaturated fatty acid that restores membrane fluidity at low temperatures. Also the precursor for jasmonic acid (JA) biosynthesis and a bioactive lipid mediator in plant stress signalling. Rich in cold-acclimated microalgae and valuable as a nutraceutical.' }
+  },
+  {
+    id: 'uvb', name: 'UV-B Radiation', icon: '⚡', bg: '#EDE0FF', text: '#4a1a7a', group:'radiation',
+    description: 'UV-B photons (280–315 nm) cause direct DNA damage (cyclobutane pyrimidine dimers, 6-4 photoproducts), generate ROS, and impair the D1 protein of PSII. Microalgae protect themselves by accumulating UV-absorbing mycosporine-like amino acids (MAAs) and inducing DNA photolyase repair enzymes.',
+    genes: [
+      { sym:'UVR8',  name:'UV-B receptor 8',                       fc:7.3 },
+      { sym:'PHR1',  name:'Photolyase (CPD repair)',                fc:9.6 },
+      { sym:'MysA',  name:'Mycosporine biosynthesis gene A',        fc:14.2 },
+      { sym:'CHS',   name:'Chalcone synthase (flavonoid UV-screen)',fc:5.1 },
+      { sym:'HY5',   name:'Elongated hypocotyl 5 (UV-B TF)',       fc:4.7 },
+    ],
+    protein: { name:'UVR8 (UV-B Receptor 8)', fn:'Homodimeric β-propeller protein that acts as the primary UV-B photoreceptor. UV-B photons are absorbed by tryptophan residues within the β-propeller, causing monomerisation and interaction with COP1/HY5 to activate UV-B gene expression. Unique as a protein-based (non-chromophore) photoreceptor.', uniprot:'Q9C5S3', pdbId:'4D9S', src:'AlphaFold2 · At UVR8 (Q9C5S3)' },
+    pathway: 'UV-B → UVR8 monomerisation → COP1/HY5 interaction → MAA biosynthesis genes & photolyase expression → DNA repair + UV screen',
+    metabolite: { name:'Shinorine (Mycosporine-Gly-Thr)', cid:5742040, desc:'The most abundant mycosporine-like amino acid (MAA) in microalgae. A water-soluble UV-absorbing compound (λmax ~334 nm) that acts as a "biological sunscreen" without generating ROS. Also has antioxidant, anti-inflammatory, and osmotic roles. High commercial interest as a natural UV-filter in sunscreens.' }
+  },
+  {
+    id: 'metal', name: 'Heavy Metal', icon: 'Cd', bg: '#E8E4D8', text: '#3a2e10', group:'chemical',
+    description: 'Heavy metals (Cd²⁺, Pb²⁺, Cu²⁺ excess, Hg²⁺) displace essential cofactors from metalloenzymes, generate ROS via Fenton-type reactions, and form toxic complexes with thiol groups. Microalgae detoxify by synthesising phytochelatins and metallothioneins that chelate and sequester metal ions.',
+    genes: [
+      { sym:'PCS1',  name:'Phytochelatin synthase 1',              fc:18.4 },
+      { sym:'MT2',   name:'Metallothionein 2',                     fc:12.7 },
+      { sym:'ABCC1', name:'ABC transporter (vacuolar sequestration)',fc:8.3 },
+      { sym:'GSH1',  name:'γ-Glutamylcysteine synthetase',         fc:7.1 },
+      { sym:'APX',   name:'Ascorbate peroxidase (ROS detox)',      fc:6.5 },
+    ],
+    protein: { name:'PCS1 (Phytochelatin Synthase 1)', fn:'Constitutively expressed but post-translationally activated by metal ions. A γ-glutamylcysteine dipeptidyl transpeptidase that polymerises glutathione (GSH) into phytochelatins ((γ-Glu-Cys)n-Gly, n=2–11). The Cys-rich phytochelatins coordinate metal ions via thiolate bonds, forming stable PC-metal complexes transported into the vacuole by ABCC transporters.', uniprot:'Q9FGX7', pdbId:'2BTW', src:'AlphaFold2 · At PCS1 (Q9FGX7)' },
+    pathway: 'GSH (×n) + Cd²⁺/Pb²⁺ → PCS1 activation → Phytochelatins (PC2–PC11) → PC-Cd/Pb complexes → ABCC vacuolar sequestration',
+    metabolite: { name:'Phytochelatin (γ-Glu-Cys)₂-Gly', cid:124886, desc:'Metal-binding thiol peptides synthesised from glutathione. PC₂ is the most common form; longer chains (PC₃–PC₆) form high-affinity complexes with Cd²⁺, As³⁺, Pb²⁺, and Hg²⁺. Algae that over-produce phytochelatins are candidates for phytoremediation of heavy metal-contaminated water and soils.' }
+  },
+  {
+    id: 'co2', name: 'CO₂ Limitation', icon: 'CO₂', bg: '#E0F4E8', text: '#1b4a28', group:'chemical',
+    description: 'When dissolved CO₂ falls below the Km of Rubisco, microalgae activate the Carbon Concentrating Mechanism (CCM) — a suite of carbonic anhydrases and inorganic carbon transporters that elevate CO₂ around Rubisco to near-saturating levels, maximising photosynthetic carbon fixation efficiency.',
+    genes: [
+      { sym:'CIA5',  name:'Carbon limitation-induced adaptor 5 (master TF)',fc:22.1 },
+      { sym:'LCIB',  name:'CO₂/HCO₃⁻ concentrating protein B',    fc:18.5 },
+      { sym:'CAH1',  name:'Periplasmic carbonic anhydrase 1',       fc:15.3 },
+      { sym:'RBCA', name:'Rubisco activase',                        fc:4.8 },
+      { sym:'SLC4',  name:'HCO₃⁻ transporter (plasma membrane)',   fc:9.2 },
+    ],
+    protein: { name:'LCIB (CO₂/HCO₃⁻ Concentrating Protein B)', fn:'A chloroplast-localised protein essential for CO₂ concentrating mechanism in Chlamydomonas. Localises as a ring around the pyrenoid at limiting CO₂. May function as a CO₂-trapping carbonic anhydrase that converts escaping CO₂ back to HCO₃⁻, effectively creating a CO₂-enriched microenvironment around Rubisco.', uniprot:'A9I8F1', pdbId:'1RXO', src:'AlphaFold2 · Cr LCIB (A9I8F1)' },
+    pathway: 'HCO₃⁻ (external) → CAH1 → CO₂ → LCIB ring at pyrenoid → CO₂ trapping → Rubisco (rbcL) → 3-PGA → Calvin cycle',
+    metabolite: { name:'3-Phosphoglycerate (3-PGA)', cid:724, desc:'The first stable product of CO₂ fixation by Rubisco. Under CCM activation, elevated Rubisco efficiency increases 3-PGA flux, boosting overall carbon fixation rate 2–5×. The accumulated fixed carbon then flows into starch, fatty acid, and amino acid biosynthesis.' }
+  },
+  {
+    id: 'oxidative', name: 'Oxidative Stress', icon: 'O₂', bg: '#FFECEC', text: '#7a0000', group:'chemical',
+    description: 'Excess ROS (superoxide O₂·⁻, hydrogen peroxide H₂O₂, hydroxyl radicals ·OH) are generated as by-products of photosynthesis, respiration, and abiotic stresses. They damage DNA, proteins, and lipids via oxidation. Microalgae deploy a multi-tier antioxidant enzyme network to scavenge ROS and restore redox homeostasis.',
+    genes: [
+      { sym:'SOD',   name:'Superoxide dismutase (O₂·⁻ → H₂O₂)',   fc:11.3 },
+      { sym:'CAT',   name:'Catalase (H₂O₂ → H₂O + O₂)',           fc:8.7 },
+      { sym:'APX',   name:'Ascorbate peroxidase',                   fc:9.2 },
+      { sym:'GR',    name:'Glutathione reductase',                  fc:6.4 },
+      { sym:'Prx',   name:'Peroxiredoxin (thioredoxin-coupled)',    fc:10.1 },
+    ],
+    protein: { name:'Cu/Zn-SOD (Superoxide Dismutase)', fn:'First-line antioxidant enzyme that catalyses the dismutation of superoxide radical (O₂·⁻) to H₂O₂ and O₂ with a rate constant near the diffusion limit (2×10⁹ M⁻¹s⁻¹). Chloroplastic (FeSOD), cytosolic (Cu/ZnSOD), and mitochondrial (MnSOD) isoforms cover all ROS-generating compartments.', uniprot:'P25794', pdbId:'1SPD', src:'AlphaFold2 · At CSD1/SOD1 (P25794)' },
+    pathway: 'O₂·⁻ → SOD → H₂O₂ → CAT/APX → H₂O | GSH–GSSG cycle (GR/GPX) | Thioredoxin–Peroxiredoxin cascade',
+    metabolite: { name:'Ascorbate (Vitamin C)', cid:54670067, desc:'The most abundant antioxidant in photosynthetic organisms, reaching millimolar concentrations in chloroplasts. Acts as the electron donor for APX (H₂O₂ detox), as a co-factor for violaxanthin de-epoxidase (xanthophyll cycle), and as a direct ROS quencher. Microalgae-derived ascorbate is also a high-value nutraceutical.' }
   }
 ];
 
@@ -1529,25 +1628,26 @@ function loadScript(src) {
   });
 }
 
+function getPDBImgUrl(pdbId) {
+  const id = pdbId.toLowerCase();
+  return `https://cdn.rcsb.org/images/structures/${id[1]}${id[2]}/${id}/${id}_assembly-1.jpeg`;
+}
+
 async function initDogma() {
   if (DG.init) return;
   DG.init = true;
-  buildDNAHelix();
-  buildStressTabs();
-  try {
-    await loadScript('https://3dmol.csb.pitt.edu/build/3Dmol-min.js');
-    DG.dmolReady = true;
-  } catch(e) {
-    console.warn('3Dmol.js failed to load — 3D viewer unavailable');
-  }
-}
-
-function buildDNAHelix() {
+  // Build DNA fallback helix (shown only if RCSB image fails)
   const helix = document.getElementById('dogma-dna-helix');
-  if (!helix) return;
-  helix.innerHTML = Array.from({length:12}, (_,i) =>
+  if (helix) helix.innerHTML = Array.from({length:12}, (_,i) =>
     `<div class="dna-bp" style="--i:${i}"><div class="dna-bp-a"></div><div class="dna-bp-b"></div></div>`
   ).join('');
+  buildStressTabs();
+  // Also render the Metabolite Map tree that's embedded in this page
+  initMetmap();
+  // Lazy-load 3Dmol.js in the background
+  loadScript('https://3dmol.csb.pitt.edu/build/3Dmol-min.js')
+    .then(() => { DG.dmolReady = true; })
+    .catch(() => console.warn('3Dmol.js unavailable'));
 }
 
 function buildStressTabs() {
@@ -1568,10 +1668,34 @@ async function selectStress(sid) {
   // Activate tab
   document.querySelectorAll('.dogma-stress-tab').forEach(b => b.classList.toggle('active', b.dataset.sid === sid));
 
-  // Update flow row
+  // Update flow row — enzyme image from RCSB PDB
   document.getElementById('dogma-flow-protein-name').textContent = s.protein.name.split(' (')[0];
-  const mw = document.getElementById('dogma-flow-metab-wrap');
-  mw.innerHTML = `<img class="metab-img" src="https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/${s.metabolite.cid}/PNG?record_type=2d&image_size=150x150" alt="${esc(s.metabolite.name)}" onerror="this.style.display='none'"/>`;
+  const enzymeImg = document.getElementById('dogma-flow-enzyme-img');
+  const enzymeFallback = document.getElementById('dogma-flow-enzyme-fallback');
+  const enzymeBadge = document.getElementById('dogma-flow-enzyme-badge');
+  const enzymeUrl = getPDBImgUrl(s.protein.pdbId);
+  enzymeImg.src = enzymeUrl;
+  enzymeImg.alt = s.protein.name;
+  enzymeImg.style.display = 'block';
+  enzymeFallback.style.display = 'none';
+  enzymeBadge.textContent = 'PDB ' + s.protein.pdbId;
+  enzymeBadge.style.display = 'block';
+  enzymeImg.onerror = () => {
+    enzymeImg.style.display = 'none';
+    enzymeFallback.style.display = 'flex';
+    enzymeBadge.style.display = 'none';
+  };
+  // Update metabolite image from PubChem
+  const metabImg = document.getElementById('dogma-flow-metab-img');
+  const metabPlaceholder = document.getElementById('dogma-metab-placeholder');
+  const metabBadge = document.getElementById('dogma-flow-metab-badge');
+  metabImg.src = `https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/${s.metabolite.cid}/PNG?record_type=2d&image_size=200x200`;
+  metabImg.alt = s.metabolite.name;
+  metabImg.style.display = 'block';
+  metabPlaceholder.style.display = 'none';
+  metabBadge.textContent = 'CID ' + s.metabolite.cid;
+  metabBadge.style.display = 'block';
+  metabImg.onerror = () => { metabImg.style.display = 'none'; metabPlaceholder.style.display = 'block'; };
   document.getElementById('dogma-flow-metab-name').textContent = s.metabolite.name.split(' /')[0].split(' (')[0];
 
   // Update viewer header
@@ -1610,7 +1734,7 @@ async function selectStress(sid) {
     </div>
     <div class="dogma-info-actions">
       <button class="dogma-act-btn primary" onclick="dogmaSearchPubMed()">Search PubMed →</button>
-      <button class="dogma-act-btn ghost" onclick="showPage('metmap')">Metabolite Map →</button>
+      <button class="dogma-act-btn ghost" onclick="document.getElementById('metmap-tree')?.scrollIntoView({behavior:'smooth',block:'start'})">Metabolite Map ↓</button>
       <a href="https://alphafold.ebi.ac.uk/entry/${esc(s.protein.uniprot)}" target="_blank" rel="noopener" class="dogma-act-btn ghost" style="text-decoration:none">AlphaFold ↗</a>
     </div>`;
 
@@ -1876,19 +2000,14 @@ function metmapDoSearchPubMed() {
 }
 
 function metmapDoSearchMetabolomics() {
-  if (MM.currentMetIdx < 0) return;
-  const cat = METMAP_DATA.categories.find(c => c.id === MM.currentCat);
-  const term = cat?.metabolites[MM.currentMetIdx]?.name || '';
-  document.getElementById('metabo-query').value = term;
-  showPage('metabolomics');
-  if (MB.loaded) filterMetabolomics(term);
+  showPage('more');
 }
 
 // ─────────────────────────────────────────────────────────────
 // BOOT
 // ─────────────────────────────────────────────────────────────
 bindNav();
-showPage('microalgae');
+showPage('dogma');
 </script>
 </body>
 </html>
