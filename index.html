@@ -27,6 +27,7 @@
     <button class="nav-tab" data-page="dogma">Molecular Explorer</button>
     <button class="nav-tab live" data-page="pubmed">Literature</button>
     <button class="nav-tab" data-page="seqanalysis">Sequence Analyzer</button>
+    <button class="nav-tab" data-page="customer">Customer Tools</button>
     <button class="nav-tab" data-page="more">More Tools</button>
     <div class="nav-sep"></div>
     <button class="nav-tab" data-page="about">About</button>
@@ -174,6 +175,124 @@
     </div>
 
     <div class="seq-results-panel" id="seq-results" hidden></div>
+  </div>
+</div>
+
+<!-- ─── CUSTOMER TOOLS ───────────────────────────────────── -->
+<div class="tool-page" id="page-customer" hidden>
+  <div class="tool-header">
+    <div class="tool-header-row">
+      <h2>Customer Tools</h2>
+    </div>
+    <p>Understand how Alganize products work, find the right solution for your crop and problem, calculate your return on investment, and analyse your soil microbiome data.</p>
+  </div>
+
+  <!-- Tab bar -->
+  <div class="ct-tabbar">
+    <button class="ct-tab active" id="ct-tab-moa"   onclick="ctShowTab('moa')">🔬 Mode of Action</button>
+    <button class="ct-tab"        id="ct-tab-crop"  onclick="ctShowTab('crop')">🌾 Crop Advisor</button>
+    <button class="ct-tab"        id="ct-tab-roi"   onclick="ctShowTab('roi')">📊 ROI Calculator</button>
+    <button class="ct-tab"        id="ct-tab-micro" onclick="ctShowTab('micro')">🧬 Microbiome</button>
+  </div>
+
+  <!-- ── PANEL 1: Mode of Action ── -->
+  <div id="ct-panel-moa">
+    <div class="ct-panel-header">
+      <h3>How Alganize Products Work</h3>
+      <p>Select a scenario to see exactly which metabolites your algae produce, which soil organisms they activate, and what your crop gains as a result.</p>
+    </div>
+    <div class="moa-pills" id="moa-pills"></div>
+    <div id="moa-detail"></div>
+  </div>
+
+  <!-- ── PANEL 2: Crop Advisor ── -->
+  <div id="ct-panel-crop" hidden>
+    <div class="ct-panel-header">
+      <h3>Find the Right Solution for Your Crop</h3>
+      <p>Three steps to a personalised recommendation — select your crop, then your problem.</p>
+    </div>
+    <div class="ca-steps">
+      <div class="ca-step active" id="ca-step-1"><span class="ca-step-num">1</span>Your crop</div>
+      <div class="ca-step-arrow">→</div>
+      <div class="ca-step" id="ca-step-2"><span class="ca-step-num">2</span>Your problem</div>
+      <div class="ca-step-arrow">→</div>
+      <div class="ca-step" id="ca-step-3"><span class="ca-step-num">3</span>Your recommendation</div>
+    </div>
+    <div id="ca-panel-1">
+      <div class="ca-grid" id="ca-crop-grid"></div>
+    </div>
+    <div id="ca-panel-2" hidden>
+      <div class="ca-section-label">What is the main problem you are facing?</div>
+      <div class="ca-stress-grid" id="ca-stress-grid"></div>
+    </div>
+    <div id="ca-panel-3" hidden>
+      <div id="ca-result"></div>
+    </div>
+  </div>
+
+  <!-- ── PANEL 3: ROI Calculator ── -->
+  <div id="ct-panel-roi" hidden>
+    <div class="ct-panel-header">
+      <h3>Return on Investment Calculator</h3>
+      <p>Based on Alganize's documented fertiliser reduction roadmap: 10% savings in year 1, 20% in year 2, 30% in year 3.</p>
+    </div>
+    <div class="roi-layout">
+      <div class="roi-inputs">
+        <div class="roi-field">
+          <label for="roi-ha">Field size (hectares)</label>
+          <input type="number" id="roi-ha" value="10" min="0.1" step="0.5" oninput="calcROI()"/>
+        </div>
+        <div class="roi-field">
+          <label for="roi-fert">Current fertiliser cost (€ / ha / year)</label>
+          <input type="number" id="roi-fert" value="300" min="10" step="10" oninput="calcROI()"/>
+        </div>
+        <div class="roi-field">
+          <label for="roi-product">Product</label>
+          <select id="roi-product" onchange="calcROI()">
+            <option value="feld">Mikrobiom Feld (Agriculture) — €1,200 / 1,000 L</option>
+            <option value="golf">Mikrobiom Golf (Turf) — €2,400 / ha / year</option>
+            <option value="garten">Mikrobiom Garten (Home) — €17.99</option>
+          </select>
+        </div>
+        <div class="roi-disclaimer">Fertiliser reduction estimates are based on Alganize's documented 3-year programme. Actual results depend on starting soil condition, crop type, and application regime.</div>
+        <div class="roi-summary" id="roi-summary"></div>
+      </div>
+      <div class="roi-chart-wrap">
+        <canvas id="roi-chart" height="300"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PANEL 4: Microbiome Dashboard ── -->
+  <div id="ct-panel-micro" hidden>
+    <div class="ct-panel-header">
+      <h3>Soil Microbiome Dashboard</h3>
+      <p>Upload a CSV or TSV file with your soil microbiome sequencing data (genus, count format) to calculate diversity indices and identify Alganize target organisms. Use the demo data to explore the tool.</p>
+    </div>
+    <div class="micro-upload-row">
+      <label class="micro-upload-btn">
+        Upload CSV / TSV
+        <input type="file" accept=".csv,.tsv,.txt" style="display:none" onchange="microHandleUpload(this)"/>
+      </label>
+      <button class="micro-demo-btn" onclick="microProcessSample()">Use demo data</button>
+      <span class="micro-filename" id="micro-filename">No file selected</span>
+      <span class="micro-format-hint">Format: one row per taxon — genus,count</span>
+    </div>
+    <div id="micro-results" hidden>
+      <div class="micro-section-title">Diversity Indices</div>
+      <div class="micro-kpis" id="micro-kpis"></div>
+      <div class="micro-two-col">
+        <div>
+          <div class="micro-section-title">Top 15 Taxa — Relative Abundance</div>
+          <div class="micro-chart-wrap"><canvas id="micro-chart"></canvas></div>
+          <div class="micro-chart-legend"><span class="micro-legend-target"></span> Alganize target organism &nbsp; <span class="micro-legend-other"></span> Other</div>
+        </div>
+        <div>
+          <div class="micro-section-title">Alganize Target Organisms</div>
+          <div id="micro-targets"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -416,6 +535,7 @@
 <script src="js/dogma.js"></script>
 <script src="js/metmap.js"></script>
 <script src="js/seqanalysis.js"></script>
+<script src="js/customer.js"></script>
 <script>bindNav(); showPage('dogma');</script>
 </body>
 </html>

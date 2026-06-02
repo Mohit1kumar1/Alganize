@@ -21,9 +21,9 @@ const EXPLORER_PAGES = {
   soil:        { dir: 'data_soil',         title: 'Soil Microbiome Explorer' },
   correlation: { dir: 'data_correlation',  title: 'Co-relation Explorer' },
 };
-const TOOL_PAGES = new Set(['pubmed','metabolomics','more','about','dogma','seqanalysis']);
+const TOOL_PAGES = new Set(['pubmed','metabolomics','more','about','dogma','seqanalysis','customer']);
 
-const ALL_PAGE_IDS = ['page-explorer','page-pubmed','page-metabolomics','page-more','page-about','page-dogma','page-seqanalysis'];
+const ALL_PAGE_IDS = ['page-explorer','page-pubmed','page-metabolomics','page-more','page-about','page-dogma','page-seqanalysis','page-customer'];
 
 function bindNav() {
   document.querySelectorAll('.nav-tab').forEach(btn =>
@@ -48,6 +48,7 @@ async function showPage(page) {
   if (page === 'pubmed')       { document.getElementById('page-pubmed').hidden = false; initPubMed(); return; }
   if (page === 'metabolomics') { document.getElementById('page-metabolomics').hidden = false; initMetabolomics(); return; }
   if (page === 'seqanalysis')  { document.getElementById('page-seqanalysis').hidden = false; initSeqAnalysis(); return; }
+  if (page === 'customer')    { document.getElementById('page-customer').hidden = false; initCustomer(); return; }
   if (page === 'metmap')       { showPage('dogma'); setTimeout(() => document.getElementById('metmap-tree')?.scrollIntoView({behavior:'smooth',block:'start'}), 200); return; }
   if (page === 'dogma')        { document.getElementById('page-dogma').hidden = false; initDogma(); return; }
 
