@@ -140,23 +140,37 @@
 <div class="tool-page" id="page-seqanalysis" hidden>
   <div class="tool-header">
     <div class="tool-header-row">
-      <h2>RNA Sequence Analyzer</h2>
+      <h2>Sequence Analyzer</h2>
     </div>
-    <p>Paste an RNA or DNA sequence from Alganize synthesis, select a reference gene from green microalgae, and get a detailed alignment report comparing your sequence to the published reference.</p>
+    <p>Paste a DNA or RNA sequence (raw or FASTA format), select a stress-response reference gene, and run a full bioinformatics pipeline: sequence statistics, ORF detection, protein translation, and pairwise alignment against real NCBI coding sequences.</p>
   </div>
 
   <div class="seq-layout">
     <div class="seq-input-panel">
-      <label for="seq-input">Paste Sequence</label>
+      <label for="seq-input">Input Sequence</label>
       <textarea class="seq-textarea" id="seq-input"
-        placeholder="Paste raw nucleotide sequence here (RNA or DNA)&#10;e.g. AUGCAGCUGAAGAAGAUCAAG…"></textarea>
+        placeholder=">MySequence (optional FASTA header)&#10;ATGTCTTCTTCTGTAGCAGTGTTATGGG…&#10;&#10;Accepts raw DNA/RNA or FASTA format.&#10;U is converted to T automatically.&#10;Minimum 30 nucleotides."></textarea>
 
       <label for="seq-ref-gene">Reference Gene</label>
-      <select id="seq-ref-gene" style="margin-bottom:0;"></select>
+      <select id="seq-ref-gene"></select>
 
-      <button class="seq-analyze-btn" id="seq-analyze-btn">Analyze Sequence</button>
+      <label for="seq-align-mode">Alignment Mode</label>
+      <select id="seq-align-mode">
+        <option value="global">Global — Needleman-Wunsch (full-length comparison)</option>
+        <option value="local">Local — Smith-Waterman (best-matching region)</option>
+      </select>
 
-      <p class="seq-helper">Accepts raw nucleotide sequence (RNA or DNA). Ambiguous bases (N) are allowed. Minimum 30 bases. Press Ctrl+Enter to run.</p>
+      <button class="seq-analyze-btn" id="seq-analyze-btn">Run Pipeline</button>
+
+      <p class="seq-helper">Reference sequences are real 300 bp CDS segments sourced from NCBI. Ctrl+Enter to run.</p>
+
+      <div class="seq-pipeline-steps">
+        <div class="seq-pipeline-step">1 Sequence stats &amp; composition</div>
+        <div class="seq-pipeline-step">2 ORF detection (3 frames)</div>
+        <div class="seq-pipeline-step">3 Protein translation</div>
+        <div class="seq-pipeline-step">4 Pairwise alignment</div>
+        <div class="seq-pipeline-step">5 Biological interpretation</div>
+      </div>
     </div>
 
     <div class="seq-results-panel" id="seq-results" hidden></div>
