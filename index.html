@@ -205,36 +205,88 @@
     <div id="moa-detail"></div>
   </div>
 
-  <!-- ── PANEL 2: Crop Advisor ── -->
+  <!-- ── PANEL 2: Crop Bioinformatics Advisor ── -->
   <div id="ct-panel-crop" hidden>
     <div class="ct-panel-header">
-      <h3>Find the Right Solution for Your Crop</h3>
-      <p>Three steps to a personalised recommendation — select your crop, then your problem.</p>
+      <h3>Crop Bioinformatics Advisor</h3>
+      <p>Select crop and stress condition, optionally upload a FASTQ file or paste a gene sequence. The pipeline fetches differential expression data from published studies, annotates top genes via NCBI, maps enriched pathways, and recommends the microalgae species best matched to your crop's molecular stress signature.</p>
     </div>
-    <div class="ca-steps">
-      <div class="ca-step active" id="ca-step-1"><span class="ca-step-num">1</span>Your crop</div>
-      <div class="ca-step-arrow">→</div>
-      <div class="ca-step" id="ca-step-2"><span class="ca-step-num">2</span>Your problem</div>
-      <div class="ca-step-arrow">→</div>
-      <div class="ca-step" id="ca-step-3"><span class="ca-step-num">3</span>Your recommendation</div>
+
+    <!-- Input form -->
+    <div class="cbio-input-grid" id="cbio-input-section">
+      <div class="cbio-input-col">
+        <div class="cbio-field">
+          <label>Crop / Organism</label>
+          <select id="cbio-crop">
+            <option value="maize_drought" data-stress="drought">Maize / Corn — Drought</option>
+            <option value="maize_heat"    data-stress="heat">Maize / Corn — Heat</option>
+            <option value="wheat_heat"    data-stress="heat">Wheat — Heat Stress</option>
+            <option value="rice_salt"     data-stress="salt">Rice — Salt Stress</option>
+            <option value="arabidopsis_drought" data-stress="drought">Arabidopsis — Drought (model)</option>
+            <option value="arabidopsis_salt"    data-stress="salt">Arabidopsis — Salt (model)</option>
+            <option value="tomato_disease" data-stress="disease">Tomato — Disease (Botrytis)</option>
+            <option value="soybean_drought" data-stress="drought">Soybean — Drought</option>
+            <option value="potato_heat"    data-stress="heat">Potato — Heat Stress</option>
+          </select>
+        </div>
+        <div class="cbio-field cbio-eco-toggle">
+          <label>Ecological Parameters <span class="cbio-optional">(optional — improves recommendation)</span></label>
+          <div class="cbio-eco-row">
+            <div class="cbio-eco-item"><label>Soil pH</label><input type="number" id="cbio-ph" placeholder="e.g. 6.5" min="4" max="9" step="0.1"/></div>
+            <div class="cbio-eco-item"><label>Soil EC (dS/m)</label><input type="number" id="cbio-ec" placeholder="e.g. 1.2" min="0" step="0.1"/></div>
+            <div class="cbio-eco-item"><label>Mean temp (°C)</label><input type="number" id="cbio-temp" placeholder="e.g. 22" min="-10" max="50"/></div>
+            <div class="cbio-eco-item"><label>Annual rainfall (mm)</label><input type="number" id="cbio-rain" placeholder="e.g. 450" min="0" step="10"/></div>
+          </div>
+        </div>
+      </div>
+      <div class="cbio-input-col">
+        <div class="cbio-field">
+          <label>FASTQ Quality Check <span class="cbio-optional">(optional — upload raw reads for QC)</span></label>
+          <label class="cbio-file-btn">
+            Choose FASTQ file
+            <input type="file" accept=".fastq,.fq,.gz" style="display:none" onchange="cbioHandleFastq(this)"/>
+          </label>
+          <span class="cbio-file-name" id="cbio-fastq-name">No file selected</span>
+        </div>
+        <div class="cbio-field">
+          <label>Custom Gene Sequence <span class="cbio-optional">(optional — aligns against top DE genes)</span></label>
+          <textarea class="cbio-seq-input" id="cbio-seq" placeholder=">MyGene (FASTA header optional)&#10;ATGCAGCTGAAGAAGATCAAG…"></textarea>
+        </div>
+        <button class="cbio-run-btn" id="cbio-run-btn" onclick="runCbioPipeline()">Run Bioinformatics Pipeline →</button>
+      </div>
     </div>
-    <div id="ca-panel-1">
-      <div class="ca-grid" id="ca-crop-grid"></div>
+
+    <!-- Pipeline progress -->
+    <div class="cbio-progress" id="cbio-progress" hidden>
+      <div class="cbio-progress-title">Pipeline Progress</div>
+      <div class="cbio-steps-row" id="cbio-steps-row"></div>
     </div>
-    <div id="ca-panel-2" hidden>
-      <div class="ca-section-label">What is the main problem you are facing?</div>
-      <div class="ca-stress-grid" id="ca-stress-grid"></div>
-    </div>
-    <div id="ca-panel-3" hidden>
-      <div id="ca-result"></div>
+
+    <!-- Results area — populated step by step -->
+    <div id="cbio-results" hidden>
+      <div id="cbio-qc-section" hidden></div>
+      <div id="cbio-deseq-section" hidden></div>
+      <div id="cbio-annot-section" hidden></div>
+      <div id="cbio-pathway-section" hidden></div>
+      <div id="cbio-align-section" hidden></div>
+      <div id="cbio-species-section" hidden></div>
+      <div id="cbio-rec-section" hidden></div>
     </div>
   </div>
 
   <!-- ── PANEL 3: ROI Calculator ── -->
   <div id="ct-panel-roi" hidden>
     <div class="ct-panel-header">
-      <h3>Return on Investment Calculator</h3>
-      <p>Based on Alganize's documented fertiliser reduction roadmap: 10% savings in year 1, 20% in year 2, 30% in year 3.</p>
+      <h3>Return on Investment Framework</h3>
+      <p>Estimate the fertiliser savings potential of a 3-year Alganize programme based on your field size and current input costs. Product pricing is available on request — contact the team for a personalised assessment.</p>
+    </div>
+    <div class="roi-sensitive-banner">
+      <span class="roi-sensitive-icon">🔒</span>
+      <div>
+        <strong>Pricing information is not published here.</strong>
+        Commercial product costs depend on crop type, field scale, region, and dealer arrangement. The framework below uses your fertiliser spend only — contact us for a complete cost-benefit analysis including product pricing.
+      </div>
+      <a href="mailto:info@alganize.de" class="roi-contact-btn">Contact the team →</a>
     </div>
     <div class="roi-layout">
       <div class="roi-inputs">
@@ -247,15 +299,16 @@
           <input type="number" id="roi-fert" value="300" min="10" step="10" oninput="calcROI()"/>
         </div>
         <div class="roi-field">
-          <label for="roi-product">Product</label>
+          <label for="roi-product">Application context</label>
           <select id="roi-product" onchange="calcROI()">
-            <option value="feld">Mikrobiom Feld (Agriculture) — €1,200 / 1,000 L</option>
-            <option value="golf">Mikrobiom Golf (Turf) — €2,400 / ha / year</option>
-            <option value="garten">Mikrobiom Garten (Home) — €17.99</option>
+            <option value="feld">Agriculture / arable farming</option>
+            <option value="golf">Professional turf / golf</option>
+            <option value="garten">Home / garden</option>
           </select>
         </div>
-        <div class="roi-disclaimer">Fertiliser reduction estimates are based on Alganize's documented 3-year programme. Actual results depend on starting soil condition, crop type, and application regime.</div>
+        <div class="roi-disclaimer">Fertiliser reduction estimates (10% yr 1, 20% yr 2, 30% yr 3) are based on Alganize's documented programme outcomes. Actual results vary with starting soil health, crop type, and application regime. Product cost not included — contact the team for full ROI modelling.</div>
         <div class="roi-summary" id="roi-summary"></div>
+        <a href="mailto:info@alganize.de" class="roi-contact-full-btn">Request personalised ROI assessment →</a>
       </div>
       <div class="roi-chart-wrap">
         <canvas id="roi-chart" height="300"></canvas>
@@ -536,6 +589,7 @@
 <script src="js/metmap.js"></script>
 <script src="js/seqanalysis.js"></script>
 <script src="js/customer.js"></script>
+<script src="js/cropbio.js"></script>
 <script>bindNav(); showPage('dogma');</script>
 </body>
 </html>

@@ -715,3 +715,179 @@ main { flex: 1; overflow-y: auto; padding: 36px 44px 56px; display: flex; flex-d
 .micro-target-role { font-size: 11px; color: var(--text-dim); margin-top: 2px; line-height: 1.5; }
 .micro-target-count { font-size: 11px; color: var(--up); margin-top: 3px; font-weight: 600; }
 .micro-target-absent { font-size: 11px; color: var(--text-dim); margin-top: 3px; font-style: italic; }
+
+/* --- ROI SENSITIVE BANNER --- */
+.roi-sensitive-banner { display: flex; align-items: flex-start; gap: 14px; background: rgba(99,153,34,0.07); border: 1.5px solid var(--accent-line); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 24px; }
+.roi-sensitive-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+.roi-sensitive-banner strong { font-size: 13px; color: var(--text); display: block; margin-bottom: 4px; }
+.roi-sensitive-banner div { font-size: 12.5px; color: var(--text-mu); line-height: 1.6; }
+.roi-contact-btn { flex-shrink: 0; background: var(--accent); color: #fff; border: none; border-radius: var(--radius-sm); padding: 9px 18px; font-size: 12px; font-weight: 600; cursor: pointer; text-decoration: none; white-space: nowrap; box-shadow: 0 2px 6px rgba(99,153,34,0.25); display: inline-flex; align-items: center; }
+.roi-contact-btn:hover { background: var(--accent-hi); }
+.roi-contact-full-btn { display: block; width: 100%; text-align: center; padding: 10px 20px; background: var(--accent-soft); color: var(--accent-hi); border: 1.5px solid var(--accent-line); border-radius: var(--radius-sm); font-size: 12.5px; font-weight: 600; text-decoration: none; margin-top: 4px; }
+.roi-contact-full-btn:hover { background: var(--accent); color: #fff; }
+
+/* --- CROP BIOINFORMATICS ADVISOR --- */
+.cbio-input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 28px; }
+@media (max-width: 860px) { .cbio-input-grid { grid-template-columns: 1fr; } }
+.cbio-input-col { background: var(--surface); border-radius: var(--radius); padding: 22px 24px; box-shadow: var(--sh-sm); display: flex; flex-direction: column; gap: 16px; }
+.cbio-field label { display: block; font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); margin-bottom: 6px; }
+.cbio-optional { font-size: 9.5px; font-weight: 500; color: var(--accent-hi); text-transform: none; letter-spacing: 0; }
+.cbio-field select { width: 100%; background: var(--bg); border: none; border-radius: var(--radius-sm); padding: 10px 13px; font-size: 12.5px; color: var(--text); box-shadow: var(--sh-inset); outline: none; }
+.cbio-eco-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.cbio-eco-item label { font-size: 10px; font-weight: 600; color: var(--text-dim); display: block; margin-bottom: 4px; }
+.cbio-eco-item input { width: 100%; background: var(--bg); border: none; border-radius: var(--radius-sm); padding: 8px 11px; font-size: 12px; color: var(--text); box-shadow: var(--sh-inset); outline: none; box-sizing: border-box; }
+.cbio-file-btn { display: inline-block; background: var(--bg); border: 1.5px dashed var(--accent-line); border-radius: var(--radius-sm); padding: 9px 18px; font-size: 12px; font-weight: 600; color: var(--accent-hi); cursor: pointer; transition: all .15s; }
+.cbio-file-btn:hover { background: var(--accent-soft); }
+.cbio-file-name { font-size: 11px; color: var(--text-dim); font-family: var(--font-mono); display: block; margin-top: 5px; }
+.cbio-seq-input { width: 100%; height: 90px; background: var(--bg); border: none; border-radius: var(--radius-sm); padding: 10px 12px; font-family: var(--font-mono); font-size: 11.5px; color: var(--text); resize: vertical; outline: none; box-shadow: var(--sh-inset); box-sizing: border-box; line-height: 1.6; }
+.cbio-run-btn { width: 100%; padding: 12px 20px; background: var(--accent); color: #fff; border: none; border-radius: var(--radius-sm); font-size: 13.5px; font-weight: 600; cursor: pointer; box-shadow: 0 2px 8px rgba(99,153,34,0.30); transition: all .15s; margin-top: auto; }
+.cbio-run-btn:hover { background: var(--accent-hi); box-shadow: 0 4px 14px rgba(99,153,34,0.35); }
+.cbio-run-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* Pipeline progress */
+.cbio-progress { background: var(--surface); border-radius: var(--radius); padding: 20px 24px; box-shadow: var(--sh-sm); margin-bottom: 24px; }
+.cbio-progress-title { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--text-dim); margin-bottom: 14px; }
+.cbio-steps-row { display: flex; gap: 0; overflow-x: auto; }
+.cbio-step-item { display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 100px; padding: 8px 6px; text-align: center; position: relative; }
+.cbio-step-item::after { content:'→'; position:absolute; right:-8px; top:10px; color:var(--accent-line); font-size:12px; }
+.cbio-step-item:last-child::after { display:none; }
+.cbio-step-icon { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
+.cbio-step-icon.pending { background: var(--bg); color: var(--text-dim); }
+.cbio-step-icon.running { background: #fef3c7; color: #d97706; animation: spin 1s linear infinite; }
+.cbio-step-icon.done    { background: rgba(46,163,120,0.15); color: var(--up); }
+.cbio-step-icon.skip    { background: var(--bg); color: var(--text-dim); }
+@keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+.cbio-step-label { font-size: 10px; font-weight: 600; color: var(--text-mu); line-height: 1.3; }
+.cbio-step-sub   { font-size: 9px; color: var(--text-dim); }
+
+/* Section boxes */
+.cbio-section-box { background: var(--surface); border-radius: var(--radius); padding: 22px 26px; box-shadow: var(--sh-sm); margin-bottom: 20px; }
+.cbio-section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--text-dim); margin-bottom: 16px; border-bottom: 1px solid var(--bg); padding-bottom: 10px; }
+.cbio-skip-box { background: var(--bg); box-shadow: none; color: var(--text-dim); font-size: 12.5px; display: flex; align-items: center; gap: 10px; }
+.cbio-skip-icon { font-size: 16px; flex-shrink: 0; }
+.cbio-chart-label { font-size: 10.5px; font-weight: 600; color: var(--text-dim); margin-bottom: 8px; }
+
+/* QC */
+.cbio-qc-kpis { display: grid; grid-template-columns: repeat(auto-fit,minmax(100px,1fr)); gap: 10px; margin-bottom: 18px; }
+.cbio-qc-kpi { background: var(--bg); border-radius: var(--radius-sm); padding: 10px 12px; text-align: center; }
+.cbio-qc-label { font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-dim); margin-bottom: 3px; }
+.cbio-qc-value { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+.cbio-qc-badge { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: var(--radius-pill); }
+.cbio-qc-badge.pass { background: rgba(46,163,120,0.12); color: var(--up); }
+.cbio-qc-badge.warn { background: rgba(217,119,6,0.12); color: #d97706; }
+.cbio-qc-badge.fail { background: rgba(214,61,60,0.12); color: var(--down); }
+.cbio-qc-charts-row { display: grid; grid-template-columns: 1.8fr 1fr; gap: 20px; }
+@media (max-width: 800px) { .cbio-qc-charts-row { grid-template-columns: 1fr; } }
+.cbio-qc-chart-wrap { height: 200px; }
+
+/* DESeq2 */
+.cbio-deseq-meta { font-size: 12px; color: var(--text-mu); margin-bottom: 12px; }
+.cbio-source { font-size: 11px; color: var(--text-dim); }
+.cbio-deseq-kpis { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+.cbio-kpi-sm { background: var(--bg); border-radius: var(--radius-sm); padding: 8px 14px; text-align: center; }
+.cbio-kpi-sm-label { font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-dim); }
+.cbio-kpi-sm-val { font-size: 20px; font-weight: 700; color: var(--text); }
+.cbio-kpi-sm.up .cbio-kpi-sm-val { color: var(--up); }
+.cbio-kpi-sm.dn .cbio-kpi-sm-val { color: var(--down); }
+.cbio-deseq-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 800px) { .cbio-deseq-layout { grid-template-columns: 1fr; } }
+.cbio-volcano-wrap { height: 280px; }
+.cbio-deseq-table-wrap { overflow-x: auto; max-height: 280px; overflow-y: auto; }
+.cbio-table { width: 100%; border-collapse: collapse; font-size: 11.5px; }
+.cbio-table th { font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-dim); padding: 6px 10px; border-bottom: 1.5px solid var(--bg); text-align: left; position: sticky; top: 0; background: var(--surface); }
+.cbio-table td { padding: 6px 10px; border-bottom: 1px solid var(--bg); color: var(--text-mu); }
+.gene-sym { font-family: var(--font-mono); font-weight: 600; color: var(--text); font-size: 12px; }
+.fc-up { color: var(--up); font-weight: 700; font-family: var(--font-mono); }
+.fc-dn { color: var(--down); font-weight: 700; font-family: var(--font-mono); }
+.pval-cell { font-family: var(--font-mono); font-size: 11px; }
+.row-up { background: rgba(46,163,120,0.05); }
+.row-dn { background: rgba(214,61,60,0.05); }
+
+/* Annotation */
+.cbio-annot-note { font-size: 12px; color: var(--text-dim); margin-bottom: 14px; }
+.cbio-annot-cards { display: grid; grid-template-columns: repeat(auto-fill,minmax(260px,1fr)); gap: 12px; }
+.cbio-annot-card { background: var(--bg); border-radius: var(--radius-sm); padding: 14px 16px; }
+.cbio-annot-card.loading { opacity: 0.6; }
+.cbio-annot-gene { font-family: var(--font-mono); font-weight: 700; font-size: 13.5px; color: var(--text); margin-bottom: 6px; }
+.cbio-annot-desc { font-size: 11.5px; color: var(--text-mu); line-height: 1.6; margin-bottom: 8px; }
+.cbio-annot-loading { font-size: 11px; color: var(--text-dim); font-style: italic; }
+.cbio-annot-meta { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.cbio-db-link { font-size: 11px; color: var(--accent-hi); font-weight: 600; background: var(--accent-soft); padding: 2px 8px; border-radius: var(--radius-pill); }
+.cbio-annot-fc { font-size: 11px; font-weight: 700; font-family: var(--font-mono); padding: 2px 7px; border-radius: var(--radius-pill); }
+.cbio-annot-fc.up { background: rgba(46,163,120,0.12); color: var(--up); }
+.cbio-annot-fc.dn { background: rgba(214,61,60,0.12); color: var(--down); }
+.cbio-annot-padj { font-size: 10.5px; color: var(--text-dim); font-family: var(--font-mono); }
+
+/* Pathway */
+.cbio-pathway-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 800px) { .cbio-pathway-layout { grid-template-columns: 1fr; } }
+.cbio-pathway-chart-wrap { height: 240px; }
+.cbio-pathway-row { display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid var(--bg); }
+.cbio-pathway-row:last-child { border-bottom: none; }
+.cbio-pathway-rank { font-size: 12px; font-weight: 700; color: var(--accent); min-width: 18px; margin-top: 2px; }
+.cbio-pathway-name { font-size: 12.5px; font-weight: 600; color: var(--text); margin-bottom: 5px; }
+.cbio-pathway-name a { color: inherit; }
+.cbio-pathway-name a:hover { color: var(--accent-hi); text-decoration: underline; }
+.cbio-pathway-genes { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 4px; }
+.cbio-pathway-gene-chip { font-size: 10px; background: var(--bg); color: var(--text-dim); padding: 1px 7px; border-radius: var(--radius-pill); font-family: var(--font-mono); }
+.cbio-pathway-stats { font-size: 10.5px; color: var(--text-dim); font-family: var(--font-mono); }
+
+/* Alignment */
+.cbio-align-query-info { font-size: 12px; color: var(--text-mu); margin-bottom: 8px; }
+.cbio-align-note { font-size: 11.5px; color: var(--text-dim); margin-bottom: 14px; background: var(--bg); padding: 8px 12px; border-radius: var(--radius-sm); }
+.cbio-align-row { display: grid; grid-template-columns: 90px 1fr 60px auto; gap: 10px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--bg); }
+.cbio-align-gene { font-family: var(--font-mono); font-weight: 700; font-size: 12px; color: var(--text); }
+.cbio-align-bar-wrap { background: var(--bg); border-radius: var(--radius-pill); height: 8px; overflow: hidden; }
+.cbio-align-bar { height: 100%; border-radius: var(--radius-pill); }
+.cbio-align-bar.high { background: var(--up); }
+.cbio-align-bar.mid  { background: #d97706; }
+.cbio-align-bar.low  { background: var(--down); }
+.cbio-align-pct { font-size: 12px; font-weight: 700; font-family: var(--font-mono); }
+.cbio-align-pct.high { color: var(--up); }
+.cbio-align-pct.mid  { color: #d97706; }
+.cbio-align-pct.low  { color: var(--down); }
+.cbio-align-label { font-size: 11px; color: var(--text-dim); }
+.cbio-align-tip { font-size: 11.5px; color: var(--text-dim); margin-top: 10px; padding: 8px 12px; background: var(--bg); border-radius: var(--radius-sm); }
+.cbio-inline-link { background: none; border: none; color: var(--accent-hi); cursor: pointer; font-size: 11.5px; text-decoration: underline; padding: 0; }
+
+/* Species match */
+.cbio-species-note { font-size: 12px; color: var(--text-dim); margin-bottom: 16px; }
+.cbio-species-card { display: flex; gap: 14px; background: var(--bg); border-radius: var(--radius); padding: 16px 18px; margin-bottom: 12px; border-left: 3px solid var(--accent-line); }
+.cbio-species-card.top { background: var(--accent-soft); border-left-color: var(--accent); }
+.cbio-species-rank { font-size: 18px; font-weight: 700; color: var(--text-dim); min-width: 28px; }
+.cbio-species-card.top .cbio-species-rank { color: var(--accent-hi); }
+.cbio-species-body { flex: 1; }
+.cbio-species-name { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+.cbio-species-strain { font-size: 11px; font-weight: 500; color: var(--text-dim); font-style: normal; font-family: var(--font-mono); }
+.cbio-species-score-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.cbio-score-bar-wrap { flex: 1; background: var(--surface); border-radius: var(--radius-pill); height: 7px; overflow: hidden; }
+.cbio-score-bar { height: 100%; background: var(--accent); border-radius: var(--radius-pill); }
+.cbio-score-val { font-size: 12px; font-weight: 700; color: var(--accent-hi); min-width: 60px; font-family: var(--font-mono); }
+.cbio-species-mechanism { font-size: 12px; color: var(--text-mu); line-height: 1.7; margin-bottom: 8px; }
+.cbio-species-mets, .cbio-species-pathways { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 7px; font-size: 11px; color: var(--text-dim); align-items: center; }
+.cbio-met-chip-sm, .cbio-path-chip-sm { font-size: 10.5px; background: var(--surface); padding: 2px 8px; border-radius: var(--radius-pill); color: var(--text-mu); }
+.cbio-species-links { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.cbio-journal { font-size: 11px; color: var(--text-dim); font-style: italic; }
+
+/* Recommendation */
+.cbio-rec-box { border-top: 3px solid var(--accent); }
+.cbio-rec-organism { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 18px; }
+.cbio-rec-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 14px; margin-bottom: 18px; }
+@media (max-width: 900px) { .cbio-rec-grid { grid-template-columns: 1fr 1fr; } }
+.cbio-rec-card { background: var(--bg); border-radius: var(--radius-sm); padding: 16px 18px; }
+.cbio-rec-card.primary { background: var(--accent-soft); border: 1.5px solid var(--accent-line); }
+.cbio-rec-card-title { font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); margin-bottom: 8px; }
+.cbio-rec-species { font-size: 14px; font-weight: 700; color: var(--accent-hi); margin-bottom: 6px; }
+.cbio-rec-gene { font-family: var(--font-mono); font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.cbio-rec-reason { font-size: 11.5px; color: var(--text-mu); line-height: 1.6; }
+.cbio-rec-mets { display: flex; flex-wrap: wrap; gap: 5px; }
+.cbio-rec-met-chip { font-size: 11px; background: var(--surface); padding: 3px 9px; border-radius: var(--radius-pill); color: var(--text-mu); }
+.cbio-rec-protocol { font-size: 12px; color: var(--text-mu); line-height: 1.7; }
+.cbio-eco-notes { background: rgba(217,119,6,0.06); border: 1px solid rgba(217,119,6,0.2); border-radius: var(--radius-sm); padding: 14px 16px; margin-bottom: 16px; }
+.cbio-eco-note { font-size: 12px; color: var(--text-mu); padding: 3px 0; line-height: 1.6; }
+.cbio-rec-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.cbio-rec-btn { padding: 10px 22px; border-radius: var(--radius-sm); font-size: 13px; font-weight: 600; cursor: pointer; border: none; transition: all .15s; text-decoration: none; display: inline-flex; align-items: center; }
+.cbio-rec-btn.primary { background: var(--accent); color: #fff; box-shadow: 0 2px 8px rgba(99,153,34,0.25); }
+.cbio-rec-btn.primary:hover { background: var(--accent-hi); }
+.cbio-rec-btn.ghost { background: var(--bg); color: var(--text-mu); }
+.cbio-rec-btn.ghost:hover { background: var(--surface-hi); color: var(--text); }
