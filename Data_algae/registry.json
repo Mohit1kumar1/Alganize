@@ -1,12 +1,17 @@
 {
-  "datasets": ["GSE162916", "GSE125419", "GSE92514"],
+  "datasets": ["GSE92514", "GSE317028", "GSE125419", "GSE162916", "GSE276249", "GSE225079"],
   "species_map": {
-    "Chlorella": ["GSE162916"],
-    "Chromochloris zofingiensis": ["GSE125419", "GSE92514"]
+    "Chromochloris zofingiensis":  ["GSE92514", "GSE317028", "GSE125419"],
+    "Chlorella vulgaris":          ["GSE162916"],
+    "Chlamydomonas reinhardtii":   ["GSE276249"],
+    "Nannochloropsis oceanica":    ["GSE225079"]
   },
   "induction_map": {
+    "High light stress":           ["GSE92514", "GSE317028"],
+    "High light + Nitrogen":       ["GSE317028"],
+    "Salt stress":                 ["GSE125419"],
     "Salt + Drought (PEG) stress": ["GSE162916"],
-    "Salt stress": ["GSE125419"],
-    "High light stress": ["GSE92514"]
+    "Nutrient starvation":         ["GSE276249"],
+    "Nitrogen starvation":         ["GSE225079"]
   }
 }

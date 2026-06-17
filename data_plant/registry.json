@@ -1,9 +1,16 @@
 {
-  "datasets": ["GSE289042"],
+  "datasets": ["GSE289042", "GSE119957", "GSE225255", "GSE294406", "GSE315654"],
   "species_map": {
-    "Arabidopsis thaliana": ["GSE289042"]
+    "Arabidopsis thaliana":  ["GSE289042"],
+    "Lolium arundinaceum":   ["GSE119957"],
+    "Hordeum vulgare":       ["GSE225255"],
+    "Triticum aestivum":     ["GSE294406"],
+    "Oryza sativa":          ["GSE315654"]
   },
   "induction_map": {
-    "Drought stress (osmotic)": ["GSE289042"]
+    "Drought stress (osmotic)": ["GSE289042", "GSE225255", "GSE315654"],
+    "Salt stress":              ["GSE119957"],
+    "Drought stress":           ["GSE225255", "GSE315654"],
+    "Multi-stress (drought, heat, CO2)": ["GSE294406"]
   }
 }
