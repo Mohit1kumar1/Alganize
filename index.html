@@ -95,22 +95,107 @@
 </div>
 
 <!-- ─── PLANT ATLAS ────────────────────────────────────────── -->
-<div class="atlas-page" id="page-atlas" hidden>
-  <div class="atlas-page-title">Plant Atlas</div>
-  <div class="atlas-page-sub">DANN v9 · Mutwil Lab · 629,983 RNA-seq samples · 10,741 species · UMAP embedding</div>
+<div id="page-atlas" hidden>
+<div class="atv-layout">
 
-  <div class="ct-tabbar" style="margin-bottom:24px">
-    <button class="ct-tab active" id="atlas-tab-overview" onclick="atlasShowTab('overview')">Overview</button>
-    <button class="ct-tab"        id="atlas-tab-traits"   onclick="atlasShowTab('traits')">Evolutionary Traits</button>
-    <button class="ct-tab"        id="atlas-tab-umap"     onclick="atlasShowTab('umap')">UMAP</button>
-    <button class="ct-tab"        id="atlas-tab-og"       onclick="atlasShowTab('og')">Gene Families</button>
-  </div>
+  <!-- LEFT SIDEBAR -->
+  <aside class="atv-sidebar">
+    <div class="atv-brand">
+      <div class="atv-brand-name">Plant Atlas</div>
+      <div class="atv-brand-sub">DANN v9 · 629,983 samples · 10,741 species</div>
+    </div>
 
-  <div id="atlas-panel-overview"></div>
-  <div id="atlas-panel-traits"  hidden></div>
-  <div id="atlas-panel-umap"    hidden></div>
-  <div id="atlas-panel-og"      hidden></div>
-</div>
+    <div class="atv-divider"></div>
+
+    <div class="atv-section-hd">COLOR BY</div>
+    <div class="atv-radio-group">
+      <label class="atv-radio-row active" data-val="organ"   onclick="atvColorBy('organ')">
+        <span class="atv-radio-indicator"></span><span>Organ (PO 10-bucket) ★</span>
+      </label>
+      <label class="atv-radio-row" data-val="species" onclick="atvColorBy('species')">
+        <span class="atv-radio-indicator"></span><span>Species (top-20)</span>
+      </label>
+      <label class="atv-radio-row" data-val="cluster" onclick="atvColorBy('cluster')">
+        <span class="atv-radio-indicator"></span><span>Cluster (k=16)</span>
+      </label>
+      <label class="atv-radio-row" data-val="trait" onclick="atvColorBy('trait')">
+        <span class="atv-radio-indicator"></span><span>Selected traits (<span id="atv-n-traits">0</span>)</span>
+      </label>
+    </div>
+
+    <div class="atv-divider"></div>
+
+    <div class="atv-section-hd">
+      TRAITS <span id="atv-trait-hd-count" class="atv-section-count">(57/57)</span>
+    </div>
+    <div class="atv-trait-controls">
+      <div class="atv-sort-row">
+        <span class="atv-sort-lbl">sort:</span>
+        <button class="atv-sort active" id="atv-sort-quality" onclick="atvSortTraits('quality')">quality</button>
+        <button class="atv-sort"        id="atv-sort-count"   onclick="atvSortTraits('count')">count</button>
+      </div>
+      <label class="atv-conf-row"><input type="checkbox" id="atv-hide-conf" onchange="atvToggleConf(this.checked)"> hide confounded</label>
+      <div class="atv-ql-legend">
+        <span><span class="atv-ql-dot clean"></span>clean</span>
+        <span><span class="atv-ql-dot mixed"></span>mixed</span>
+        <span><span class="atv-ql-dot conf"></span>confounded</span>
+      </div>
+    </div>
+    <div class="atv-trait-list" id="atv-trait-list">
+      <div class="atv-load-msg" style="padding:8px 0"><div class="spinner" style="width:14px;height:14px;margin:0 auto"></div></div>
+    </div>
+  </aside>
+
+  <!-- CENTER: UMAP -->
+  <main class="atv-center">
+    <div class="atv-toolbar">
+      <input class="atv-search" id="atv-search"
+        placeholder="search species, tissue…  or paste gene ID (AT1G64280) / OG (37HDQ)"
+        oninput="atvSearch(this.value)">
+      <button class="atv-tbtn" onclick="atvExportPNG()" title="Export PNG">↓ PNG</button>
+      <button class="atv-tbtn" onclick="atvResetZoom()" title="Reset zoom">⟳</button>
+    </div>
+    <div class="atv-canvas-wrap" id="atv-canvas-wrap">
+      <!-- canvas injected by JS -->
+    </div>
+    <!-- OG expression panel (appears when gene/OG is searched) -->
+    <div class="atv-og-panel" id="atv-og-panel" hidden></div>
+    <div class="atv-hint">Scroll to zoom · Drag to pan · Hover for species/tissue</div>
+  </main>
+
+  <!-- RIGHT: Legend + Signature -->
+  <aside class="atv-right">
+    <div class="atv-legend-panel">
+      <div class="atv-panel-hd">
+        <span class="atv-panel-title" id="atv-legend-title">ORGAN</span>
+      </div>
+      <input class="atv-legend-filter" id="atv-legend-filter"
+        placeholder="filter entries…" oninput="atvFilterLegend(this.value)">
+      <div class="atv-legend-list" id="atv-legend-list"></div>
+    </div>
+
+    <div class="atv-sig-panel">
+      <div class="atv-panel-hd">
+        <span class="atv-panel-title">Signature overlay</span>
+      </div>
+      <p class="atv-sig-desc">Paste Arabidopsis gene IDs → expression across 629k-sample atlas clusters via eggNOG OGs.</p>
+      <div class="atv-sig-example">try this canonical set:</div>
+      <textarea class="atv-sig-input" id="atv-sig-input"
+        placeholder="AT1G64280  # NPR1&#10;AT2G14610  # PR1&#10;AT3G57260  # PR2&#10;AT3G48090  # EDS1&#10;AT3G52430  # PAD4"></textarea>
+      <div class="atv-sig-btns">
+        <button class="atv-sig-score" onclick="atvScoreSignature()">Score signature</button>
+        <button class="atv-sig-clear" onclick="atvClearSig()">clear</button>
+      </div>
+      <div id="atv-sig-result" hidden>
+        <div class="atv-sig-chart-lbl">Mean log₁p(TPM) per cluster</div>
+        <div style="position:relative;height:150px"><canvas id="atv-sig-chart"></canvas></div>
+        <div id="atv-sig-genes" class="atv-sig-genes"></div>
+      </div>
+    </div>
+  </aside>
+
+</div><!-- .atv-layout -->
+</div><!-- #page-atlas -->
 
 <!-- ─── ABOUT ──────────────────────────────────────────────── -->
 <section class="about-page" id="page-about" hidden>

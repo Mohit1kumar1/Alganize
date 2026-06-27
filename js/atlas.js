@@ -1,454 +1,637 @@
 /* ═══════════════════════════════════════════════════════════════
    atlas.js  —  Plant Atlas (DANN v9, Mutwil Lab)
-   Four tabs: Overview · Evolutionary Traits · UMAP · Gene Families
+   3-panel layout: sidebar · UMAP canvas · legend+signature
    ═══════════════════════════════════════════════════════════════ */
 
 const ATLAS_ROOT = 'other_data';
-const AT = {
-  summary: null, traits: null, markers: null,
-  clusterAnnot: null, ogMeans: null, ogAnnot: null, umapData: null,
-  charts: {},
-  loaded: {},
+
+const ATV = {
+  pts:         [],    // 10k UMAP points {x,y,sp,po,c}
+  traits:      [],    // 57 trait objects
+  ogAnnot:     null,
+  ogMeans:     null,
+  ogLookup:    null,
+  clusterAnnot:null,
+
+  colorMode:   'organ',
+  traitSel:    new Set(),
+  sortBy:      'quality',
+  hideConf:    false,
+  searchQ:     '',
+  searchMode:  'filter', // 'filter' | 'gene'
+
+  organColors: {},
+  organLabels: {
+    leaf:'Leaf / shoot', root:'Root', flower:'Flower',
+    seed:'Seed', embryo:'Embryo', fruit:'Fruit',
+    stem:'Stem', 'whole-plant':'Whole plant',
+    'cell-culture':'Cell culture', other:'Other',
+  },
+  speciesColors: {},
+  speciesCounts: {},
+
+  // Canvas
+  zoom: 1, panX: 0, panY: 0,
+  dragging: false, dragX: 0, dragY: 0,
+  wb: null, baseScale: 1,
+  animFrame: null,
+  dirty: true,
+
+  // OG expression panel
+  ogChart: null,
+  sigChart: null,
+  legendFilter: '',
+  legendEntries: [],
 };
 
-/* ── helpers ─────────────────────────────────────────────────── */
-const atEl = id => document.getElementById(id);
-function atEsc(s) {
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-async function atFetchJSON(path) {
-  const r = await fetch(path); if (!r.ok) throw new Error(path);
-  return r.json();
+const SPECIES_PAL = [
+  '#4e79a7','#f28e2b','#e15759','#76b7b2','#59a14f',
+  '#edc948','#b07aa1','#ff9da7','#9c755f','#2196f3',
+  '#ff5722','#009688','#e91e63','#673ab7','#3f51b5',
+  '#8bc34a','#ffc107','#795548','#607d8b','#00bcd4',
+];
+const CLUSTER_PAL = [
+  '#e6194b','#3cb44b','#ffe119','#4363d8','#f58231',
+  '#911eb4','#42d4f4','#f032e6','#bfef45','#fabed4',
+  '#469990','#dcbeff','#9a6324','#fffac8','#800000','#aaffc3',
+];
+const QUAL_COL = { high:'#2ea378', clean:'#2ea378', mixed:'#f7b424', confounded:'#d63d3c', unknown:'#aaa' };
+
+/* ── Entry ──────────────────────────────────────────────────── */
+function initAtlasPage() {
+  if (ATV.pts.length) { atvFitCanvas(); return; }
+  atvLoadData();
 }
 
-/* ── tab switching ───────────────────────────────────────────── */
-function atlasShowTab(tab) {
-  ['overview','traits','umap','og'].forEach(t => {
-    atEl('atlas-tab-' + t).classList.toggle('active', t === tab);
-    atEl('atlas-panel-' + t).hidden = (t !== tab);
+async function atvLoadData() {
+  const wrap = document.getElementById('atv-canvas-wrap');
+  if (!wrap) return;
+  wrap.innerHTML = '<div id="atv-load" class="atv-load-msg"><div class="spinner"></div>Loading atlas (10k UMAP points)…</div>';
+
+  try {
+    const [pts, traits] = await Promise.all([
+      fetch(ATLAS_ROOT + '/atlas_umap_10k.json').then(r => r.json()),
+      fetch(ATLAS_ROOT + '/trait_index.json').then(r => r.json()),
+    ]);
+    ATV.pts    = pts;
+    ATV.traits = traits;
+
+    wrap.innerHTML = '<canvas id="atv-umap-canvas"></canvas><div class="atv-tooltip" id="atv-tooltip" hidden></div>';
+
+    atvBuildColorMaps();
+    atvAssignClusters();
+    atvInitCanvas();
+    atvRenderTraitList();
+    atvRenderLegend();
+    atvScheduleDraw();
+  } catch(e) {
+    wrap.innerHTML = `<div class="empty" style="padding:40px">Failed to load atlas: ${e.message}</div>`;
+  }
+}
+
+function atvBuildColorMaps() {
+  for (const pt of ATV.pts) {
+    if (!ATV.organColors[pt.po]) ATV.organColors[pt.po] = pt.c;
+  }
+  const counts = {};
+  for (const pt of ATV.pts) counts[pt.sp] = (counts[pt.sp]||0)+1;
+  ATV.speciesCounts = counts;
+  Object.entries(counts).sort((a,b)=>b[1]-a[1]).forEach(([sp],i) => {
+    ATV.speciesColors[sp] = i < SPECIES_PAL.length ? SPECIES_PAL[i] : '#cccccc';
   });
-  if (tab === 'overview' && !AT.loaded.overview) initAtlasOverview();
-  if (tab === 'traits'   && !AT.loaded.traits)   initAtlasTraits();
-  if (tab === 'umap'     && !AT.loaded.umap)     initAtlasUMAP();
-  if (tab === 'og'       && !AT.loaded.og)       initAtlasOG();
 }
 
-/* ══════════════════════════════════════════════════════════════
-   TAB 1 — OVERVIEW
-   ══════════════════════════════════════════════════════════════ */
-async function initAtlasOverview() {
-  AT.loaded.overview = true;
-  const panel = atEl('atlas-panel-overview');
-  panel.innerHTML = '<div class="loading"><div class="spinner"></div>Loading…</div>';
-
-  try {
-    AT.summary = await atFetchJSON(ATLAS_ROOT + '/atlas_summary.json');
-    const s = AT.summary;
-
-    const families = Object.entries(s.family_counts)
-      .sort((a,b) => b[1]-a[1]).slice(0,15);
-    const fHex = s.family_hex || {};
-
-    panel.innerHTML = `
-      <div class="atlas-kpi-row">
-        <div class="atlas-kpi"><div class="atlas-kpi-val">${(s.n_samples||629983).toLocaleString()}</div><div class="atlas-kpi-label">RNA-seq samples</div></div>
-        <div class="atlas-kpi"><div class="atlas-kpi-val">${(s.n_species||10741).toLocaleString()}</div><div class="atlas-kpi-label">Plant species</div></div>
-        <div class="atlas-kpi"><div class="atlas-kpi-val">57</div><div class="atlas-kpi-label">Evo-devo traits</div></div>
-        <div class="atlas-kpi"><div class="atlas-kpi-val">27,897</div><div class="atlas-kpi-label">Gene families (OGs)</div></div>
-      </div>
-      <div class="atlas-charts-row">
-        <div class="atlas-chart-box">
-          <div class="atlas-chart-title">Top Plant Families by Sample Count</div>
-          <div style="position:relative;height:320px"><canvas id="atlas-family-chart"></canvas></div>
-        </div>
-        <div class="atlas-chart-box">
-          <div class="atlas-chart-title">Tissue / Organ Breakdown</div>
-          <div style="position:relative;height:320px"><canvas id="atlas-tissue-chart"></canvas></div>
-        </div>
-      </div>
-      <div class="atlas-species-section">
-        <div class="atlas-chart-title">Top 30 Species</div>
-        <div class="atlas-species-grid" id="atlas-species-grid"></div>
-      </div>`;
-
-    /* family bar chart */
-    const fCtx = atEl('atlas-family-chart').getContext('2d');
-    AT.charts.family = new Chart(fCtx, {
-      type: 'bar',
-      data: {
-        labels: families.map(f => f[0]),
-        datasets: [{
-          data: families.map(f => f[1]),
-          backgroundColor: families.map(f => fHex[f[0]] || '#BDBDBD'),
-          borderWidth: 0, borderRadius: 3,
-        }]
-      },
-      options: {
-        indexAxis: 'y',
-        plugins: { legend: { display: false } },
-        scales: {
-          x: { grid: { color: 'rgba(0,0,0,.05)' }, ticks: { font: { size: 10 }, callback: v => (v/1000).toFixed(0)+'k' } },
-          y: { grid: { display: false }, ticks: { font: { size: 11 } } },
-        },
-        responsive: true, maintainAspectRatio: false,
-      }
-    });
-
-    /* tissue donut */
-    const tissues = Object.entries(s.tissue_counts||{}).sort((a,b)=>b[1]-a[1]);
-    const tColors = s.tissue_colors || {};
-    const tCtx = atEl('atlas-tissue-chart').getContext('2d');
-    AT.charts.tissue = new Chart(tCtx, {
-      type: 'doughnut',
-      data: {
-        labels: tissues.map(t => t[0]),
-        datasets: [{
-          data: tissues.map(t => t[1]),
-          backgroundColor: tissues.map(t => tColors[t[0]] || '#BDBDBD'),
-          borderWidth: 2, borderColor: 'var(--bg)',
-        }]
-      },
-      options: {
-        plugins: {
-          legend: { position: 'right', labels: { font: { size: 11 }, boxWidth: 14, padding: 10 } },
-          tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.raw.toLocaleString()} samples` } },
-        },
-        responsive: true, maintainAspectRatio: false,
-      }
-    });
-
-    /* top species list */
-    const specGrid = atEl('atlas-species-grid');
-    specGrid.innerHTML = (s.top_species||[]).map((sp,i) =>
-      `<div class="atlas-species-row">
-         <span class="atlas-species-rank">${i+1}</span>
-         <span class="atlas-species-name">${atEsc(sp.name)}</span>
-         <span class="atlas-species-count">${sp.count.toLocaleString()}</span>
-       </div>`
-    ).join('');
-
-  } catch(e) {
-    panel.innerHTML = `<div class="empty">Failed to load atlas summary: ${atEsc(e.message)}</div>`;
+function atvAssignClusters() {
+  const { minX, maxX, minY, maxY } = atvGetBounds();
+  for (const pt of ATV.pts) {
+    const ci_x = Math.min(3, Math.floor(((pt.x-minX)/(maxX-minX))*4));
+    const ci_y = Math.min(3, Math.floor(((pt.y-minY)/(maxY-minY))*4));
+    pt.ci = ci_y*4 + ci_x;
   }
 }
 
-/* ══════════════════════════════════════════════════════════════
-   TAB 2 — EVOLUTIONARY TRAITS
-   ══════════════════════════════════════════════════════════════ */
-const QUAL_BADGE = { high: ['atlas-qual-hi','high'], mixed: ['atlas-qual-mid','mixed'], confounded: ['atlas-qual-lo','⚠ confounded'] };
+function atvGetBounds() {
+  if (ATV.wb) return ATV.wb;
+  const xs = ATV.pts.map(p=>p.x), ys = ATV.pts.map(p=>p.y);
+  const minX=Math.min(...xs), maxX=Math.max(...xs);
+  const minY=Math.min(...ys), maxY=Math.max(...ys);
+  ATV.wb = { minX, maxX, minY, maxY,
+    midX:(minX+maxX)/2, midY:(minY+maxY)/2,
+    spanX:maxX-minX, spanY:maxY-minY };
+  return ATV.wb;
+}
 
-async function initAtlasTraits() {
-  AT.loaded.traits = true;
-  const panel = atEl('atlas-panel-traits');
-  panel.innerHTML = '<div class="loading"><div class="spinner"></div>Loading traits…</div>';
-  try {
-    [AT.traits, AT.markers] = await Promise.all([
-      atFetchJSON(ATLAS_ROOT + '/trait_index.json'),
-      atFetchJSON(ATLAS_ROOT + '/marker_panels.json'),
-    ]);
-    renderAtlasTraitGrid('');
-  } catch(e) {
-    panel.innerHTML = `<div class="empty">Failed to load traits: ${atEsc(e.message)}</div>`;
+/* ── Canvas ──────────────────────────────────────────────────── */
+function atvInitCanvas() {
+  const canvas = document.getElementById('atv-umap-canvas');
+  const wrap   = document.getElementById('atv-canvas-wrap');
+  if (!canvas||!wrap) return;
+
+  const resize = () => {
+    canvas.width  = wrap.clientWidth;
+    canvas.height = wrap.clientHeight;
+    atvCalcScale();
+    atvScheduleDraw();
+  };
+  resize();
+  const ro = new ResizeObserver(resize);
+  ro.observe(wrap);
+
+  atvCalcScale();
+
+  canvas.addEventListener('wheel',      atvOnWheel,     {passive:false});
+  canvas.addEventListener('mousedown',  atvOnMouseDown);
+  canvas.addEventListener('mousemove',  atvOnMouseMove);
+  canvas.addEventListener('mouseup',    ()=>{ ATV.dragging=false; });
+  canvas.addEventListener('mouseleave', ()=>{ ATV.dragging=false; document.getElementById('atv-tooltip').hidden=true; });
+}
+
+function atvCalcScale() {
+  const canvas = document.getElementById('atv-umap-canvas');
+  if (!canvas) return;
+  const b = atvGetBounds();
+  const sx = canvas.width  / b.spanX;
+  const sy = canvas.height / b.spanY;
+  ATV.baseScale = Math.min(sx, sy) * 0.88;
+}
+
+function atvFitCanvas() {
+  ATV.zoom=1; ATV.panX=0; ATV.panY=0;
+  atvCalcScale();
+  atvScheduleDraw();
+}
+
+function atvWorldToCanvas(wx, wy) {
+  const canvas = document.getElementById('atv-umap-canvas');
+  if (!canvas) return [0,0];
+  const b = atvGetBounds();
+  const s = ATV.baseScale * ATV.zoom;
+  return [
+    (wx - b.midX)*s + canvas.width/2  + ATV.panX,
+    -(wy - b.midY)*s + canvas.height/2 + ATV.panY,
+  ];
+}
+
+function atvCanvasToWorld(cx, cy) {
+  const canvas = document.getElementById('atv-umap-canvas');
+  if (!canvas) return [0,0];
+  const b = atvGetBounds();
+  const s = ATV.baseScale * ATV.zoom;
+  return [
+    (cx - canvas.width/2  - ATV.panX)/s + b.midX,
+    -(cy - canvas.height/2 - ATV.panY)/s + b.midY,
+  ];
+}
+
+function atvGetColor(pt, q) {
+  if (q) {
+    const m = pt.sp.toLowerCase().includes(q) || (pt.po||'').toLowerCase().includes(q);
+    if (!m) return null; // will draw dim
   }
-}
-
-function renderAtlasTraitGrid(filter) {
-  const panel = atEl('atlas-panel-traits');
-  const q = filter.toLowerCase();
-  const visible = AT.traits.filter(t =>
-    !q || t.name.toLowerCase().includes(q) || (t.expected_gene_families||'').toLowerCase().includes(q)
-  );
-
-  panel.innerHTML = `
-    <div class="atlas-search-row">
-      <input class="atlas-search-input" placeholder="Filter traits…" oninput="renderAtlasTraitGrid(this.value)" value="${atEsc(filter)}"/>
-      <span class="atlas-search-count">${visible.length} / ${AT.traits.length} traits</span>
-    </div>
-    <div class="atlas-trait-grid" id="atlas-trait-grid">
-      ${visible.map(t => renderTraitCard(t)).join('')}
-    </div>
-    <div id="atlas-trait-detail" class="atlas-trait-detail" hidden></div>`;
-}
-
-function renderTraitCard(t) {
-  const [cls, label] = QUAL_BADGE[t.quality] || ['atlas-qual-mid', t.quality||''];
-  return `<div class="atlas-trait-card" onclick="showAtlasTraitDetail('${atEsc(t.id)}')">
-    <div class="atlas-trait-card-head">
-      <span class="atlas-trait-name">${atEsc(t.name)}</span>
-      <span class="${cls}">${label}</span>
-    </div>
-    <div class="atlas-trait-meta">
-      <span class="atlas-trait-count">${(t.count||0).toLocaleString()} samples</span>
-      <span class="atlas-trait-organ">${atEsc(t.key_organ||'')}</span>
-    </div>
-    <div class="atlas-trait-genes">${atEsc((t.expected_gene_families||'').slice(0,80))}${(t.expected_gene_families||'').length>80?'…':''}</div>
-  </div>`;
-}
-
-function showAtlasTraitDetail(traitId) {
-  const t = (AT.traits||[]).find(x => x.id === traitId);
-  if (!t) return;
-  const detail = atEl('atlas-trait-detail');
-  if (!detail) return;
-
-  /* Collect marker panels for this trait */
-  const panels = t.panels || [];
-  const allMarkers = panels.flatMap(pid => (AT.markers[pid]||[]).slice(0,10));
-  const seen = new Set(); const dedupMarkers = [];
-  for (const m of allMarkers) { if (!seen.has(m.og_id)) { seen.add(m.og_id); dedupMarkers.push(m); } }
-  const top = dedupMarkers.slice(0,10);
-  const maxFC = Math.max(...top.map(m => Math.abs(m.log2fc||0)), 1);
-
-  detail.hidden = false;
-  detail.innerHTML = `
-    <div class="atlas-detail-header">
-      <button class="atlas-detail-close" onclick="atEl('atlas-trait-detail').hidden=true">✕</button>
-      <h3 class="atlas-detail-title">${atEsc(t.name)}</h3>
-    </div>
-    <div class="atlas-detail-meta">
-      ${(t.count||0).toLocaleString()} samples · ${atEsc(t.key_organ||'')} · tissue: ${atEsc(t.tissue_matched?.default||'')}
-    </div>
-    <div class="atlas-detail-genes-label">Expected gene families:</div>
-    <div class="atlas-detail-genes">${atEsc(t.expected_gene_families||'—')}</div>
-    ${top.length ? `
-      <div class="atlas-detail-table-label">Top marker OGs</div>
-      <table class="atlas-marker-table">
-        <thead><tr><th>OG</th><th>Description</th><th>log2FC</th><th>Specificity</th></tr></thead>
-        <tbody>${top.map(m => {
-          const pct = Math.round(Math.abs(m.log2fc||0) / maxFC * 100);
-          const isUp = (m.log2fc||0) >= 0;
-          return `<tr>
-            <td><span class="atlas-og-id">${atEsc(m.og_id)}</span></td>
-            <td class="atlas-marker-desc">${atEsc(m.description||'—')}</td>
-            <td class="${isUp?'fc-up':'fc-dn'}">${(m.log2fc||0).toFixed(2)}</td>
-            <td class="atlas-prev-cell">
-              <div class="atlas-prev-bar-wrap"><div class="atlas-prev-bar ${isUp?'up':'dn'}" style="width:${pct}%"></div></div>
-              <span class="atlas-prev-text">${Math.round((m.prev_pos||0)*100)}% pos / ${Math.round((m.prev_neg||0)*100)}% neg</span>
-            </td>
-          </tr>`;
-        }).join('')}</tbody>
-      </table>` : '<div class="empty" style="font-size:12px">No marker genes available for this trait.</div>'}
-    `;
-
-  detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-}
-
-/* ══════════════════════════════════════════════════════════════
-   TAB 3 — UMAP
-   ══════════════════════════════════════════════════════════════ */
-const UMAP_TISSUE_LABELS = {
-  leaf: 'Leaf / shoot', root: 'Root', flower: 'Flower',
-  seed: 'Seed', embryo: 'Embryo', fruit: 'Fruit',
-  stem: 'Stem', 'whole-plant': 'Whole plant / seedling',
-  'cell-culture': 'Cell culture', other: 'Other',
-};
-
-async function initAtlasUMAP() {
-  AT.loaded.umap = true;
-  const panel = atEl('atlas-panel-umap');
-  panel.innerHTML = '<div class="loading"><div class="spinner"></div>Loading 10,000-sample UMAP…</div>';
-
-  try {
-    AT.umapData = await atFetchJSON(ATLAS_ROOT + '/atlas_umap_10k.json');
-    const buckets = {};
-    for (const pt of AT.umapData) {
-      if (!buckets[pt.po]) buckets[pt.po] = { color: pt.c, pts: [] };
-      buckets[pt.po].pts.push({ x: pt.x, y: pt.y, sp: pt.sp });
+  switch (ATV.colorMode) {
+    case 'organ':   return ATV.organColors[pt.po]  || '#999';
+    case 'species': return ATV.speciesColors[pt.sp] || '#ccc';
+    case 'cluster': return CLUSTER_PAL[pt.ci]       || '#999';
+    case 'trait': {
+      const qlMatch = [...ATV.traitSel].some(id => {
+        const t = ATV.traits.find(x=>x.id===id);
+        return t && (pt.po||'').toLowerCase().includes((t.key_organ||'').toLowerCase());
+      });
+      return qlMatch ? '#63991f' : '#cccccc';
     }
-
-    panel.innerHTML = `
-      <div class="atlas-umap-legend" id="atlas-umap-legend"></div>
-      <div style="position:relative;height:520px;max-width:860px"><canvas id="atlas-umap-canvas"></canvas></div>
-      <p class="atlas-umap-note">Stratified sample of 10,000 / 629,983 RNA-seq samples, coloured by tissue. UMAP 2D embedding — DANN v9 encoder (Mutwil Lab, NTU).</p>`;
-
-    /* legend */
-    const legend = atEl('atlas-umap-legend');
-    legend.innerHTML = Object.entries(buckets).map(([po, b]) =>
-      `<span class="atlas-legend-dot" style="background:${b.color}"></span><span class="atlas-legend-label">${UMAP_TISSUE_LABELS[po]||po} (${b.pts.length.toLocaleString()})</span>`
-    ).join('');
-
-    /* scatter */
-    const ctx = atEl('atlas-umap-canvas').getContext('2d');
-    AT.charts.umap = new Chart(ctx, {
-      type: 'scatter',
-      data: {
-        datasets: Object.entries(buckets).map(([po, b]) => ({
-          label: UMAP_TISSUE_LABELS[po] || po,
-          data: b.pts,
-          backgroundColor: b.color + 'CC',
-          pointRadius: 2, pointHoverRadius: 4,
-          borderWidth: 0,
-        }))
-      },
-      options: {
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            callbacks: {
-              title: items => items[0]?.raw?.sp || '',
-              label: ctx => `${ctx.dataset.label} (${ctx.parsed.x.toFixed(2)}, ${ctx.parsed.y.toFixed(2)})`,
-            }
-          }
-        },
-        scales: {
-          x: { grid: { color: 'rgba(0,0,0,0.04)' }, title: { display: true, text: 'UMAP 1', font: { size: 11 } } },
-          y: { grid: { color: 'rgba(0,0,0,0.04)' }, title: { display: true, text: 'UMAP 2', font: { size: 11 } } },
-        },
-        animation: false,
-        responsive: true, maintainAspectRatio: false,
-      }
-    });
-
-  } catch(e) {
-    panel.innerHTML = `<div class="empty">Failed to load UMAP: ${atEsc(e.message)}</div>`;
+    default: return '#999';
   }
 }
 
-/* ══════════════════════════════════════════════════════════════
-   TAB 4 — GENE FAMILIES
-   ══════════════════════════════════════════════════════════════ */
-async function initAtlasOG() {
-  AT.loaded.og = true;
-  const panel = atEl('atlas-panel-og');
-  panel.innerHTML = '<div class="loading"><div class="spinner"></div>Loading gene family data (≈6 MB)…</div>';
-
-  try {
-    /* Load both in parallel */
-    const [annotRaw, clusterRaw] = await Promise.all([
-      atFetchJSON(ATLAS_ROOT + '/og_annotations.json'),
-      atFetchJSON(ATLAS_ROOT + '/cluster_annot.json'),
-    ]);
-    AT.ogAnnot    = annotRaw;       /* {og_id: {description, cog}} */
-    AT.clusterAnnot = clusterRaw;   /* {"0": {organ, order, ...}, ...} */
-
-    /* Load OG means via PapaParse */
-    panel.innerHTML = '<div class="loading"><div class="spinner"></div>Parsing OG expression matrix…</div>';
-    await new Promise((resolve, reject) => {
-      Papa.parse(ATLAS_ROOT + '/og_cluster_means_16.tsv', {
-        download: true, header: true, dynamicTyping: true, skipEmptyLines: true,
-        complete(results) {
-          AT.ogMeans = {};
-          for (const row of results.data) {
-            if (row.og_id) AT.ogMeans[row.og_id] = row;
-          }
-          resolve();
-        },
-        error: reject,
-      });
-    });
-
-    /* Build cluster label array */
-    const clusterLabels = Object.keys(AT.clusterAnnot)
-      .sort((a,b) => +a - +b)
-      .map(k => {
-        const c = AT.clusterAnnot[k];
-        const organ = (c.organ||'').split(' ')[0];
-        const sp    = (c.species||'').split(' ')[0];
-        return `c${k.padStart(2,'0')} ${organ} ${sp}`;
-      });
-
-    panel.innerHTML = `
-      <div class="atlas-og-header">
-        <p class="atlas-og-desc">Browse expression profiles of 27,897 eggNOG orthologous gene families across 16 UMAP clusters. Each cluster is a group of biologically similar RNA-seq samples.</p>
-        <div class="atlas-search-row">
-          <input class="atlas-search-input" id="atlas-og-input" placeholder="Search OG ID (e.g. 37HDQ) or description…" oninput="searchAtlasOG(this.value)"/>
-        </div>
-      </div>
-      <div id="atlas-og-results" class="atlas-og-results"></div>
-      <div id="atlas-og-profile" class="atlas-og-profile" hidden>
-        <div class="atlas-og-profile-header">
-          <button class="atlas-detail-close" onclick="atEl('atlas-og-profile').hidden=true">✕</button>
-          <span id="atlas-og-profile-title" class="atlas-og-profile-title"></span>
-        </div>
-        <div id="atlas-og-profile-desc" class="atlas-og-profile-desc"></div>
-        <div style="position:relative;height:280px;max-width:860px"><canvas id="atlas-og-chart"></canvas></div>
-        <div class="atlas-cluster-labels">
-          ${clusterLabels.map((l,i) => `<span class="atlas-cluster-label">c${String(i).padStart(2,'0')}<br><small>${l.replace(/^c\d+ /,'').slice(0,14)}</small></span>`).join('')}
-        </div>
-      </div>`;
-
-    AT._clusterLabels = clusterLabels;
-
-  } catch(e) {
-    panel.innerHTML = `<div class="empty">Failed to load OG data: ${atEsc(e.message)}</div>`;
-  }
+function atvScheduleDraw() {
+  if (ATV.animFrame) cancelAnimationFrame(ATV.animFrame);
+  ATV.animFrame = requestAnimationFrame(atvDraw);
 }
 
-function searchAtlasOG(q) {
-  const results = atEl('atlas-og-results');
-  if (!results) return;
-  const qt = q.trim().toLowerCase();
-  if (!qt) { results.innerHTML = ''; return; }
+function atvDraw() {
+  const canvas = document.getElementById('atv-umap-canvas');
+  if (!canvas || !ATV.pts.length) return;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const q = ATV.searchQ.toLowerCase();
+  const hasFilter = !!q;
 
-  const matches = [];
-  for (const [ogId, ann] of Object.entries(AT.ogAnnot||{})) {
-    if (ogId.toLowerCase().includes(qt) || (ann.description||'').toLowerCase().includes(qt)) {
-      matches.push([ogId, ann]);
-      if (matches.length >= 50) break;
+  // Background
+  const bgColor = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim() || '#f8f9fa';
+  ctx.fillStyle = bgColor;
+  ctx.fillRect(0,0,W,H);
+
+  // Two-pass: dim first, bright on top
+  const bright = [];
+
+  for (const pt of ATV.pts) {
+    const [cx,cy] = atvWorldToCanvas(pt.x, pt.y);
+    if (cx < -8 || cy < -8 || cx > W+8 || cy > H+8) continue;
+    const color = atvGetColor(pt, hasFilter ? q : null);
+    if (hasFilter && !color) {
+      ctx.fillStyle = 'rgba(150,150,150,0.12)';
+      ctx.beginPath(); ctx.arc(cx,cy,2,0,Math.PI*2); ctx.fill();
+    } else {
+      bright.push({cx,cy,color});
     }
   }
 
-  if (!matches.length) { results.innerHTML = '<div class="atlas-og-empty">No gene families match this query.</div>'; return; }
-
-  results.innerHTML = `<div class="atlas-og-count">${matches.length === 50 ? '50+ matches (showing first 50)' : matches.length + ' matches'}</div>` +
-    matches.map(([id, ann]) => `
-      <div class="atlas-og-row" onclick="renderAtlasOGProfile('${atEsc(id)}')">
-        <span class="atlas-og-id">${atEsc(id)}</span>
-        <span class="atlas-og-row-desc">${atEsc((ann.description||'—').slice(0,120))}</span>
-        <span class="atlas-og-cog">COG: ${atEsc(ann.cog||'?')}</span>
-      </div>`).join('');
+  ctx.globalAlpha = 0.78;
+  for (const {cx,cy,color} of bright) {
+    ctx.fillStyle = color;
+    ctx.beginPath(); ctx.arc(cx,cy,2.5,0,Math.PI*2); ctx.fill();
+  }
+  ctx.globalAlpha = 1;
 }
 
-function renderAtlasOGProfile(ogId) {
-  const profile = atEl('atlas-og-profile');
-  const row = AT.ogMeans[ogId];
-  if (!row || !profile) return;
+/* ── Canvas events ───────────────────────────────────────────── */
+function atvOnWheel(e) {
+  e.preventDefault();
+  const factor = e.deltaY < 0 ? 1.15 : 1/1.15;
+  const rect = e.target.getBoundingClientRect();
+  const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+  const [wx,wy] = atvCanvasToWorld(mx,my);
+  ATV.zoom = Math.max(0.4, Math.min(60, ATV.zoom*factor));
+  const [nx,ny] = atvWorldToCanvas(wx,wy);
+  ATV.panX += mx-nx; ATV.panY += my-ny;
+  atvScheduleDraw();
+}
 
-  const ann = (AT.ogAnnot||{})[ogId] || {};
-  atEl('atlas-og-profile-title').textContent = ogId;
-  atEl('atlas-og-profile-desc').textContent = ann.description || '—';
+function atvOnMouseDown(e) {
+  ATV.dragging=true; ATV.dragX=e.clientX; ATV.dragY=e.clientY;
+  e.target.style.cursor='grabbing';
+}
 
-  const keys = Object.keys(row).filter(k => k.startsWith('c') && k !== 'og_id').sort();
-  const vals = keys.map(k => +row[k] || 0);
-  const labels = keys.map((k, i) => {
-    const ca = AT.clusterAnnot?.[String(i)] || {};
-    return (ca.organ||k).split(' ')[0];
+function atvOnMouseMove(e) {
+  if (ATV.dragging) {
+    ATV.panX += e.clientX-ATV.dragX; ATV.panY += e.clientY-ATV.dragY;
+    ATV.dragX=e.clientX; ATV.dragY=e.clientY;
+    atvScheduleDraw(); return;
+  }
+
+  const rect = e.target.getBoundingClientRect();
+  const mx = e.clientX-rect.left, my = e.clientY-rect.top;
+  const [wx,wy] = atvCanvasToWorld(mx,my);
+  const b = atvGetBounds();
+  const hoverR = (b.spanX/200) / ATV.zoom;
+
+  let nearest=null, minD=Infinity;
+  for (const pt of ATV.pts) {
+    const dx=pt.x-wx, dy=pt.y-wy, d=Math.hypot(dx,dy);
+    if (d<hoverR && d<minD) { nearest=pt; minD=d; }
+  }
+
+  const tip = document.getElementById('atv-tooltip');
+  if (nearest && tip) {
+    tip.hidden=false;
+    const ox = mx+14 > rect.width-160 ? mx-160 : mx+14;
+    tip.style.left=ox+'px'; tip.style.top=(my-6)+'px';
+    const label = ATV.organLabels[nearest.po]||nearest.po||'';
+    tip.innerHTML=`<div class="atv-tt-sp"><em>${nearest.sp}</em></div><div class="atv-tt-po">${label}</div>`;
+  } else if (tip) tip.hidden=true;
+}
+
+document.addEventListener('mouseup', ()=>{ ATV.dragging=false; const c=document.getElementById('atv-umap-canvas'); if(c)c.style.cursor='crosshair'; });
+
+/* ── Controls ────────────────────────────────────────────────── */
+function atvColorBy(mode) {
+  ATV.colorMode = mode;
+  document.querySelectorAll('.atv-radio-row').forEach(el =>
+    el.classList.toggle('active', el.dataset.val===mode));
+  atvRenderLegend();
+  atvScheduleDraw();
+}
+
+function atvSearch(q) {
+  const qt = q.trim();
+  const upper = qt.toUpperCase();
+  // Detect gene ID pattern: AT[0-9]G[0-9] or 5-char OG ID
+  if (/^AT\dG\d{5}/.test(upper) || /^AT\dG\d{4,}/.test(upper)) {
+    ATV.searchQ = '';
+    atvLookupGene(upper);
+  } else if (/^[A-Z0-9]{5}$/.test(upper) && qt.length===5) {
+    ATV.searchQ = '';
+    atvShowOGProfile(upper);
+  } else {
+    ATV.searchQ = qt.toLowerCase();
+    atvScheduleDraw();
+    document.getElementById('atv-og-panel').hidden = true;
+  }
+}
+
+function atvResetZoom() { ATV.zoom=1; ATV.panX=0; ATV.panY=0; atvScheduleDraw(); }
+
+function atvExportPNG() {
+  const canvas = document.getElementById('atv-umap-canvas');
+  if (!canvas) return;
+  const a = document.createElement('a');
+  a.download='plant-atlas-umap.png'; a.href=canvas.toDataURL('image/png'); a.click();
+}
+
+/* ── Trait list ──────────────────────────────────────────────── */
+function atvRenderTraitList() {
+  const el = document.getElementById('atv-trait-list');
+  if (!el||!ATV.traits.length) return;
+
+  let list = [...ATV.traits];
+  if (ATV.hideConf) list=list.filter(t=>t.quality!=='confounded');
+  if (ATV.sortBy==='quality') {
+    const ord={high:0,clean:0,mixed:1,confounded:2,unknown:3};
+    list.sort((a,b)=>(ord[a.quality]||3)-(ord[b.quality]||3)||(b.count||0)-(a.count||0));
+  } else {
+    list.sort((a,b)=>(b.count||0)-(a.count||0));
+  }
+
+  const hd = document.getElementById('atv-trait-hd-count');
+  if (hd) hd.textContent=`(${list.length}/${ATV.traits.length})`;
+
+  el.innerHTML = list.map(t => {
+    const qlCls = {high:'clean',clean:'clean',mixed:'mixed',confounded:'conf'}[t.quality]||'conf';
+    const checked = ATV.traitSel.has(t.id);
+    return `<label class="atv-trait-row${checked?' checked':''}">
+      <input type="checkbox" ${checked?'checked':''} onchange="atvToggleTrait('${t.id.replace(/'/g,"\\'")}',this.checked)">
+      <span class="atv-ql-dot ${qlCls}"></span>
+      <span class="atv-trait-nm" title="${t.name}">${t.name}</span>
+      <span class="atv-trait-cnt">${(t.count||0).toLocaleString()}</span>
+    </label>`;
+  }).join('');
+}
+
+function atvToggleTrait(id, checked) {
+  if (checked) ATV.traitSel.add(id); else ATV.traitSel.delete(id);
+  const nEl = document.getElementById('atv-n-traits');
+  if (nEl) nEl.textContent = ATV.traitSel.size;
+  if (checked && ATV.colorMode!=='trait') atvColorBy('trait');
+  if (!checked && !ATV.traitSel.size && ATV.colorMode==='trait') atvColorBy('organ');
+  atvRenderTraitList();
+  atvScheduleDraw();
+}
+
+function atvSortTraits(by) {
+  ATV.sortBy=by;
+  document.querySelectorAll('.atv-sort').forEach(b=>b.classList.remove('active'));
+  document.getElementById('atv-sort-'+by)?.classList.add('active');
+  atvRenderTraitList();
+}
+
+function atvToggleConf(hide) { ATV.hideConf=hide; atvRenderTraitList(); }
+
+/* ── Legend panel ────────────────────────────────────────────── */
+function atvRenderLegend() {
+  const listEl  = document.getElementById('atv-legend-list');
+  const titleEl = document.getElementById('atv-legend-title');
+  if (!listEl) return;
+
+  let entries = [];
+  switch (ATV.colorMode) {
+    case 'organ': {
+      titleEl.textContent='ORGAN';
+      const counts={};
+      for (const pt of ATV.pts) counts[pt.po]=(counts[pt.po]||0)+1;
+      entries = Object.entries(counts).sort((a,b)=>b[1]-a[1]).map(([po,cnt])=>({
+        label: ATV.organLabels[po]||po, count:cnt, color:ATV.organColors[po]||'#999'
+      }));
+      break;
+    }
+    case 'species': {
+      titleEl.textContent='SPECIES';
+      entries = Object.entries(ATV.speciesCounts).sort((a,b)=>b[1]-a[1]).map(([sp,cnt])=>({
+        label:sp, count:cnt, color:ATV.speciesColors[sp]||'#ccc'
+      }));
+      break;
+    }
+    case 'cluster': {
+      titleEl.textContent='CLUSTER (k=16)';
+      const counts={};
+      for (const pt of ATV.pts) counts[pt.ci]=(counts[pt.ci]||0)+1;
+      entries = Object.keys(counts).sort((a,b)=>+a-+b).map(ci=>({
+        label:'Cluster '+ci, count:counts[ci], color:CLUSTER_PAL[ci]||'#999'
+      }));
+      break;
+    }
+    case 'trait': {
+      titleEl.textContent='SELECTED TRAITS';
+      entries = [...ATV.traitSel].map(id=>{
+        const t=ATV.traits.find(x=>x.id===id);
+        return t?{label:t.name,count:t.count||0,color:QUAL_COL[t.quality]||'#aaa'}:null;
+      }).filter(Boolean);
+      break;
+    }
+  }
+
+  ATV.legendEntries = entries;
+  atvFilterLegend(document.getElementById('atv-legend-filter')?.value||'');
+}
+
+function atvFilterLegend(q) {
+  const listEl = document.getElementById('atv-legend-list');
+  if (!listEl) return;
+  const filtered = q
+    ? ATV.legendEntries.filter(e=>e.label.toLowerCase().includes(q.toLowerCase()))
+    : ATV.legendEntries;
+  const show = filtered.slice(0, 50);
+  listEl.innerHTML = show.map(e=>
+    `<div class="atv-legend-row">
+      <span class="atv-legend-dot" style="background:${e.color}"></span>
+      <span class="atv-legend-label">${e.label}</span>
+      <span class="atv-legend-count">${e.count.toLocaleString()}</span>
+    </div>`
+  ).join('') + `<div class="atv-legend-footer">${filtered.length} shown</div>`;
+}
+
+/* ── Gene / OG search ────────────────────────────────────────── */
+async function atvLookupGene(geneId) {
+  const panel = document.getElementById('atv-og-panel');
+  if (!panel) return;
+  panel.hidden=false;
+  panel.innerHTML='<div class="atv-og-loading"><div class="spinner" style="width:14px;height:14px"></div>Looking up gene…</div>';
+
+  if (!ATV.ogLookup) {
+    try { ATV.ogLookup = await fetch(ATLAS_ROOT+'/arabidopsis_og_lookup.json').then(r=>r.json()); }
+    catch(e) { panel.innerHTML=`<div class="empty">Failed to load gene lookup: ${e.message}</div>`; return; }
+  }
+
+  const bare = geneId.split('.')[0];
+  const ogId = ATV.ogLookup[bare];
+  if (!ogId) {
+    panel.innerHTML=`<div class="atv-og-notfound"><b>${bare}</b> — no eggNOG OG found</div>`;
+    return;
+  }
+  atvShowOGProfile(ogId, bare);
+}
+
+async function atvShowOGProfile(ogId, geneLabel) {
+  const panel = document.getElementById('atv-og-panel');
+  if (!panel) return;
+  panel.hidden=false;
+  panel.innerHTML='<div class="atv-og-loading"><div class="spinner" style="width:14px;height:14px"></div>Loading expression data…</div>';
+
+  const needLoad = !ATV.ogMeans || !ATV.ogAnnot || !ATV.clusterAnnot;
+  if (needLoad) {
+    await Promise.all([atvLoadOGMeans(), atvLoadOGAnnot(), atvLoadClusterAnnot()]);
+  }
+
+  const row  = ATV.ogMeans?.[ogId];
+  const ann  = ATV.ogAnnot?.[ogId] || {};
+  if (!row) {
+    panel.innerHTML=`<div class="atv-og-notfound">OG <b>${ogId}</b> — expression data not found</div>`;
+    return;
+  }
+
+  const keys = Object.keys(row).filter(k=>k.startsWith('c')&&k!=='og_id').sort();
+  const vals = keys.map(k=>+row[k]||0);
+  const labels = keys.map((_,i)=>{
+    const ca=ATV.clusterAnnot?.[String(i)]||{};
+    return (ca.organ||'c'+i).split(' ')[0].slice(0,10);
   });
 
-  profile.hidden = false;
+  const headerLabel = geneLabel ? `<code>${geneLabel}</code> → ` : '';
+  panel.innerHTML=`
+    <div class="atv-og-head">
+      <span class="atv-og-title">${headerLabel}<strong>${ogId}</strong></span>
+      <button class="atv-og-close" onclick="document.getElementById('atv-og-panel').hidden=true">✕</button>
+    </div>
+    ${ann.description?`<div class="atv-og-desc">${ann.description} · COG: <b>${ann.cog||'?'}</b></div>`:''}
+    <div class="atv-og-chart-lbl">Expression across 16 UMAP clusters (log₁p TPM · 629k samples)</div>
+    <div style="position:relative;height:180px"><canvas id="atv-og-canvas"></canvas></div>`;
 
-  if (AT.charts.og) { AT.charts.og.destroy(); AT.charts.og = null; }
-  const ctx = atEl('atlas-og-chart').getContext('2d');
-  AT.charts.og = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: keys.map((k,i) => 'c' + String(i).padStart(2,'0')),
-      datasets: [{
-        label: 'Mean log1p(TPM)',
-        data: vals,
-        backgroundColor: vals.map(v => `rgba(99,153,34,${Math.min(1, 0.2 + v/6)})`),
-        borderWidth: 0, borderRadius: 3,
+  if (ATV.ogChart) { ATV.ogChart.destroy(); ATV.ogChart=null; }
+  const ctx = document.getElementById('atv-og-canvas')?.getContext('2d');
+  if (!ctx) return;
+  ATV.ogChart = new Chart(ctx, {
+    type:'bar',
+    data:{
+      labels: keys.map((_,i)=>'c'+String(i).padStart(2,'0')),
+      datasets:[{
+        data:vals,
+        backgroundColor:vals.map(v=>`rgba(99,153,34,${Math.min(1,0.18+v/5)})`),
+        borderWidth:0, borderRadius:3,
       }]
     },
-    options: {
-      plugins: {
-        legend: { display: false },
-        tooltip: { callbacks: {
-          title: items => `Cluster ${items[0].label} — ${labels[items[0].dataIndex]}`,
-          label: ctx => ` Mean log1p(TPM): ${ctx.raw.toFixed(3)}`,
-        }}
+    options:{
+      plugins:{legend:{display:false},tooltip:{callbacks:{
+        title:items=>`Cluster ${items[0].label} — ${labels[items[0].dataIndex]}`,
+        label:ctx=>` ${ctx.raw.toFixed(3)} log₁p(TPM)`,
+      }}},
+      scales:{
+        x:{grid:{display:false},ticks:{font:{size:9}}},
+        y:{grid:{color:'rgba(0,0,0,.05)'},title:{display:true,text:'Mean log₁p(TPM)',font:{size:9}}},
       },
-      scales: {
-        x: { grid: { display: false }, ticks: { font: { size: 10 } } },
-        y: { grid: { color: 'rgba(0,0,0,.05)' }, title: { display: true, text: 'Mean log1p(TPM)', font: { size: 10 } } },
-      },
-      responsive: true, maintainAspectRatio: false,
+      animation:false, responsive:true, maintainAspectRatio:false,
     }
   });
-  profile.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
-/* ── entry point ─────────────────────────────────────────────── */
-function initAtlasPage() {
-  if (!AT.loaded.overview) initAtlasOverview();
+function atvLoadOGMeans() {
+  if (ATV.ogMeans) return Promise.resolve();
+  return new Promise((res)=>{
+    Papa.parse(ATLAS_ROOT+'/og_cluster_means_16.tsv',{
+      download:true,header:true,dynamicTyping:true,skipEmptyLines:true,
+      complete(results){
+        ATV.ogMeans={};
+        for(const row of results.data) if(row.og_id) ATV.ogMeans[row.og_id]=row;
+        res();
+      },
+      error:res,
+    });
+  });
+}
+
+async function atvLoadOGAnnot() {
+  if (ATV.ogAnnot) return;
+  try { ATV.ogAnnot = await fetch(ATLAS_ROOT+'/og_annotations.json').then(r=>r.json()); }
+  catch(e) { ATV.ogAnnot={}; }
+}
+
+async function atvLoadClusterAnnot() {
+  if (ATV.clusterAnnot) return;
+  try { ATV.clusterAnnot = await fetch(ATLAS_ROOT+'/cluster_annot.json').then(r=>r.json()); }
+  catch(e) { ATV.clusterAnnot={}; }
+}
+
+/* ── Signature overlay ──────────────────────────────────────── */
+async function atvScoreSignature() {
+  const input  = document.getElementById('atv-sig-input')?.value||'';
+  const lines  = input.split('\n').map(l=>l.split('#')[0].trim()).filter(Boolean);
+  if (!lines.length) return;
+
+  const resultEl = document.getElementById('atv-sig-result');
+  const genesEl  = document.getElementById('atv-sig-genes');
+  if (resultEl) resultEl.hidden=false;
+  if (genesEl)  genesEl.innerHTML='<span class="atv-sig-status">Loading OG data…</span>';
+
+  if (!ATV.ogLookup) {
+    try { ATV.ogLookup = await fetch(ATLAS_ROOT+'/arabidopsis_og_lookup.json').then(r=>r.json()); }
+    catch(e){ if(genesEl) genesEl.innerHTML='<span class="atv-sig-err">Failed to load gene lookup.</span>'; return; }
+  }
+
+  const mapped = lines.map(g=>{
+    const bare=g.split('.')[0].toUpperCase();
+    const og=ATV.ogLookup[bare];
+    return {gene:g, bare, og:og||null};
+  });
+  const ogIds=[...new Set(mapped.filter(g=>g.og).map(g=>g.og))];
+
+  if (!ATV.ogMeans) {
+    if(genesEl) genesEl.innerHTML='<span class="atv-sig-status">Loading expression matrix (~3 MB)…</span>';
+    await atvLoadOGMeans();
+    await atvLoadClusterAnnot();
+  }
+
+  const N=16;
+  const scores=new Array(N).fill(0);
+  let found=0;
+  for (const ogId of ogIds) {
+    const row=ATV.ogMeans?.[ogId]; if(!row) continue; found++;
+    for (let i=0;i<N;i++) scores[i]+=(+row[`c${String(i).padStart(2,'0')}`]||0);
+  }
+  if (found) scores.forEach((_,i)=>scores[i]=scores[i]/found);
+
+  const clusterLabels=Array.from({length:N},(_,i)=>{
+    const ca=ATV.clusterAnnot?.[String(i)]||{};
+    return (ca.organ||'c'+i).split(' ')[0].slice(0,8);
+  });
+
+  if (ATV.sigChart) { ATV.sigChart.destroy(); ATV.sigChart=null; }
+  const sigCanvas=document.getElementById('atv-sig-chart');
+  if (sigCanvas&&found) {
+    const ctx=sigCanvas.getContext('2d');
+    ATV.sigChart=new Chart(ctx,{
+      type:'bar',
+      data:{
+        labels:Array.from({length:N},(_,i)=>'c'+String(i).padStart(2,'0')),
+        datasets:[{
+          data:scores,
+          backgroundColor:scores.map(v=>`rgba(99,153,34,${Math.min(1,0.15+v/4)})`),
+          borderWidth:0,borderRadius:3,
+        }]
+      },
+      options:{
+        plugins:{legend:{display:false},tooltip:{callbacks:{
+          title:items=>`Cluster ${items[0].label} — ${clusterLabels[items[0].dataIndex]}`,
+          label:ctx=>` ${ctx.raw.toFixed(3)} log₁p(TPM)`,
+        }}},
+        scales:{
+          x:{grid:{display:false},ticks:{font:{size:9}}},
+          y:{grid:{color:'rgba(0,0,0,.05)'},title:{display:true,text:'Mean log₁p(TPM)',font:{size:9}}},
+        },
+        animation:false,responsive:true,maintainAspectRatio:false,
+      }
+    });
+  }
+
+  if (genesEl) genesEl.innerHTML=
+    mapped.map(g=>`<div class="atv-sig-gene-row">
+      <code>${g.gene}</code>
+      ${g.og?`<span class="atv-og-found">→ ${g.og}</span>`:'<span class="atv-og-miss">not found</span>'}
+    </div>`).join('')+
+    `<div class="atv-sig-summary">${found}/${ogIds.length} OGs in expression matrix</div>`;
+}
+
+function atvClearSig() {
+  const inp=document.getElementById('atv-sig-input');
+  const res=document.getElementById('atv-sig-result');
+  if(inp) inp.value='';
+  if(res) res.hidden=true;
+  if(ATV.sigChart){ATV.sigChart.destroy();ATV.sigChart=null;}
 }
