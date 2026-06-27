@@ -8,6 +8,9 @@ Data_algae/GSE161337/
 Data_algae/GSE74466/
 data_plant/GSE140362/
 
+# ── Documentation / overview files ──────────────────────────────
+DATA_OVERVIEW.md
+
 # ── Operational / temp files ─────────────────────────────────────
 download_err.txt
 download_log.txt
