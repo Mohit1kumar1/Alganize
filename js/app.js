@@ -23,7 +23,7 @@ const EXPLORER_PAGES = {
 };
 const TOOL_PAGES = new Set(['pubmed','metabolomics','more','about','dogma','seqanalysis','customer']);
 
-const ALL_PAGE_IDS = ['page-explorer','page-pubmed','page-metabolomics','page-more','page-about','page-dogma','page-seqanalysis','page-customer'];
+const ALL_PAGE_IDS = ['page-explorer','page-pubmed','page-metabolomics','page-more','page-about','page-dogma','page-seqanalysis','page-customer','page-atlas'];
 
 function bindNav() {
   document.querySelectorAll('.nav-tab').forEach(btn =>
@@ -51,6 +51,7 @@ async function showPage(page) {
   if (page === 'customer')    { document.getElementById('page-customer').hidden = false; initCustomer(); return; }
   if (page === 'metmap')       { showPage('dogma'); setTimeout(() => document.getElementById('metmap-tree')?.scrollIntoView({behavior:'smooth',block:'start'}), 200); return; }
   if (page === 'dogma')        { document.getElementById('page-dogma').hidden = false; initDogma(); return; }
+  if (page === 'atlas')        { document.getElementById('page-atlas').hidden = false; initAtlasPage(); return; }
 
   document.getElementById('page-explorer').hidden = false;
   if (S.page === page) return;
