@@ -989,3 +989,58 @@ main { flex: 1; overflow-y: auto; padding: 36px 44px 56px; display: flex; flex-d
 .atlas-cluster-labels   { display: flex; gap: 0; margin-top: 6px; }
 .atlas-cluster-label    { flex: 1; text-align: center; font-size: 9.5px; color: var(--text-dim); line-height: 1.3; word-break: break-all; }
 
+/* ═══════════════════════════════════════════════════════════════
+   Microalgae Atlas page
+   ═══════════════════════════════════════════════════════════════ */
+.algae-note         { display: flex; gap: 10px; align-items: flex-start; background: rgba(234,179,8,.07); border: 1px solid rgba(234,179,8,.25); border-radius: var(--radius-sm); padding: 12px 16px; font-size: 12.5px; color: var(--text-mu); margin-bottom: 22px; line-height: 1.6; }
+.algae-note-icon    { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+.algae-panel-desc   { font-size: 13px; color: var(--text-mu); line-height: 1.7; margin-bottom: 18px; }
+.algae-link         { color: var(--accent-hi); text-decoration: none; }
+.algae-link:hover   { text-decoration: underline; }
+.algae-og-empty     { font-size: 12.5px; color: var(--text-dim); padding: 6px 0; }
+
+/* ── Database cards ── */
+.algae-db-grid  { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 12px; }
+.algae-db-card  { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 16px; display: flex; flex-direction: column; gap: 7px; }
+.algae-db-card-top  { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.algae-db-dot   { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.algae-db-name  { font-size: 13.5px; font-weight: 600; color: var(--text); flex: 1; min-width: 80px; }
+.algae-db-badge { font-size: 10px; padding: 2px 8px; border-radius: var(--radius-pill); font-weight: 600; white-space: nowrap; }
+.algae-db-meta  { display: flex; flex-wrap: wrap; gap: 8px; font-size: 11.5px; color: var(--text-dim); }
+.algae-db-type  { font-size: 11.5px; color: var(--text-mu); font-style: italic; }
+.algae-db-link  { font-size: 12px; font-weight: 600; color: var(--accent-hi); text-decoration: none; align-self: flex-start; }
+.algae-db-link:hover { text-decoration: underline; }
+
+/* ── Species matrix ── */
+.algae-map-desc     { font-size: 13px; color: var(--text-mu); margin-bottom: 14px; }
+.algae-matrix-wrap  { overflow-x: auto; margin-bottom: 16px; }
+.algae-matrix       { border-collapse: collapse; font-size: 11.5px; white-space: nowrap; }
+.algae-matrix th, .algae-matrix td { border: 1px solid var(--border); }
+.algae-matrix-species-col { min-width: 210px; padding: 6px 10px; text-align: left; font-weight: 600; color: var(--text-dim); font-size: 10.5px; background: var(--surface); position: sticky; left: 0; z-index: 2; }
+.algae-matrix-group-col   { min-width: 100px; padding: 6px 8px; text-align: left; font-weight: 600; color: var(--text-dim); font-size: 10.5px; background: var(--surface); }
+.algae-matrix-db-head { padding: 4px 3px; text-align: center; background: var(--surface); max-width: 48px; min-width: 48px; }
+.algae-matrix-db-rotated { writing-mode: vertical-rl; transform: rotate(180deg); font-size: 10px; font-weight: 500; color: var(--text-dim); height: 80px; display: flex; align-items: center; }
+.algae-matrix-name  { padding: 6px 10px; font-size: 12px; background: var(--bg); position: sticky; left: 0; z-index: 1; }
+.algae-matrix-group { padding: 6px 8px; font-size: 11px; font-weight: 600; }
+.algae-matrix-cell  { text-align: center; padding: 5px 4px; font-size: 14px; }
+.algae-mc-yes { font-size: 14px; }
+.algae-mc-no  { color: var(--border); font-size: 11px; }
+.algae-legend-row { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 12px; color: var(--text-mu); }
+.algae-legend-dot  { display: inline-block; width: 9px; height: 9px; border-radius: 50%; vertical-align: middle; margin-right: 4px; }
+
+/* ── Diel / N-stress layout ── */
+.algae-diel-top     { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 20px; }
+@media (max-width: 860px) { .algae-diel-top { grid-template-columns: 1fr; } }
+.algae-chart-half, .algae-search-half { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 18px; }
+.algae-diel-results { margin-top: 10px; max-height: 260px; overflow-y: auto; }
+
+.algae-ns-summary   { font-size: 12.5px; color: var(--text-mu); margin-bottom: 16px; background: var(--surface); border-radius: var(--radius-sm); padding: 10px 14px; border: 1px solid var(--border); }
+.algae-ns-layout    { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 860px) { .algae-ns-layout { grid-template-columns: 1fr; } }
+.algae-chart-half   { }
+.algae-ns-table-half{ background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px; overflow-y: auto; max-height: 460px; }
+.algae-ns-table     { width: 100%; border-collapse: collapse; font-size: 11.5px; }
+.algae-ns-table th  { text-align: left; font-size: 10px; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: .06em; padding: 5px 8px; border-bottom: 1.5px solid var(--border); position: sticky; top: 0; background: var(--surface); }
+.algae-ns-table td  { padding: 5px 8px; border-bottom: 1px solid var(--border); vertical-align: middle; color: var(--text-mu); }
+.algae-ns-table tr:last-child td { border-bottom: none; }
+

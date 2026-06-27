@@ -26,6 +26,7 @@
     <div class="nav-sep"></div>
     <button class="nav-tab" data-page="dogma">Molecular Explorer</button>
     <div class="nav-sep"></div>
+    <button class="nav-tab" data-page="algaeatlas">Microalgae Atlas</button>
     <button class="nav-tab" data-page="atlas">Plant Atlas</button>
     <div class="nav-sep"></div>
     <button class="nav-tab" data-page="about">About</button>
@@ -73,6 +74,24 @@
     <div class="loading" id="main-loading"><div class="spinner"></div>Loading…</div>
     <div id="main-body" hidden style="flex-direction:column;gap:24px;"></div>
   </main>
+</div>
+
+<!-- ─── MICROALGAE ATLAS ─────────────────────────────────────── -->
+<div class="atlas-page" id="page-algaeatlas" hidden>
+  <div class="atlas-page-title">Microalgae Atlas</div>
+  <div class="atlas-page-sub">11 databases · 300+ species · Diel &amp; N-stress expression data (C. reinhardtii)</div>
+
+  <div class="ct-tabbar" style="margin-bottom:24px">
+    <button class="ct-tab active" id="algae-tab-landscape"  onclick="algaeShowTab('landscape')">Database Landscape</button>
+    <button class="ct-tab"        id="algae-tab-speciesmap" onclick="algaeShowTab('speciesmap')">Species Map</button>
+    <button class="ct-tab"        id="algae-tab-diel"       onclick="algaeShowTab('diel')">Diel Expression</button>
+    <button class="ct-tab"        id="algae-tab-nstress"    onclick="algaeShowTab('nstress')">N-Stress DE</button>
+  </div>
+
+  <div id="algae-panel-landscape"></div>
+  <div id="algae-panel-speciesmap" hidden></div>
+  <div id="algae-panel-diel"       hidden></div>
+  <div id="algae-panel-nstress"    hidden></div>
 </div>
 
 <!-- ─── PLANT ATLAS ────────────────────────────────────────── -->
@@ -273,6 +292,7 @@
 <script src="js/dogma.js"></script>
 <script src="js/metmap.js"></script>
 <script src="js/atlas.js"></script>
+<script src="js/atlas_algae.js"></script>
 <script>bindNav(); showPage('microalgae');</script>
 </body>
 </html>
