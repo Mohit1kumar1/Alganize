@@ -171,6 +171,7 @@ function renderMain() {
 
   renderChartArea(data, lc, pc);
   renderTable(data, lc, pc);
+  if (typeof atlasOnRenderMain === 'function') atlasOnRenderMain();
 }
 
 function renderChartArea(data, lc, pc) {
@@ -302,7 +303,7 @@ function renderTable(data, lc, pc) {
     const fcP=(fc!=null&&isFinite(fc))?Math.min(100,Math.abs(fc)/absMax*100):0;
     const fcC=(fc!=null&&fc>=0)?'#2ea378':'#d63d3c';
     const pvD=(pv!=null&&isFinite(pv))?pv.toExponential(2):'NA',sig=pv!=null&&isFinite(pv)&&pv<0.05;
-    return `<tr>
+    return `<tr data-geneid="${esc(r.GeneID||'')}">
       <td><span class="pathway-pill">${esc(r.Pathway||'')}</span></td>
       <td style="color:var(--text);font-weight:500;">${esc(r.Symbol||'—')}</td>
       <td style="color:var(--text-mu);font-size:12px;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${esc(r.Description||'')}">${esc(r.Description||'—')}</td>
