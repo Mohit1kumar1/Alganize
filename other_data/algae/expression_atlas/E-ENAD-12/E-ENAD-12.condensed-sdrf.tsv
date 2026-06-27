@@ -1,0 +1,168 @@
+E-ENAD-12		SRR1200252	characteristic	cultivar	dw15 (cw15, nit1, mt+)
+E-ENAD-12		SRR1200252	characteristic	genotype	wild type genotype
+E-ENAD-12		SRR1200252	characteristic	growth condition	continuous light regimen	http://purl.obolibrary.org/obo/EO_0007162
+E-ENAD-12		SRR1200252	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-ENAD-12		SRR1200252	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-ENAD-12		SRR1200252	factor	environmental stress	none	http://www.ebi.ac.uk/efo/EFO_0001461
+E-ENAD-12		SRR1200252	factor	genotype	wild type genotype
+E-ENAD-12		SRR1200253	characteristic	cultivar	dw15 (cw15, nit1, mt+)
+E-ENAD-12		SRR1200253	characteristic	genotype	wild type genotype
+E-ENAD-12		SRR1200253	characteristic	growth condition	continuous light regimen	http://purl.obolibrary.org/obo/EO_0007162
+E-ENAD-12		SRR1200253	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-ENAD-12		SRR1200253	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-ENAD-12		SRR1200253	factor	environmental stress	none	http://www.ebi.ac.uk/efo/EFO_0001461
+E-ENAD-12		SRR1200253	factor	genotype	wild type genotype
+E-ENAD-12		SRR1200254	characteristic	cultivar	dw15 (cw15, nit1, mt+)
+E-ENAD-12		SRR1200254	characteristic	genotype	wild type genotype
+E-ENAD-12		SRR1200254	characteristic	growth condition	continuous light regimen	http://purl.obolibrary.org/obo/EO_0007162
+E-ENAD-12		SRR1200254	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-ENAD-12		SRR1200254	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-ENAD-12		SRR1200254	factor	environmental stress	none	http://www.ebi.ac.uk/efo/EFO_0001461
+E-ENAD-12		SRR1200254	factor	genotype	wild type genotype
+E-ENAD-12		SRR1200367	characteristic	cultivar	dw15 (cw15, nit1, mt+)
+E-ENAD-12		SRR1200367	characteristic	genotype	wild type genotype
+E-ENAD-12		SRR1200367	characteristic	growth condition	continuous light regimen	http://purl.obolibrary.org/obo/EO_0007162
+E-ENAD-12		SRR1200367	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-ENAD-12		SRR1200367	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-ENAD-12		SRR1200367	factor	environmental stress	nitrogen deprivation
+E-ENAD-12		SRR1200367	factor	genotype	wild type genotype
+E-ENAD-12		SRR1200368	characteristic	cultivar	dw15 (cw15, nit1, mt+)
+E-ENAD-12		SRR1200368	characteristic	genotype	wild type genotype
+E-ENAD-12		SRR1200368	characteristic	growth condition	continuous light regimen	http://purl.obolibrary.org/obo/EO_0007162
+E-ENAD-12		SRR1200368	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-ENAD-12		SRR1200368	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-ENAD-12		SRR1200368	factor	environmental stress	nitrogen deprivation
+E-ENAD-12		SRR1200368	factor	genotype	wild type genotype
+E-ENAD-12		SRR1200369	characteristic	cultivar	dw15 (cw15, nit1, mt+)
+E-ENAD-12		SRR1200369	characteristic	genotype	wild type genotype
+E-ENAD-12		SRR1200369	characteristic	growth condition	continuous light regimen	http://purl.obolibrary.org/obo/EO_0007162
+E-ENAD-12		SRR1200369	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-ENAD-12		SRR1200369	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-ENAD-12		SRR1200369	factor	environmental stress	nitrogen deprivation
+E-ENAD-12		SRR1200369	factor	genotype	wild type genotype
+E-ENAD-12		SRR1200370	characteristic	cultivar	dw15 (cw15, nit1, mt+)
+E-ENAD-12		SRR1200370	characteristic	genotype	wild type genotype
+E-ENAD-12		SRR1200370	characteristic	growth condition	continuous light regimen	http://purl.obolibrary.org/obo/EO_0007162
+E-ENAD-12		SRR1200370	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-ENAD-12		SRR1200370	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-ENAD-12		SRR1200370	factor	environmental stress	nitrogen deprivation and then resupplied with nitrogen for 6 hour
+E-ENAD-12		SRR1200370	factor	genotype	wild type genotype
+E-ENAD-12		SRR1200371	characteristic	cultivar	dw15 (cw15, nit1, mt+)
+E-ENAD-12		SRR1200371	characteristic	genotype	wild type genotype
+E-ENAD-12		SRR1200371	characteristic	growth condition	continuous light regimen	http://purl.obolibrary.org/obo/EO_0007162
+E-ENAD-12		SRR1200371	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-ENAD-12		SRR1200371	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-ENAD-12		SRR1200371	factor	environmental stress	nitrogen deprivation and then resupplied with nitrogen for 6 hour
+E-ENAD-12		SRR1200371	factor	genotype	wild type genotype
+E-ENAD-12		SRR1200372	characteristic	cultivar	dw15 (cw15, nit1, mt+)
+E-ENAD-12		SRR1200372	characteristic	genotype	wild type genotype
+E-ENAD-12		SRR1200372	characteristic	growth condition	continuous light regimen	http://purl.obolibrary.org/obo/EO_0007162
+E-ENAD-12		SRR1200372	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-ENAD-12		SRR1200372	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-ENAD-12		SRR1200372	factor	environmental stress	nitrogen deprivation and then resupplied with nitrogen for 6 hour
+E-ENAD-12		SRR1200372	factor	genotype	wild type genotype
+E-ENAD-12		SRR1200373	characteristic	cultivar	dw15 (cw15, nit1, mt+)
+E-ENAD-12		SRR1200373	characteristic	genotype	wild type genotype
+E-ENAD-12		SRR1200373	characteristic	growth condition	continuous light regimen	http://purl.obolibrary.org/obo/EO_0007162
+E-ENAD-12		SRR1200373	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-ENAD-12		SRR1200373	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-ENAD-12		SRR1200373	factor	environmental stress	nitrogen deprivation and then resupplied with nitrogen for 12 hour
+E-ENAD-12		SRR1200373	factor	genotype	wild type genotype
+E-ENAD-12		SRR1200374	characteristic	cultivar	dw15 (cw15, nit1, mt+)
+E-ENAD-12		SRR1200374	characteristic	genotype	wild type genotype
+E-ENAD-12		SRR1200374	characteristic	growth condition	continuous light regimen	http://purl.obolibrary.org/obo/EO_0007162
+E-ENAD-12		SRR1200374	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-ENAD-12		SRR1200374	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-ENAD-12		SRR1200374	factor	environmental stress	nitrogen deprivation and then resupplied with nitrogen for 12 hour
+E-ENAD-12		SRR1200374	factor	genotype	wild type genotype
+E-ENAD-12		SRR1200375	characteristic	cultivar	dw15 (cw15, nit1, mt+)
+E-ENAD-12		SRR1200375	characteristic	genotype	wild type genotype
+E-ENAD-12		SRR1200375	characteristic	growth condition	continuous light regimen	http://purl.obolibrary.org/obo/EO_0007162
+E-ENAD-12		SRR1200375	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-ENAD-12		SRR1200375	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-ENAD-12		SRR1200375	factor	environmental stress	nitrogen deprivation and then resupplied with nitrogen for 12 hour
+E-ENAD-12		SRR1200375	factor	genotype	wild type genotype
+E-ENAD-12		SRR1200376	characteristic	cultivar	dw15 (cw15, nit1, mt+)
+E-ENAD-12		SRR1200376	characteristic	genotype	cht7 mutant
+E-ENAD-12		SRR1200376	characteristic	growth condition	continuous light regimen	http://purl.obolibrary.org/obo/EO_0007162
+E-ENAD-12		SRR1200376	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-ENAD-12		SRR1200376	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-ENAD-12		SRR1200376	factor	environmental stress	none	http://www.ebi.ac.uk/efo/EFO_0001461
+E-ENAD-12		SRR1200376	factor	genotype	cht7 mutant
+E-ENAD-12		SRR1200377	characteristic	cultivar	dw15 (cw15, nit1, mt+)
+E-ENAD-12		SRR1200377	characteristic	genotype	cht7 mutant
+E-ENAD-12		SRR1200377	characteristic	growth condition	continuous light regimen	http://purl.obolibrary.org/obo/EO_0007162
+E-ENAD-12		SRR1200377	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-ENAD-12		SRR1200377	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-ENAD-12		SRR1200377	factor	environmental stress	none	http://www.ebi.ac.uk/efo/EFO_0001461
+E-ENAD-12		SRR1200377	factor	genotype	cht7 mutant
+E-ENAD-12		SRR1200378	characteristic	cultivar	dw15 (cw15, nit1, mt+)
+E-ENAD-12		SRR1200378	characteristic	genotype	cht7 mutant
+E-ENAD-12		SRR1200378	characteristic	growth condition	continuous light regimen	http://purl.obolibrary.org/obo/EO_0007162
+E-ENAD-12		SRR1200378	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-ENAD-12		SRR1200378	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-ENAD-12		SRR1200378	factor	environmental stress	none	http://www.ebi.ac.uk/efo/EFO_0001461
+E-ENAD-12		SRR1200378	factor	genotype	cht7 mutant
+E-ENAD-12		SRR1200379	characteristic	cultivar	dw15 (cw15, nit1, mt+)
+E-ENAD-12		SRR1200379	characteristic	genotype	cht7 mutant
+E-ENAD-12		SRR1200379	characteristic	growth condition	continuous light regimen	http://purl.obolibrary.org/obo/EO_0007162
+E-ENAD-12		SRR1200379	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-ENAD-12		SRR1200379	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-ENAD-12		SRR1200379	factor	environmental stress	nitrogen deprivation
+E-ENAD-12		SRR1200379	factor	genotype	cht7 mutant
+E-ENAD-12		SRR1200380	characteristic	cultivar	dw15 (cw15, nit1, mt+)
+E-ENAD-12		SRR1200380	characteristic	genotype	cht7 mutant
+E-ENAD-12		SRR1200380	characteristic	growth condition	continuous light regimen	http://purl.obolibrary.org/obo/EO_0007162
+E-ENAD-12		SRR1200380	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-ENAD-12		SRR1200380	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-ENAD-12		SRR1200380	factor	environmental stress	nitrogen deprivation
+E-ENAD-12		SRR1200380	factor	genotype	cht7 mutant
+E-ENAD-12		SRR1200381	characteristic	cultivar	dw15 (cw15, nit1, mt+)
+E-ENAD-12		SRR1200381	characteristic	genotype	cht7 mutant
+E-ENAD-12		SRR1200381	characteristic	growth condition	continuous light regimen	http://purl.obolibrary.org/obo/EO_0007162
+E-ENAD-12		SRR1200381	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-ENAD-12		SRR1200381	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-ENAD-12		SRR1200381	factor	environmental stress	nitrogen deprivation
+E-ENAD-12		SRR1200381	factor	genotype	cht7 mutant
+E-ENAD-12		SRR1200382	characteristic	cultivar	dw15 (cw15, nit1, mt+)
+E-ENAD-12		SRR1200382	characteristic	genotype	cht7 mutant
+E-ENAD-12		SRR1200382	characteristic	growth condition	continuous light regimen	http://purl.obolibrary.org/obo/EO_0007162
+E-ENAD-12		SRR1200382	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-ENAD-12		SRR1200382	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-ENAD-12		SRR1200382	factor	environmental stress	nitrogen deprivation and then resupplied with nitrogen for 6 hour
+E-ENAD-12		SRR1200382	factor	genotype	cht7 mutant
+E-ENAD-12		SRR1200383	characteristic	cultivar	dw15 (cw15, nit1, mt+)
+E-ENAD-12		SRR1200383	characteristic	genotype	cht7 mutant
+E-ENAD-12		SRR1200383	characteristic	growth condition	continuous light regimen	http://purl.obolibrary.org/obo/EO_0007162
+E-ENAD-12		SRR1200383	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-ENAD-12		SRR1200383	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-ENAD-12		SRR1200383	factor	environmental stress	nitrogen deprivation and then resupplied with nitrogen for 6 hour
+E-ENAD-12		SRR1200383	factor	genotype	cht7 mutant
+E-ENAD-12		SRR1200384	characteristic	cultivar	dw15 (cw15, nit1, mt+)
+E-ENAD-12		SRR1200384	characteristic	genotype	cht7 mutant
+E-ENAD-12		SRR1200384	characteristic	growth condition	continuous light regimen	http://purl.obolibrary.org/obo/EO_0007162
+E-ENAD-12		SRR1200384	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-ENAD-12		SRR1200384	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-ENAD-12		SRR1200384	factor	environmental stress	nitrogen deprivation and then resupplied with nitrogen for 6 hour
+E-ENAD-12		SRR1200384	factor	genotype	cht7 mutant
+E-ENAD-12		SRR1200385	characteristic	cultivar	dw15 (cw15, nit1, mt+)
+E-ENAD-12		SRR1200385	characteristic	genotype	cht7 mutant
+E-ENAD-12		SRR1200385	characteristic	growth condition	continuous light regimen	http://purl.obolibrary.org/obo/EO_0007162
+E-ENAD-12		SRR1200385	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-ENAD-12		SRR1200385	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-ENAD-12		SRR1200385	factor	environmental stress	nitrogen deprivation and then resupplied with nitrogen for 12 hour
+E-ENAD-12		SRR1200385	factor	genotype	cht7 mutant
+E-ENAD-12		SRR1200386	characteristic	cultivar	dw15 (cw15, nit1, mt+)
+E-ENAD-12		SRR1200386	characteristic	genotype	cht7 mutant
+E-ENAD-12		SRR1200386	characteristic	growth condition	continuous light regimen	http://purl.obolibrary.org/obo/EO_0007162
+E-ENAD-12		SRR1200386	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-ENAD-12		SRR1200386	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-ENAD-12		SRR1200386	factor	environmental stress	nitrogen deprivation and then resupplied with nitrogen for 12 hour
+E-ENAD-12		SRR1200386	factor	genotype	cht7 mutant
+E-ENAD-12		SRR1200387	characteristic	cultivar	dw15 (cw15, nit1, mt+)
+E-ENAD-12		SRR1200387	characteristic	genotype	cht7 mutant
+E-ENAD-12		SRR1200387	characteristic	growth condition	continuous light regimen	http://purl.obolibrary.org/obo/EO_0007162
+E-ENAD-12		SRR1200387	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-ENAD-12		SRR1200387	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-ENAD-12		SRR1200387	factor	environmental stress	nitrogen deprivation and then resupplied with nitrogen for 12 hour
+E-ENAD-12		SRR1200387	factor	genotype	cht7 mutant

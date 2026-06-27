@@ -1,0 +1,59 @@
+{
+  "name": "Alganaut \u2014 Eukaryotic Microalgae Transcriptomics Compendium",
+  "paper": "bioRxiv preprint 2018, doi:10.1101/403063",
+  "paper_url": "https://www.biorxiv.org/content/10.1101/403063v3.full",
+  "web_tool": "https://alganaut.uts.edu.au (status: uncertain as of 2026)",
+  "total_samples": 1375,
+  "studies": 69,
+  "species": {
+    "Phaeodactylum tricornutum": {
+      "samples": 539,
+      "projects": 26
+    },
+    "Thalassiosira pseudonana": {
+      "samples": 380,
+      "projects": 17
+    },
+    "Micromonas pusilla": {
+      "samples": 164,
+      "projects": 4
+    },
+    "Emiliania huxleyi": {
+      "samples": 69,
+      "projects": 6
+    },
+    "Nannochloropsis oceanica": {
+      "samples": 68,
+      "projects": 5
+    },
+    "Cyclotella cryptica": {
+      "samples": 56,
+      "projects": 1
+    },
+    "Fragilariopsis cylindrus": {
+      "samples": 40,
+      "projects": 4
+    },
+    "Thalassiosira weissflogii": {
+      "samples": 26,
+      "projects": 1
+    },
+    "Thalassiosira oceanica": {
+      "samples": 21,
+      "projects": 3
+    },
+    "Pseudo-nitzschia multiseries": {
+      "samples": 12,
+      "projects": 2
+    }
+  },
+  "clades": [
+    "diatoms",
+    "green algae",
+    "haptophyte",
+    "eustigmatophyte"
+  ],
+  "raw_data": "NCBI SRA (individual SRR accessions listed in preprint supplementary tables)",
+  "data_availability": "Web tool accessibility uncertain; contact authors at UTS for processed data",
+  "contact": "University of Technology Sydney (UTS)"
+}

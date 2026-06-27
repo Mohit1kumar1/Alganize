@@ -1,0 +1,35 @@
+Comment[ArrayExpressAccession]	E-ENAD-12	
+MAGE-TAB Version	1.1	
+Investigation Title	RNA-seq of Chlamydomonas reinhardtii response to nitrogen deprivation in cht7 mutant plants	
+Comment[Submitted Name]	Global Changes following N-deprivation and N-resupply in Chlamydomonas in the cht7 mutant and the wild-type: Illumina sequencing	
+Experiment Description	Responding to environmental cues such as nutrient deprivation, cells can halt divisions and enter quiescence, which unlike terminal cell fates is reversible. Drastic changes in cell metabolic status accompany the entry and exit of quiescence and specific regulatory mechanisms that integrate metabolism with the cell division cycle are largely unknown. Here, we describe the identification of 'Compromised Hydrolysis of Triacylglycerols 7' (CHT7), a protein of Chlamydomonas reinhardtii with predicted CXC DNA-binding domains. The cht7 mutant accumulates triacylglycerols during N deprivation-induced quiescence, but fails to degrade triacylglycerols after N refeeding and cannot exit quiescence even though cells are viable. Global transcript analysis suggests dual roles for CHT7 as it appears to safeguard against spontaneous quiescence entry during N-replete growth and is required to activate metabolic genes during quiescence exit. CHT7 is a component of a multiprotein complex that appears to adjust specific transcriptional subnetworks at quiescence entry and exit.	
+Experimental Factor Name	genotype	environmental stress
+Experimental Factor Type	genotype	environmental stress
+Experimental Factor Term Source REF	EFO	
+Experimental Factor Term Accession Number	EFO_0000542	
+Person Last Name	Benning	
+Person First Name	Christoph	
+Person Email	benning@msu.edu	
+Person Address	Biochemistry and Molecular Biology, Michigan State University, East Lansing, MI 48824	
+Person Affiliation	Biochemistry and Molecular Biology, Michigan State University, East Lansing, MI 48824	
+Person Roles	submitter	
+Public Release Date	2015-03-21	
+Protocol Name	P-SRP040308-1	P-SRP040308-2
+Protocol Type	nucleic acid sequencing protocol	nucleic acid library construction protocol
+Protocol Term Source REF	EFO	EFO
+Protocol Term Accession Number	EFO_0004170	EFO_0004184
+Protocol Description	Illumina HiSeq 2500	
+Protocol Hardware	Illumina HiSeq 2500	
+Term Source Name	NCBI Taxonomy	EFO
+Term Source File	http://www.ncbi.nlm.nih.gov/Taxonomy/	http://www.ebi.ac.uk/efo
+Term Source Version		2.38
+Publication Title	The protein Compromised Hydrolysis of Triacylglycerols 7 (CHT7) acts as a repressor of cellular quiescence in Chlamydomonas	
+Publication Author List	Tsai CH, Warakanont J, Takeuchi T, Sears BB, Moellering ER, Benning C	
+PubMed ID	25313078	
+Publication DOI	10.1073/pnas.1414567111	
+SDRF File	E-ENAD-12.sdrf.txt	
+Comment[SecondaryAccession]	SRP040308	
+Comment[SequenceDataURI]	http://www.ebi.ac.uk/ena/data/view/SRP040308	
+Comment[AEExperimentType]	RNA-seq of coding RNA	
+Comment[SRASubmissionDate]	2015-03-21	
+Comment[AEExperimentDisplayName]	RNA-seq of Chlamydomonas reinhardtii response to nitrogen deprivation in cht7 mutant plants	

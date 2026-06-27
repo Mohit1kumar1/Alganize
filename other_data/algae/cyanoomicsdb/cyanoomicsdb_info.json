@@ -1,0 +1,20 @@
+{
+  "name": "CyanoOmicsDB \u2014 Cyanobacteria Transcriptomics & Proteomics",
+  "url_published": "http://www.cyanoomics.cn/ (accessibility unconfirmed as of 2026)",
+  "paper": "Nucleic Acids Research 2022, PMC8728175",
+  "paper_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8728175/",
+  "primary_species": "Synechocystis sp. PCC 6803",
+  "data": {
+    "transcriptomic_datasets": 56,
+    "primary_transcriptomic_datasets": 3,
+    "proteomic_datasets": 15,
+    "pairwise_transcriptome_comparisons": 203,
+    "proteome_comparisons": 25
+  },
+  "raw_data_sources": [
+    "NCBI GEO",
+    "NCBI SRA"
+  ],
+  "data_access": "Web interface (URL status uncertain); raw data accessible via GEO/SRA",
+  "note": "URL http://www.cyanoomics.cn/ was not confirmed accessible as of mid-2026 verification"
+}

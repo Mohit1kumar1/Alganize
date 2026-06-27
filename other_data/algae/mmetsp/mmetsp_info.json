@@ -1,0 +1,25 @@
+{
+  "name": "Marine Microbial Eukaryote Transcriptome Sequencing Project (MMETSP)",
+  "paper": "PLOS Biology 2014, PMC4068987",
+  "samples": 678,
+  "species": 306,
+  "phyla": "40+",
+  "groups": [
+    "prasinophytes",
+    "dinoflagellates",
+    "diatoms",
+    "cryptophytes",
+    "red algae",
+    "haptophytes"
+  ],
+  "download_reassemblies": {
+    "figshare": "https://figshare.com/articles/dataset/Marine_Microbial_Eukaryotic_Transcriptome_Sequencing_Project_re-assemblies/3840153/3",
+    "direct_file": "https://ndownloader.figshare.com/files/11058947",
+    "filename": "mmetsp_dib_trinity2.2.0_completeApril2018_figshare.zip",
+    "size": "7.1 GB",
+    "format": "ZIP (Trinity assembled transcriptomes)",
+    "note": "NOT downloaded automatically \u2014 too large (7.1 GB). Download manually from Figshare."
+  },
+  "raw_reads": "NCBI SRA (verify current accession via NCBI search: MMETSP)",
+  "imicrobe": "https://www.imicrobe.us/#/projects/104"
+}

@@ -1,0 +1,93 @@
+{
+  "atlas_version": "v9.0.0",
+  "umap_source": "v9 sweep13 encoder re-embed",
+  "n_samples": 629983,
+  "n_traits": 57,
+  "encoder": "DANN v9 sweep13",
+  "artifacts": {
+    "canonical_og_sets.json": {
+      "sha256": "a1bdc6b76d3bc95b8132d4830c1937f597bc19b3aef7b8a9e250b1a0b8ea17fa",
+      "size_bytes": 23795
+    },
+    "canonical_panels.json": {
+      "sha256": "40b2cb17f9ac6e79ce59e2187ee375b2d666d09f8fa3c650dd985dac50d13c9f",
+      "size_bytes": 11999
+    },
+    "family_palette.json": {
+      "sha256": "2d69ee2d28a8f6df19ead02a39f8c494007fd75e818d114b93dfba6c304b72cd",
+      "size_bytes": 1560
+    },
+    "fig1_organ_purity.png": {
+      "sha256": "f534aa0d18db76674caad4d308692a32ae7d3a2dab4ddaaecdd7311b4f4c6ff6",
+      "size_bytes": 49248
+    },
+    "fig1_organ_purity_bounds.json": {
+      "sha256": "7ced53786fcb87c6c3bf44ecc5f233423ff2c4eac1755de3fb5606ff65995ddf",
+      "size_bytes": 166
+    },
+    "fig1_organ_purity_grid.arrow": {
+      "sha256": "aafae60264c401b90d968d1707bcccf95e3440f3fc551f5ce85f344db68dd021",
+      "size_bytes": 220394
+    },
+    "fig1_organ_purity_summary.json": {
+      "sha256": "f49c238ac6f4e37e39962b4608f8a8ee4a86b09b7c5956f61916771889a42095",
+      "size_bytes": 330
+    },
+    "marker_panels.json": {
+      "sha256": "5966af0d988f1313be1e911b075cce2f97caae7b14c5be6d89164b73053774a3",
+      "size_bytes": 665145
+    },
+    "meta.arrow": {
+      "sha256": "3db9adc4dbdf7b269418d2ad1c7916eafb1c06f4b3d40c9a48ed5e4bb3187e08",
+      "size_bytes": 3843058
+    },
+    "og_annotations.json": {
+      "sha256": "9a8760d65aa76cdbda366b66404f427555353f896f52ae00a02a959a5913dfdc",
+      "size_bytes": 2250221
+    },
+    "og_cluster_means.tsv": {
+      "sha256": "0ae595b448828d551111497f494a80e3f99a543ba3381722647ca45d3fc5ee48",
+      "size_bytes": 12665513
+    },
+    "og_profile.json": {
+      "sha256": "0af03924259c2ad34ecdf36d5eb2dba1817b828f938486e75cfbddb3ab8946c6",
+      "size_bytes": 43634039
+    },
+    "og_vocab.json": {
+      "sha256": "420459fee5ad403ca6cbe76f65d669ac548cc1ff1d3fb1117850801e4fd9f8b2",
+      "size_bytes": 251073
+    },
+    "po_bucket_counts.json": {
+      "sha256": "33a44fa858efa788098d8a3431299d5213d35cc6eedd7cc774f71f9eb92b08bd",
+      "size_bytes": 152
+    },
+    "po_panels.json": {
+      "sha256": "0d34a24f9c70c239c88c843406d1ec99f1546a4dd94068afd6942f5ac937eae7",
+      "size_bytes": 12652499
+    },
+    "po_top_level_map.json": {
+      "sha256": "deb827b6372cc6f1dcbbaa43cffb3582fddc89ae08ea2ec2c9446d7784146e2e",
+      "size_bytes": 168622
+    },
+    "points.arrow": {
+      "sha256": "5d1caf2938ecdcad709f5e40e9779793f79f7bdd7fda50072aa4b8b345090b6c",
+      "size_bytes": 6345730
+    },
+    "tissue_matched_panels.json": {
+      "sha256": "25b2038afddb6989271012b4fabe8a531006bc0b7cbf72a0e96ca318d70ecbd4",
+      "size_bytes": 4311629
+    },
+    "top_panels.json": {
+      "sha256": "93ce9d943427c5b181b6028824d64c1787400bfcc4a0576c9b61efb39c150633",
+      "size_bytes": 3138900
+    },
+    "trait_index.json": {
+      "sha256": "73ebdc57ec072733126f1622b66a40d93fa9d27df086b76817a25cd6a6be44a4",
+      "size_bytes": 29072
+    },
+    "traits.arrow": {
+      "sha256": "d78cf2b0f7893fd31db9ab9a4d4a2a46c389f43266af017dab39ef8cd493f832",
+      "size_bytes": 692818
+    }
+  }
+}

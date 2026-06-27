@@ -1,0 +1,52 @@
+{
+  "name": "ALCOdb \u2014 Algal Gene Coexpression Database",
+  "url": "http://alcodb.jp",
+  "paper": "Plant and Cell Physiology 2016, PMC4722175",
+  "species": {
+    "Chlamydomonas reinhardtii": {
+      "samples": 172,
+      "genes": 15519,
+      "data": "RNA-seq"
+    },
+    "Cyanidioschyzon merolae": {
+      "samples": null,
+      "genes": null,
+      "data": "microarray"
+    }
+  },
+  "method": "Mutual Rank (MR) coexpression",
+  "visualization": "Cytoscape.js network graphs",
+  "download": "Freely downloadable from Zenodo (zenodo.org/records/10072283)",
+  "large_files_not_downloaded": {
+    "Cre.v15-08.G15519-S172.quantile.mrgeo.d.zip": {
+      "size": "2.3 GB",
+      "url": "https://zenodo.org/records/10072283/files/Cre.v15-08.G15519-S172.quantile.mrgeo.d.zip?download=1",
+      "description": "Full C. reinhardtii coexpression matrix (latest, 172 samples)"
+    },
+    "Cre.v15-02.G15540-S180.qnorm.mrgeo.d.zip": {
+      "size": "2.3 GB",
+      "url": "https://zenodo.org/records/10072283/files/Cre.v15-02.G15540-S180.qnorm.mrgeo.d.zip?download=1",
+      "description": "Full C. reinhardtii coexpression matrix (v15-02, 180 samples)"
+    },
+    "Cre.v13-10.G18773-S137.qnorm.mrgeo.d.zip": {
+      "size": "3.3 GB",
+      "url": "https://zenodo.org/records/10072283/files/Cre.v13-10.G18773-S137.qnorm.mrgeo.d.zip?download=1",
+      "description": "Full C. reinhardtii coexpression matrix (v13-10)"
+    },
+    "Cme1.v14-06.G4586-S75.d.zip": {
+      "size": "214.8 MB",
+      "url": "https://zenodo.org/records/10072283/files/Cme1.v14-06.G4586-S75.d.zip?download=1",
+      "description": "C. merolae dataset 1 full coexpression matrix"
+    },
+    "Cme2.v14-06.G6506-S48.d.zip": {
+      "size": "442.2 MB",
+      "url": "https://zenodo.org/records/10072283/files/Cme2.v14-06.G6506-S48.d.zip?download=1",
+      "description": "C. merolae dataset 2 full coexpression matrix"
+    },
+    "Cre_v55.CodonUsage.G17741.zip": {
+      "size": "3.0 GB",
+      "url": "https://zenodo.org/records/10072283/files/Cre_v55.CodonUsage.G17741.zip?download=1",
+      "description": "C. reinhardtii codon usage coexpression data"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "n_cells_total": 65536,
+  "n_cells_occupied_ge_5": 8649,
+  "median_purity_po": 0.8333333333333334,
+  "median_purity_clade": 0.6732673267326733,
+  "frac_cells_purity_po_ge_0_5": 0.8727020464793618,
+  "frac_cells_purity_po_ge_0_7": 0.6840097121054457,
+  "frac_cells_purity_po_ge_0_9": 0.3651289166377616,
+  "n_samples": 629983
+}

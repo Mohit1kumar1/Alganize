@@ -1,0 +1,14 @@
+{
+  "name": "EMBL-EBI Expression Atlas",
+  "url": "https://www.ebi.ac.uk/gxa/home",
+  "scope": "4,562 studies, 161,199 assays across 67 species",
+  "microalgae_experiments": {
+    "E-GEOD-62671": "C. reinhardtii RNA-seq diel conditions (16 samples)",
+    "E-ENAD-12": "C. reinhardtii baseline experiment",
+    "E-GEOD-42809": "C. reinhardtii nitrogen deprivation",
+    "E-GEOD-34826": "C. reinhardtii sulfur deprivation",
+    "E-GEOD-71469": "Phaeodactylum tricornutum Fe/light stress"
+  },
+  "download_format": "TSV (raw counts, normalized, experiment design)",
+  "license": "free"
+}

@@ -1,0 +1,80 @@
+E-GEOD-62671		SRR1622079	characteristic	growth condition	suspension cell culture medium
+E-GEOD-62671		SRR1622079	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-GEOD-62671		SRR1622079	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-GEOD-62671		SRR1622079	characteristic	strain	dw15.1
+E-GEOD-62671		SRR1622079	factor	sampling time point	zeitgeber time 21
+E-GEOD-62671		SRR1622080	characteristic	growth condition	suspension cell culture medium
+E-GEOD-62671		SRR1622080	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-GEOD-62671		SRR1622080	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-GEOD-62671		SRR1622080	characteristic	strain	dw15.1
+E-GEOD-62671		SRR1622080	factor	sampling time point	zeitgeber time 21
+E-GEOD-62671		SRR1622081	characteristic	growth condition	suspension cell culture medium
+E-GEOD-62671		SRR1622081	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-GEOD-62671		SRR1622081	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-GEOD-62671		SRR1622081	characteristic	strain	dw15.1
+E-GEOD-62671		SRR1622081	factor	sampling time point	zeitgeber time 18
+E-GEOD-62671		SRR1622082	characteristic	growth condition	suspension cell culture medium
+E-GEOD-62671		SRR1622082	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-GEOD-62671		SRR1622082	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-GEOD-62671		SRR1622082	characteristic	strain	dw15.1
+E-GEOD-62671		SRR1622082	factor	sampling time point	zeitgeber time 18
+E-GEOD-62671		SRR1622083	characteristic	growth condition	suspension cell culture medium
+E-GEOD-62671		SRR1622083	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-GEOD-62671		SRR1622083	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-GEOD-62671		SRR1622083	characteristic	strain	dw15.1
+E-GEOD-62671		SRR1622083	factor	sampling time point	zeitgeber time 15
+E-GEOD-62671		SRR1622084	characteristic	growth condition	suspension cell culture medium
+E-GEOD-62671		SRR1622084	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-GEOD-62671		SRR1622084	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-GEOD-62671		SRR1622084	characteristic	strain	dw15.1
+E-GEOD-62671		SRR1622084	factor	sampling time point	zeitgeber time 15
+E-GEOD-62671		SRR1622085	characteristic	growth condition	suspension cell culture medium
+E-GEOD-62671		SRR1622085	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-GEOD-62671		SRR1622085	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-GEOD-62671		SRR1622085	characteristic	strain	dw15.1
+E-GEOD-62671		SRR1622085	factor	sampling time point	zeitgeber time 12
+E-GEOD-62671		SRR1622086	characteristic	growth condition	suspension cell culture medium
+E-GEOD-62671		SRR1622086	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-GEOD-62671		SRR1622086	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-GEOD-62671		SRR1622086	characteristic	strain	dw15.1
+E-GEOD-62671		SRR1622086	factor	sampling time point	zeitgeber time 12
+E-GEOD-62671		SRR1622087	characteristic	growth condition	suspension cell culture medium
+E-GEOD-62671		SRR1622087	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-GEOD-62671		SRR1622087	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-GEOD-62671		SRR1622087	characteristic	strain	dw15.1
+E-GEOD-62671		SRR1622087	factor	sampling time point	zeitgeber time 9
+E-GEOD-62671		SRR1622088	characteristic	growth condition	suspension cell culture medium
+E-GEOD-62671		SRR1622088	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-GEOD-62671		SRR1622088	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-GEOD-62671		SRR1622088	characteristic	strain	dw15.1
+E-GEOD-62671		SRR1622088	factor	sampling time point	zeitgeber time 9
+E-GEOD-62671		SRR1622089	characteristic	growth condition	suspension cell culture medium
+E-GEOD-62671		SRR1622089	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-GEOD-62671		SRR1622089	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-GEOD-62671		SRR1622089	characteristic	strain	dw15.1
+E-GEOD-62671		SRR1622089	factor	sampling time point	zeitgeber time 6
+E-GEOD-62671		SRR1622090	characteristic	growth condition	suspension cell culture medium
+E-GEOD-62671		SRR1622090	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-GEOD-62671		SRR1622090	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-GEOD-62671		SRR1622090	characteristic	strain	dw15.1
+E-GEOD-62671		SRR1622090	factor	sampling time point	zeitgeber time 6
+E-GEOD-62671		SRR1622091	characteristic	growth condition	suspension cell culture medium
+E-GEOD-62671		SRR1622091	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-GEOD-62671		SRR1622091	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-GEOD-62671		SRR1622091	characteristic	strain	dw15.1
+E-GEOD-62671		SRR1622091	factor	sampling time point	zeitgeber time 3
+E-GEOD-62671		SRR1622092	characteristic	growth condition	suspension cell culture medium
+E-GEOD-62671		SRR1622092	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-GEOD-62671		SRR1622092	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-GEOD-62671		SRR1622092	characteristic	strain	dw15.1
+E-GEOD-62671		SRR1622092	factor	sampling time point	zeitgeber time 3
+E-GEOD-62671		SRR1622093	characteristic	growth condition	suspension cell culture medium
+E-GEOD-62671		SRR1622093	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-GEOD-62671		SRR1622093	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-GEOD-62671		SRR1622093	characteristic	strain	dw15.1
+E-GEOD-62671		SRR1622093	factor	sampling time point	zeitgeber time 0
+E-GEOD-62671		SRR1622094	characteristic	growth condition	suspension cell culture medium
+E-GEOD-62671		SRR1622094	characteristic	organism	Chlamydomonas reinhardtii	http://purl.obolibrary.org/obo/NCBITaxon_3055
+E-GEOD-62671		SRR1622094	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-GEOD-62671		SRR1622094	characteristic	strain	dw15.1
+E-GEOD-62671		SRR1622094	factor	sampling time point	zeitgeber time 0

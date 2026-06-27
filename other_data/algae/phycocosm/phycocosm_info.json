@@ -1,0 +1,27 @@
+{
+  "name": "PhycoCosm \u2014 JGI Comparative Algal Genomics Portal",
+  "url": "https://phycocosm.jgi.doe.gov",
+  "paper": "Nucleic Acids Research 2021, PMC7779052",
+  "genomes": "136+ algal genomes across the eukaryotic tree of life",
+  "groups": [
+    "diatoms (Bacillariophyta)",
+    "green algae (Chlorophyta)",
+    "brown algae",
+    "red algae",
+    "others"
+  ],
+  "data_types": [
+    "genome sequences",
+    "gene annotations",
+    "RNA-seq expression data",
+    "protein families"
+  ],
+  "features": [
+    "genome browser",
+    "BLAST",
+    "comparative genomics",
+    "gene family analysis"
+  ],
+  "data_access": "JGI account required for bulk downloads; browsing is free",
+  "bulk_download": "Via JGI Data Portal (https://genome.jgi.doe.gov) \u2014 requires registration"
+}

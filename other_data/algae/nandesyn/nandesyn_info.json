@@ -1,0 +1,29 @@
+{
+  "name": "NanDeSyn \u2014 Nannochloropsis Design Synthesis Database",
+  "url": "http://nandesyn.single-cell.cn",
+  "paper": "The Plant Journal 2020, PMID 33103271",
+  "doi": "https://doi.org/10.1111/tpj.15025",
+  "species": [
+    "Nannochloropsis oceanica IMET1",
+    "Nannochloropsis salina CCMP1776",
+    "Nannochloropsis gaditana CCMP526",
+    "Nannochloropsis granulata CCMP529",
+    "Nannochloropsis limnetica SAG 18.99",
+    "Nannochloropsis oculata"
+  ],
+  "data_types": [
+    "genomics",
+    "transcriptomics",
+    "proteomics"
+  ],
+  "tools": [
+    "BLAST",
+    "synteny view",
+    "enrichment analysis",
+    "metabolic pathway analysis",
+    "genome browser"
+  ],
+  "visualization": "None (no UMAP or dimensionality reduction)",
+  "data_access": "Web interface \u2014 individual queries via gene/protein search; bulk download availability not confirmed",
+  "note": "Website served over HTTP only (no HTTPS); use http://nandesyn.single-cell.cn"
+}

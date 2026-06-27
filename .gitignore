@@ -1,0 +1,33 @@
+# ── Internal tool state ──────────────────────────────────────────
+.claude/
+
+# ── Large raw data directories ───────────────────────────────────
+All_Datasets/
+Annotation_file/
+Data_algae/GSE161337/
+Data_algae/GSE74466/
+data_plant/GSE140362/
+
+# ── Operational / temp files ─────────────────────────────────────
+download_err.txt
+download_log.txt
+download_geo_files.py
+tmp_check_cols.R
+
+# ── Large other_data files (>5 MB or binary, not browser-usable) ─
+other_data/atlas.tsv
+other_data/meta.arrow
+other_data/points.arrow
+other_data/traits.arrow
+other_data/fig1_organ_purity_grid.arrow
+other_data/*.npz
+other_data/edge_clusters.json.gz
+other_data/og_profile.json
+other_data/og_cluster_means.tsv
+other_data/og_cluster_means_256.tsv
+other_data/po_panels.json
+other_data/po_panels.tsv
+other_data/teagcn_topN.json.gz
+other_data/og_breadth.json.gz
+other_data/tissue_matched_panels.json
+other_data/trait_panels.tsv

@@ -1,0 +1,39 @@
+{
+  "name": "ALGAEFUN / MARACAS",
+  "url": "https://greennetwork.us.es/AlgaeFUN/",
+  "paper": "BMC Bioinformatics 2022, PMC8973887",
+  "paper_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8973887/",
+  "github_algaefun": "https://github.com/fran-romero-campero/AlgaeFUN",
+  "github_maracas": "https://github.com/fran-romero-campero/MARACAS",
+  "zenodo_code": "https://zenodo.org/record/4754516",
+  "species_14": [
+    "Chlamydomonas reinhardtii",
+    "Volvox carteri",
+    "Chromochloris zofingiensis",
+    "Dunaliella salina",
+    "Haematococcus lacustris",
+    "Ostreococcus tauri",
+    "Micromonas pusilla",
+    "Phaeodactylum tricornutum",
+    "Nannochloropsis gaditana",
+    "Ectocarpus siliculosus",
+    "Klebsormidium nitens",
+    "Chara braunii",
+    "Chlorella variabilis",
+    "Auxenochlorella protothecoides"
+  ],
+  "phylogenetic_groups": [
+    "Chlorophyceae",
+    "Mamiellophyceae",
+    "Stramenopiles",
+    "Charophyceae",
+    "Trebouxiophyceae"
+  ],
+  "features": [
+    "RNA-seq analysis",
+    "ChIP-seq analysis",
+    "functional enrichment",
+    "coexpression networks"
+  ],
+  "data_access": "Web interface only; underlying MARACAS database not separately downloadable"
+}

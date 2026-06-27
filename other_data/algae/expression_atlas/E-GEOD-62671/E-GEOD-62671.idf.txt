@@ -1,0 +1,33 @@
+Comment[ArrayExpressAccession]	E-GEOD-62671			
+MAGE-TAB Version	1.1			
+Public Release Date	2014-10-25			
+Investigation Title	RNA-seq of Chlamydomonas reinhardtii under diel conditions to identify cycling genes			
+Comment[Submitted Name]	Prevalence, evolution and cis-regulation of diel transcription in Chlamydomonas reinhardtii			
+Experiment Description	Biological rhythms in response to both endogenous (circadian) and exogenous (e.g. diel) cycles, with a period of ~24 hours, are a prominent feature of many living systems. In green algal species, knowledge on the extent of diel rhythmicity of genome wide gene expression, its evolution, and its cis-regulatory mechanism is limited. In this study, we identified cyclically expressed genes under diel conditions in Chlamydomonas reinhardtii and found that ~50% of the 17,114 annotated genes exhibited cyclic expression. The cyclic expression patterns indicate a clear succession of biological processes during the course of a day. Among 237 functional categories enriched in cyclically expressed genes, >90% were phase-specific, including photosynthesis, cell division and motility processes. By contrasting cyclic expression between C. reinhardtii and Arabidopsis thaliana putative orthologs, we found significant but weak conservation in cyclic gene expression patterns. On the other hand, within C. reinhardtii cyclic expression was preferentially maintained, particularly amongst older duplicates, and the evolution of phase between paralogs is limited to relatively minor shifts in time. Finally, to better understand the cis regulatory basis of diel expression, putative cis-regulatory elements were identified that could predict the expression phase of a subset of the cyclic transcriptome. Our findings demonstrate both the prevalence of as well as the complex regulatory circuitry required to control cyclic expression in a green algal model, highlighting the need to consider diel expression in studying algal molecular networks and in future biotechnological applications. Total RNA sequences extracted every 3 hours between ZT (Zeitgeber Time, hours since last doawn) 0 and ZT21 from two biological replicates of C. reinhardtiis dw15.1			
+Term Source Name	ArrayExpress	EFO		
+Term Source File	http://www.ebi.ac.uk/arrayexpress/	http://www.ebi.ac.uk/efo/efo.owl		
+Person Last Name	Panchy	Benning	Farre	Shiu
+Person First Name	Nicholas	Christoph	Eva	Shin-Han
+Person Mid Initials	Louis		M	
+Person Email	panchyni@msu.edu			
+Person Affiliation	Michigan State University			
+Person Address	Genetics, Michigan State University, 1066 Bouge St., Room 2275, East Lansing, MI, USA			
+Person Roles	submitter			
+Protocol Name	P-GSE62671-1	P-GSE62671-3	P-GSE62671-2	
+Protocol Description	Two biological replicates were collected every 3 hours between ZT (Zeitgeber Time, hours since last dawn) 0 and ZT 21. Each sample originated from an independent 50 mL culture. Samples collected during the light to dark or dark to light transition were taken just prior to change of conditions	2 mL of the culture was placed in a 2 mL tube and centrifuged at max speed in at 4 C for 10 min. The supernatant was removed in the dark and the pellets were snap frozen in liquid nitrogen. The frozen samples were ground using the Qiagen tissue lyser. RNA was extracted using the Omega eZNA Plant RNA kit. The RNA was eluted in 50 mL DEPC-H2O and the concentration was measured using a Nanodrop (Thermo-Fisher). Library preparation was done using the Illumina Tru-Seq Stranded kit	C. reinhardtii dw15.1 was grown in 200 mL TAP culture in flasks without aeration to density of 25 million cells mL-1 in constant light (50 mmol s-1 m-2), at 100 rpm, and 22 C. Using this culture we set up 50 mL cultures of 0.5 million cells mL-1 that were transferred to 12 h light (50 mmol s-1 m-2) and 12 h dark conditions for 48 hours prior to sampling.	
+Protocol Type	sample treatment protocol	nucleic acid library construction protocol	growth protocol	
+Experimental Factor Name	sampling time point			
+Experimental Factor Type	sampling time point			
+Publication Title	Prevalence, evolution, and cis-regulation of diel transcription in Chlamydomonas reinhardtii			
+Publication Author List	Panchy N, Wu G, Newton L, Tsai CH, Chen J, Benning C, Farre EM, Shiu SH			
+PubMed ID	25354782			
+Publication DOI	10.1534/g3.114.015032			
+Comment[SecondaryAccession]	GSE62671			
+Comment[GEOReleaseDate]	2014-10-25			
+Comment[ArrayExpressSubmissionDate]	2014-10-24			
+Comment[GEOLastUpdateDate]	2014-10-27			
+Comment[AEExperimentType]	RNA-seq of coding RNA			
+Comment[AdditionalFile:Data1]	GSE62671_FPKM_Matrix_Values.UpperNormalized.50.csv			
+Comment[SecondaryAccession]	SRP049231			
+SDRF File	E-GEOD-62671.sdrf.txt			
+Comment[AEExperimentDisplayName]	RNA-seq of Chlamydomonas reinhardtii under diel conditions to identify cycling genes			

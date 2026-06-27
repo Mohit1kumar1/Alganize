@@ -1,0 +1,35 @@
+{
+  "name": "DiatOmicBase \u2014 Diatom Multi-Omics Platform",
+  "url": "https://www.diatomicsbase.bio.ens.psl.eu/",
+  "paper": "The Plant Journal 2025, PMC11910669",
+  "paper_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11910669/",
+  "species": {
+    "Phaeodactylum tricornutum": {
+      "studies": 48,
+      "samples": 1431,
+      "comparisons": 266,
+      "note": "Primary species \u2014 full portal"
+    },
+    "Thalassiosira pseudonana": {
+      "note": "Preliminary portal"
+    },
+    "Pseudo-nitzschia multistriata": {
+      "note": "Preliminary portal"
+    }
+  },
+  "data_types": [
+    "RNA-Seq",
+    "genomic",
+    "epigenomic",
+    "proteomic"
+  ],
+  "features": [
+    "gene-centered queries",
+    "DE analysis",
+    "cross-study comparison",
+    "genome browser"
+  ],
+  "data_access": "Interactive web tool; data accessible through the interface by selecting BioProjects and samples",
+  "underlying_data": "Raw data available in NCBI/EBI under BioProject accessions (listed in the web tool)",
+  "est_database": "https://diatomics.bio.ens.psl.eu/EST/ (legacy EST database for P. tricornutum and T. pseudonana)"
+}

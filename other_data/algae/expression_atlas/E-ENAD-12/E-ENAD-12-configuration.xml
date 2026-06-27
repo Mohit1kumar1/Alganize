@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration experimentType="rnaseq_mrna_differential" r_data="1">
+    <analytics>
+        <assay_groups>
+            <assay_group id="g1" label="nitrogen deprivation and then resupplied with nitrogen for 12 hour; cht7 mutant">
+                <assay>SRR1200385</assay>
+                <assay>SRR1200386</assay>
+                <assay>SRR1200387</assay>
+            </assay_group>
+            <assay_group id="g2" label="nitrogen deprivation and then resupplied with nitrogen for 12 hour; wild type">
+                <assay>SRR1200375</assay>
+                <assay>SRR1200373</assay>
+                <assay>SRR1200374</assay>
+            </assay_group>
+            <assay_group id="g3" label="nitrogen deprivation and then resupplied with nitrogen for 6 hour; cht7 mutant">
+                <assay>SRR1200384</assay>
+                <assay>SRR1200382</assay>
+                <assay>SRR1200383</assay>
+            </assay_group>
+            <assay_group id="g4" label="nitrogen deprivation and then resupplied with nitrogen for 6 hour; wild type">
+                <assay>SRR1200370</assay>
+                <assay>SRR1200372</assay>
+                <assay>SRR1200371</assay>
+            </assay_group>
+            <assay_group id="g5" label="nitrogen deprivation; cht7 mutant">
+                <assay>SRR1200379</assay>
+                <assay>SRR1200380</assay>
+                <assay>SRR1200381</assay>
+            </assay_group>
+            <assay_group id="g6" label="nitrogen deprivation; wild type">
+                <assay>SRR1200369</assay>
+                <assay>SRR1200368</assay>
+                <assay>SRR1200367</assay>
+            </assay_group>
+            <assay_group id="g7" label="none; cht7 mutant">
+                <assay>SRR1200378</assay>
+                <assay>SRR1200376</assay>
+                <assay>SRR1200377</assay>
+            </assay_group>
+            <assay_group id="g8" label="none; wild type">
+                <assay>SRR1200252</assay>
+                <assay>SRR1200253</assay>
+                <assay>SRR1200254</assay>
+            </assay_group>
+        </assay_groups>
+        <contrasts>
+            <contrast id="g6_g5" cttv_primary="0">
+                <name>'cht7 mutant' vs 'wild type' in 'nitrogen deprivation'</name>
+                <reference_assay_group>g6</reference_assay_group>
+                <test_assay_group>g5</test_assay_group>
+            </contrast>
+            <contrast id="g4_g3" cttv_primary="0">
+                <name>'cht7 mutant' vs 'wild type' in 'nitrogen deprivation and then resupplied with nitrogen for 6 hour'</name>
+                <reference_assay_group>g4</reference_assay_group>
+                <test_assay_group>g3</test_assay_group>
+            </contrast>
+            <contrast id="g2_g1" cttv_primary="0">
+                <name>'cht7 mutant' vs 'wild type' in 'nitrogen deprivation and then resupplied with nitrogen for 12 hour'</name>
+                <reference_assay_group>g2</reference_assay_group>
+                <test_assay_group>g1</test_assay_group>
+            </contrast>
+            <contrast id="g8_g7" cttv_primary="0">
+                <name>'cht7 mutant' vs 'wild type' in 'none'</name>
+                <reference_assay_group>g8</reference_assay_group>
+                <test_assay_group>g7</test_assay_group>
+            </contrast>
+        </contrasts>
+    </analytics>
+</configuration>

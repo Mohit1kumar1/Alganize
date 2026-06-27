@@ -1,0 +1,1229 @@
+[
+  {
+    "id": "alkaloid",
+    "count": 44404,
+    "name": "Alkaloid-rich species",
+    "type": "binary",
+    "key_organ": "leaf/root/seed",
+    "expected_gene_families": "TYDC; STR; SOMT; codeinone reductase; aminotransferases; CYP450 family expansion",
+    "panels": [
+      "alkaloid_leaf"
+    ],
+    "specificity": 0.05,
+    "quality": "confounded",
+    "tissue_matched": {
+      "tissues": [
+        "fruit",
+        "leaf",
+        "root",
+        "flower",
+        "seedling",
+        "stem",
+        "seed",
+        "shoot apical meristem"
+      ],
+      "default": "leaf",
+      "counts": {
+        "fruit": 2279,
+        "leaf": 2268,
+        "root": 2255,
+        "flower": 2056,
+        "seedling": 1957,
+        "stem": 1877,
+        "seed": 1361,
+        "shoot apical meristem": 700
+      }
+    }
+  },
+  {
+    "id": "aquatic",
+    "count": 2164,
+    "name": "Aquatic submerged/floating",
+    "type": "binary",
+    "key_organ": "leaf/shoot whole plant",
+    "expected_gene_families": "Sub1 (ERF); SK1; SK2; HCO3- transporters (PIP aquaporin); aerenchyma genes (ETHYLENE response)",
+    "panels": [
+      "aquatic"
+    ],
+    "specificity": 0.365,
+    "quality": "mixed",
+    "tissue_matched": {
+      "tissues": [
+        "leaf",
+        "root",
+        "flower",
+        "stem",
+        "seed"
+      ],
+      "default": "leaf",
+      "counts": {
+        "leaf": 1057,
+        "root": 213,
+        "flower": 137,
+        "stem": 82,
+        "seed": 60
+      }
+    }
+  },
+  {
+    "id": "caffeine_producer",
+    "count": 173202,
+    "name": "Caffeine/methylxanthine biosynthesis",
+    "type": "binary",
+    "key_organ": "leaf/seed/fruit",
+    "expected_gene_families": "N-methyltransferases (NMT): xanthosine-NMT (XMT); 7-methylxanthine-NMT (MXMT); caffeine-synthase (DXMT/TCS)",
+    "panels": [
+      "caffeine_producer",
+      "paired_caffeine_vs_asterids"
+    ],
+    "specificity": 0.015,
+    "quality": "confounded",
+    "tissue_matched": null
+  },
+  {
+    "id": "cam_photosynthesis",
+    "count": 3695,
+    "name": "CAM photosynthesis",
+    "type": "multi",
+    "key_organ": "leaf",
+    "expected_gene_families": "PEPC2; NADP-ME; NAD-ME; PEPCK; aluminum-activated malate transporter; v-PPase; circadian regulators (CCA1; PRR)",
+    "panels": [
+      "cam_photosynthesis_leaf"
+    ],
+    "specificity": 0.435,
+    "quality": "mixed",
+    "tissue_matched": {
+      "tissues": [
+        "leaf",
+        "flower",
+        "stem",
+        "root",
+        "fruit",
+        "seedling",
+        "seed"
+      ],
+      "default": "leaf",
+      "counts": {
+        "leaf": 2279,
+        "flower": 466,
+        "stem": 445,
+        "root": 417,
+        "fruit": 151,
+        "seedling": 134,
+        "seed": 95
+      }
+    }
+  },
+  {
+    "id": "capsaicin_producer",
+    "count": 2654,
+    "name": "Capsaicin biosynthesis",
+    "type": "binary",
+    "key_organ": "fruit/placenta",
+    "expected_gene_families": "AT3 (acyltransferase); BCAT; pAMT; KAS; FATA; CL; HCHL",
+    "panels": [
+      "capsaicin_producer_fruit"
+    ],
+    "specificity": 0.475,
+    "quality": "mixed",
+    "tissue_matched": null
+  },
+  {
+    "id": "cardenolide",
+    "count": 295,
+    "name": "Cardiac glycoside / cardenolide biosynthesis",
+    "type": "binary",
+    "key_organ": "leaf/whole plant",
+    "expected_gene_families": "P450s 3\u03b2-hydroxysteroid dehydrogenase; cardenolide-glycosylating UGT",
+    "panels": [
+      "cardenolide"
+    ],
+    "specificity": 0.555,
+    "quality": "clean",
+    "tissue_matched": {
+      "tissues": [
+        "leaf"
+      ],
+      "default": "leaf",
+      "counts": {
+        "leaf": 263
+      }
+    }
+  },
+  {
+    "id": "carnivorous",
+    "count": 412,
+    "name": "Carnivorous plant",
+    "type": "binary",
+    "key_organ": "modified leaf trap",
+    "expected_gene_families": "cysteine protease (dionain); aspartic protease (nepenthesin); chitinase; T2-RNase; purple acid phosphatase; lipid transfer",
+    "panels": [
+      "carnivorous_leaf"
+    ],
+    "specificity": 0.59,
+    "quality": "clean",
+    "tissue_matched": {
+      "tissues": [
+        "leaf",
+        "flower"
+      ],
+      "default": "leaf",
+      "counts": {
+        "leaf": 281,
+        "flower": 67
+      }
+    }
+  },
+  {
+    "id": "climacteric_fruit",
+    "count": 59211,
+    "name": "Climacteric ripening (ethylene burst)",
+    "type": "binary",
+    "key_organ": "fruit",
+    "expected_gene_families": "RIN; CNR; NOR; ACS; ACO; ETR; CTR1; EIN2; EIN3; NAC NOR-like",
+    "panels": [
+      "climacteric_fruit_fruit"
+    ],
+    "specificity": 0.38,
+    "quality": "mixed",
+    "tissue_matched": {
+      "tissues": [
+        "fruit",
+        "leaf",
+        "root",
+        "flower",
+        "stem",
+        "seedling",
+        "seed",
+        "shoot apical meristem"
+      ],
+      "default": "fruit",
+      "counts": {
+        "fruit": 2247,
+        "leaf": 2244,
+        "root": 2222,
+        "flower": 1474,
+        "stem": 1188,
+        "seedling": 419,
+        "seed": 383,
+        "shoot apical meristem": 96
+      }
+    }
+  },
+  {
+    "id": "climbing",
+    "count": 266928,
+    "name": "Climbing/twining plant",
+    "type": "binary",
+    "key_organ": "stem/petiole/tendril",
+    "expected_gene_families": "expansin; XTH; PIN auxin transporters; KNOX; tendril identity",
+    "panels": [
+      "climbing_stem"
+    ],
+    "specificity": 0.035,
+    "quality": "confounded",
+    "tissue_matched": {
+      "tissues": [
+        "leaf",
+        "fruit",
+        "root",
+        "flower",
+        "seedling",
+        "shoot apical meristem",
+        "stem",
+        "seed"
+      ],
+      "default": "stem",
+      "counts": {
+        "leaf": 2295,
+        "fruit": 2284,
+        "root": 2275,
+        "flower": 2272,
+        "seedling": 2259,
+        "shoot apical meristem": 2255,
+        "stem": 2247,
+        "seed": 2211
+      }
+    }
+  },
+  {
+    "id": "compound_leaf",
+    "count": 272375,
+    "name": "Compound vs simple leaf",
+    "type": "binary",
+    "key_organ": "leaf",
+    "expected_gene_families": "KNOX (BP/STM); LEAFY; UNI/LFY; PHANTASTICA; ARP/AS1; PIN1; auxin maxima",
+    "panels": [
+      "compound_leaf_leaf"
+    ],
+    "specificity": 0.035,
+    "quality": "confounded",
+    "tissue_matched": {
+      "tissues": [
+        "root",
+        "flower",
+        "leaf",
+        "seedling",
+        "shoot apical meristem",
+        "fruit",
+        "stem",
+        "seed"
+      ],
+      "default": "leaf",
+      "counts": {
+        "root": 2306,
+        "flower": 2290,
+        "leaf": 2287,
+        "seedling": 2273,
+        "shoot apical meristem": 2272,
+        "fruit": 2270,
+        "stem": 2253,
+        "seed": 2235
+      }
+    }
+  },
+  {
+    "id": "cucurbitacin",
+    "count": 5467,
+    "name": "Cucurbitacin (bitter triterpenoid)",
+    "type": "binary",
+    "key_organ": "fruit/leaf",
+    "expected_gene_families": "Bi locus (OSCC1; cucurbitadienol synthase); CYP88L; CYP81Q; UGT94",
+    "panels": [
+      "cucurbitacin_fruit"
+    ],
+    "specificity": 0.6,
+    "quality": "clean",
+    "tissue_matched": {
+      "tissues": [
+        "leaf",
+        "fruit",
+        "root",
+        "seedling",
+        "seed"
+      ],
+      "default": "fruit",
+      "counts": {
+        "leaf": 332,
+        "fruit": 139,
+        "root": 132,
+        "seedling": 70,
+        "seed": 60
+      }
+    }
+  },
+  {
+    "id": "cyanogenic",
+    "count": 21373,
+    "name": "Cyanogenic glycoside production",
+    "type": "binary",
+    "key_organ": "leaf/cotyledon",
+    "expected_gene_families": "CYP79A; CYP79E; CYP71E1; UGT85B; linamarin synthesis; \u03b2-glucosidase",
+    "panels": [
+      "cyanogenic_leaf"
+    ],
+    "specificity": 0.455,
+    "quality": "mixed",
+    "tissue_matched": {
+      "tissues": [
+        "leaf"
+      ],
+      "default": "leaf",
+      "counts": {
+        "leaf": 2234
+      }
+    }
+  },
+  {
+    "id": "deciduous",
+    "count": 54632,
+    "name": "Deciduous (annual leaf abscission)",
+    "type": "binary",
+    "key_organ": "leaf/petiole",
+    "expected_gene_families": "abscission zone: IDA peptide; HAE/HSL2 RLK; KNOX; senescence-associated NAC; SAG12",
+    "panels": [
+      "deciduous_leaf"
+    ],
+    "specificity": 0.175,
+    "quality": "confounded",
+    "tissue_matched": {
+      "tissues": [
+        "leaf"
+      ],
+      "default": "leaf",
+      "counts": {
+        "leaf": 2247
+      }
+    }
+  },
+  {
+    "id": "domestication",
+    "count": 142899,
+    "name": "Crop vs wild",
+    "type": "binary",
+    "key_organ": "all (seed/fruit-heavy)",
+    "expected_gene_families": "Sh4; qSH1; Btr; Tb1; FW2; Gn1a; GS3; GW2; Hd1; Sdr4",
+    "panels": [
+      "domestication"
+    ],
+    "specificity": 0.31,
+    "quality": "mixed",
+    "tissue_matched": null
+  },
+  {
+    "id": "fleshy_fruit",
+    "count": 332302,
+    "name": "Fleshy fruit (drupe, berry, pome, etc.)",
+    "type": "binary",
+    "key_organ": "fruit (pericarp/mesocarp)",
+    "expected_gene_families": "softening enzymes (PG, PE); ripening MADS (RIN); ethylene biosynthesis (ACS, ACO); carotenoid biosynthesis",
+    "panels": [
+      "fleshy_fruit_fruit"
+    ],
+    "specificity": 0.21,
+    "quality": "confounded",
+    "tissue_matched": {
+      "tissues": [
+        "fruit"
+      ],
+      "default": "fruit",
+      "counts": {
+        "fruit": 2278
+      }
+    }
+  },
+  {
+    "id": "floral_symmetry",
+    "count": 299181,
+    "name": "Floral symmetry (zygomorphy/actinomorphy)",
+    "type": "multi",
+    "key_organ": "flower",
+    "expected_gene_families": "CYCLOIDEA (CYC/TCP1); DICHOTOMA (DICH); RAD; DIV; cycloidea-like TCP",
+    "panels": [
+      "floral_symmetry_flower"
+    ],
+    "specificity": 0.02,
+    "quality": "confounded",
+    "tissue_matched": {
+      "tissues": [
+        "flower"
+      ],
+      "default": "flower",
+      "counts": {
+        "flower": 2269
+      }
+    }
+  },
+  {
+    "id": "ginsenoside",
+    "count": 1727,
+    "name": "Ginsenoside biosynthesis (Panax-specific)",
+    "type": "binary",
+    "key_organ": "root",
+    "expected_gene_families": "dammarenediol synthase (DDS); CYP716A47; CYP716A53v2; UGT94Q",
+    "panels": [
+      "ginsenoside_root"
+    ],
+    "specificity": 0.515,
+    "quality": "clean",
+    "tissue_matched": {
+      "tissues": [
+        "root"
+      ],
+      "default": "root",
+      "counts": {
+        "root": 1011
+      }
+    }
+  },
+  {
+    "id": "glandular_trichome",
+    "count": 36449,
+    "name": "Glandular trichome",
+    "type": "binary",
+    "key_organ": "trichome (leaf surface)",
+    "expected_gene_families": "terpene synthases (TPS); CYP450; methyltransferases; UDP-glucosyltransferases",
+    "panels": [
+      "glandular_trichome"
+    ],
+    "specificity": 0.045,
+    "quality": "confounded",
+    "tissue_matched": {
+      "tissues": [
+        "leaf"
+      ],
+      "default": "leaf",
+      "counts": {
+        "leaf": 2267
+      }
+    }
+  },
+  {
+    "id": "glucosinolate",
+    "count": 104578,
+    "name": "Glucosinolate-myrosinase pathway",
+    "type": "binary",
+    "key_organ": "leaf/root",
+    "expected_gene_families": "MAM1; CYP79; CYP83; SUR1; SOT; TGG1; TGG2; ESM1; ESP",
+    "panels": [
+      "glucosinolate_leaf"
+    ],
+    "specificity": 0.085,
+    "quality": "confounded",
+    "tissue_matched": {
+      "tissues": [
+        "leaf"
+      ],
+      "default": "leaf",
+      "counts": {
+        "leaf": 2287
+      }
+    }
+  },
+  {
+    "id": "grass_awn",
+    "count": 97944,
+    "name": "Lemma awn presence",
+    "type": "binary",
+    "key_organ": "spikelet/lemma",
+    "expected_gene_families": "DROOPING LEAF (DL) YABBY; OsETTIN2; ABERRANT_PANICLE_ORG_1",
+    "panels": [
+      "grass_awn"
+    ],
+    "specificity": 0.29,
+    "quality": "mixed",
+    "tissue_matched": null
+  },
+  {
+    "id": "growth_habit",
+    "count": 327644,
+    "name": "Woody vs herbaceous",
+    "type": "binary",
+    "key_organ": "stem/cambium",
+    "expected_gene_families": "secondary wall biosynthesis (NAC, MYB46/83); cellulose synthase (CESA4/7/8); lignin biosynthesis",
+    "panels": [
+      "growth_habit_stem"
+    ],
+    "specificity": 0.035,
+    "quality": "confounded",
+    "tissue_matched": {
+      "tissues": [
+        "stem"
+      ],
+      "default": "stem",
+      "counts": {
+        "stem": 2277
+      }
+    }
+  },
+  {
+    "id": "halophyte",
+    "count": 4182,
+    "name": "Salt tolerance",
+    "type": "binary",
+    "key_organ": "leaf/root",
+    "expected_gene_families": "SOS1; SOS2; SOS3; NHX1; HKT1; V-ATPase; P5CS; BADH; SuSy",
+    "panels": [
+      "halophyte_leaf"
+    ],
+    "specificity": 0.53,
+    "quality": "clean",
+    "tissue_matched": {
+      "tissues": [
+        "leaf"
+      ],
+      "default": "leaf",
+      "counts": {
+        "leaf": 2212
+      }
+    }
+  },
+  {
+    "id": "heterostyly",
+    "count": 2105,
+    "name": "Distyly/tristyly (heteromorphic SI)",
+    "type": "binary",
+    "key_organ": "stigma/style",
+    "expected_gene_families": "S-locus: CYP734A50 (T-allele); GLO (PHE1); BRZ; PAB",
+    "panels": [
+      "heterostyly"
+    ],
+    "specificity": 0.46,
+    "quality": "mixed",
+    "tissue_matched": {
+      "tissues": [
+        "flower"
+      ],
+      "default": "flower",
+      "counts": {
+        "flower": 192
+      }
+    }
+  },
+  {
+    "id": "latex",
+    "count": 9456,
+    "name": "Latex production",
+    "type": "binary",
+    "key_organ": "shoot/leaf",
+    "expected_gene_families": "rubber transferase; allyl diphosphate; chitinase; pathogenesis-related",
+    "panels": [
+      "latex"
+    ],
+    "specificity": 0.495,
+    "quality": "mixed",
+    "tissue_matched": {
+      "tissues": [
+        "leaf"
+      ],
+      "default": "leaf",
+      "counts": {
+        "leaf": 2287
+      }
+    }
+  },
+  {
+    "id": "life_cycle_dominant_phase",
+    "count": 197237,
+    "name": "Gametophyte vs sporophyte dominant",
+    "type": "binary",
+    "key_organ": "whole life cycle",
+    "expected_gene_families": "CLE peptides; KNOX; ARR cytokinin; auxin distribution",
+    "panels": [
+      "life_cycle_dominant_phase"
+    ],
+    "specificity": 0.01,
+    "quality": "confounded",
+    "tissue_matched": null
+  },
+  {
+    "id": "life_form",
+    "count": 232771,
+    "name": "Annual vs perennial",
+    "type": "multi",
+    "key_organ": "all",
+    "expected_gene_families": "FT; FLC; CONSTANS; SOC1; SVP",
+    "panels": [
+      "life_form"
+    ],
+    "specificity": 0.035,
+    "quality": "confounded",
+    "tissue_matched": null
+  },
+  {
+    "id": "mixed_linkage_glucan",
+    "count": 268579,
+    "name": "(1\u21923,1\u21924)-\u03b2-glucan in cell wall",
+    "type": "binary",
+    "key_organ": "cell wall (all tissues)",
+    "expected_gene_families": "CslF; CslH; CSL family (cellulose synthase-like)",
+    "panels": [
+      "mixed_linkage_glucan",
+      "paired_mlg_leaf"
+    ],
+    "specificity": 0.07,
+    "quality": "confounded",
+    "tissue_matched": null
+  },
+  {
+    "id": "monocarpic",
+    "count": 226298,
+    "name": "Monocarpic (flowers once, dies)",
+    "type": "binary",
+    "key_organ": "whole plant",
+    "expected_gene_families": "FT; FLC; LFY; FUL; SEP; AGL15; senescence (NAC SAG; WRKY53)",
+    "panels": [
+      "monocarpic"
+    ],
+    "specificity": 0.015,
+    "quality": "confounded",
+    "tissue_matched": null
+  },
+  {
+    "id": "multicellular",
+    "count": 229867,
+    "name": "Multicellular organism (vs unicellular algae)",
+    "type": "binary",
+    "key_organ": "whole organism",
+    "expected_gene_families": "plasmodesmata-related (PDLP); cell-cell signaling (CLE peptides); auxin transport (PIN)",
+    "panels": [
+      "multicellular"
+    ],
+    "specificity": 0.02,
+    "quality": "confounded",
+    "tissue_matched": null
+  },
+  {
+    "id": "mycorrhiza_lost",
+    "count": 106712,
+    "name": "Lost AM symbiosis",
+    "type": "binary",
+    "key_organ": "root",
+    "expected_gene_families": "DMI1; DMI3; CCaMK; SymRK; NSP1; NSP2; STR1/2; RAM2; CYP716",
+    "panels": [
+      "mycorrhiza_lost_root",
+      "paired_mycorrhiza_lost_vs_sister_all"
+    ],
+    "specificity": 0.035,
+    "quality": "confounded",
+    "tissue_matched": {
+      "tissues": [
+        "root"
+      ],
+      "default": "root",
+      "counts": {
+        "root": 2251
+      }
+    }
+  },
+  {
+    "id": "mycorrhizal",
+    "count": 200010,
+    "name": "mycorrhizal",
+    "type": "",
+    "key_organ": "",
+    "expected_gene_families": "",
+    "panels": [
+      "mycorrhizal_root",
+      "mycorrhizal_type_root"
+    ],
+    "specificity": 0.05,
+    "quality": "confounded",
+    "tissue_matched": null
+  },
+  {
+    "id": "mycorrhizal_type",
+    "count": 296103,
+    "name": "Mycorrhizal partner type",
+    "type": "multi",
+    "key_organ": "root",
+    "expected_gene_families": "AM markers (RAM2, STR1/2, PT4); EM markers; MAM3 (carbohydrate transfer); EXPB",
+    "panels": [
+      "mycorrhizal_type_root"
+    ],
+    "specificity": 0.025,
+    "quality": "confounded",
+    "tissue_matched": {
+      "tissues": [
+        "root"
+      ],
+      "default": "root",
+      "counts": {
+        "root": 2263
+      }
+    }
+  },
+  {
+    "id": "myrmecochory",
+    "count": 227,
+    "name": "Ant-dispersed seeds (elaiosome)",
+    "type": "binary",
+    "key_organ": "seed/elaiosome",
+    "expected_gene_families": "elaiosome lipid metabolism; oleate desaturase; fatty acid biosynthesis",
+    "panels": [
+      "myrmecochory"
+    ],
+    "specificity": 0.4,
+    "quality": "mixed",
+    "tissue_matched": null
+  },
+  {
+    "id": "nodulating",
+    "count": 31703,
+    "name": "N-fixing root nodulation",
+    "type": "binary",
+    "key_organ": "root nodule",
+    "expected_gene_families": "SymRK; NSP1; NSP2; NIN; NF-YA; DMI1; DMI3; CCaMK; leghemoglobin; ENOD; NFR1; NFR5",
+    "panels": [
+      "nodulating_root",
+      "root_nodule_vs_root"
+    ],
+    "specificity": 0.765,
+    "quality": "clean",
+    "tissue_matched": {
+      "tissues": [
+        "root"
+      ],
+      "default": "root",
+      "counts": {
+        "root": 2286
+      }
+    }
+  },
+  {
+    "id": "nyctinasty",
+    "count": 23193,
+    "name": "Sleep movement / leaf folding",
+    "type": "binary",
+    "key_organ": "pulvinus/leaf base",
+    "expected_gene_families": "pulvinus motor cells; K+/Cl- channel; aquaporin; circadian (CCA1, LHY)",
+    "panels": [
+      "nyctinasty_leaf"
+    ],
+    "specificity": 0.195,
+    "quality": "confounded",
+    "tissue_matched": {
+      "tissues": [
+        "leaf"
+      ],
+      "default": "leaf",
+      "counts": {
+        "leaf": 2205
+      }
+    }
+  },
+  {
+    "id": "parasitic",
+    "count": 508,
+    "name": "Parasitic plant",
+    "type": "multi",
+    "key_organ": "haustorium (modified root)",
+    "expected_gene_families": "haustoral SHR; QC genes; reduced photosynthesis (in holoparasites); HCF101; cysteine proteases",
+    "panels": [
+      "parasitic"
+    ],
+    "specificity": 0.47,
+    "quality": "mixed",
+    "tissue_matched": {
+      "tissues": [
+        "root"
+      ],
+      "default": "root",
+      "counts": {
+        "root": 57
+      }
+    }
+  },
+  {
+    "id": "persistent_endosperm",
+    "count": 259603,
+    "name": "Persistent endosperm in mature seed",
+    "type": "binary",
+    "key_organ": "seed",
+    "expected_gene_families": "MINI3; HAIKU; PHE1; ASIL; FUS3-modified; SHB1; LEC2",
+    "panels": [
+      "persistent_endosperm_seed"
+    ],
+    "specificity": 0.225,
+    "quality": "confounded",
+    "tissue_matched": {
+      "tissues": [
+        "seed"
+      ],
+      "default": "seed",
+      "counts": {
+        "seed": 2216
+      }
+    }
+  },
+  {
+    "id": "photoperiodism",
+    "count": 257251,
+    "name": "Photoperiod response type",
+    "type": "multi",
+    "key_organ": "leaf/SAM",
+    "expected_gene_families": "CONSTANS (CO); FT; FKF1; GIGANTEA (GI); PRR proteins; ELF3; ELF4",
+    "panels": [
+      "photoperiodism"
+    ],
+    "specificity": 0.02,
+    "quality": "confounded",
+    "tissue_matched": {
+      "tissues": [
+        "leaf"
+      ],
+      "default": "leaf",
+      "counts": {
+        "leaf": 2264
+      }
+    }
+  },
+  {
+    "id": "pigment_class",
+    "count": 254331,
+    "name": "Betalain vs anthocyanin pigments",
+    "type": "multi",
+    "key_organ": "flower/fruit/leaf surface",
+    "expected_gene_families": "DOPA-dioxygenase (CYP76AD1); CYP76AD3; 4,5-DODA; betalain glucosyltransferase",
+    "panels": [
+      "pigment_class"
+    ],
+    "specificity": 0.0,
+    "quality": "confounded",
+    "tissue_matched": {
+      "tissues": [
+        "leaf"
+      ],
+      "default": "leaf",
+      "counts": {
+        "leaf": 2286
+      }
+    }
+  },
+  {
+    "id": "pollination",
+    "count": 353644,
+    "name": "Wind vs animal pollination",
+    "type": "binary",
+    "key_organ": "flower/anther",
+    "expected_gene_families": "MADS-box B/C class; anthocyanin/carotenoid pigments; volatile terpene synthases; lipid transfer",
+    "panels": [
+      "pollination_flower"
+    ],
+    "specificity": 0.32,
+    "quality": "mixed",
+    "tissue_matched": {
+      "tissues": [
+        "flower"
+      ],
+      "default": "flower",
+      "counts": {
+        "flower": 2258
+      }
+    }
+  },
+  {
+    "id": "polyploid",
+    "count": 252117,
+    "name": "Recent polyploidy",
+    "type": "multi",
+    "key_organ": "all",
+    "expected_gene_families": "homoeolog expression dominance; subgenome bias; transposon activity",
+    "panels": [
+      "polyploid"
+    ],
+    "specificity": 0.04,
+    "quality": "confounded",
+    "tissue_matched": null
+  },
+  {
+    "id": "quinolizidine_alkaloid",
+    "count": 819,
+    "name": "Quinolizidine alkaloid (Lupinus-type)",
+    "type": "binary",
+    "key_organ": "leaf/seed",
+    "expected_gene_families": "LDC (L-lysine decarboxylase); CAO (copper amine oxidase); transferases",
+    "panels": [
+      "quinolizidine_alkaloid"
+    ],
+    "specificity": 0.315,
+    "quality": "mixed",
+    "tissue_matched": {
+      "tissues": [
+        "leaf"
+      ],
+      "default": "leaf",
+      "counts": {
+        "leaf": 287
+      }
+    }
+  },
+  {
+    "id": "resin",
+    "count": 8803,
+    "name": "Resin-canal formation",
+    "type": "binary",
+    "key_organ": "stem/wood",
+    "expected_gene_families": "terpene synthase (TPS); CYP720B (diterpene oxidation); PAP_fibrillin",
+    "panels": [
+      "resin_stem",
+      "paired_resin_pinaceae_vs_other_gymno"
+    ],
+    "specificity": 0.77,
+    "quality": "clean",
+    "tissue_matched": {
+      "tissues": [
+        "stem"
+      ],
+      "default": "stem",
+      "counts": {
+        "stem": 937
+      }
+    }
+  },
+  {
+    "id": "resurrection",
+    "count": 213,
+    "name": "Desiccation tolerance in vegetative tissue",
+    "type": "binary",
+    "key_organ": "leaf",
+    "expected_gene_families": "LEA proteins; sucrose synthase; trehalose 6-P synthase; ALDH; DREB; HSF",
+    "panels": [
+      "resurrection"
+    ],
+    "specificity": 0.885,
+    "quality": "clean",
+    "tissue_matched": null
+  },
+  {
+    "id": "self_incompatibility",
+    "count": 214639,
+    "name": "Self-incompatibility system",
+    "type": "multi",
+    "key_organ": "stigma/style/pollen tube",
+    "expected_gene_families": "S-locus: SRK; SCR/SP11 (sSI); S-RNase; SLF F-box; PRK6 (gSI); CRR1 (Papaver)",
+    "panels": [
+      "self_incompatibility_flower"
+    ],
+    "specificity": 0.15,
+    "quality": "confounded",
+    "tissue_matched": {
+      "tissues": [
+        "flower"
+      ],
+      "default": "flower",
+      "counts": {
+        "flower": 2271
+      }
+    }
+  },
+  {
+    "id": "sex_chromosomes",
+    "count": 7899,
+    "name": "Heteromorphic sex chromosomes",
+    "type": "binary",
+    "key_organ": "flower/inflorescence",
+    "expected_gene_families": "Y-encoded suppressors; gametolog degeneration markers",
+    "panels": [
+      "sex_chromosomes"
+    ],
+    "specificity": 0.32,
+    "quality": "mixed",
+    "tissue_matched": null
+  },
+  {
+    "id": "sex_system",
+    "count": 89976,
+    "name": "Dioecious vs monoecious vs bisexual",
+    "type": "multi",
+    "key_organ": "flower",
+    "expected_gene_families": "TS sex-determination region (Vitis); SOMAR (papaya); SLAP1/2 (Silene); Y-chromosome carrying genes",
+    "panels": [
+      "sex_system"
+    ],
+    "specificity": 0.155,
+    "quality": "confounded",
+    "tissue_matched": {
+      "tissues": [
+        "flower"
+      ],
+      "default": "flower",
+      "counts": {
+        "flower": 2290
+      }
+    }
+  },
+  {
+    "id": "steroidal_saponin",
+    "count": 7788,
+    "name": "Steroidal saponin biosynthesis",
+    "type": "binary",
+    "key_organ": "leaf/root/bulb",
+    "expected_gene_families": "CYP90B; CYP72A; sterol 22-desaturase; GTase saponin",
+    "panels": [
+      "steroidal_saponin"
+    ],
+    "specificity": 0.245,
+    "quality": "confounded",
+    "tissue_matched": {
+      "tissues": [
+        "leaf"
+      ],
+      "default": "leaf",
+      "counts": {
+        "leaf": 1264
+      }
+    }
+  },
+  {
+    "id": "storage_organ",
+    "count": 217319,
+    "name": "Tuber/bulb/corm/rhizome",
+    "type": "multi",
+    "key_organ": "modified stem or root",
+    "expected_gene_families": "starch synthase (SS); ADP-glucose pyrophosphorylase (AGPase); patatin (PAT); sporamin",
+    "panels": [
+      "storage_organ"
+    ],
+    "specificity": 0.01,
+    "quality": "confounded",
+    "tissue_matched": null
+  },
+  {
+    "id": "sympetalous",
+    "count": 179691,
+    "name": "Fused petals (sympetalous)",
+    "type": "binary",
+    "key_organ": "flower/corolla",
+    "expected_gene_families": "SEP MADS; B-class APETALA3/PISTILLATA; lateral organ boundary; PIN1",
+    "panels": [
+      "sympetalous_flower"
+    ],
+    "specificity": 0.06,
+    "quality": "confounded",
+    "tissue_matched": {
+      "tissues": [
+        "flower"
+      ],
+      "default": "flower",
+      "counts": {
+        "flower": 2280
+      }
+    }
+  },
+  {
+    "id": "vernalization",
+    "count": 122188,
+    "name": "Cold-requirement for flowering",
+    "type": "binary",
+    "key_organ": "leaf/SAM",
+    "expected_gene_families": "FLC; FRI; VRN1/2/3; VIN3; VIL1/2; VRN-A1/B1/D1 (cereals)",
+    "panels": [
+      "vernalization",
+      "paired_vernalization_triticeae_vs_tropical"
+    ],
+    "specificity": 0.04,
+    "quality": "confounded",
+    "tissue_matched": {
+      "tissues": [
+        "leaf"
+      ],
+      "default": "leaf",
+      "counts": {
+        "leaf": 2270
+      }
+    }
+  },
+  {
+    "id": "with_flowers",
+    "count": 301742,
+    "name": "Flowering plant (angiosperm)",
+    "type": "binary",
+    "key_organ": "flower",
+    "expected_gene_families": "ABCDE model: AP1; AP3; PI; AG; SEP1-4; MADS-box family expansion",
+    "panels": [
+      "with_flowers"
+    ],
+    "specificity": 0.0,
+    "quality": "confounded",
+    "tissue_matched": {
+      "tissues": [
+        "flower"
+      ],
+      "default": "flower",
+      "counts": {
+        "flower": 2279
+      }
+    }
+  },
+  {
+    "id": "with_lignin",
+    "count": 203613,
+    "name": "Lignin biosynthesis",
+    "type": "binary",
+    "key_organ": "stem/wood/vascular",
+    "expected_gene_families": "PAL; C4H; 4CL; HCT; CCR; CAD; COMT; CCoAOMT; F5H; peroxidases; laccases",
+    "panels": [
+      "with_lignin"
+    ],
+    "specificity": 0.03,
+    "quality": "confounded",
+    "tissue_matched": {
+      "tissues": [
+        "stem"
+      ],
+      "default": "stem",
+      "counts": {
+        "stem": 2279
+      }
+    }
+  },
+  {
+    "id": "with_seeds",
+    "count": 267251,
+    "name": "Seed-plant (gymnosperm + angiosperm)",
+    "type": "binary",
+    "key_organ": "seed",
+    "expected_gene_families": "LAFL network: LEC1; LEC2; ABI3; FUS3; storage proteins (cruciferin, vicilin)",
+    "panels": [
+      "with_seeds"
+    ],
+    "specificity": 0.04,
+    "quality": "confounded",
+    "tissue_matched": {
+      "tissues": [
+        "seed"
+      ],
+      "default": "seed",
+      "counts": {
+        "seed": 2185
+      }
+    }
+  },
+  {
+    "id": "with_stomata",
+    "count": 214129,
+    "name": "Stomatal complex (true stomata)",
+    "type": "binary",
+    "key_organ": "leaf/sporophyte epidermis",
+    "expected_gene_families": "SPCH; MUTE; FAMA (bHLH); EPF1/2; STOMAGEN; ICE1/SCRM; ICE2",
+    "panels": [
+      "with_stomata"
+    ],
+    "specificity": 0.02,
+    "quality": "confounded",
+    "tissue_matched": {
+      "tissues": [
+        "leaf"
+      ],
+      "default": "leaf",
+      "counts": {
+        "leaf": 2300
+      }
+    }
+  },
+  {
+    "id": "with_true_roots",
+    "count": 207853,
+    "name": "True roots with apical meristem",
+    "type": "binary",
+    "key_organ": "root",
+    "expected_gene_families": "PLETHORA; SCR; SHR; WOX5; GRAS-network; PIN auxin transporters",
+    "panels": [
+      "with_true_roots"
+    ],
+    "specificity": 0.02,
+    "quality": "confounded",
+    "tissue_matched": {
+      "tissues": [
+        "root"
+      ],
+      "default": "root",
+      "counts": {
+        "root": 2270
+      }
+    }
+  },
+  {
+    "id": "with_vasculature",
+    "count": 234394,
+    "name": "Vascular tissue (xylem + phloem)",
+    "type": "binary",
+    "key_organ": "stem/leaf/root vascular",
+    "expected_gene_families": "VND6/7; VND1-5; NAC SECONDARY WALL THICKENING; PXY/TDIF; CLE41/44; ARK1/2",
+    "panels": [
+      "with_vasculature"
+    ],
+    "specificity": 0.02,
+    "quality": "confounded",
+    "tissue_matched": {
+      "tissues": [
+        "leaf"
+      ],
+      "default": "leaf",
+      "counts": {
+        "leaf": 2286
+      }
+    }
+  }
+]

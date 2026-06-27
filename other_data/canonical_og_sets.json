@@ -1,0 +1,920 @@
+{
+  "nodulation": {
+    "tissue": "root",
+    "genes": [
+      {
+        "gene_symbol": "NIN_NLP_family",
+        "function": "NIN-like protein family (NLP); NIN itself is NIN_NLP7 homolog",
+        "canonical_id": "AT4G24020",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37RDX"
+        ],
+        "og_descriptions": [
+          "RWP-RK domain-containing protein"
+        ],
+        "og_cogs": [
+          "K"
+        ],
+        "resolved": true,
+        "notes": "NLP7; closest AT NLP to Medicago NIN. Family-level resolution."
+      },
+      {
+        "gene_symbol": "NSP1_GRAS",
+        "function": "NSP1, GRAS family TF; partners with NSP2",
+        "canonical_id": "AT1G50420",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37MW6"
+        ],
+        "og_descriptions": [
+          "Belongs to the GRAS family"
+        ],
+        "og_cogs": [
+          "K"
+        ],
+        "resolved": true,
+        "notes": "SCL3 (closest AT GRAS family member to NSP1)"
+      },
+      {
+        "gene_symbol": "NSP2_GRAS",
+        "function": "NSP2, GRAS family TF; partners with NSP1",
+        "canonical_id": "AT5G59450",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37IFH"
+        ],
+        "og_descriptions": [
+          "Belongs to the GRAS family"
+        ],
+        "og_cogs": [
+          "K"
+        ],
+        "resolved": true,
+        "notes": "another SCL family GRAS TF"
+      },
+      {
+        "gene_symbol": "NF-YA1",
+        "function": "nuclear factor Y subunit A1, induces nodule meristem",
+        "canonical_id": "AT5G12840",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37QTK"
+        ],
+        "og_descriptions": [
+          "Nuclear transcription factor Y subunit"
+        ],
+        "og_cogs": [
+          "K"
+        ],
+        "resolved": true,
+        "notes": "Combier 2006; Arabidopsis NF-YA1 ortholog"
+      },
+      {
+        "gene_symbol": "CCaMK_CPK",
+        "function": "calcium calmodulin protein kinase (Ca2+-decoder; legume CCaMK has no strict AT ortholog)",
+        "canonical_id": "AT4G04720",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37JIH"
+        ],
+        "og_descriptions": [
+          "calcium-dependent protein kinase"
+        ],
+        "og_cogs": [
+          "T"
+        ],
+        "resolved": true,
+        "notes": "CPK21; closest AT calcium-dep protein kinase"
+      },
+      {
+        "gene_symbol": "CYCLOPS_IPD3",
+        "function": "IPD3 transcriptional activator (phosphorylated by CCaMK)",
+        "canonical_id": "AT5G24050",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37W0C"
+        ],
+        "og_descriptions": [
+          "B3 domain-containing protein"
+        ],
+        "og_cogs": [
+          "K"
+        ],
+        "resolved": true,
+        "notes": "IPD3-like protein"
+      },
+      {
+        "gene_symbol": "Vapyrin",
+        "function": "plant-specific protein required for AM + nodulation",
+        "canonical_id": "AT2G47900",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37J58"
+        ],
+        "og_descriptions": [
+          "Belongs to the TUB family"
+        ],
+        "og_cogs": [
+          "S"
+        ],
+        "resolved": true,
+        "notes": "Pumplin 2010; shared with AM symbiosis"
+      },
+      {
+        "gene_symbol": "leghemoglobin",
+        "function": "oxygen-binding hemoglobin for nitrogenase microaerobic env",
+        "canonical_id": "AT3G10520",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37TTS"
+        ],
+        "og_descriptions": [
+          "Belongs to the globin family"
+        ],
+        "og_cogs": [
+          "C"
+        ],
+        "resolved": true,
+        "notes": "GLB1; class II hemoglobin (same OG 37TTS as Glyma leghemoglobin)"
+      },
+      {
+        "gene_symbol": "leghemoglobin_GLB2",
+        "function": "class II non-symbiotic hemoglobin",
+        "canonical_id": "AT1G80820",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37KK8"
+        ],
+        "og_descriptions": [
+          "Cinnamoyl-CoA reductase"
+        ],
+        "og_cogs": [
+          "V"
+        ],
+        "resolved": true,
+        "notes": "GLB2"
+      },
+      {
+        "gene_symbol": "flotillin_FLOT2",
+        "function": "flotillin membrane microdomain organizer",
+        "canonical_id": "AT3G14172",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37IAY"
+        ],
+        "og_descriptions": [
+          "BEST Arabidopsis thaliana protein match is COP1-interacting protein-related (TAIR AT1G72410.1)"
+        ],
+        "og_cogs": [
+          "S"
+        ],
+        "resolved": true,
+        "notes": "FLOT2 (closest AT FLOT4 homolog)"
+      },
+      {
+        "gene_symbol": "symRK_LRR-RLK",
+        "function": "symbiosis receptor-like kinase family",
+        "canonical_id": "AT5G37450",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37TEE"
+        ],
+        "og_descriptions": [
+          "Belongs to the protein kinase superfamily. Ser Thr protein kinase family"
+        ],
+        "og_cogs": [
+          "T"
+        ],
+        "resolved": true,
+        "notes": "IOS1; LRR-RLK family closest to SymRK"
+      },
+      {
+        "gene_symbol": "ENOD93",
+        "function": "early nodulin-like, root expression",
+        "canonical_id": "AT5G25940",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37V9Y"
+        ],
+        "og_descriptions": [
+          "Early nodulin-93-like"
+        ],
+        "og_cogs": [
+          "S"
+        ],
+        "resolved": true,
+        "notes": "AT homolog of legume ENOD93"
+      },
+      {
+        "gene_symbol": "rhizobium-induced peroxidase",
+        "function": "defense-related peroxidase family upregulated in nodules",
+        "canonical_id": "AT5G05340",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37Z6E"
+        ],
+        "og_descriptions": [
+          "Removal of H(2)O(2), oxidation of toxic reductants, biosynthesis and degradation of lignin, suberization, auxin catabolism, response to environmental stresses such as wounding, pathogen attack and oxidative stress"
+        ],
+        "og_cogs": [
+          "Q"
+        ],
+        "resolved": true,
+        "notes": "Class III peroxidase family"
+      },
+      {
+        "gene_symbol": "nodule-specific cysteine protease",
+        "function": "cysteine protease senescence marker (nodulin)",
+        "canonical_id": "AT3G54940",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37R8V"
+        ],
+        "og_descriptions": [
+          "Belongs to the peptidase C1 family"
+        ],
+        "og_cogs": [
+          "O"
+        ],
+        "resolved": true,
+        "notes": "cathepsin B-like cysteine protease"
+      }
+    ],
+    "n_total": 14,
+    "n_resolved": 14,
+    "unique_ogs": [
+      "37IAY",
+      "37IFH",
+      "37J58",
+      "37JIH",
+      "37KK8",
+      "37MW6",
+      "37QTK",
+      "37R8V",
+      "37RDX",
+      "37TEE",
+      "37TTS",
+      "37V9Y",
+      "37W0C",
+      "37Z6E"
+    ],
+    "n_unique_ogs": 14
+  },
+  "cam_photosynthesis": {
+    "tissue": "leaf",
+    "genes": [
+      {
+        "gene_symbol": "PPC1",
+        "function": "phosphoenolpyruvate carboxylase 1, CAM-specific isoform",
+        "canonical_id": "AT1G53310",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37I3E"
+        ],
+        "og_descriptions": [
+          "phosphoenolpyruvate carboxylase"
+        ],
+        "og_cogs": [
+          "C"
+        ],
+        "resolved": true,
+        "notes": "primary night carboxylation; Sage 2014 review"
+      },
+      {
+        "gene_symbol": "PEPCK",
+        "function": "PEP carboxykinase, day decarboxylation",
+        "canonical_id": "AT4G37870",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37K60"
+        ],
+        "og_descriptions": [
+          "Phosphoenolpyruvate carboxykinase"
+        ],
+        "og_cogs": [
+          "C"
+        ],
+        "resolved": true,
+        "notes": "day-time decarboxylation in some CAM lineages"
+      },
+      {
+        "gene_symbol": "NAD-ME1",
+        "function": "NAD-dependent malic enzyme, mitochondrial decarboxylation",
+        "canonical_id": "AT2G13560",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37NY1"
+        ],
+        "og_descriptions": [
+          "malic enzyme"
+        ],
+        "og_cogs": [
+          "C"
+        ],
+        "resolved": true,
+        "notes": "day decarboxylation pathway in CAM/C4"
+      },
+      {
+        "gene_symbol": "NADP-ME",
+        "function": "NADP-dependent malic enzyme, chloroplast decarboxylation",
+        "canonical_id": "AT5G11670",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37JSE"
+        ],
+        "og_descriptions": [
+          "malic enzyme"
+        ],
+        "og_cogs": [
+          "C"
+        ],
+        "resolved": true,
+        "notes": "NADP-ME2; alternative decarboxylation route"
+      },
+      {
+        "gene_symbol": "PPDK",
+        "function": "pyruvate orthophosphate dikinase, PEP regeneration",
+        "canonical_id": "AT4G15530",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37RGD"
+        ],
+        "og_descriptions": [
+          "pyruvate phosphate dikinase"
+        ],
+        "og_cogs": [
+          "F"
+        ],
+        "resolved": true,
+        "notes": "regenerates PEP from pyruvate"
+      },
+      {
+        "gene_symbol": "MDH",
+        "function": "NAD-malate dehydrogenase, OAA-malate interconversion",
+        "canonical_id": "AT1G53240",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37Q8V"
+        ],
+        "og_descriptions": [
+          "Malate dehydrogenase"
+        ],
+        "og_cogs": [
+          "C"
+        ],
+        "resolved": true,
+        "notes": "cytosolic MDH; canonical CAM enzyme"
+      },
+      {
+        "gene_symbol": "ALMT9",
+        "function": "aluminum-activated malate transporter, tonoplast malate import",
+        "canonical_id": "AT3G18440",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37SAD"
+        ],
+        "og_descriptions": [
+          "aluminum-activated malate transporter"
+        ],
+        "og_cogs": [
+          "S"
+        ],
+        "resolved": true,
+        "notes": "De Angeli 2013; vacuolar malate channel"
+      },
+      {
+        "gene_symbol": "TIP",
+        "function": "tonoplast intrinsic protein, malic-acid transport",
+        "canonical_id": "AT2G36830",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37HHG"
+        ],
+        "og_descriptions": [
+          "Belongs to the MIP aquaporin (TC 1.A.8) family"
+        ],
+        "og_cogs": [
+          "G"
+        ],
+        "resolved": true,
+        "notes": "gamma-TIP; vacuolar aquaporin"
+      },
+      {
+        "gene_symbol": "VHA-A",
+        "function": "vacuolar H+-ATPase subunit A, vacuolar acidification",
+        "canonical_id": "AT1G78900",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37HMX"
+        ],
+        "og_descriptions": [
+          "V-type proton ATPase catalytic subunit"
+        ],
+        "og_cogs": [
+          "C"
+        ],
+        "resolved": true,
+        "notes": "required for malate sequestration at night"
+      }
+    ],
+    "n_total": 9,
+    "n_resolved": 9,
+    "unique_ogs": [
+      "37HHG",
+      "37HMX",
+      "37I3E",
+      "37JSE",
+      "37K60",
+      "37NY1",
+      "37Q8V",
+      "37RGD",
+      "37SAD"
+    ],
+    "n_unique_ogs": 9
+  },
+  "carnivory": {
+    "tissue": "leaf",
+    "genes": [
+      {
+        "gene_symbol": "dionain",
+        "function": "Dionaea-specific cysteine protease, prey digestion",
+        "canonical_id": "AT3G54940",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37R8V"
+        ],
+        "og_descriptions": [
+          "Belongs to the peptidase C1 family"
+        ],
+        "og_cogs": [
+          "O"
+        ],
+        "resolved": true,
+        "notes": "Schulze 2012 Dionaea proteome; cathepsin B-like cysteine protease"
+      },
+      {
+        "gene_symbol": "nepenthain",
+        "function": "Nepenthes pitcher cysteine protease",
+        "canonical_id": "AT4G16190",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37N6V"
+        ],
+        "og_descriptions": [
+          "Belongs to the peptidase C1 family"
+        ],
+        "og_cogs": [
+          "O"
+        ],
+        "resolved": true,
+        "notes": "cathepsin family"
+      },
+      {
+        "gene_symbol": "nepenthesin",
+        "function": "Nepenthes aspartic protease, prey protein digestion",
+        "canonical_id": "AT1G09750",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37HJY"
+        ],
+        "og_descriptions": [
+          "Belongs to the peptidase A1 family"
+        ],
+        "og_cogs": [
+          "O"
+        ],
+        "resolved": true,
+        "notes": "pepsin-like aspartic protease (PEPA1)"
+      },
+      {
+        "gene_symbol": "chitinase_GH18",
+        "function": "prey insect cuticle digestion (chitin)",
+        "canonical_id": "AT2G43580",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37QEZ"
+        ],
+        "og_descriptions": [
+          "Endochitinase"
+        ],
+        "og_cogs": [
+          "L"
+        ],
+        "resolved": true,
+        "notes": "class III chitinase"
+      },
+      {
+        "gene_symbol": "chitinase_GH19",
+        "function": "plant chitinase, broad pathogen + insect digestion",
+        "canonical_id": "AT3G54420",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37QEZ"
+        ],
+        "og_descriptions": [
+          "Endochitinase"
+        ],
+        "og_cogs": [
+          "L"
+        ],
+        "resolved": true,
+        "notes": "class IV chitinase (CHI3)"
+      },
+      {
+        "gene_symbol": "prolyl-endopeptidase",
+        "function": "prey protein cleavage at proline residues",
+        "canonical_id": "AT1G20380",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37N92"
+        ],
+        "og_descriptions": [
+          "Prolyl endopeptidase-like"
+        ],
+        "og_cogs": [
+          "O"
+        ],
+        "resolved": true,
+        "notes": "S9 serine peptidase"
+      }
+    ],
+    "n_total": 6,
+    "n_resolved": 6,
+    "unique_ogs": [
+      "37HJY",
+      "37N6V",
+      "37N92",
+      "37QEZ",
+      "37R8V"
+    ],
+    "n_unique_ogs": 5
+  },
+  "glucosinolate": {
+    "tissue": "leaf",
+    "genes": [
+      {
+        "gene_symbol": "MYB28",
+        "function": "master TF for aliphatic glucosinolate biosynthesis",
+        "canonical_id": "AT5G61420",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37ZR9"
+        ],
+        "og_descriptions": [
+          "Transcription factor"
+        ],
+        "og_cogs": [
+          "K"
+        ],
+        "resolved": true,
+        "notes": "Sonderby 2010; Brassicaceae-specific"
+      },
+      {
+        "gene_symbol": "MYB29",
+        "function": "co-master TF for aliphatic glucosinolates",
+        "canonical_id": "AT5G07690",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37ZR9"
+        ],
+        "og_descriptions": [
+          "Transcription factor"
+        ],
+        "og_cogs": [
+          "K"
+        ],
+        "resolved": true,
+        "notes": "redundant with MYB28"
+      },
+      {
+        "gene_symbol": "MYB51",
+        "function": "master TF for indolic glucosinolates",
+        "canonical_id": "AT1G18570",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37ZR9"
+        ],
+        "og_descriptions": [
+          "Transcription factor"
+        ],
+        "og_cogs": [
+          "K"
+        ],
+        "resolved": true,
+        "notes": "Frerigmann 2014"
+      },
+      {
+        "gene_symbol": "MYB76",
+        "function": "aliphatic glucosinolate side-chain TF",
+        "canonical_id": "AT5G07700",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37ZR9"
+        ],
+        "og_descriptions": [
+          "Transcription factor"
+        ],
+        "og_cogs": [
+          "K"
+        ],
+        "resolved": true,
+        "notes": "MYB76 fine-tunes aliphatic profile"
+      },
+      {
+        "gene_symbol": "CYP79F1",
+        "function": "aliphatic GSL biosynthesis (Met chain elongation)",
+        "canonical_id": "AT1G16410",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37R7V"
+        ],
+        "og_descriptions": [
+          "Belongs to the cytochrome P450 family"
+        ],
+        "og_cogs": [
+          "Q"
+        ],
+        "resolved": true,
+        "notes": "Hansen 2001"
+      },
+      {
+        "gene_symbol": "CYP79B2",
+        "function": "indolic GSL biosynthesis (Trp -> IAOx)",
+        "canonical_id": "AT4G39950",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37R7V"
+        ],
+        "og_descriptions": [
+          "Belongs to the cytochrome P450 family"
+        ],
+        "og_cogs": [
+          "Q"
+        ],
+        "resolved": true,
+        "notes": "Hull 2000"
+      },
+      {
+        "gene_symbol": "CYP83A1",
+        "function": "aliphatic GSL biosynthesis (post-CYP79F)",
+        "canonical_id": "AT4G13770",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37IUW"
+        ],
+        "og_descriptions": [
+          "Belongs to the cytochrome P450 family"
+        ],
+        "og_cogs": [
+          "Q"
+        ],
+        "resolved": true,
+        "notes": "Bak 2001"
+      },
+      {
+        "gene_symbol": "CYP83B1",
+        "function": "indolic GSL biosynthesis (post-CYP79B)",
+        "canonical_id": "AT4G31500",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37IUW"
+        ],
+        "og_descriptions": [
+          "Belongs to the cytochrome P450 family"
+        ],
+        "og_cogs": [
+          "Q"
+        ],
+        "resolved": true,
+        "notes": "Bak 2001"
+      },
+      {
+        "gene_symbol": "SOT18",
+        "function": "sulfotransferase 18, final sulfation step",
+        "canonical_id": "AT1G74090",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37RMI"
+        ],
+        "og_descriptions": [
+          "Belongs to the sulfotransferase 1 family"
+        ],
+        "og_cogs": [
+          "S"
+        ],
+        "resolved": true,
+        "notes": "Klein 2006"
+      },
+      {
+        "gene_symbol": "BCAT4",
+        "function": "branched-chain aminotransferase, Met chain elongation",
+        "canonical_id": "AT3G19710",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37TGA"
+        ],
+        "og_descriptions": [
+          "Belongs to the class-IV pyridoxal-phosphate-dependent aminotransferase family"
+        ],
+        "og_cogs": [
+          "E"
+        ],
+        "resolved": true,
+        "notes": "Schuster 2006"
+      },
+      {
+        "gene_symbol": "FMO_GS-OX",
+        "function": "flavin monooxygenase, GSL side chain modification",
+        "canonical_id": "AT1G65860",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37HT9"
+        ],
+        "og_descriptions": [
+          "flavin-containing monooxygenase"
+        ],
+        "og_cogs": [
+          "Q"
+        ],
+        "resolved": true,
+        "notes": "Hansen 2007"
+      },
+      {
+        "gene_symbol": "MAM1",
+        "function": "methylthioalkylmalate synthase, Met chain elongation",
+        "canonical_id": "AT5G23010",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37PTT"
+        ],
+        "og_descriptions": [
+          "Belongs to the alpha-IPM synthase homocitrate synthase family"
+        ],
+        "og_cogs": [
+          "E"
+        ],
+        "resolved": true,
+        "notes": "commits Met to chain elongation"
+      }
+    ],
+    "n_total": 12,
+    "n_resolved": 12,
+    "unique_ogs": [
+      "37HT9",
+      "37IUW",
+      "37PTT",
+      "37R7V",
+      "37RMI",
+      "37TGA",
+      "37ZR9"
+    ],
+    "n_unique_ogs": 7
+  },
+  "cyanogenic": {
+    "tissue": "leaf",
+    "genes": [
+      {
+        "gene_symbol": "CYP79E1",
+        "function": "cyanogenic glucoside biosynthesis (Tyr -> aldoxime)",
+        "canonical_id": "AT5G05260",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37R7V"
+        ],
+        "og_descriptions": [
+          "Belongs to the cytochrome P450 family"
+        ],
+        "og_cogs": [
+          "Q"
+        ],
+        "resolved": true,
+        "notes": "AT homolog of Sorghum CYP79A1"
+      },
+      {
+        "gene_symbol": "UGT85B1",
+        "function": "cyanogenic glucoside biosynthesis (glycosylation)",
+        "canonical_id": "SB01G012300",
+        "id_source": "Phytozome-LIS",
+        "species": "sorghum",
+        "og_ids": [
+          "37U6A"
+        ],
+        "og_descriptions": [
+          "glycine-rich RNA-binding"
+        ],
+        "og_cogs": [
+          "A"
+        ],
+        "resolved": true,
+        "notes": "final glucosyltransferase; sorghum dhurrin pathway"
+      },
+      {
+        "gene_symbol": "beta-glucosidase_dhurrinase",
+        "function": "cyanogenic glucoside catabolism (release HCN)",
+        "canonical_id": "AT3G09260",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "388AS"
+        ],
+        "og_descriptions": [
+          "Belongs to the glycosyl hydrolase 1 family"
+        ],
+        "og_cogs": [
+          "G"
+        ],
+        "resolved": true,
+        "notes": "BGLU23 (PYK10); cyanogenic glucosidase family"
+      },
+      {
+        "gene_symbol": "HNL",
+        "function": "hydroxynitrile lyase, cyanohydrin -> HCN + aldehyde",
+        "canonical_id": "AT5G10300",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37MIZ"
+        ],
+        "og_descriptions": [
+          "Salicylic acid-binding protein"
+        ],
+        "og_cogs": [
+          "S"
+        ],
+        "resolved": true,
+        "notes": "HNL family (repurposed across plant lineages)"
+      },
+      {
+        "gene_symbol": "CYP71_aldoxime",
+        "function": "cyanogenic pathway (aldoxime -> cyanohydrin)",
+        "canonical_id": "AT2G30750",
+        "id_source": "TAIR",
+        "species": "arabidopsis",
+        "og_ids": [
+          "37MB9"
+        ],
+        "og_descriptions": [
+          "cytochrome P450"
+        ],
+        "og_cogs": [
+          "Q"
+        ],
+        "resolved": true,
+        "notes": "CYP71A12; AT homolog of sorghum CYP71E1"
+      }
+    ],
+    "n_total": 5,
+    "n_resolved": 5,
+    "unique_ogs": [
+      "37MB9",
+      "37MIZ",
+      "37R7V",
+      "37U6A",
+      "388AS"
+    ],
+    "n_unique_ogs": 5
+  }
+}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration experimentType="rnaseq_mrna_baseline" r_data="1">
+    <analytics>
+        <assay_groups>
+            <assay_group id="g1" label="zeitgeber time 0">
+                <assay>SRR1622093</assay>
+                <assay>SRR1622094</assay>
+            </assay_group>
+            <assay_group id="g6" label="zeitgeber time 3">
+                <assay>SRR1622091</assay>
+                <assay>SRR1622092</assay>
+            </assay_group>
+            <assay_group id="g7" label="zeitgeber time 6">
+                <assay>SRR1622089</assay>
+                <assay>SRR1622090</assay>
+            </assay_group>
+            <assay_group id="g8" label="zeitgeber time 9">
+                <assay>SRR1622087</assay>
+                <assay>SRR1622088</assay>
+            </assay_group>
+            <assay_group id="g2" label="zeitgeber time 12">
+                <assay>SRR1622085</assay>
+                <assay>SRR1622086</assay>
+            </assay_group>
+            <assay_group id="g3" label="zeitgeber time 15">
+                <assay>SRR1622084</assay>
+                <assay>SRR1622083</assay>
+            </assay_group>
+            <assay_group id="g4" label="zeitgeber time 18">
+                <assay>SRR1622081</assay>
+                <assay>SRR1622082</assay>
+            </assay_group>
+            <assay_group id="g5" label="zeitgeber time 21">
+                <assay>SRR1622080</assay>
+                <assay>SRR1622079</assay>
+            </assay_group>
+        </assay_groups>
+    </analytics>
+</configuration>
